@@ -1,0 +1,6 @@
+ccxt
+pandas
+numpy
+matplotlib
+python-telegram-bot
+streamlit
