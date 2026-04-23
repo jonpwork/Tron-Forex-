@@ -1,80 +1,103 @@
-# executor.py
+import streamlit as st
 import ccxt
+import pandas as pd
+import numpy as np
 import requests
 import time
 
-# ================= CONFIG =================
-BYBIT_API_KEY = "SUA_API_KEY"
-BYBIT_API_SECRET = "SEU_API_SECRET"
-
-TELEGRAM_TOKEN = "SEU_BOT_TOKEN"
-CHAT_ID = "SEU_CHAT_ID"
+# ================== CONFIG ==================
+TELEGRAM_TOKEN = st.secrets["TELEGRAM_TOKEN"]
+CHAT_ID = st.secrets["CHAT_ID"]
 
 SYMBOL = "BTC/USDT"
-USDT_PER_TRADE = 10
-# ==========================================
+TIMEFRAME = "1m"
+PERIOD = 100
+ENVELOPE_PCT = 0.003  # 0.3%
+# ============================================
 
-exchange = ccxt.bybit({
-    "apiKey": BYBIT_API_KEY,
-    "secret": BYBIT_API_SECRET,
-    "enableRateLimit": True,
-    "options": {"defaultType": "spot"}
-})
+st.set_page_config(page_title="Tron Forex – Envelope Bot", layout="centered")
+st.title("📈 Tron Forex – Envelope Strategy (M1)")
 
-last_update_id = 0
-
-def send_telegram(msg):
+# ---------- TELEGRAM ----------
+def send_telegram(signal):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    data = {"chat_id": CHAT_ID, "text": msg}
+    data = {
+        "chat_id": CHAT_ID,
+        "text": signal
+    }
     requests.post(url, data=data, timeout=10)
 
-def buy():
-    price = exchange.fetch_ticker(SYMBOL)["last"]
-    amount = USDT_PER_TRADE / price
-    order = exchange.create_market_buy_order(SYMBOL, amount)
-    print("🟢 BUY executado")
-    send_telegram(f"🟢 BUY {SYMBOL}\nPreço: {price}")
+# ---------- BINANCE (DADOS) ----------
+exchange = ccxt.binance({
+    "enableRateLimit": True
+})
 
-def sell():
-    balance = exchange.fetch_balance()
-    base = SYMBOL.split("/")[0]
-    amount = balance["free"].get(base, 0)
-    if amount > 0:
-        exchange.create_market_sell_order(SYMBOL, amount)
-        print("🔴 SELL executado")
-        send_telegram(f"🔴 SELL {SYMBOL}")
+@st.cache_data(ttl=60)
+def get_data():
+    ohlcv = exchange.fetch_ohlcv(SYMBOL, TIMEFRAME, limit=PERIOD + 5)
+    df = pd.DataFrame(
+        ohlcv,
+        columns=["time", "open", "high", "low", "close", "volume"]
+    )
+    return df
 
-print("🤖 Executor iniciado e escutando Telegram...")
+# ---------- LÓGICA ENVELOPE ----------
+def envelope_strategy(df):
+    df["ma"] = df["close"].rolling(PERIOD).mean()
+    df["upper"] = df["ma"] * (1 + ENVELOPE_PCT)
+    df["lower"] = df["ma"] * (1 - ENVELOPE_PCT)
 
-while True:
-    try:
-        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates"
-        params = {"offset": last_update_id + 1, "timeout": 30}
-        resp = requests.get(url, params=params, timeout=35).json()
+    last = df.iloc[-1]
+    prev = df.iloc[-2]
 
-        for update in resp.get("result", []):
-            last_update_id = update["update_id"]
+    # COMPRA:
+    # rompe superior → retesta inferior
+    if prev["close"] > prev["upper"] and last["low"] <= last["lower"]:
+        return "BUY"
 
-            if "message" not in update:
-                continue
+    # VENDA:
+    # rompe inferior → retesta superior
+    if prev["close"] < prev["lower"] and last["high"] >= last["upper"]:
+        return "SELL"
 
-            text = update["message"]["text"].upper()
-            chat_id = update["message"]["chat"]["id"]
+    return None
 
-            print("📩 Mensagem recebida:", text)
+# ---------- INTERFACE ----------
+df = get_data()
+signal = envelope_strategy(df)
 
-            if chat_id != int(CHAT_ID):
-                print("⚠️ Chat não autorizado")
-                continue
+st.subheader("Último candle")
+st.write(df.tail(3))
 
-            if text.startswith("BUY"):
-                buy()
+st.subheader("Sinal atual")
+if signal:
+    st.success(signal)
+else:
+    st.info("Sem sinal")
 
-            elif text.startswith("SELL"):
-                sell()
+# ---------- ENVIO MANUAL ----------
+st.divider()
+st.subheader("⚡ Envio manual (teste)")
 
-        time.sleep(1)
+col1, col2 = st.columns(2)
 
-    except Exception as e:
-        print("❌ Erro:", e)
-        time.sleep(5)
+with col1:
+    if st.button("Enviar BUY"):
+        send_telegram("BUY")
+        st.success("BUY enviado")
+
+with col2:
+    if st.button("Enviar SELL"):
+        send_telegram("SELL")
+        st.success("SELL enviado")
+
+# ---------- ENVIO AUTOMÁTICO ----------
+st.divider()
+st.subheader("🤖 Automação")
+
+auto = st.toggle("Ativar envio automático")
+
+if auto and signal:
+    send_telegram(signal)
+    st.success(f"Sinal {signal} enviado automaticamente")
+    time.sleep(2)
