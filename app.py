@@ -1,12 +1,26 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
-import os
+import time
 import ccxt
 import pandas as pd
+import requests
 
-app = Flask(__name__)
-CORS(app)
+# =========================
+# TELEGRAM (FIXO)
+# =========================
+TELEGRAM_TOKEN = "8762172696:AAHP3CSVO5KDI9PBjzxvTI_yQUVHt1B4UzM"
+TELEGRAM_CHAT_ID = "8085416549"
 
+# =========================
+# CONFIGURAÇÃO DA ESTRATÉGIA
+# =========================
+SYMBOL = "BTC/USDT"
+TIMEFRAME = "1m"        # pode mudar: 5m, 15m, etc
+PERIODO = 14
+DESVIO = 0.001          # 0.10% (estratégia original)
+CHECK_INTERVAL = 30     # segundos
+
+# =========================
+# EXCHANGE
+# =========================
 exchange = ccxt.binance({
     "enableRateLimit": True,
     "options": {
@@ -14,52 +28,65 @@ exchange = ccxt.binance({
     }
 })
 
-@app.route("/")
-def home():
-    return "TRON FOREX API ONLINE"
+last_candle_time = None
+last_signal = None
 
-@app.route("/data/<tf>")
-def data(tf):
+# =========================
+# FUNÇÃO TELEGRAM
+# =========================
+def send_message(text):
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": text,
+        "parse_mode": "Markdown"
+    }
+    requests.post(url, json=payload, timeout=10)
+
+# =========================
+# LOOP PRINCIPAL
+# =========================
+print("📡 TRON FOREX Telegram Bot iniciado...")
+
+while True:
     try:
-        timeframe_map = {
-            "1m": "1m",
-            "3m": "3m",
-            "5m": "5m",
-            "15m": "15m",
-            "30m": "30m",
-            "1h": "1h"
-        }
-
-        if tf not in timeframe_map:
-            return jsonify({"error": "invalid timeframe"}), 400
-
-        ohlcv = exchange.fetch_ohlcv(
-            symbol="BTC/USDT",
-            timeframe=timeframe_map[tf],
-            limit=100
+        ohlcv = exchange.fetch_ohlcv(SYMBOL, TIMEFRAME, limit=100)
+        df = pd.DataFrame(
+            ohlcv,
+            columns=["time", "open", "high", "low", "close", "volume"]
         )
 
-        df = pd.DataFrame(ohlcv, columns=["t","o","h","l","c","v"])
+        candle_time = df["time"].iloc[-1]
+        price = df["close"].iloc[-1]
 
-        ma = df["c"].rolling(14).mean()
-        upper = ma * 1.003
-        lower = ma * 0.997
-        price = df["c"].iloc[-1]
+        ma = df["close"].rolling(PERIODO).mean()
+        upper = ma * (1 + DESVIO)
+        lower = ma * (1 - DESVIO)
 
-        return jsonify({
-            "price": float(price),
-            "ma": float(ma.iloc[-1]),
-            "upper": float(upper.iloc[-1]),
-            "lower": float(lower.iloc[-1]),
-            "rsi": 50.0
-        })
+        signal = None
+        if price >= upper.iloc[-1]:
+            signal = "SELL"
+        elif price <= lower.iloc[-1]:
+            signal = "BUY"
+
+        # =========================
+        # ANTI-SPAM (1 sinal por candle)
+        # =========================
+        if signal and candle_time != last_candle_time:
+            if signal != last_signal:
+                message = (
+                    f"🚨 *SINAL {signal}*\n\n"
+                    f"📊 Par: BTCUSDT\n"
+                    f"⏱ Timeframe: {TIMEFRAME}\n"
+                    f"💰 Preço: {price:.2f}\n"
+                    f"📐 Envelope SMA(14) ±0.10%"
+                )
+                send_message(message)
+                last_signal = signal
+                last_candle_time = candle_time
+
+        time.sleep(CHECK_INTERVAL)
 
     except Exception as e:
-        return jsonify({
-            "error": "internal",
-            "message": str(e)
-        }), 500
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+        print("Erro:", e)
+        time.sleep(10)
