@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tron Forex – Monitor</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightweight-charts/4.1.3/lightweight-charts.standalone.production.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap');
+
+  :root {
+    --bg: #050a0e;
+    --bg2: #0a1520;
+    --bg3: #0f1e2e;
+    --border: #1a3a5c;
+    --accent: #00d4ff;
+    --accent2: #0088cc;
+    --buy: #00ff9d;
+    --sell: #ff3d6b;
+    --text: #c8e0f0;
+    --text-dim: #4a7090;
+    --glow: 0 0 20px rgba(0,212,255,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--accent);
+    text-shadow: var(--glow);
+    letter-spacing: 2px;
+  }
+
+  .logo span { color: var(--text-dim); }
+
+  .status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--buy);
+    box-shadow: 0 0 8px var(--buy);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Stats bar */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+    color: var(--accent);
+  }
+
+  .stat-value.buy { color: var(--buy); }
+  .stat-value.sell { color: var(--sell); }
+  .stat-value.neutral { color: var(--text); }
+
+  /* Chart */
+  .chart-wrapper {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chart-title {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .legend-dot {
+    width: 20px; height: 2px;
+    border-radius: 2px;
+  }
+
+  #chart { height: 400px; }
+
+  @media (max-width: 600px) {
+    #chart { height: 280px; }
+  }
+
+  /* Signal panel */
+  .signal-panel {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .signal-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .signal-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    transition: all 0.3s;
+  }
+
+  .signal-value.BUY {
+    color: var(--buy);
+    text-shadow: 0 0 30px rgba(0,255,157,0.5);
+  }
+
+  .signal-value.SELL {
+    color: var(--sell);
+    text-shadow: 0 0 30px rgba(255,61,107,0.5);
+  }
+
+  .signal-value.NONE {
+    color: var(--text-dim);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  #update-time {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--accent2);
+  }
+
+  /* Flash animation on update */
+  @keyframes flash {
+    0% { border-color: var(--accent); box-shadow: var(--glow); }
+    100% { border-color: var(--border); box-shadow: none; }
+  }
+
+  .flash { animation: flash 0.6s ease-out; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">TRON<span>/</span>FOREX <span>// BTC·USDT M1</span></div>
+    <div class="status-pill">
+      <div class="dot"></div>
+      <span>LIVE</span>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-label">Preço Atual</div>
+      <div class="stat-value neutral" id="price">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Banda Superior</div>
+      <div class="stat-value sell" id="upper">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Média (MA100)</div>
+      <div class="stat-value" id="ma">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Banda Inferior</div>
+      <div class="stat-value buy" id="lower">—</div>
+    </div>
+  </div>
+
+  <div class="signal-panel">
+    <div class="signal-label">Sinal Atual</div>
+    <div class="signal-value NONE" id="signal">AGUARDANDO</div>
+  </div>
+
+  <div class="chart-wrapper" id="chart-wrapper">
+    <div class="chart-header">
+      <div class="chart-title">Candlestick + Envelope 0.3%</div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#ff3d6b"></div>
+          <span style="color:#ff3d6b">SUPERIOR</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#00d4ff"></div>
+          <span style="color:#00d4ff">MA100</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#00ff9d"></div>
+          <span style="color:#00ff9d">INFERIOR</span>
+        </div>
+      </div>
+    </div>
+    <div id="chart"></div>
+  </div>
+
+  <div class="footer">
+    Atualiza a cada 60s &nbsp;|&nbsp; Última atualização: <span id="update-time">—</span>
+  </div>
+
+</div>
+
+<script>
+const SYMBOL = 'BTCUSDT';
+const PERIOD = 100;
+const ENV_PCT = 0.003;
+
+// Init chart
+const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+  layout: {
+    background: { color: '#0a1520' },
+    textColor: '#4a7090',
+  },
+  grid: {
+    vertLines: { color: '#0f1e2e' },
+    horzLines: { color: '#0f1e2e' },
+  },
+  crosshair: {
+    vertLine: { color: '#00d4ff44' },
+    horzLine: { color: '#00d4ff44' },
+  },
+  rightPriceScale: { borderColor: '#1a3a5c' },
+  timeScale: {
+    borderColor: '#1a3a5c',
+    timeVisible: true,
+    secondsVisible: false,
+  },
+  width: document.getElementById('chart').offsetWidth,
+  height: document.getElementById('chart').offsetHeight || 400,
+});
+
+const candleSeries = chart.addCandlestickSeries({
+  upColor: '#00ff9d',
+  downColor: '#ff3d6b',
+  borderUpColor: '#00ff9d',
+  borderDownColor: '#ff3d6b',
+  wickUpColor: '#00ff9d88',
+  wickDownColor: '#ff3d6b88',
+});
+
+const maSeries = chart.addLineSeries({
+  color: '#00d4ff',
+  lineWidth: 1,
+  lineStyle: 0,
+});
+
+const upperSeries = chart.addLineSeries({
+  color: '#ff3d6b',
+  lineWidth: 1,
+  lineStyle: 2,
+});
+
+const lowerSeries = chart.addLineSeries({
+  color: '#00ff9d',
+  lineWidth: 1,
+  lineStyle: 2,
+});
+
+// Resize
+window.addEventListener('resize', () => {
+  chart.applyOptions({ width: document.getElementById('chart').offsetWidth });
+});
+
+function calcMA(closes, period) {
+  const result = [];
+  for (let i = 0; i < closes.length; i++) {
+    if (i < period - 1) { result.push(null); continue; }
+    const slice = closes.slice(i - period + 1, i + 1);
+    result.push(slice.reduce((a, b) => a + b, 0) / period);
+  }
+  return result;
+}
+
+async function fetchAndUpdate() {
+  try {
+    const url = `https://api.binance.com/api/v3/klines?symbol=${SYMBOL}&interval=1m&limit=${PERIOD + 20}`;
+    const resp = await fetch(url);
+    const raw = await resp.json();
+
+    const candles = raw.map(k => ({
+      time: k[0] / 1000,
+      open: parseFloat(k[1]),
+      high: parseFloat(k[2]),
+      low: parseFloat(k[3]),
+      close: parseFloat(k[4]),
+    }));
+
+    const closes = candles.map(c => c.close);
+    const mas = calcMA(closes, PERIOD);
+
+    const maData = [], upperData = [], lowerData = [];
+    for (let i = 0; i < candles.length; i++) {
+      if (mas[i] === null) continue;
+      const t = candles[i].time;
+      maData.push({ time: t, value: mas[i] });
+      upperData.push({ time: t, value: mas[i] * (1 + ENV_PCT) });
+      lowerData.push({ time: t, value: mas[i] * (1 - ENV_PCT) });
+    }
+
+    candleSeries.setData(candles);
+    maSeries.setData(maData);
+    upperSeries.setData(upperData);
+    lowerSeries.setData(lowerData);
+    chart.timeScale().fitContent();
+
+    // Stats
+    const last = candles[candles.length - 1];
+    const lastMA = maData[maData.length - 1].value;
+    const lastUpper = upperData[upperData.length - 1].value;
+    const lastLower = lowerData[lowerData.length - 1].value;
+    const prev = candles[candles.length - 2];
+    const prevUpper = upperData[upperData.length - 2].value;
+    const prevLower = lowerData[lowerData.length - 2].value;
+
+    document.getElementById('price').textContent = last.close.toFixed(2);
+    document.getElementById('ma').textContent = lastMA.toFixed(2);
+    document.getElementById('upper').textContent = lastUpper.toFixed(2);
+    document.getElementById('lower').textContent = lastLower.toFixed(2);
+
+    // Signal detection
+    let signal = 'NENHUM';
+    if (last.high >= lastUpper && prev.high < prevUpper) signal = 'SELL';
+    if (last.low <= lastLower && prev.low > prevLower) signal = 'BUY';
+
+    const sigEl = document.getElementById('signal');
+    sigEl.textContent = signal === 'NENHUM' ? 'SEM SINAL' : signal;
+    sigEl.className = 'signal-value ' + (signal === 'NENHUM' ? 'NONE' : signal);
+
+    // Flash chart wrapper
+    const wrapper = document.getElementById('chart-wrapper');
+    wrapper.classList.remove('flash');
+    void wrapper.offsetWidth;
+    wrapper.classList.add('flash');
+
+    // Update time
+    document.getElementById('update-time').textContent =
+      new Date().toLocaleTimeString('pt-BR');
+
+  } catch (e) {
+    console.error('Erro ao buscar dados:', e);
+  }
+}
+
+fetchAndUpdate();
+setInterval(fetchAndUpdate, 60000);
+</script>
+</body>
+</html>
