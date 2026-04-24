@@ -1,124 +1,49 @@
-# ================= TRON FOREX – BACKEND =================
-# Repo: https://github.com/jonpwork/Tron-Forex-
-# Envelope + MA + RSI | Multi-Timeframe | Telegram + API
-
-import requests
-import pandas as pd
-import time
 from flask import Flask, jsonify
-import threading
-
-# ================= CONFIG =================
-SYMBOL = "BTCUSDT"
-PERIOD = 14
-
-TIMEFRAMES = {
-    "1m":  0.003,
-    "3m":  0.004,
-    "5m":  0.006,
-    "15m": 0.010,
-    "30m": 0.020,
-    "1h":  0.030,
-    "4h":  0.070,
-    "1d":  0.100,
-}
-
-# 🔴 TELEGRAM (dados fornecidos)
-TELEGRAM_TOKEN = "8762172696:AAHP3CSVO5KDI9PBjzxvTI_yQUVHt1B4UzM"
-CHAT_ID = "8085416549"
-# =========================================
+from flask_cors import CORS
+import os
+import ccxt
+import pandas as pd
 
 app = Flask(__name__)
-last_sent = {}
+CORS(app)
 
-# ================= UTILS =================
-def send_telegram(msg):
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    try:
-        requests.post(
-            url,
-            data={"chat_id": CHAT_ID, "text": msg},
-            timeout=10
-        )
-        print("Telegram enviado:", msg)
-    except Exception as e:
-        print("Erro Telegram:", e)
+exchange = ccxt.binance()
 
-def get_data(tf, limit=200):
-    url = "https://api.binance.com/api/v3/klines"
-    params = {"symbol": SYMBOL, "interval": tf, "limit": limit}
-    data = requests.get(url, params=params, timeout=10).json()
+@app.route("/")
+def home():
+    return "TRON FOREX API ONLINE"
 
-    df = pd.DataFrame(data, columns=[
-        "time","open","high","low","close","vol",
-        "_","_","_","_","_","_"
-    ])
-    df[["open","high","low","close"]] = df[["open","high","low","close"]].astype(float)
-    df["time"] = df["time"] // 1000
-    return df
-
-def apply_indicators(df, env):
-    df["ma"] = df["close"].rolling(PERIOD).mean()
-    df["upper"] = df["ma"] * (1 + env)
-    df["lower"] = df["ma"] * (1 - env)
-
-    delta = df["close"].diff()
-    gain = delta.clip(lower=0).rolling(14).mean()
-    loss = -delta.clip(upper=0).rolling(14).mean()
-    rs = gain / loss
-    df["rsi"] = 100 - (100 / (1 + rs))
-
-    return df
-
-def check_signal(df, tf):
-    last = df.iloc[-1]
-
-    if last["close"] <= last["lower"] and last["rsi"] < 30:
-        return f"🟢 BUY BTC ({tf})\nEnvelope + RSI"
-
-    if last["close"] >= last["upper"] and last["rsi"] > 70:
-        return f"🔴 SELL BTC ({tf})\nEnvelope + RSI"
-
-    return None
-
-# ================= API =================
 @app.route("/data/<tf>")
-def api_data(tf):
-    if tf not in TIMEFRAMES:
-        return jsonify({"error": "invalid timeframe"})
+def data(tf):
+    timeframe_map = {
+        "1m": "1m",
+        "3m": "3m",
+        "5m": "5m",
+        "15m": "15m",
+        "30m": "30m",
+        "1h": "1h"
+    }
 
-    env = TIMEFRAMES[tf]
-    df = apply_indicators(get_data(tf), env)
-    last = df.iloc[-1]
+    if tf not in timeframe_map:
+        return jsonify({"error": "invalid timeframe"}), 400
+
+    ohlcv = exchange.fetch_ohlcv("BTC/USDT", timeframe_map[tf], limit=100)
+    df = pd.DataFrame(ohlcv, columns=["t","o","h","l","c","v"])
+
+    ma = df["c"].rolling(14).mean()
+    upper = ma * 1.003
+    lower = ma * 0.997
+
+    price = df["c"].iloc[-1]
 
     return jsonify({
-        "timeframe": tf,
-        "price": last["close"],
-        "ma": last["ma"],
-        "upper": last["upper"],
-        "lower": last["lower"],
-        "rsi": last["rsi"]
+        "price": float(price),
+        "ma": float(ma.iloc[-1]),
+        "upper": float(upper.iloc[-1]),
+        "lower": float(lower.iloc[-1]),
+        "rsi": 50.0
     })
 
-# ================= BOT LOOP =================
-def bot_loop():
-    send_telegram("🤖 Tron Forex Bot iniciado")
-    while True:
-        for tf, env in TIMEFRAMES.items():
-            try:
-                df = apply_indicators(get_data(tf), env)
-                signal = check_signal(df, tf)
-
-                if signal and last_sent.get(tf) != signal:
-                    send_telegram(signal)
-                    last_sent[tf] = signal
-
-            except Exception as e:
-                print("Erro:", e)
-
-        time.sleep(60)
-
-# ================= START =================
 if __name__ == "__main__":
-    threading.Thread(target=bot_loop, daemon=True).start()
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
