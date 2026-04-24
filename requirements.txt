@@ -1,2 +1,4 @@
+flask
+ccxt
 requests
 pandas
