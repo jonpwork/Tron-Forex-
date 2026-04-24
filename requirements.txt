@@ -1,5 +1,3 @@
-yfinance
 streamlit
 pandas
-numpy
 requests
