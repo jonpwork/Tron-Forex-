@@ -29,10 +29,8 @@
     color: var(--text);
     font-family: 'Rajdhani', sans-serif;
     min-height: 100vh;
-    overflow-x: hidden;
   }
 
-  /* Grid background */
   body::before {
     content: '';
     position: fixed;
@@ -53,7 +51,6 @@
     padding: 16px;
   }
 
-  /* Header */
   header {
     display: flex;
     align-items: center;
@@ -65,7 +62,7 @@
 
   .logo {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--accent);
     text-shadow: var(--glow);
     letter-spacing: 2px;
@@ -83,7 +80,6 @@
     padding: 6px 14px;
     font-size: 0.75rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
   }
 
   .dot {
@@ -94,12 +90,13 @@
     animation: pulse 2s infinite;
   }
 
+  .dot.error { background: var(--sell); box-shadow: 0 0 8px var(--sell); animation: none; }
+
   @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
   }
 
-  /* Stats bar */
   .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -138,7 +135,7 @@
 
   .stat-value {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--accent);
   }
 
@@ -146,55 +143,6 @@
   .stat-value.sell { color: var(--sell); }
   .stat-value.neutral { color: var(--text); }
 
-  /* Chart */
-  .chart-wrapper {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-
-  .chart-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .chart-title {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .legend {
-    display: flex;
-    gap: 16px;
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .legend-dot {
-    width: 20px; height: 2px;
-    border-radius: 2px;
-  }
-
-  #chart { height: 400px; }
-
-  @media (max-width: 600px) {
-    #chart { height: 280px; }
-  }
-
-  /* Signal panel */
   .signal-panel {
     background: var(--bg2);
     border: 1px solid var(--border);
@@ -219,21 +167,48 @@
     transition: all 0.3s;
   }
 
-  .signal-value.BUY {
-    color: var(--buy);
-    text-shadow: 0 0 30px rgba(0,255,157,0.5);
+  .signal-value.BUY { color: var(--buy); text-shadow: 0 0 30px rgba(0,255,157,0.5); }
+  .signal-value.SELL { color: var(--sell); text-shadow: 0 0 30px rgba(255,61,107,0.5); }
+  .signal-value.NONE { color: var(--text-dim); }
+
+  .chart-wrapper {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
   }
 
-  .signal-value.SELL {
-    color: var(--sell);
-    text-shadow: 0 0 30px rgba(255,61,107,0.5);
+  .chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
-  .signal-value.NONE {
+  .chart-title {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     color: var(--text-dim);
   }
 
-  /* Footer */
+  .legend {
+    display: flex;
+    gap: 16px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 20px; height: 2px; border-radius: 2px; }
+
+  #chart { height: 380px; }
+  @media (max-width: 600px) { #chart { height: 260px; } }
+
   .footer {
     text-align: center;
     font-size: 0.65rem;
@@ -243,18 +218,8 @@
     border-top: 1px solid var(--border);
   }
 
-  #update-time {
-    font-family: 'Share Tech Mono', monospace;
-    color: var(--accent2);
-  }
-
-  /* Flash animation on update */
-  @keyframes flash {
-    0% { border-color: var(--accent); box-shadow: var(--glow); }
-    100% { border-color: var(--border); box-shadow: none; }
-  }
-
-  .flash { animation: flash 0.6s ease-out; }
+  #update-time { font-family: 'Share Tech Mono', monospace; color: var(--accent2); }
+  #error-msg { color: var(--sell); font-size: 0.8rem; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -263,8 +228,8 @@
   <header>
     <div class="logo">TRON<span>/</span>FOREX <span>// BTC·USDT M1</span></div>
     <div class="status-pill">
-      <div class="dot"></div>
-      <span>LIVE</span>
+      <div class="dot" id="dot"></div>
+      <span id="status-text">LIVE</span>
     </div>
   </header>
 
@@ -278,7 +243,7 @@
       <div class="stat-value sell" id="upper">—</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">Média (MA100)</div>
+      <div class="stat-label">Média MA100</div>
       <div class="stat-value" id="ma">—</div>
     </div>
     <div class="stat-card">
@@ -292,7 +257,7 @@
     <div class="signal-value NONE" id="signal">AGUARDANDO</div>
   </div>
 
-  <div class="chart-wrapper" id="chart-wrapper">
+  <div class="chart-wrapper">
     <div class="chart-header">
       <div class="chart-title">Candlestick + Envelope 0.3%</div>
       <div class="legend">
@@ -315,95 +280,84 @@
 
   <div class="footer">
     Atualiza a cada 60s &nbsp;|&nbsp; Última atualização: <span id="update-time">—</span>
+    <div id="error-msg"></div>
   </div>
 
 </div>
 
 <script>
-const SYMBOL = 'BTCUSDT';
 const PERIOD = 100;
 const ENV_PCT = 0.003;
 
-// Init chart
 const chart = LightweightCharts.createChart(document.getElementById('chart'), {
-  layout: {
-    background: { color: '#0a1520' },
-    textColor: '#4a7090',
-  },
-  grid: {
-    vertLines: { color: '#0f1e2e' },
-    horzLines: { color: '#0f1e2e' },
-  },
-  crosshair: {
-    vertLine: { color: '#00d4ff44' },
-    horzLine: { color: '#00d4ff44' },
-  },
+  layout: { background: { color: '#0a1520' }, textColor: '#4a7090' },
+  grid: { vertLines: { color: '#0f1e2e' }, horzLines: { color: '#0f1e2e' } },
+  crosshair: { vertLine: { color: '#00d4ff44' }, horzLine: { color: '#00d4ff44' } },
   rightPriceScale: { borderColor: '#1a3a5c' },
-  timeScale: {
-    borderColor: '#1a3a5c',
-    timeVisible: true,
-    secondsVisible: false,
-  },
+  timeScale: { borderColor: '#1a3a5c', timeVisible: true, secondsVisible: false },
   width: document.getElementById('chart').offsetWidth,
-  height: document.getElementById('chart').offsetHeight || 400,
+  height: document.getElementById('chart').offsetHeight || 380,
 });
 
 const candleSeries = chart.addCandlestickSeries({
-  upColor: '#00ff9d',
-  downColor: '#ff3d6b',
-  borderUpColor: '#00ff9d',
-  borderDownColor: '#ff3d6b',
-  wickUpColor: '#00ff9d88',
-  wickDownColor: '#ff3d6b88',
+  upColor: '#00ff9d', downColor: '#ff3d6b',
+  borderUpColor: '#00ff9d', borderDownColor: '#ff3d6b',
+  wickUpColor: '#00ff9d88', wickDownColor: '#ff3d6b88',
 });
+const maSeries = chart.addLineSeries({ color: '#00d4ff', lineWidth: 1 });
+const upperSeries = chart.addLineSeries({ color: '#ff3d6b', lineWidth: 1, lineStyle: 2 });
+const lowerSeries = chart.addLineSeries({ color: '#00ff9d', lineWidth: 1, lineStyle: 2 });
 
-const maSeries = chart.addLineSeries({
-  color: '#00d4ff',
-  lineWidth: 1,
-  lineStyle: 0,
-});
-
-const upperSeries = chart.addLineSeries({
-  color: '#ff3d6b',
-  lineWidth: 1,
-  lineStyle: 2,
-});
-
-const lowerSeries = chart.addLineSeries({
-  color: '#00ff9d',
-  lineWidth: 1,
-  lineStyle: 2,
-});
-
-// Resize
 window.addEventListener('resize', () => {
   chart.applyOptions({ width: document.getElementById('chart').offsetWidth });
 });
 
 function calcMA(closes, period) {
-  const result = [];
-  for (let i = 0; i < closes.length; i++) {
-    if (i < period - 1) { result.push(null); continue; }
-    const slice = closes.slice(i - period + 1, i + 1);
-    result.push(slice.reduce((a, b) => a + b, 0) / period);
-  }
-  return result;
+  return closes.map((_, i) => {
+    if (i < period - 1) return null;
+    return closes.slice(i - period + 1, i + 1).reduce((a, b) => a + b, 0) / period;
+  });
 }
 
-async function fetchAndUpdate() {
+// Try multiple sources
+async function fetchCandles() {
+  // Try Bybit first (CORS friendly)
   try {
-    const url = `https://api.binance.com/api/v3/klines?symbol=${SYMBOL}&interval=1m&limit=${PERIOD + 20}`;
+    const url = `https://api.bybit.com/v5/market/kline?category=spot&symbol=BTCUSDT&interval=1&limit=${PERIOD + 20}`;
+    const resp = await fetch(url);
+    const data = await resp.json();
+    if (data.retCode === 0) {
+      const rows = [...data.result.list].reverse();
+      return rows.map(k => ({
+        time: Math.floor(parseInt(k[0]) / 1000),
+        open: parseFloat(k[1]),
+        high: parseFloat(k[2]),
+        low: parseFloat(k[3]),
+        close: parseFloat(k[4]),
+      }));
+    }
+  } catch(e) {}
+
+  // Fallback: Binance with no-cors proxy
+  try {
+    const url = `https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=${PERIOD + 20}`;
     const resp = await fetch(url);
     const raw = await resp.json();
-
-    const candles = raw.map(k => ({
-      time: k[0] / 1000,
+    return raw.map(k => ({
+      time: Math.floor(k[0] / 1000),
       open: parseFloat(k[1]),
       high: parseFloat(k[2]),
       low: parseFloat(k[3]),
       close: parseFloat(k[4]),
     }));
+  } catch(e) {}
 
+  throw new Error('Todas as fontes falharam');
+}
+
+async function update() {
+  try {
+    const candles = await fetchCandles();
     const closes = candles.map(c => c.close);
     const mas = calcMA(closes, PERIOD);
 
@@ -422,46 +376,42 @@ async function fetchAndUpdate() {
     lowerSeries.setData(lowerData);
     chart.timeScale().fitContent();
 
-    // Stats
     const last = candles[candles.length - 1];
+    const prev = candles[candles.length - 2];
     const lastMA = maData[maData.length - 1].value;
     const lastUpper = upperData[upperData.length - 1].value;
     const lastLower = lowerData[lowerData.length - 1].value;
-    const prev = candles[candles.length - 2];
     const prevUpper = upperData[upperData.length - 2].value;
     const prevLower = lowerData[lowerData.length - 2].value;
 
-    document.getElementById('price').textContent = last.close.toFixed(2);
+    document.getElementById('price').textContent = last.close.toLocaleString('pt-BR', {minimumFractionDigits: 2});
     document.getElementById('ma').textContent = lastMA.toFixed(2);
     document.getElementById('upper').textContent = lastUpper.toFixed(2);
     document.getElementById('lower').textContent = lastLower.toFixed(2);
 
-    // Signal detection
-    let signal = 'NENHUM';
+    let signal = 'NONE';
     if (last.high >= lastUpper && prev.high < prevUpper) signal = 'SELL';
     if (last.low <= lastLower && prev.low > prevLower) signal = 'BUY';
 
     const sigEl = document.getElementById('signal');
-    sigEl.textContent = signal === 'NENHUM' ? 'SEM SINAL' : signal;
-    sigEl.className = 'signal-value ' + (signal === 'NENHUM' ? 'NONE' : signal);
+    sigEl.textContent = signal === 'NONE' ? 'SEM SINAL' : signal;
+    sigEl.className = 'signal-value ' + signal;
 
-    // Flash chart wrapper
-    const wrapper = document.getElementById('chart-wrapper');
-    wrapper.classList.remove('flash');
-    void wrapper.offsetWidth;
-    wrapper.classList.add('flash');
+    document.getElementById('dot').className = 'dot';
+    document.getElementById('status-text').textContent = 'LIVE';
+    document.getElementById('update-time').textContent = new Date().toLocaleTimeString('pt-BR');
+    document.getElementById('error-msg').textContent = '';
 
-    // Update time
-    document.getElementById('update-time').textContent =
-      new Date().toLocaleTimeString('pt-BR');
-
-  } catch (e) {
-    console.error('Erro ao buscar dados:', e);
+  } catch(e) {
+    document.getElementById('dot').className = 'dot error';
+    document.getElementById('status-text').textContent = 'ERRO';
+    document.getElementById('error-msg').textContent = 'Erro ao carregar dados: ' + e.message;
   }
 }
 
-fetchAndUpdate();
-setInterval(fetchAndUpdate, 60000);
+update();
+setInterval(update, 60000);
 </script>
 </body>
 </html>
+
