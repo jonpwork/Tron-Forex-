@@ -1,2 +1,7 @@
+flask
+flask-cors
 requests
 pandas
+numpy
+ccxt
+python-telegram-bot==20.7
