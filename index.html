@@ -35,7 +35,8 @@ select{background:#0a1520;color:#00d4ff;border:1px solid #1a3a5c;padding:6px}
 <div class="card">RSI<br><span id="rsi">—</span></div>
 </div><div id="signal">AGUARDANDO</div>
 <div id="chart"></div><script>
-const API = "http://SEU_BACKEND:5000/data/";
+// 🔗 URL DO BACKEND (Render / Railway)
+const API = "https://tron-forex.onrender.com/data/";
 
 const chart = LightweightCharts.createChart(document.getElementById('chart'),{
   layout:{background:{color:'#050a0e'},textColor:'#4a7090'},
@@ -51,6 +52,8 @@ const lowLine = chart.addLineSeries({color:'#00ff9d',lineStyle:2});
 
 async function update(){
   const tf = document.getElementById('tf').value;
+
+  // 1️⃣ Dados de indicadores
   const res = await fetch(API+tf);
   const d = await res.json();
 
@@ -63,6 +66,25 @@ async function update(){
   if(d.price >= d.upper) document.getElementById('signal').innerText = 'SELL';
   else if(d.price <= d.lower) document.getElementById('signal').innerText = 'BUY';
   else document.getElementById('signal').innerText = 'SEM SINAL';
+
+  // 2️⃣ Candles + envelopes
+  const klines = await fetch(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=${tf}&limit=120`).then(r=>r.json());
+
+  const candles = klines.map(k => ({
+    time: k[0]/1000,
+    open: +k[1], high: +k[2], low: +k[3], close: +k[4]
+  }));
+
+  candle.setData(candles);
+
+  const closes = candles.map(c=>c.close);
+  const ma = closes.map((_,i)=> i<13 ? null : closes.slice(i-13,i+1).reduce((a,b)=>a+b,0)/14);
+
+  const env = Math.abs((d.upper - d.ma) / d.ma);
+
+  maLine.setData(candles.map((c,i)=> ma[i]?{time:c.time,value:ma[i]}:null).filter(Boolean));
+  upLine.setData(candles.map((c,i)=> ma[i]?{time:c.time,value:ma[i]*(1+env)}:null).filter(Boolean));
+  lowLine.setData(candles.map((c,i)=> ma[i]?{time:c.time,value:ma[i]*(1-env)}:null).filter(Boolean));
 }
 
 setInterval(update,60000);
