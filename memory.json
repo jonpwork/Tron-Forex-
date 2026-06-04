@@ -120,6 +120,7 @@
     },
     {
       "id": 5,
+      "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 62438.0,
       "stop": 62653.8,
