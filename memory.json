@@ -76,6 +76,19 @@
       "resultado": "-1R",
       "order_id": null,
       "fechamento": "04/06/2026 09:46"
+    },
+    {
+      "id": 4,
+      "direcao": "down",
+      "entrada": 62896.4,
+      "stop": 63006.0,
+      "alvo": 62674.6,
+      "risco": 109.59999999999854,
+      "rr": 2.0,
+      "data": "04/06/2026 10:20",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
