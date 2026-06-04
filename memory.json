@@ -18,7 +18,20 @@
       "caption": ""
     }
   ],
-  "signals": [],
+  "signals": [
+    {
+      "id": 1,
+      "direcao": "down",
+      "entrada": 63645.7,
+      "stop": 63819.9,
+      "alvo": 63309.99999999999,
+      "risco": 174.20000000000437,
+      "rr": 1.9,
+      "data": "04/06/2026 07:25",
+      "status": "aberto",
+      "resultado": null
+    }
+  ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
   "total_prints": 1,
