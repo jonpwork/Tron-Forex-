@@ -16,25 +16,40 @@
       "qualidade_setup": "alta",
       "data": "04/06/2026 06:34",
       "caption": ""
+    },
+    {
+      "timeframe": "M5",
+      "tendencia": "neutral",
+      "tipo_onda": "correcao",
+      "nivel_entrada": 63554.71,
+      "nivel_stop": null,
+      "nivel_alvo": null,
+      "correcao_pct": 50.0,
+      "observacoes": "Possivel ponto de suporte",
+      "padroes": [
+        "Fibonacci"
+      ],
+      "qualidade_setup": "media",
+      "data": "04/06/2026 07:27",
+      "caption": ""
     }
   ],
   "signals": [
     {
       "id": 1,
       "direcao": "down",
-      "entrada": 63628.6,
+      "entrada": 63645.7,
       "stop": 63819.9,
-      "alvo": 63292.899999999994,
-      "risco": 191.3000000000029,
-      "rr": 1.8,
-      "data": "04/06/2026 07:27",
+      "alvo": 63309.99999999999,
+      "risco": 174.20000000000437,
+      "rr": 1.9,
+      "data": "04/06/2026 07:25",
       "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "resultado": null
     }
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 1,
-  "last_update": "04/06/2026 06:34"
+  "total_prints": 2,
+  "last_update": "04/06/2026 07:27"
 }
