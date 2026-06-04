@@ -25,7 +25,7 @@
       "nivel_stop": null,
       "nivel_alvo": null,
       "correcao_pct": 50.0,
-      "observacoes": "Possivel ponto de suporte",
+      "observacoes": "Possível correção em andamento",
       "padroes": [
         "Fibonacci"
       ],
@@ -38,27 +38,29 @@
     {
       "id": 1,
       "direcao": "down",
-      "entrada": 63645.7,
+      "entrada": 63628.6,
       "stop": 63819.9,
-      "alvo": 63309.99999999999,
-      "risco": 174.20000000000437,
-      "rr": 1.9,
-      "data": "04/06/2026 07:25",
+      "alvo": 63292.899999999994,
+      "risco": 191.3000000000029,
+      "rr": 1.8,
+      "data": "04/06/2026 07:27",
       "status": "loss",
       "resultado": "-1R",
-      "fechamento": "04/06/2026 07:36"
+      "order_id": null,
+      "fechamento": "04/06/2026 07:31"
     },
     {
       "id": 2,
       "direcao": "down",
-      "entrada": 63532.6,
+      "entrada": 63533.3,
       "stop": 63634.3,
-      "alvo": 63323.7,
-      "risco": 101.70000000000437,
+      "alvo": 63324.4,
+      "risco": 101.0,
       "rr": 2.1,
       "data": "04/06/2026 08:50",
       "status": "loss",
       "resultado": "-1R",
+      "order_id": null,
       "fechamento": "04/06/2026 08:56"
     }
   ],
