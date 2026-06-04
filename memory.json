@@ -120,7 +120,6 @@
     },
     {
       "id": 5,
-      "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 62438.0,
       "stop": 62653.8,
@@ -128,23 +127,10 @@
       "risco": 215.8000000000029,
       "rr": 2.0,
       "data": "04/06/2026 11:17",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
-    },
-    {
-      "id": 6,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 62462.4,
-      "stop": 62653.8,
-      "alvo": 62037.799999999996,
-      "risco": 191.40000000000146,
-      "rr": 2.2,
-      "data": "04/06/2026 11:22",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": null,
+      "fechamento": "04/06/2026 11:31"
     }
   ],
   "zone_tol": 0.08,
