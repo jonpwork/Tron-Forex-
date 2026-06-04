@@ -64,6 +64,21 @@
       "qualidade_setup": "media",
       "data": "04/06/2026 11:13",
       "caption": ""
+    },
+    {
+      "timeframe": "M5",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 63815.92,
+      "nivel_stop": 63400.0,
+      "nivel_alvo": 64500.0,
+      "correcao_pct": 50.0,
+      "observacoes": "Possível continuação da tendência de alta",
+      "padroes": [
+        "Ruptura de linha de tendência de baixa"
+      ],
+      "qualidade_setup": "alta",
+      "data": "04/06/2026 12:49"
     }
   ],
   "signals": [
@@ -181,6 +196,6 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 4,
-  "last_update": "04/06/2026 11:13"
+  "total_prints": 5,
+  "last_update": "04/06/2026 12:49"
 }
