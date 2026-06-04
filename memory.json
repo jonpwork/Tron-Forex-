@@ -32,6 +32,22 @@
       "qualidade_setup": "media",
       "data": "04/06/2026 07:27",
       "caption": ""
+    },
+    {
+      "timeframe": "M5",
+      "tendencia": "down",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 62400.3,
+      "nivel_stop": null,
+      "nivel_alvo": null,
+      "correcao_pct": 50.0,
+      "observacoes": "Possível continuação da tendência de baixa",
+      "padroes": [
+        "Fibo"
+      ],
+      "qualidade_setup": "alta",
+      "data": "04/06/2026 11:08",
+      "caption": ""
     }
   ],
   "signals": [
@@ -89,6 +105,6 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 2,
-  "last_update": "04/06/2026 07:27"
+  "total_prints": 3,
+  "last_update": "04/06/2026 11:08"
 }
