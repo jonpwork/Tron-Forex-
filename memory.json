@@ -1,0 +1,26 @@
+{
+  "analyses": [
+    {
+      "timeframe": "M5",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 63798.32,
+      "nivel_stop": 63558.03,
+      "nivel_alvo": 65266.33,
+      "correcao_pct": 38.2,
+      "observacoes": "Impulso de alta forte e saudável, correção saudável até 38.2/50.0",
+      "padroes": [
+        "impulso de alta",
+        "correção saudável"
+      ],
+      "qualidade_setup": "alta",
+      "data": "04/06/2026 06:34",
+      "caption": ""
+    }
+  ],
+  "signals": [],
+  "zone_tol": 0.08,
+  "min_wave_usd": 30,
+  "total_prints": 1,
+  "last_update": "04/06/2026 06:34"
+}
