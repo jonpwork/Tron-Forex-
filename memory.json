@@ -94,6 +94,21 @@
       ],
       "qualidade_setup": "media",
       "data": "04/06/2026 12:50"
+    },
+    {
+      "timeframe": "M15",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 0.0,
+      "nivel_stop": 0.0,
+      "nivel_alvo": 0.0,
+      "correcao_pct": 0.0,
+      "observacoes": "Possivel reversao de tendencia",
+      "padroes": [
+        "Fundo Duplo"
+      ],
+      "qualidade_setup": "media",
+      "data": "04/06/2026 13:04"
     }
   ],
   "signals": [
@@ -211,6 +226,6 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 6,
-  "last_update": "04/06/2026 12:50"
+  "total_prints": 7,
+  "last_update": "04/06/2026 13:04"
 }
