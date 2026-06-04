@@ -117,6 +117,19 @@
       "data": "04/06/2026 10:34",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 5,
+      "direcao": "down",
+      "entrada": 62438.0,
+      "stop": 62653.8,
+      "alvo": 62013.399999999994,
+      "risco": 215.8000000000029,
+      "rr": 2.0,
+      "data": "04/06/2026 11:17",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
