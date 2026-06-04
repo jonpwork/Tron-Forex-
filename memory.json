@@ -48,6 +48,22 @@
       "qualidade_setup": "alta",
       "data": "04/06/2026 11:08",
       "caption": ""
+    },
+    {
+      "timeframe": "M5",
+      "tendencia": "down",
+      "tipo_onda": "correcao",
+      "nivel_entrada": 62998.49,
+      "nivel_stop": 63311.04,
+      "nivel_alvo": 61748.29,
+      "correcao_pct": 38.2,
+      "observacoes": "Possivel reversão da tendencia",
+      "padroes": [
+        "Fibonacci"
+      ],
+      "qualidade_setup": "media",
+      "data": "04/06/2026 11:13",
+      "caption": ""
     }
   ],
   "signals": [
@@ -105,6 +121,6 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 3,
-  "last_update": "04/06/2026 11:08"
+  "total_prints": 4,
+  "last_update": "04/06/2026 11:13"
 }
