@@ -222,6 +222,34 @@
       "resultado": "-1R",
       "order_id": null,
       "fechamento": "04/06/2026 12:32"
+    },
+    {
+      "id": 9,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1776.5,
+      "stop": 1778.74,
+      "alvo": 1772.29,
+      "risco": 2.240000000000009,
+      "rr": 1.9,
+      "data": "04/06/2026 13:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
+    },
+    {
+      "id": 10,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63675.4,
+      "stop": 63819.1,
+      "alvo": 63426.8,
+      "risco": 143.6999999999971,
+      "rr": 1.7,
+      "data": "04/06/2026 13:14",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
