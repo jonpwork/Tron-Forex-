@@ -25,7 +25,7 @@
       "nivel_stop": null,
       "nivel_alvo": null,
       "correcao_pct": 50.0,
-      "observacoes": "Possivel ponto de suporte",
+      "observacoes": "Possível correção em andamento",
       "padroes": [
         "Fibonacci"
       ],
@@ -38,14 +38,15 @@
     {
       "id": 1,
       "direcao": "down",
-      "entrada": 63645.7,
+      "entrada": 63628.6,
       "stop": 63819.9,
-      "alvo": 63309.99999999999,
-      "risco": 174.20000000000437,
-      "rr": 1.9,
-      "data": "04/06/2026 07:25",
+      "alvo": 63292.899999999994,
+      "risco": 191.3000000000029,
+      "rr": 1.8,
+      "data": "04/06/2026 07:27",
       "status": "aberto",
-      "resultado": null
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
