@@ -1071,9 +1071,10 @@
       "risco": 9.920000000000073,
       "rr": 1.9,
       "data": "05/06/2026 14:14",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "09e28fa5-5922-4928-8dcb-6d91ecd1d13f"
+      "status": "win",
+      "resultado": "+1.9R",
+      "order_id": "09e28fa5-5922-4928-8dcb-6d91ecd1d13f",
+      "fechamento": "05/06/2026 15:02"
     },
     {
       "id": 65,
