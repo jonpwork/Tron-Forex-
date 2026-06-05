@@ -1385,9 +1385,10 @@
       "risco": 4.25,
       "rr": 1.9,
       "data": "05/06/2026 22:33",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "db57dffa-0160-4194-ae68-05ac98bdb7e4"
+      "status": "win",
+      "resultado": "+1.9R",
+      "order_id": "db57dffa-0160-4194-ae68-05ac98bdb7e4",
+      "fechamento": "05/06/2026 23:17"
     },
     {
       "id": 86,
