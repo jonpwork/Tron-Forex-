@@ -1195,6 +1195,20 @@
       "resultado": "+2.2R",
       "order_id": "241886f7-2ec8-4c45-a99e-0358dc8d2e93",
       "fechamento": "05/06/2026 18:52"
+    },
+    {
+      "id": 73,
+      "symbol": "LINKUSDT",
+      "direcao": "down",
+      "entrada": 7.24004,
+      "stop": 7.2899,
+      "alvo": 7.1335999999999995,
+      "risco": 0.04986000000000068,
+      "rr": 2.1,
+      "data": "05/06/2026 18:58",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "2864d647-7bda-451f-80e5-6bb6a9fd2e12"
     }
   ],
   "zone_tol": 0.08,
