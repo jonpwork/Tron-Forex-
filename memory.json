@@ -746,6 +746,20 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null
+    },
+    {
+      "id": 44,
+      "symbol": "LINKUSDT",
+      "direcao": "down",
+      "entrada": 7.47396,
+      "stop": 7.62979,
+      "alvo": 7.20188,
+      "risco": 0.1558299999999999,
+      "rr": 1.7,
+      "data": "05/06/2026 06:33",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "60eef30e-a5bc-4bba-a7e6-c854318ede88"
     }
   ],
   "zone_tol": 0.08,
