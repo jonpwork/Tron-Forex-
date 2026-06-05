@@ -893,9 +893,10 @@
       "risco": 5.849999999999909,
       "rr": 2.0,
       "data": "05/06/2026 09:25",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+2.0R",
+      "order_id": null,
+      "fechamento": "05/06/2026 11:04"
     },
     {
       "id": 54,
@@ -922,9 +923,10 @@
       "risco": 2.880000000000109,
       "rr": 1.7,
       "data": "05/06/2026 10:46",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+1.7R",
+      "order_id": null,
+      "fechamento": "05/06/2026 11:04"
     },
     {
       "id": 56,
