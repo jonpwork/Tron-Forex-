@@ -1221,9 +1221,10 @@
       "risco": 180.0,
       "rr": 1.7,
       "data": "05/06/2026 19:10",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": null,
+      "fechamento": "05/06/2026 19:26"
     },
     {
       "id": 75,
