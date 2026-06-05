@@ -1360,6 +1360,20 @@
       "resultado": "-1R",
       "order_id": "1449777b-1b6c-403d-9705-bf71185c6dd6",
       "fechamento": "05/06/2026 21:49"
+    },
+    {
+      "id": 84,
+      "symbol": "SUIUSDT",
+      "direcao": "down",
+      "entrada": 0.7066,
+      "stop": 0.7188,
+      "alvo": 0.6831,
+      "risco": 0.012199999999999989,
+      "rr": 1.9,
+      "data": "05/06/2026 22:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
