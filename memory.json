@@ -2014,9 +2014,10 @@
       "risco": 3.6400000000001,
       "rr": 5.4,
       "data": "06/06/2026 19:12",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "4e7340ae-c9f1-487d-bca1-1ef22ce4b8e7"
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": "4e7340ae-c9f1-487d-bca1-1ef22ce4b8e7",
+      "fechamento": "06/06/2026 19:18"
     }
   ],
   "zone_tol": 0.08,
