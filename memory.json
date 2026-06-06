@@ -1967,9 +1967,10 @@
       "risco": 1.3900000000001,
       "rr": 5.8,
       "data": "06/06/2026 17:27",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "4362533c-8947-406b-b458-44dbe35eeabd"
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": "4362533c-8947-406b-b458-44dbe35eeabd",
+      "fechamento": "06/06/2026 17:35"
     }
   ],
   "zone_tol": 0.08,
