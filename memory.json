@@ -1495,6 +1495,17 @@
       "data": "06/06/2026 01:00",
       "status": "aberto",
       "origem": "manual"
+    },
+    {
+      "id": 2,
+      "symbol": "BTCUSDT",
+      "side": "Sell",
+      "size": 0.001,
+      "entrada": 63243.4,
+      "pnl_usd": 1.9328,
+      "data": "06/06/2026 01:01",
+      "status": "aberto",
+      "origem": "manual"
     }
   ]
 }
