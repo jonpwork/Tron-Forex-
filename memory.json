@@ -1484,5 +1484,17 @@
   "min_wave_usd": 30,
   "total_prints": 8,
   "last_update": "05/06/2026 12:50",
-  "manual_trades": []
+  "manual_trades": [
+    {
+      "id": 1,
+      "symbol": "ETHUSDT",
+      "side": "Sell",
+      "size": 0.01,
+      "entrada": 1594.95,
+      "pnl_usd": 0.0091,
+      "data": "06/06/2026 01:00",
+      "status": "aberto",
+      "origem": "manual"
+    }
+  ]
 }
