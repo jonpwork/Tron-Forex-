@@ -1493,8 +1493,9 @@
       "entrada": 1594.95,
       "pnl_usd": 0.0465,
       "data": "06/06/2026 01:00",
-      "status": "aberto",
-      "origem": "manual"
+      "status": "fechado",
+      "origem": "manual",
+      "fechamento": "06/06/2026 01:13"
     },
     {
       "id": 2,
@@ -1502,7 +1503,7 @@
       "side": "Sell",
       "size": 0.001,
       "entrada": 63243.4,
-      "pnl_usd": 2.01232,
+      "pnl_usd": 2.13695,
       "data": "06/06/2026 01:01",
       "status": "aberto",
       "origem": "manual"
