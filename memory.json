@@ -1598,6 +1598,20 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "bebdfa1c-2ce7-4403-9b5d-789cb72955ba"
+    },
+    {
+      "id": 100,
+      "symbol": "LTCUSDT",
+      "direcao": "down",
+      "entrada": 40.89989,
+      "stop": 41.20298,
+      "alvo": 39.99062000000001,
+      "risco": 0.3030899999999974,
+      "rr": 3.0,
+      "data": "06/06/2026 05:07",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
