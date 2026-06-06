@@ -1731,9 +1731,10 @@
       "risco": 3.0299999999999727,
       "rr": 6.7,
       "data": "06/06/2026 09:33",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "d78730b3-e11e-4920-b934-253fb75b8eff"
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": "d78730b3-e11e-4920-b934-253fb75b8eff",
+      "fechamento": "06/06/2026 09:36"
     },
     {
       "id": 109,
