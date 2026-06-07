@@ -2530,6 +2530,20 @@
       "resultado": "+2.0R",
       "order_id": null,
       "fechamento": "07/06/2026 16:56"
+    },
+    {
+      "id": 161,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1629.92,
+      "stop": 1633.6,
+      "alvo": 1622.7800000000002,
+      "risco": 3.6799999999998363,
+      "rr": 1.9,
+      "data": "07/06/2026 17:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
