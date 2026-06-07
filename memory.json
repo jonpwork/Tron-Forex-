@@ -122,6 +122,21 @@
       "padroes": [],
       "qualidade_setup": "baixa",
       "data": "05/06/2026 12:50"
+    },
+    {
+      "timeframe": "30m",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 61820.4,
+      "nivel_stop": 60720.3,
+      "nivel_alvo": 64599.0,
+      "correcao_pct": 2.32,
+      "observacoes": "Possível continuação de tendência de alta após rompimento da linha de resistência.",
+      "padroes": [
+        "Triângulo Ascendente"
+      ],
+      "qualidade_setup": "alta",
+      "data": "07/06/2026 11:55"
     }
   ],
   "signals": [
@@ -2339,8 +2354,8 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 8,
-  "last_update": "05/06/2026 12:50",
+  "total_prints": 9,
+  "last_update": "07/06/2026 11:55",
   "manual_trades": [
     {
       "id": 1,
