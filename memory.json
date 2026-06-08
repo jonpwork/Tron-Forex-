@@ -3069,6 +3069,20 @@
       "resultado": "+2.0R",
       "order_id": null,
       "fechamento": "08/06/2026 11:03"
+    },
+    {
+      "id": 197,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.1294,
+      "stop": 2.1612,
+      "alvo": 2.0705999999999998,
+      "risco": 0.03180000000000005,
+      "rr": 1.8,
+      "data": "08/06/2026 11:12",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
