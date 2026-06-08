@@ -3162,9 +3162,10 @@
       "risco": 94.30000000000291,
       "rr": 2.3,
       "data": "08/06/2026 14:21",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": null,
+      "fechamento": "08/06/2026 14:32"
     }
   ],
   "zone_tol": 0.08,
