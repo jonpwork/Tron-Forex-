@@ -150,6 +150,22 @@
       "padroes": [],
       "qualidade_setup": "alta",
       "data": "08/06/2026 14:29"
+    },
+    {
+      "timeframe": "curto prazo",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 63542.6,
+      "nivel_stop": 59130.0,
+      "nivel_alvo": 66954.6,
+      "correcao_pct": 0.07,
+      "observacoes": "Tendencia de alta com suporte em 59130.0 e resistencia em 66954.6",
+      "padroes": [
+        "reversão de tendencia",
+        "continuação de alta"
+      ],
+      "qualidade_setup": "alta",
+      "data": "08/06/2026 14:29"
     }
   ],
   "signals": [
@@ -3153,7 +3169,7 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 10,
+  "total_prints": 11,
   "last_update": "08/06/2026 14:29",
   "manual_trades": [
     {
