@@ -2785,6 +2785,20 @@
       "resultado": "+2.2R",
       "order_id": "d1056f0b-8e73-48b8-b573-5e226c3fc485",
       "fechamento": "08/06/2026 01:15"
+    },
+    {
+      "id": 178,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 62976.7,
+      "stop": 63096.8,
+      "alvo": 62733.99999999999,
+      "risco": 120.10000000000582,
+      "rr": 2.0,
+      "data": "08/06/2026 01:28",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
