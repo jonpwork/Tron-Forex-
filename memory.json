@@ -3098,6 +3098,20 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null
+    },
+    {
+      "id": 199,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1691.4,
+      "stop": 1694.66,
+      "alvo": 1685.04,
+      "risco": 3.259999999999991,
+      "rr": 2.0,
+      "data": "08/06/2026 11:36",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
