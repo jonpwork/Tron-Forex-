@@ -137,6 +137,19 @@
       ],
       "qualidade_setup": "alta",
       "data": "07/06/2026 11:55"
+    },
+    {
+      "timeframe": "30m",
+      "tendencia": "up",
+      "tipo_onda": "",
+      "nivel_entrada": 1.14946,
+      "nivel_stop": 1.14993,
+      "nivel_alvo": 1.1644,
+      "correcao_pct": 0,
+      "observacoes": "",
+      "padroes": [],
+      "qualidade_setup": "alta",
+      "data": "08/06/2026 14:29"
     }
   ],
   "signals": [
@@ -3140,8 +3153,8 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 9,
-  "last_update": "07/06/2026 11:55",
+  "total_prints": 10,
+  "last_update": "08/06/2026 14:29",
   "manual_trades": [
     {
       "id": 1,
