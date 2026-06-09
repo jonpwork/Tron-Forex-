@@ -3135,9 +3135,10 @@
       "risco": 3.160000000000082,
       "rr": 2.2,
       "data": "09/06/2026 17:28",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": null,
+      "fechamento": "09/06/2026 18:20"
     },
     {
       "id": 201,
@@ -3149,9 +3150,10 @@
       "risco": 106.40000000000146,
       "rr": 1.8,
       "data": "09/06/2026 17:30",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": null,
+      "fechamento": "09/06/2026 18:20"
     },
     {
       "id": 201,
