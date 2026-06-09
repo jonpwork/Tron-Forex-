@@ -186,21 +186,6 @@
   ],
   "signals": [
     {
-      "id": 69,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1607.52,
-      "stop": 1612.88,
-      "alvo": 1596.7299999999998,
-      "risco": 5.360000000000127,
-      "rr": 2.0,
-      "data": "05/06/2026 17:06",
-      "status": "win",
-      "resultado": "+2.0R",
-      "order_id": "713fc03e-f718-4829-aabd-a9ecc55677fd",
-      "fechamento": "05/06/2026 17:16"
-    },
-    {
       "id": 70,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3184,6 +3169,20 @@
       "resultado": "-1R",
       "order_id": null,
       "fechamento": "09/06/2026 23:04"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 61648.1,
+      "stop": 61737.0,
+      "alvo": 61478.5,
+      "risco": 88.90000000000146,
+      "rr": 1.9,
+      "data": "09/06/2026 23:45",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.08,
