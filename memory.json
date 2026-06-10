@@ -198,6 +198,22 @@
       ],
       "qualidade_setup": "baixa",
       "data": "10/06/2026 10:26"
+    },
+    {
+      "timeframe": "1h",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 61200,
+      "nivel_stop": 60500,
+      "nivel_alvo": 65000,
+      "correcao_pct": 2.5,
+      "observacoes": "Possível continuação da tendência de alta após rompimento da resistência",
+      "padroes": [
+        "Rompimento de resistência",
+        "Formação de fundo"
+      ],
+      "qualidade_setup": "alta",
+      "data": "10/06/2026 20:16"
     }
   ],
   "signals": [
@@ -3211,8 +3227,8 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 13,
-  "last_update": "10/06/2026 10:26",
+  "total_prints": 14,
+  "last_update": "10/06/2026 20:16",
   "manual_trades": [
     {
       "id": 1,
