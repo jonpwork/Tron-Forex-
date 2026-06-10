@@ -3198,10 +3198,11 @@
       "risco": 635.6999999999971,
       "rr": 0.7,
       "data": "10/06/2026 13:30",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+0.7R",
       "order_id": null,
-      "tipo": ""
+      "tipo": "",
+      "fechamento": "10/06/2026 14:33"
     }
   ],
   "zone_tol": 0.08,
