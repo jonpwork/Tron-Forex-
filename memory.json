@@ -3165,9 +3165,10 @@
       "risco": 64.19999999999709,
       "rr": 1.8,
       "data": "10/06/2026 05:01",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+1.8R",
+      "order_id": null,
+      "fechamento": "10/06/2026 05:09"
     },
     {
       "id": 201,
