@@ -3180,9 +3180,10 @@
       "risco": 88.90000000000146,
       "rr": 1.9,
       "data": "09/06/2026 23:45",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": null,
+      "fechamento": "10/06/2026 00:00"
     }
   ],
   "zone_tol": 0.08,
