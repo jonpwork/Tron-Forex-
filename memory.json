@@ -182,6 +182,22 @@
       ],
       "qualidade_setup": "alta",
       "data": "08/06/2026 18:47"
+    },
+    {
+      "timeframe": "15m",
+      "tendencia": "down",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 0.6482,
+      "nivel_stop": 0.6325,
+      "nivel_alvo": 0.6542,
+      "correcao_pct": 2.89,
+      "observacoes": "O preço está em uma tendência de baixa, com uma queda recente. O suporte mais próximo está em 0.6325.",
+      "padroes": [
+        "tendência de baixa",
+        "queda recente"
+      ],
+      "qualidade_setup": "baixa",
+      "data": "10/06/2026 10:26"
     }
   ],
   "signals": [
@@ -3189,8 +3205,8 @@
   ],
   "zone_tol": 0.08,
   "min_wave_usd": 30,
-  "total_prints": 12,
-  "last_update": "08/06/2026 18:47",
+  "total_prints": 13,
+  "last_update": "10/06/2026 10:26",
   "manual_trades": [
     {
       "id": 1,
