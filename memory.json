@@ -3284,10 +3284,11 @@
       "risco": 3.7688640000001215,
       "rr": 3.0,
       "data": "11/06/2026 15:57",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "63de5fb2-213c-42f9-bc30-af19b3e14a8c",
-      "tipo": "M1_SWING_LONG"
+      "tipo": "M1_SWING_LONG",
+      "fechamento": "11/06/2026 16:09"
     },
     {
       "id": 201,
