@@ -3225,11 +3225,12 @@
       "risco": 0.00671014999999997,
       "rr": 3.0,
       "data": "10/06/2026 23:36",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
       "tipo": "FIGURA_BANDEIRA_BAIXA_M1",
-      "figura": "BANDEIRA_BAIXA"
+      "figura": "BANDEIRA_BAIXA",
+      "fechamento": "10/06/2026 23:36"
     }
   ],
   "zone_tol": 0.08,
