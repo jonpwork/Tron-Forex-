@@ -3227,11 +3227,12 @@
       "risco": 0.0004662839999999835,
       "rr": 3.0,
       "data": "10/06/2026 23:46",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
       "tipo": "FIGURA_RETANGULO_M1",
-      "figura": "RETANGULO"
+      "figura": "RETANGULO",
+      "fechamento": "10/06/2026 23:57"
     }
   ],
   "zone_tol": 0.08,
