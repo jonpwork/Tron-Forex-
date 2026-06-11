@@ -3164,11 +3164,12 @@
       "risco": 0.20896701499999892,
       "rr": 3.0,
       "data": "10/06/2026 23:27",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
       "tipo": "FIGURA_RETANGULO_M1",
-      "figura": "RETANGULO"
+      "figura": "RETANGULO",
+      "fechamento": "11/06/2026 00:33"
     },
     {
       "id": 201,
