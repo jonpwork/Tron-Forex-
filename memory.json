@@ -3279,10 +3279,11 @@
       "risco": 2.059759999999983,
       "rr": 3.0,
       "data": "11/06/2026 08:54",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "fc7246af-d9e9-493f-b0b9-c73fe2e4afde",
-      "tipo": "M1_SWING_LONG"
+      "tipo": "M1_SWING_LONG",
+      "fechamento": "11/06/2026 09:22"
     }
   ],
   "zone_tol": 0.08,
