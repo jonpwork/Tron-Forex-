@@ -278,21 +278,6 @@
   ],
   "signals": [
     {
-      "id": 113,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 60942.3,
-      "stop": 60994.9,
-      "alvo": 60669.6,
-      "risco": 52.599999999998545,
-      "rr": 5.2,
-      "data": "06/06/2026 11:49",
-      "status": "win",
-      "resultado": "+5.2R",
-      "order_id": null,
-      "fechamento": "06/06/2026 12:02"
-    },
-    {
       "id": 114,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3313,6 +3298,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_SWING_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "TRXUSDT",
+      "direcao": "up",
+      "entrada": 0.314597,
+      "stop": 0.310168787,
+      "alvo": 0.32788163900000006,
+      "risco": 0.004428213000000014,
+      "rr": 3.0,
+      "data": "11/06/2026 14:01",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_SWING_LONG"
     }
   ],
   "zone_tol": 0.08,
