@@ -218,21 +218,6 @@
   ],
   "signals": [
     {
-      "id": 92,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1586.13,
-      "stop": 1595.85,
-      "alvo": 1568.7500000000002,
-      "risco": 9.7199999999998,
-      "rr": 1.8,
-      "data": "06/06/2026 01:26",
-      "status": "win",
-      "resultado": "+1.8R",
-      "order_id": null,
-      "fechamento": "06/06/2026 02:19"
-    },
-    {
       "id": 93,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3227,6 +3212,22 @@
       "tipo": "FIGURA_TRIANGULO_M5",
       "figura": "TRIANGULO",
       "fechamento": "10/06/2026 22:02"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "down",
+      "entrada": 0.9294,
+      "stop": 0.9318656999999999,
+      "alvo": 0.9220029000000003,
+      "risco": 0.002465699999999904,
+      "rr": 3.0,
+      "data": "10/06/2026 23:14",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FIGURA_BANDEIRA_BAIXA_M1",
+      "figura": "BANDEIRA_BAIXA"
     }
   ],
   "zone_tol": 0.08,
