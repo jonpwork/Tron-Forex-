@@ -3099,10 +3099,11 @@
       "risco": 39.38000000000011,
       "rr": 3.0,
       "data": "10/06/2026 19:07",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "2521eb3e-f56e-4668-9b6b-baa41a410a49",
-      "tipo": ""
+      "tipo": "",
+      "fechamento": "11/06/2026 00:34"
     },
     {
       "id": 201,
@@ -3148,11 +3149,12 @@
       "risco": 0.002465699999999904,
       "rr": 3.0,
       "data": "10/06/2026 23:14",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
       "tipo": "FIGURA_BANDEIRA_BAIXA_M1",
-      "figura": "BANDEIRA_BAIXA"
+      "figura": "BANDEIRA_BAIXA",
+      "fechamento": "11/06/2026 00:34"
     },
     {
       "id": 201,
