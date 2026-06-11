@@ -218,21 +218,6 @@
   ],
   "signals": [
     {
-      "id": 97,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 60151.5,
-      "stop": 60333.4,
-      "alvo": 59605.799999999996,
-      "risco": 181.90000000000146,
-      "rr": 3.0,
-      "data": "06/06/2026 04:26",
-      "status": "win",
-      "resultado": "+3.0R",
-      "order_id": null,
-      "fechamento": "06/06/2026 04:34"
-    },
-    {
       "id": 98,
       "symbol": "BNBUSDT",
       "direcao": "up",
@@ -3235,6 +3220,22 @@
       "tipo": "FIGURA_BANDEIRA_BAIXA_M1",
       "figura": "BANDEIRA_BAIXA",
       "fechamento": "11/06/2026 00:12"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "down",
+      "entrada": 0.9253,
+      "stop": 0.9286641,
+      "alvo": 0.9152077000000001,
+      "risco": 0.003364099999999981,
+      "rr": 3.0,
+      "data": "11/06/2026 00:16",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FIGURA_RETANGULO_M1",
+      "figura": "RETANGULO"
     }
   ],
   "zone_tol": 0.08,
