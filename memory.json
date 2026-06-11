@@ -218,21 +218,6 @@
   ],
   "signals": [
     {
-      "id": 99,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1516.89,
-      "stop": 1528.52,
-      "alvo": 1482.0000000000005,
-      "risco": 11.629999999999882,
-      "rr": 3.0,
-      "data": "06/06/2026 05:07",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "bebdfa1c-2ce7-4403-9b5d-789cb72955ba",
-      "fechamento": "06/06/2026 05:19"
-    },
-    {
       "id": 100,
       "symbol": "LTCUSDT",
       "direcao": "down",
@@ -3242,6 +3227,22 @@
       "tipo": "TOPO_FUNDO_M5",
       "figura": "",
       "fechamento": "11/06/2026 01:21"
+    },
+    {
+      "id": 201,
+      "symbol": "ARBUSDT",
+      "direcao": "down",
+      "entrada": 0.08014,
+      "stop": 0.08054025,
+      "alvo": 0.07865,
+      "risco": 0.0004002499999999909,
+      "rr": 3.7,
+      "data": "11/06/2026 01:25",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FIGURA_RETANGULO_M1",
+      "figura": "RETANGULO"
     }
   ],
   "zone_tol": 0.08,
