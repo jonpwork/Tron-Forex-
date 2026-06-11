@@ -3221,11 +3221,12 @@
       "risco": 0.00042574549999996325,
       "rr": 3.8,
       "data": "10/06/2026 21:55",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
       "tipo": "FIGURA_TRIANGULO_M5",
-      "figura": "TRIANGULO"
+      "figura": "TRIANGULO",
+      "fechamento": "10/06/2026 22:02"
     }
   ],
   "zone_tol": 0.08,
