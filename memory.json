@@ -324,22 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.0854,
-      "stop": 2.1266876399999997,
-      "alvo": 2.0268,
-      "risco": 0.04128763999999974,
-      "rr": 1.4,
-      "data": "12/06/2026 12:34",
-      "status": "win",
-      "resultado": "+1.4R",
-      "order_id": null,
-      "tipo": "M1_M_SHORT",
-      "fechamento": "12/06/2026 13:00"
-    },
-    {
-      "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "up",
       "entrada": 63968.9,
@@ -3404,6 +3388,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_W_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63822.9,
+      "stop": 63936.023909999996,
+      "alvo": 63699.5,
+      "risco": 113.1239099999948,
+      "rr": 1.1,
+      "data": "12/06/2026 14:58",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "791c2655-d15f-43ef-9dab-9d8d1d5fd94e",
+      "tipo": "M1_M_SHORT"
     }
   ],
   "zone_tol": 0.08,
