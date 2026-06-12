@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TONUSDT",
-      "direcao": "down",
-      "entrada": 1.673,
-      "stop": 1.678019,
-      "alvo": 1.6437,
-      "risco": 0.005018999999999885,
-      "rr": 5.8,
-      "data": "12/06/2026 20:01",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 604.54,
@@ -3483,6 +3468,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 42.99154,
+      "stop": 42.946726233,
+      "alvo": 43.48234,
+      "risco": 0.04481376700000084,
+      "rr": 11.0,
+      "data": "12/06/2026 20:28",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
