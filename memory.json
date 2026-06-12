@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 42.96449,
-      "stop": 42.91363941,
-      "alvo": 43.06627,
-      "risco": 0.05085058999999603,
-      "rr": 2.0,
-      "data": "12/06/2026 20:08",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "LTCUSDT",
       "direcao": "down",
       "entrada": 42.96449,
       "stop": 43.012297546999996,
@@ -3444,6 +3429,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63436.0,
+      "stop": 63245.692,
+      "alvo": 63852.200000000004,
+      "risco": 190.30799999999726,
+      "rr": 2.2,
+      "data": "12/06/2026 20:35",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FIB_2.000_LONG"
     }
   ],
   "zone_tol": 0.08,
