@@ -324,22 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63845.0,
-      "stop": 63740.432779999996,
-      "alvo": 63958.0,
-      "risco": 104.56722000000445,
-      "rr": 1.1,
-      "data": "12/06/2026 14:21",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "M1_SWING_LONG",
-      "fechamento": "12/06/2026 15:19"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1668.43,
@@ -3449,6 +3433,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "4e1b3463-9c81-4e4a-b884-0f7e798cc0a1",
+      "tipo": "EW_TRI_E_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "down",
+      "entrada": 0.0880821,
+      "stop": 0.08798723352,
+      "alvo": 0.0879169,
+      "risco": 9.486647999999709e-05,
+      "rr": 1.7,
+      "data": "12/06/2026 16:37",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
       "tipo": "EW_TRI_E_SHORT"
     }
   ],
