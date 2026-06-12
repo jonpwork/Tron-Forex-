@@ -331,21 +331,6 @@
       "alvo": 62918.5,
       "risco": 72.4441899999947,
       "rr": 7.5,
-      "data": "12/06/2026 20:12",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BEAR"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 63463.7,
-      "stop": 63536.14418999999,
-      "alvo": 62918.5,
-      "risco": 72.4441899999947,
-      "rr": 7.5,
       "data": "12/06/2026 20:13",
       "status": "aberto",
       "resultado": null,
@@ -3423,6 +3408,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1662.59,
+      "stop": 1660.726677,
+      "alvo": 1666.64,
+      "risco": 1.8633229999998093,
+      "rr": 2.2,
+      "data": "12/06/2026 20:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
