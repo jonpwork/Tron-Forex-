@@ -311,23 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "down",
-      "entrada": 0.7519,
-      "stop": 0.73653155,
-      "alvo": 0.7057946500000001,
-      "risco": 0.015368449999999978,
-      "rr": 3.0,
-      "data": "11/06/2026 01:21",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "TOPO_FUNDO_M5",
-      "figura": "",
-      "fechamento": "11/06/2026 01:21"
-    },
-    {
-      "id": 201,
       "symbol": "ARBUSDT",
       "direcao": "down",
       "entrada": 0.08014,
@@ -3463,6 +3446,21 @@
       "resultado": null,
       "order_id": "c2ef2a24-1213-405a-aedd-0470d2c2aa53",
       "tipo": "M1_SWING_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63753.0,
+      "stop": 63291.62616,
+      "alvo": 64391.0,
+      "risco": 461.3738400000002,
+      "rr": 1.4,
+      "data": "12/06/2026 13:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_ABC_LEG_C_LONG"
     }
   ],
   "zone_tol": 0.08,
