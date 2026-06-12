@@ -3410,10 +3410,11 @@
       "risco": 0.0005458900000001599,
       "rr": 61.7,
       "data": "12/06/2026 11:56",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_W2_SHORT"
+      "tipo": "EW_W2_SHORT",
+      "fechamento": "12/06/2026 11:56"
     }
   ],
   "zone_tol": 0.08,
