@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "down",
-      "entrada": 604.54,
-      "stop": 606.3536199999999,
-      "alvo": 599.29,
-      "risco": 1.8136199999999008,
-      "rr": 2.9,
-      "data": "12/06/2026 20:13",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "DOGEUSDT",
       "direcao": "down",
       "entrada": 0.0861682,
@@ -3423,6 +3408,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1662.59,
+      "stop": 1664.1540929999999,
+      "alvo": 1653.18,
+      "risco": 1.564092999999957,
+      "rr": 6.0,
+      "data": "12/06/2026 20:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
