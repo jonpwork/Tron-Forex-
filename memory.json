@@ -3057,10 +3057,11 @@
       "risco": 114.2488699999958,
       "rr": 1.1,
       "data": "12/06/2026 16:25",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.1R",
       "order_id": null,
-      "tipo": "M1_M_SHORT"
+      "tipo": "M1_M_SHORT",
+      "fechamento": "12/06/2026 17:01"
     },
     {
       "id": 201,
