@@ -311,22 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 604.82,
-      "stop": 604.3966260000001,
-      "alvo": 606.090122,
-      "risco": 0.42337399999996705,
-      "rr": 3.0,
-      "data": "11/06/2026 15:55",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "EW_TRI_E_LONG",
-      "fechamento": "11/06/2026 16:08"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1684.2,
@@ -3453,6 +3437,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "EW_ABC_LEG_C_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.029,
+      "stop": 2.06334333,
+      "alvo": 1.9681000000000002,
+      "risco": 0.034343330000000005,
+      "rr": 1.8,
+      "data": "12/06/2026 13:20",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_M_SHORT"
     }
   ],
   "zone_tol": 0.08,
