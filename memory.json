@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "up",
-      "entrada": 2.0415,
-      "stop": 2.0135895,
-      "alvo": 2.0735999999999994,
-      "risco": 0.02791049999999995,
-      "rr": 1.2,
-      "data": "12/06/2026 13:36",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "M1_W_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "down",
       "entrada": 1668.83,
@@ -3468,6 +3453,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "EW_TRI_LEG_D_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "down",
+      "entrada": 0.754,
+      "stop": 0.7559042399999999,
+      "alvo": 0.7520957600000001,
+      "risco": 0.0019042399999998905,
+      "rr": 1.0,
+      "data": "12/06/2026 15:44",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_TRI_E_SHORT"
     }
   ],
   "zone_tol": 0.08,
