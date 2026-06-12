@@ -2962,10 +2962,11 @@
       "risco": 89.84439000000566,
       "rr": 1.0,
       "data": "12/06/2026 14:58",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "M1_W_LONG"
+      "tipo": "M1_W_LONG",
+      "fechamento": "12/06/2026 15:13"
     },
     {
       "id": 201,
