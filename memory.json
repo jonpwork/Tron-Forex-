@@ -313,21 +313,6 @@
       "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "down",
-      "entrada": 61648.1,
-      "stop": 61737.0,
-      "alvo": 61478.5,
-      "risco": 88.90000000000146,
-      "rr": 1.9,
-      "data": "09/06/2026 23:45",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "fechamento": "10/06/2026 00:00"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
       "entrada": 61844.2,
       "stop": 61882.8,
       "alvo": 61753.59999999999,
@@ -3447,6 +3432,21 @@
       "resultado": null,
       "order_id": "02b8723a-0de5-4349-bb08-80cb35e9ed60",
       "tipo": "M1_SWING_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "down",
+      "entrada": 609.05,
+      "stop": 612.388372,
+      "alvo": 605.54,
+      "risco": 3.3383720000000494,
+      "rr": 1.1,
+      "data": "12/06/2026 12:45",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_M_SHORT"
     }
   ],
   "zone_tol": 0.08,
