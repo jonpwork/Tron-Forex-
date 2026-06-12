@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.0082,
-      "stop": 2.01050637,
-      "alvo": 1.9852,
-      "risco": 0.002306369999999891,
-      "rr": 10.0,
-      "data": "12/06/2026 19:31",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
       "direcao": "up",
       "entrada": 2.0082,
       "stop": 2.00499552,
@@ -3360,6 +3345,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.13002,
+      "stop": 1.128749322,
+      "alvo": 1.14954,
+      "risco": 0.001270678000000025,
+      "rr": 15.4,
+      "data": "12/06/2026 19:57",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
