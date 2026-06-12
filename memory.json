@@ -3210,10 +3210,11 @@
       "risco": 0.01445721900000052,
       "rr": 26.5,
       "data": "12/06/2026 13:50",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_W2_SHORT"
+      "tipo": "EW_W2_SHORT",
+      "fechamento": "12/06/2026 13:57"
     },
     {
       "id": 201,
@@ -3300,10 +3301,11 @@
       "risco": 0.01445721900000052,
       "rr": 26.5,
       "data": "12/06/2026 13:53",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_W2_SHORT"
+      "tipo": "EW_W2_SHORT",
+      "fechamento": "12/06/2026 13:57"
     },
     {
       "id": 201,
@@ -3360,10 +3362,11 @@
       "risco": 0.01445721900000052,
       "rr": 26.5,
       "data": "12/06/2026 13:55",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_W2_SHORT"
+      "tipo": "EW_W2_SHORT",
+      "fechamento": "12/06/2026 13:57"
     },
     {
       "id": 201,
