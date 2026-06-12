@@ -313,21 +313,6 @@
       "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "down",
-      "entrada": 63500.0,
-      "stop": 63515.2,
-      "alvo": 63464.100000000006,
-      "risco": 15.19999999999709,
-      "rr": 2.4,
-      "data": "08/06/2026 19:51",
-      "status": "win",
-      "resultado": "+2.4R",
-      "order_id": null,
-      "fechamento": "08/06/2026 19:53"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
       "entrada": 63252.3,
       "stop": 63316.8,
       "alvo": 63107.1,
@@ -3429,6 +3414,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1684.16,
+      "stop": 1667.0822249999999,
+      "alvo": 1701.81,
+      "risco": 17.0777750000002,
+      "rr": 1.0,
+      "data": "12/06/2026 12:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_W_LONG"
     }
   ],
   "zone_tol": 0.08,
