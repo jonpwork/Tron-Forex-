@@ -3227,10 +3227,11 @@
       "risco": 0.0019042399999998905,
       "rr": 1.0,
       "data": "12/06/2026 15:44",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 15:51"
     },
     {
       "id": 201,
@@ -3318,10 +3319,11 @@
       "risco": 0.0019042399999998905,
       "rr": 1.0,
       "data": "12/06/2026 15:47",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 15:51"
     },
     {
       "id": 201,
