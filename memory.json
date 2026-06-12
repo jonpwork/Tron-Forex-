@@ -2178,10 +2178,11 @@
       "risco": 0.00042046359999999006,
       "rr": 1.0,
       "data": "12/06/2026 15:38",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "c124144a-c4fa-4bf0-82ef-96528c328502",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2208,10 +2209,11 @@
       "risco": 0.00046186360000000093,
       "rr": 1.0,
       "data": "12/06/2026 15:40",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "4e7c8509-d7b9-4faa-9169-f1a0bee04ff3",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2319,10 +2321,11 @@
       "risco": 0.0005055635999999947,
       "rr": 1.0,
       "data": "12/06/2026 15:43",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2398,10 +2401,11 @@
       "risco": 0.00042156359999999393,
       "rr": 1.0,
       "data": "12/06/2026 15:45",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2509,10 +2513,11 @@
       "risco": 0.00042186360000000256,
       "rr": 1.0,
       "data": "12/06/2026 15:48",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2636,10 +2641,11 @@
       "risco": 146.22887999999512,
       "rr": 1.3,
       "data": "12/06/2026 15:54",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.3R",
       "order_id": null,
-      "tipo": "M1_M_SHORT"
+      "tipo": "M1_M_SHORT",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2667,10 +2673,11 @@
       "risco": 148.22887999999512,
       "rr": 1.2,
       "data": "12/06/2026 15:56",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.2R",
       "order_id": null,
-      "tipo": "M1_M_SHORT"
+      "tipo": "M1_M_SHORT",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2761,10 +2768,11 @@
       "risco": 0.0003622635999999957,
       "rr": 1.0,
       "data": "12/06/2026 16:04",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2776,10 +2784,11 @@
       "risco": 0.0004450635999999897,
       "rr": 1.0,
       "data": "12/06/2026 16:05",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2823,10 +2832,11 @@
       "risco": 0.00043906359999999756,
       "rr": 1.0,
       "data": "12/06/2026 16:09",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2870,10 +2880,11 @@
       "risco": 3.486627000000226,
       "rr": 1.2,
       "data": "12/06/2026 16:10",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "5d669e9f-41f5-43ee-b56f-762a5f25c1cf",
-      "tipo": "M1_W_LONG"
+      "tipo": "M1_W_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2933,10 +2944,11 @@
       "risco": 3.486627000000226,
       "rr": 1.2,
       "data": "12/06/2026 16:13",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "f5385f3b-3663-4c11-b800-506e97af5dc3",
-      "tipo": "M1_W_LONG"
+      "tipo": "M1_W_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -2996,10 +3008,11 @@
       "risco": 3.6966270000002623,
       "rr": 1.1,
       "data": "12/06/2026 16:15",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "c2401dd7-f001-42d4-b523-a5d820529ce5",
-      "tipo": "M1_W_LONG"
+      "tipo": "M1_W_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -3186,10 +3199,11 @@
       "risco": 62.837600000006205,
       "rr": 3.9,
       "data": "12/06/2026 16:31",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_ABC_C_LONG"
+      "tipo": "EW_ABC_C_LONG",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -3406,10 +3420,11 @@
       "risco": 0.00030733351999999436,
       "rr": 1.0,
       "data": "12/06/2026 16:44",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": "1f48c831-a959-4479-9034-daef2010e926",
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -3421,10 +3436,11 @@
       "risco": 0.0003262335199999966,
       "rr": 1.0,
       "data": "12/06/2026 16:45",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -3436,10 +3452,11 @@
       "risco": 0.0003105335200000031,
       "rr": 1.0,
       "data": "12/06/2026 16:46",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 16:54"
     },
     {
       "id": 201,
@@ -3466,10 +3483,11 @@
       "risco": 0.47662700000023506,
       "rr": 15.2,
       "data": "12/06/2026 16:51",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_W2_LONG"
+      "tipo": "EW_W2_LONG",
+      "fechamento": "12/06/2026 16:54"
     }
   ],
   "zone_tol": 0.08,
