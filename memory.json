@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "up",
-      "entrada": 1.9609,
-      "stop": 1.9591276499999999,
-      "alvo": 1.9765,
-      "risco": 0.0017723500000002002,
-      "rr": 8.8,
-      "data": "12/06/2026 19:21",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 63612.8,
@@ -3420,6 +3405,21 @@
       "resultado": null,
       "order_id": "9148687d-d189-4125-bc3b-1db37c2d7217",
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "up",
+      "entrada": 0.0861634,
+      "stop": 0.0859049098,
+      "alvo": 0.08689,
+      "risco": 0.0002584902000000028,
+      "rr": 2.8,
+      "data": "12/06/2026 19:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "08025648-3b78-4eec-a7cf-d5bc5b8b95c0",
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
