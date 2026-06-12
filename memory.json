@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 63521.8,
-      "stop": 63579.97485,
-      "alvo": 62918.5,
-      "risco": 58.174849999995786,
-      "rr": 10.4,
-      "data": "12/06/2026 19:37",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "down",
       "entrada": 6.562,
@@ -3381,6 +3366,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 42.93579,
+      "stop": 42.894193032,
+      "alvo": 43.48234,
+      "risco": 0.041596968000000345,
+      "rr": 13.1,
+      "data": "12/06/2026 20:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
