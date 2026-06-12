@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "ATOMUSDT",
-      "direcao": "down",
-      "entrada": 1.9609,
-      "stop": 1.9667826999999998,
-      "alvo": 1.9331,
-      "risco": 0.005882699999999685,
-      "rr": 4.7,
-      "data": "12/06/2026 19:21",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "ATOMUSDT",
       "direcao": "up",
       "entrada": 1.9609,
       "stop": 1.9591276499999999,
@@ -3420,6 +3405,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 42.99443,
+      "stop": 42.91363941,
+      "alvo": 43.48234,
+      "risco": 0.08079058999999944,
+      "rr": 6.0,
+      "data": "12/06/2026 19:46",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
