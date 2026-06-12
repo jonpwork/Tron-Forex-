@@ -2655,10 +2655,11 @@
       "risco": 40.526120000002265,
       "rr": 8.5,
       "data": "12/06/2026 15:26",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_W2_LONG"
+      "tipo": "EW_W2_LONG",
+      "fechamento": "12/06/2026 15:59"
     },
     {
       "id": 201,
@@ -3010,10 +3011,11 @@
       "risco": 0.0027042399999999134,
       "rr": 1.0,
       "data": "12/06/2026 15:40",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 15:59"
     },
     {
       "id": 201,
@@ -3119,10 +3121,11 @@
       "risco": 0.0028042399999999024,
       "rr": 1.0,
       "data": "12/06/2026 15:43",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 15:59"
     },
     {
       "id": 201,
@@ -3322,10 +3325,11 @@
       "risco": 117.65715999998793,
       "rr": 1.2,
       "data": "12/06/2026 15:49",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.2R",
       "order_id": null,
-      "tipo": "M1_SWING_SHORT"
+      "tipo": "M1_SWING_SHORT",
+      "fechamento": "12/06/2026 15:59"
     },
     {
       "id": 201,
@@ -3337,10 +3341,11 @@
       "risco": 130.44287999998778,
       "rr": 1.0,
       "data": "12/06/2026 15:49",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 15:59"
     },
     {
       "id": 201,
@@ -3367,10 +3372,11 @@
       "risco": 106.93573999999353,
       "rr": 1.1,
       "data": "12/06/2026 15:50",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.1R",
       "order_id": null,
-      "tipo": "M1_SWING_SHORT"
+      "tipo": "M1_SWING_SHORT",
+      "fechamento": "12/06/2026 15:59"
     },
     {
       "id": 201,
