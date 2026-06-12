@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1672.91,
-      "stop": 1661.679592,
-      "alvo": 1690.78,
-      "risco": 11.230408000000125,
-      "rr": 1.6,
-      "data": "12/06/2026 13:18",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "62dc1621-f3db-4dca-ba94-126d02619786",
-      "tipo": "EW_ABC_LEG_C_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "LTCUSDT",
       "direcao": "up",
       "entrada": 43.01885,
@@ -3464,6 +3449,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "9abca914-fa59-437a-bfb3-ee0dc702987a",
+      "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "TONUSDT",
+      "direcao": "down",
+      "entrada": 1.6979,
+      "stop": 1.73281212,
+      "alvo": 1.6533999999999998,
+      "risco": 0.03491211999999999,
+      "rr": 1.3,
+      "data": "12/06/2026 15:29",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
       "tipo": "M1_M_SHORT"
     }
   ],
