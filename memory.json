@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1661.77,
-      "stop": 1663.873897,
-      "alvo": 1653.18,
-      "risco": 2.103896999999961,
-      "rr": 4.1,
-      "data": "12/06/2026 20:16",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "255e5398-42d7-43df-896b-88d443fcd10d",
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "TRXUSDT",
       "direcao": "down",
       "entrada": 0.315493,
@@ -3405,6 +3390,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "TRXUSDT",
+      "direcao": "down",
+      "entrada": 0.315457,
+      "stop": 0.31575687519999995,
+      "alvo": 0.311,
+      "risco": 0.00029987519999996604,
+      "rr": 14.9,
+      "data": "12/06/2026 20:42",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_SHORT"
     }
   ],
   "zone_tol": 0.08,
