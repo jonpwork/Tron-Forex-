@@ -311,23 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "down",
-      "entrada": 0.9253,
-      "stop": 0.9286641,
-      "alvo": 0.9152077000000001,
-      "risco": 0.003364099999999981,
-      "rr": 3.0,
-      "data": "11/06/2026 00:16",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "FIGURA_RETANGULO_M1",
-      "figura": "RETANGULO",
-      "fechamento": "11/06/2026 00:31"
-    },
-    {
-      "id": 201,
       "symbol": "SUIUSDT",
       "direcao": "down",
       "entrada": 0.7519,
@@ -3465,6 +3448,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_W_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1665.34,
+      "stop": 1670.981988,
+      "alvo": 1658.51,
+      "risco": 5.641988000000083,
+      "rr": 1.2,
+      "data": "12/06/2026 13:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "c2ef2a24-1213-405a-aedd-0470d2c2aa53",
+      "tipo": "M1_SWING_SHORT"
     }
   ],
   "zone_tol": 0.08,
