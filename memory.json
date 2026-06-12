@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TONUSDT",
-      "direcao": "down",
-      "entrada": 1.7469,
-      "stop": 1.7760423599999997,
-      "alvo": 1.6905999999999999,
-      "risco": 0.029142359999999812,
-      "rr": 1.9,
-      "data": "12/06/2026 12:26",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "M1_M_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 611.54,
@@ -3401,6 +3386,21 @@
       "risco": 0.00013685336000000825,
       "rr": 1.0,
       "data": "12/06/2026 14:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_TRI_E_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "up",
+      "entrada": 67.48,
+      "stop": 67.306112,
+      "alvo": 67.65388800000001,
+      "risco": 0.17388800000000515,
+      "rr": 1.0,
+      "data": "12/06/2026 14:51",
       "status": "aberto",
       "resultado": null,
       "order_id": null,
