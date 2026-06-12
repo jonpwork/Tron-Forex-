@@ -740,10 +740,13 @@
       "risco": 0.0033702599999998473,
       "rr": 7.7,
       "data": "12/06/2026 20:09",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": -0.0034,
+      "pnl_brl": -0.02,
+      "fechamento": "12/06/2026 20:32"
     },
     {
       "id": 201,
@@ -1328,10 +1331,13 @@
       "risco": 0.002099929999999972,
       "rr": 6.7,
       "data": "12/06/2026 20:14",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H1_SHORT"
+      "tipo": "HTF_H1_SHORT",
+      "pnl_usd": -0.0042,
+      "pnl_brl": -0.02,
+      "fechamento": "12/06/2026 20:32"
     },
     {
       "id": 201,
@@ -1343,10 +1349,13 @@
       "risco": 0.002099929999999972,
       "rr": 9.9,
       "data": "12/06/2026 20:14",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "FVG_BEAR"
+      "tipo": "FVG_BEAR",
+      "pnl_usd": -0.0042,
+      "pnl_brl": -0.02,
+      "fechamento": "12/06/2026 20:32"
     },
     {
       "id": 201,
@@ -1358,10 +1367,13 @@
       "risco": 0.002099929999999972,
       "rr": 6.7,
       "data": "12/06/2026 20:14",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": -0.0042,
+      "pnl_brl": -0.02,
+      "fechamento": "12/06/2026 20:32"
     },
     {
       "id": 201,
@@ -2537,10 +2549,13 @@
       "risco": 0.0020702599999997684,
       "rr": 13.1,
       "data": "12/06/2026 20:24",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": -0.0021,
+      "pnl_brl": -0.01,
+      "fechamento": "12/06/2026 20:32"
     },
     {
       "id": 201,
