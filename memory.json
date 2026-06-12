@@ -311,23 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "OPUSDT",
-      "direcao": "up",
-      "entrada": 0.09154,
-      "stop": 0.09191593499999999,
-      "alvo": 0.09266780499999998,
-      "risco": 0.0003759349999999939,
-      "rr": 3.0,
-      "data": "10/06/2026 21:50",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "FIGURA_TRIANGULO_M1",
-      "figura": "TRIANGULO",
-      "fechamento": "10/06/2026 21:50"
-    },
-    {
-      "id": 201,
       "symbol": "ADAUSDT",
       "direcao": "down",
       "entrada": 0.161146,
@@ -3476,6 +3459,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63643.1,
+      "stop": 63439.313559999995,
+      "alvo": 63935.1,
+      "risco": 203.7864400000035,
+      "rr": 1.4,
+      "data": "12/06/2026 13:01",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_SWING_LONG"
     }
   ],
   "zone_tol": 0.08,
