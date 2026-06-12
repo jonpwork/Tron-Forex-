@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "down",
-      "entrada": 6.558,
-      "stop": 6.571596899999999,
-      "alvo": 6.523,
-      "risco": 0.013596899999999579,
-      "rr": 2.6,
-      "data": "12/06/2026 19:54",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "ATOMUSDT",
       "direcao": "down",
       "entrada": 1.9647,
@@ -3354,6 +3339,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63491.4,
+      "stop": 63430.96722,
+      "alvo": 63692.476800000004,
+      "risco": 60.43278000000282,
+      "rr": 3.3,
+      "data": "12/06/2026 20:19",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FIB_1.272_LONG"
     }
   ],
   "zone_tol": 0.08,
