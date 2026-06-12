@@ -312,22 +312,6 @@
     {
       "id": 201,
       "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63638.0,
-      "stop": 63297.96039,
-      "alvo": 64037.7,
-      "risco": 340.0396099999998,
-      "rr": 1.2,
-      "data": "12/06/2026 11:52",
-      "status": "win",
-      "resultado": "+1.2R",
-      "order_id": null,
-      "tipo": "M1_W_LONG",
-      "fechamento": "12/06/2026 12:00"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 63638.0,
       "stop": 63809.235219999995,
@@ -3418,6 +3402,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "9b3eec7f-beea-42c2-b830-8d1fef22038c",
+      "tipo": "EW_W2_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1669.12,
+      "stop": 1666.812414,
+      "alvo": 1674.91,
+      "risco": 2.307585999999901,
+      "rr": 2.5,
+      "data": "12/06/2026 14:25",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
       "tipo": "EW_W2_LONG"
     }
   ],
