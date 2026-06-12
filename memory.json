@@ -3325,10 +3325,11 @@
       "risco": 0.00012693351999999714,
       "rr": 1.0,
       "data": "12/06/2026 16:14",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": "d29c206e-ceea-45d3-a715-5a8678195e8e",
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 16:24"
     },
     {
       "id": 201,
