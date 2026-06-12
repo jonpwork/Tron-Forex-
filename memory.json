@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.13002,
-      "stop": 1.128749322,
-      "alvo": 1.13682,
-      "risco": 0.001270678000000025,
-      "rr": 5.4,
-      "data": "12/06/2026 19:57",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "DOGEUSDT",
       "direcao": "down",
       "entrada": 0.08625,
@@ -3363,6 +3348,21 @@
       "resultado": null,
       "order_id": "2714b9cd-9444-47fe-877e-c22d315f43db",
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "down",
+      "entrada": 66.59,
+      "stop": 66.666634,
+      "alvo": 66.0,
+      "risco": 0.07663399999999854,
+      "rr": 7.7,
+      "data": "12/06/2026 20:23",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "10dcb7c9-06aa-4e71-acc6-44a881076611",
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
