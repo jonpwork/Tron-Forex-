@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 42.99154,
-      "stop": 42.946726233,
-      "alvo": 43.48234,
-      "risco": 0.04481376700000084,
-      "rr": 11.0,
-      "data": "12/06/2026 20:28",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "LTCUSDT",
       "direcao": "down",
       "entrada": 42.99154,
       "stop": 43.03661455699999,
@@ -3375,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.0041,
+      "stop": 1.99919958,
+      "alvo": 2.0816,
+      "risco": 0.0049004200000002385,
+      "rr": 15.8,
+      "data": "12/06/2026 20:53",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
