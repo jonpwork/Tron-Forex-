@@ -3041,10 +3041,11 @@
       "risco": 0.05471956100000064,
       "rr": 1.8,
       "data": "12/06/2026 11:50",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.8R",
       "order_id": null,
-      "tipo": "M1_W_LONG"
+      "tipo": "M1_W_LONG",
+      "fechamento": "12/06/2026 12:14"
     },
     {
       "id": 201,
@@ -3167,10 +3168,11 @@
       "risco": 2.9738079999999627,
       "rr": 1.2,
       "data": "12/06/2026 11:53",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.2R",
       "order_id": "a966f4c7-53a7-4425-9f4a-d5be192fa921",
-      "tipo": "M1_W_LONG"
+      "tipo": "M1_W_LONG",
+      "fechamento": "12/06/2026 12:14"
     },
     {
       "id": 201,
