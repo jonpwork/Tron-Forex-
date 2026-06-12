@@ -311,21 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOGEUSDT",
-      "direcao": "down",
-      "entrada": 0.0900474,
-      "stop": 0.09245157082999998,
-      "alvo": 0.08686250000000001,
-      "risco": 0.0024041708299999826,
-      "rr": 1.3,
-      "data": "12/06/2026 11:56",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "b684dd7c-bde7-471e-bb3d-ac518aecf604",
-      "tipo": "M1_M_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "NEARUSDT",
       "direcao": "down",
       "entrada": 2.0793,
@@ -3412,6 +3397,21 @@
       "risco": 3.0175859999999375,
       "rr": 1.7,
       "data": "12/06/2026 14:30",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_W2_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1669.83,
+      "stop": 1666.812414,
+      "alvo": 1674.91,
+      "risco": 3.0175859999999375,
+      "rr": 1.7,
+      "data": "12/06/2026 14:32",
       "status": "aberto",
       "resultado": null,
       "order_id": null,
