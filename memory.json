@@ -311,22 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LINKUSDT",
-      "direcao": "up",
-      "entrada": 7.89146,
-      "stop": 7.836740439,
-      "alvo": 7.99243,
-      "risco": 0.05471956100000064,
-      "rr": 1.8,
-      "data": "12/06/2026 11:50",
-      "status": "win",
-      "resultado": "+1.8R",
-      "order_id": null,
-      "tipo": "M1_W_LONG",
-      "fechamento": "12/06/2026 12:14"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1669.38,
@@ -3420,6 +3404,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
+      "tipo": "M1_SWING_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1671.41,
+      "stop": 1666.979212,
+      "alvo": 1677.0,
+      "risco": 4.4307880000001205,
+      "rr": 1.3,
+      "data": "12/06/2026 14:15",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "d6555b88-5932-4d5d-bc18-c06b712ada6b",
       "tipo": "M1_SWING_LONG"
     }
   ],
