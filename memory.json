@@ -3430,10 +3430,11 @@
       "risco": 0.0005069466399999917,
       "rr": 1.1,
       "data": "12/06/2026 15:24",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 15:24"
     },
     {
       "id": 201,
