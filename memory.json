@@ -3368,10 +3368,11 @@
       "risco": 0.00867517999999956,
       "rr": 1.2,
       "data": "12/06/2026 12:19",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "M1_PULLBACK_LONG"
+      "tipo": "M1_PULLBACK_LONG",
+      "fechamento": "12/06/2026 12:21"
     },
     {
       "id": 201,
