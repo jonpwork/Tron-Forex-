@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "ATOMUSDT",
-      "direcao": "up",
-      "entrada": 1.9715,
-      "stop": 1.9633247099999998,
-      "alvo": 2.0293,
-      "risco": 0.00817529000000028,
-      "rr": 7.1,
-      "data": "12/06/2026 20:34",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "ATOMUSDT",
       "direcao": "down",
       "entrada": 1.9715,
       "stop": 1.9774144999999999,
@@ -3417,6 +3402,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "up",
+      "entrada": 66.79,
+      "stop": 66.58335899999999,
+      "alvo": 68.74,
+      "risco": 0.20664100000001895,
+      "rr": 9.4,
+      "data": "12/06/2026 20:59",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
