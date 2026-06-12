@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SOLUSDT",
-      "direcao": "down",
-      "entrada": 66.65,
-      "stop": 66.716669,
-      "alvo": 66.0,
-      "risco": 0.06666899999999032,
-      "rr": 9.7,
-      "data": "12/06/2026 20:03",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "bbffc8f0-944b-4d09-a44b-3f88e17a211d",
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "LTCUSDT",
       "direcao": "up",
       "entrada": 42.93579,
@@ -3468,6 +3453,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FIB_1.272_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63441.1,
+      "stop": 63383.40054,
+      "alvo": 64391.0,
+      "risco": 57.69945999999618,
+      "rr": 16.5,
+      "data": "12/06/2026 20:30",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BULL"
     }
   ],
   "zone_tol": 0.08,
