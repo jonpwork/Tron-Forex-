@@ -311,23 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TONUSDT",
-      "direcao": "up",
-      "entrada": 1.6144,
-      "stop": 1.62111015,
-      "alvo": 1.63453045,
-      "risco": 0.00671014999999997,
-      "rr": 3.0,
-      "data": "10/06/2026 23:36",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "FIGURA_BANDEIRA_BAIXA_M1",
-      "figura": "BANDEIRA_BAIXA",
-      "fechamento": "10/06/2026 23:36"
-    },
-    {
-      "id": 201,
       "symbol": "ADAUSDT",
       "direcao": "down",
       "entrada": 0.162183,
@@ -3471,6 +3454,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "EW_ABC_LEG_C_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1664.85,
+      "stop": 1670.981988,
+      "alvo": 1658.51,
+      "risco": 6.131988000000092,
+      "rr": 1.0,
+      "data": "12/06/2026 13:06",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "f695d0de-e6be-4152-bbb2-d22150367d72",
+      "tipo": "M1_SWING_SHORT"
     }
   ],
   "zone_tol": 0.08,
