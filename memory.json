@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 42.94131,
-      "stop": 42.881441964,
-      "alvo": 43.48234,
-      "risco": 0.059868036000004565,
-      "rr": 9.0,
-      "data": "12/06/2026 19:07",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3393,6 +3378,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63618.9,
+      "stop": 63677.342959999994,
+      "alvo": 63413.4,
+      "risco": 58.442959999993036,
+      "rr": 3.5,
+      "data": "12/06/2026 19:31",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
