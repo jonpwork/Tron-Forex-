@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9545,
-      "stop": 0.95213304,
-      "alvo": 0.9727,
-      "risco": 0.002366960000000029,
-      "rr": 7.7,
-      "data": "12/06/2026 19:40",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "LINKUSDT",
       "direcao": "up",
       "entrada": 7.8663,
@@ -3378,6 +3363,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FIB_1.272_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63495.9,
+      "stop": 63555.05741999999,
+      "alvo": 62918.5,
+      "risco": 59.15741999998863,
+      "rr": 9.8,
+      "data": "12/06/2026 20:04",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
