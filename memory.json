@@ -310,21 +310,6 @@
   ],
   "signals": [
     {
-      "id": 185,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 62702.6,
-      "stop": 62809.8,
-      "alvo": 62484.1,
-      "risco": 107.20000000000437,
-      "rr": 2.0,
-      "data": "08/06/2026 05:10",
-      "status": "win",
-      "resultado": "+2.0R",
-      "order_id": null,
-      "fechamento": "08/06/2026 05:41"
-    },
-    {
       "id": 186,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3383,6 +3368,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63521.4,
+      "stop": 63325.58184,
+      "alvo": 63764.6,
+      "risco": 195.81816000000254,
+      "rr": 1.2,
+      "data": "12/06/2026 11:44",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_SWING_LONG"
     }
   ],
   "zone_tol": 0.08,
