@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "down",
-      "entrada": 0.7489,
-      "stop": 0.75970728,
-      "alvo": 0.73809272,
-      "risco": 0.010807279999999975,
-      "rr": 1.0,
-      "data": "12/06/2026 15:19",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "EW_TRI_LEG_C_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "TONUSDT",
       "direcao": "down",
       "entrada": 1.6976,
@@ -3445,6 +3430,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "down",
+      "entrada": 1.9592,
+      "stop": 1.9666757099999999,
+      "alvo": 1.9331,
+      "risco": 0.007475709999999802,
+      "rr": 3.5,
+      "data": "12/06/2026 19:07",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
