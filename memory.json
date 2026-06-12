@@ -3370,10 +3370,11 @@
       "risco": 2.6527300000000196,
       "rr": 3.0,
       "data": "12/06/2026 00:00",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "bf3480d6-17c7-473b-8ccf-cfe05b50c243",
-      "tipo": "M1_W_LONG"
+      "tipo": "M1_W_LONG",
+      "fechamento": "12/06/2026 00:24"
     }
   ],
   "zone_tol": 0.08,
