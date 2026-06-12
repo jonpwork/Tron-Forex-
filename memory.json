@@ -311,22 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1682.54,
-      "stop": 1678.0725519999999,
-      "alvo": 1695.9423440000003,
-      "risco": 4.467448000000104,
-      "rr": 3.0,
-      "data": "11/06/2026 17:01",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "abd30fe2-323c-40a4-8b28-53b4dcff5787",
-      "tipo": "M1_SWING_LONG",
-      "fechamento": "11/06/2026 17:27"
-    },
-    {
-      "id": 201,
       "symbol": "TRXUSDT",
       "direcao": "up",
       "entrada": 0.313139,
@@ -3442,6 +3426,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "286d5cc2-f4bc-4ca9-a2c7-a10bc28b152e",
+      "tipo": "M1_SWING_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1670.28,
+      "stop": 1678.4664759999998,
+      "alvo": 1658.51,
+      "risco": 8.186475999999857,
+      "rr": 1.4,
+      "data": "12/06/2026 13:26",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "4b068d8c-1770-40bb-aac2-69a3f877ff4b",
       "tipo": "M1_SWING_SHORT"
     }
   ],
