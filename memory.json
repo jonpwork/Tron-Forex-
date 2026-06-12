@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.9538,
       "stop": 0.95293248,
-      "alvo": 0.9582,
-      "risco": 0.0008675200000000105,
-      "rr": 5.1,
-      "data": "12/06/2026 20:29",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9538,
-      "stop": 0.95293248,
       "alvo": 0.9727,
       "risco": 0.0008675200000000105,
       "rr": 21.8,
@@ -3375,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63542.2,
+      "stop": 63468.34104,
+      "alvo": 63819.7,
+      "risco": 73.85895999999775,
+      "rr": 3.8,
+      "data": "12/06/2026 20:53",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
