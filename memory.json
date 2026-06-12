@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "NEARUSDT",
-      "direcao": "up",
-      "entrada": 1.9939,
-      "stop": 1.9913051099999999,
-      "alvo": 2.0816,
-      "risco": 0.0025948900000001274,
-      "rr": 33.8,
-      "data": "12/06/2026 19:08",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
       "direcao": "down",
       "entrada": 1.9939,
       "stop": 2.00099972,
@@ -3420,6 +3405,21 @@
       "resultado": null,
       "order_id": "bb3cb627-ec7a-4954-8d6b-ef9d50638226",
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "up",
+      "entrada": 66.58,
+      "stop": 66.45345,
+      "alvo": 67.37,
+      "risco": 0.1265499999999946,
+      "rr": 6.2,
+      "data": "12/06/2026 19:34",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "0e6ca03d-555e-4812-a868-4d40b9f484f0",
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
