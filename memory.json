@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "down",
-      "entrada": 0.7492,
-      "stop": 0.75970728,
-      "alvo": 0.73869272,
-      "risco": 0.010507280000000008,
-      "rr": 1.0,
-      "data": "12/06/2026 15:08",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "EW_TRI_LEG_C_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "SOLUSDT",
       "direcao": "up",
       "entrada": 67.18,
@@ -3463,6 +3448,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1664.98,
+      "stop": 1666.6558429999998,
+      "alvo": 1654.97,
+      "risco": 1.6758429999997588,
+      "rr": 6.0,
+      "data": "12/06/2026 19:05",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
