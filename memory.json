@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "AVAXUSDT",
-      "direcao": "down",
-      "entrada": 6.562,
-      "stop": 6.572597599999999,
-      "alvo": 6.523,
-      "risco": 0.010597599999998764,
-      "rr": 3.7,
-      "data": "12/06/2026 19:48",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.562,
       "stop": 6.545414999999999,
@@ -3405,6 +3390,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "down",
+      "entrada": 0.6385,
+      "stop": 0.6400477199999999,
+      "alvo": 0.632,
+      "risco": 0.0015477199999999192,
+      "rr": 4.2,
+      "data": "12/06/2026 20:14",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
