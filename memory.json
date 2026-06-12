@@ -325,22 +325,6 @@
     {
       "id": 201,
       "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 63809.6,
-      "stop": 63973.35001999999,
-      "alvo": 63572.799999999996,
-      "risco": 163.75001999999222,
-      "rr": 1.4,
-      "data": "12/06/2026 15:17",
-      "status": "win",
-      "resultado": "+1.4R",
-      "order_id": "c6b0a1be-97b7-46e9-b793-ab68e6d49903",
-      "tipo": "M1_M_SHORT",
-      "fechamento": "12/06/2026 17:14"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
       "direcao": "up",
       "entrada": 63809.6,
       "stop": 63700.598719999995,
@@ -3447,6 +3431,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "down",
+      "entrada": 1.9592,
+      "stop": 1.9666757099999999,
+      "alvo": 1.9331,
+      "risco": 0.007475709999999802,
+      "rr": 3.5,
+      "data": "12/06/2026 19:07",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
