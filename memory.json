@@ -3380,10 +3380,11 @@
       "risco": 2.9488040000001092,
       "rr": 1.1,
       "data": "12/06/2026 12:10",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.1R",
       "order_id": null,
-      "tipo": "M1_SWING_LONG"
+      "tipo": "M1_SWING_LONG",
+      "fechamento": "12/06/2026 12:12"
     },
     {
       "id": 201,
