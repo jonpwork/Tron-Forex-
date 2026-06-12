@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "down",
-      "entrada": 1.9647,
-      "stop": 1.9705940999999996,
-      "alvo": 1.9331,
-      "risco": 0.00589409999999968,
-      "rr": 5.4,
-      "data": "12/06/2026 19:55",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "LTCUSDT",
       "direcao": "up",
       "entrada": 42.92424,
@@ -3354,6 +3339,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63491.4,
+      "stop": 63555.05741999999,
+      "alvo": 62918.5,
+      "risco": 63.65741999998863,
+      "rr": 9.0,
+      "data": "12/06/2026 20:20",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
