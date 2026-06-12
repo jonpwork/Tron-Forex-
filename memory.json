@@ -328,21 +328,6 @@
       "direcao": "down",
       "entrada": 63569.1,
       "stop": 63677.342959999994,
-      "alvo": 63281.48,
-      "risco": 108.24295999999595,
-      "rr": 2.7,
-      "data": "12/06/2026 19:22",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FIB_1.272_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 63569.1,
-      "stop": 63677.342959999994,
       "alvo": 62918.5,
       "risco": 108.24295999999595,
       "rr": 6.0,
@@ -3420,6 +3405,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.0001,
+      "stop": 1.9974008399999998,
+      "alvo": 2.0816,
+      "risco": 0.002699160000000367,
+      "rr": 30.2,
+      "data": "12/06/2026 19:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
