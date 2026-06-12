@@ -313,21 +313,6 @@
       "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "down",
-      "entrada": 1645.39,
-      "stop": 1647.34,
-      "alvo": 1641.7500000000002,
-      "risco": 1.949999999999818,
-      "rr": 1.9,
-      "data": "09/06/2026 18:15",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "fechamento": "09/06/2026 18:17"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
       "entrada": 1651.55,
       "stop": 1654.69,
       "alvo": 1644.99,
@@ -3442,6 +3427,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_SWING_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0864,
+      "stop": 2.1266876399999997,
+      "alvo": 2.0268,
+      "risco": 0.04028763999999985,
+      "rr": 1.5,
+      "data": "12/06/2026 12:36",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_M_SHORT"
     }
   ],
   "zone_tol": 0.08,
