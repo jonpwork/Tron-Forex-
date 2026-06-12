@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "down",
-      "entrada": 43.07579,
-      "stop": 43.183377219,
-      "alvo": 42.78633,
-      "risco": 0.10758721900000268,
-      "rr": 2.7,
-      "data": "12/06/2026 14:05",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "EW_W2_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "TONUSDT",
       "direcao": "down",
       "entrada": 1.7289,
@@ -3454,6 +3439,21 @@
       "resultado": null,
       "order_id": "f5385f3b-3663-4c11-b800-506e97af5dc3",
       "tipo": "M1_W_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0316,
+      "stop": 2.0449346399999997,
+      "alvo": 2.0182653600000005,
+      "risco": 0.01333463999999962,
+      "rr": 1.0,
+      "data": "12/06/2026 16:13",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_TRI_E_SHORT"
     }
   ],
   "zone_tol": 0.08,
