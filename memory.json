@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ADAUSDT",
-      "direcao": "down",
-      "entrada": 0.169407,
-      "stop": 0.1696876983,
-      "alvo": 0.167908,
-      "risco": 0.00028069829999999296,
-      "rr": 5.3,
-      "data": "12/06/2026 19:11",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BEAR",
-      "pnl_usd": -0.0056,
-      "pnl_brl": -0.03,
-      "fechamento": "12/06/2026 19:26"
-    },
-    {
-      "id": 201,
       "symbol": "ATOMUSDT",
       "direcao": "down",
       "entrada": 1.9605,
@@ -3399,6 +3381,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "down",
+      "entrada": 0.169634,
+      "stop": 0.16982179209999998,
+      "alvo": 0.169083,
+      "risco": 0.0001877920999999727,
+      "rr": 2.9,
+      "data": "12/06/2026 19:35",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
