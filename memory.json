@@ -2749,10 +2749,11 @@
       "risco": 0.00042193352000000073,
       "rr": 1.0,
       "data": "12/06/2026 16:48",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "EW_TRI_E_SHORT"
+      "tipo": "EW_TRI_E_SHORT",
+      "fechamento": "12/06/2026 18:51"
     },
     {
       "id": 201,
