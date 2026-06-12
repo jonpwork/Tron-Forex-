@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.03088,
-      "stop": 42.976405443,
-      "alvo": 43.48234,
-      "risco": 0.05447455700000603,
-      "rr": 8.3,
-      "data": "12/06/2026 20:24",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "LTCUSDT",
       "direcao": "down",
       "entrada": 43.03088,
       "stop": 43.080124993,
@@ -3372,6 +3357,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 43.03201,
+      "stop": 42.987357771,
+      "alvo": 43.48234,
+      "risco": 0.04465222900000043,
+      "rr": 10.1,
+      "data": "12/06/2026 20:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
