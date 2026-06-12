@@ -324,22 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SOLUSDT",
-      "direcao": "up",
-      "entrada": 67.26,
-      "stop": 67.306112,
-      "alvo": 67.36,
-      "risco": 0.046111999999993714,
-      "rr": 2.2,
-      "data": "12/06/2026 15:17",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "EW_TRI_E_LONG",
-      "fechamento": "12/06/2026 15:18"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1669.39,
@@ -3450,6 +3434,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "up",
+      "entrada": 7.8663,
+      "stop": 7.858505193,
+      "alvo": 8.0,
+      "risco": 0.007794806999999793,
+      "rr": 17.2,
+      "data": "12/06/2026 19:06",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
