@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "ADAUSDT",
-      "direcao": "down",
-      "entrada": 0.169603,
-      "stop": 0.1697807634,
-      "alvo": 0.169083,
-      "risco": 0.0001777634000000028,
-      "rr": 2.9,
-      "data": "12/06/2026 19:18",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT",
-      "pnl_usd": -0.0036,
-      "pnl_brl": -0.02,
-      "fechamento": "12/06/2026 19:32"
-    },
-    {
-      "id": 201,
-      "symbol": "ADAUSDT",
       "direcao": "up",
       "entrada": 0.169603,
       "stop": 0.1694023353,
@@ -3444,6 +3426,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "up",
+      "entrada": 1.9647,
+      "stop": 1.95952737,
+      "alvo": 2.0293,
+      "risco": 0.0051726299999999,
+      "rr": 12.5,
+      "data": "12/06/2026 19:45",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
