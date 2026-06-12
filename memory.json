@@ -311,23 +311,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "down",
-      "entrada": 42.10621,
-      "stop": 42.315177014999996,
-      "alvo": 41.479308955,
-      "risco": 0.20896701499999892,
-      "rr": 3.0,
-      "data": "10/06/2026 23:27",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "FIGURA_RETANGULO_M1",
-      "figura": "RETANGULO",
-      "fechamento": "11/06/2026 00:33"
-    },
-    {
-      "id": 201,
       "symbol": "TONUSDT",
       "direcao": "up",
       "entrada": 1.6144,
@@ -3473,6 +3456,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_SWING_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63728.6,
+      "stop": 63291.62616,
+      "alvo": 64391.0,
+      "risco": 436.97383999999875,
+      "rr": 1.5,
+      "data": "12/06/2026 13:06",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_ABC_LEG_C_LONG"
     }
   ],
   "zone_tol": 0.08,
