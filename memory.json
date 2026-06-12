@@ -2822,10 +2822,11 @@
       "risco": 0.00032285336,
       "rr": 1.0,
       "data": "12/06/2026 14:36",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "c469626a-d838-41c0-bc86-02ec112f7908",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -2837,10 +2838,11 @@
       "risco": 0.0003596533600000035,
       "rr": 1.0,
       "data": "12/06/2026 14:37",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "ba8ba0ca-f230-478d-b4c0-641ee7cf05d8",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -2882,10 +2884,11 @@
       "risco": 0.00031185336000000285,
       "rr": 1.0,
       "data": "12/06/2026 14:38",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "9c688aab-59d8-4e71-a01c-f5e0252bdff9",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -2942,10 +2945,11 @@
       "risco": 0.00019205335999999962,
       "rr": 1.0,
       "data": "12/06/2026 14:41",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "b4ac145f-af26-4b74-b7be-c78c51ecd34a",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -2957,10 +2961,11 @@
       "risco": 0.0001639533599999965,
       "rr": 1.0,
       "data": "12/06/2026 14:42",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "c521443f-92b1-4239-9cbf-ced41299a368",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -3092,10 +3097,11 @@
       "risco": 0.00014435336000000187,
       "rr": 1.0,
       "data": "12/06/2026 14:45",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "e8d93ead-7080-4f71-928e-9d8aab1a1a0d",
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -3122,10 +3128,11 @@
       "risco": 0.000181553360000003,
       "rr": 1.0,
       "data": "12/06/2026 14:47",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -3227,10 +3234,11 @@
       "risco": 0.00013685336000000825,
       "rr": 1.0,
       "data": "12/06/2026 14:49",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -3257,10 +3265,11 @@
       "risco": 3.195336000000326e-05,
       "rr": 1.2,
       "data": "12/06/2026 14:51",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
@@ -3377,10 +3386,11 @@
       "risco": 2.4046639999997232e-05,
       "rr": 3.9,
       "data": "12/06/2026 14:54",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_TRI_E_LONG"
+      "tipo": "EW_TRI_E_LONG",
+      "fechamento": "12/06/2026 14:54"
     },
     {
       "id": 201,
