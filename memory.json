@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "ATOMUSDT",
-      "direcao": "down",
-      "entrada": 1.9647,
-      "stop": 1.9705940999999996,
-      "alvo": 1.9331,
-      "risco": 0.00589409999999968,
-      "rr": 5.4,
-      "data": "12/06/2026 19:45",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "ATOMUSDT",
       "direcao": "up",
       "entrada": 1.9647,
       "stop": 1.95952737,
@@ -3369,6 +3354,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "OPUSDT",
+      "direcao": "up",
+      "entrada": 0.09913,
+      "stop": 0.099040623,
+      "alvo": 0.10098,
+      "risco": 8.93770000000016e-05,
+      "rr": 20.7,
+      "data": "12/06/2026 20:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
