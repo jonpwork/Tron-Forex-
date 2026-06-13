@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 6.692,
       "stop": 6.6843177,
-      "alvo": 6.767,
-      "risco": 0.00768229999999992,
-      "rr": 9.8,
-      "data": "13/06/2026 16:22",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "up",
-      "entrada": 6.692,
-      "stop": 6.6843177,
       "alvo": 6.879,
       "risco": 0.00768229999999992,
       "rr": 24.3,
@@ -3375,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.9826,
+      "stop": 0.9813126,
+      "alvo": 0.9955,
+      "risco": 0.0012874000000000496,
+      "rr": 10.0,
+      "data": "13/06/2026 16:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
