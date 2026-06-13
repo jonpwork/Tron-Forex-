@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "APTUSDT",
-      "direcao": "down",
-      "entrada": 0.6369,
-      "stop": 0.6390470199999999,
-      "alvo": 0.632,
-      "risco": 0.0021470199999998885,
-      "rr": 2.3,
-      "data": "12/06/2026 20:37",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT",
-      "pnl_usd": -0.0021,
-      "pnl_brl": -0.01,
-      "fechamento": "12/06/2026 20:57"
-    },
-    {
-      "id": 201,
-      "symbol": "APTUSDT",
       "direcao": "up",
       "entrada": 0.6369,
       "stop": 0.63565473,
@@ -3417,6 +3399,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0037,
+      "stop": 2.0058030799999997,
+      "alvo": 1.9784,
+      "risco": 0.002103079999999924,
+      "rr": 12.0,
+      "data": "12/06/2026 21:04",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
