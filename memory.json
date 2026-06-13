@@ -866,10 +866,13 @@
       "risco": 0.00021708540000001109,
       "rr": 18.8,
       "data": "13/06/2026 02:19",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": -0.0043,
+      "pnl_brl": -0.02,
+      "fechamento": "13/06/2026 02:40"
     },
     {
       "id": 201,
@@ -1181,10 +1184,13 @@
       "risco": 0.00030708539999999007,
       "rr": 13.0,
       "data": "13/06/2026 02:22",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": -0.0061,
+      "pnl_brl": -0.03,
+      "fechamento": "13/06/2026 02:40"
     },
     {
       "id": 201,
@@ -2552,10 +2558,13 @@
       "risco": 0.00030708539999999007,
       "rr": 13.0,
       "data": "13/06/2026 02:33",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": -0.0061,
+      "pnl_brl": -0.03,
+      "fechamento": "13/06/2026 02:40"
     },
     {
       "id": 201,
