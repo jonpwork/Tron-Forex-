@@ -3617,10 +3617,13 @@
       "risco": 0.000775368999999998,
       "rr": 5.3,
       "data": "13/06/2026 18:43",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
+      "tipo": "HTF_H1_LONG",
+      "pnl_usd": -0.0016,
+      "pnl_brl": -0.01,
+      "fechamento": "13/06/2026 19:48"
     }
   ],
   "zone_tol": 0.08,
