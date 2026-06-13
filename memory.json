@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOGEUSDT",
-      "direcao": "down",
-      "entrada": 0.0856548,
-      "stop": 0.08596403273,
-      "alvo": 0.0849699,
-      "risco": 0.0003092327299999975,
-      "rr": 2.2,
-      "data": "12/06/2026 20:37",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BEAR",
-      "pnl_usd": -0.0309,
-      "pnl_brl": -0.16,
-      "fechamento": "12/06/2026 20:57"
-    },
-    {
-      "id": 201,
       "symbol": "APTUSDT",
       "direcao": "down",
       "entrada": 0.6369,
@@ -3420,6 +3402,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0037,
+      "stop": 2.0058030799999997,
+      "alvo": 1.9852,
+      "risco": 0.002103079999999924,
+      "rr": 8.8,
+      "data": "12/06/2026 21:04",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
