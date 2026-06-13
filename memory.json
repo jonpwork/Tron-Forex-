@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.7521,
-      "stop": 0.7485756299999999,
-      "alvo": 0.7614,
-      "risco": 0.0035243700000000544,
-      "rr": 2.6,
-      "data": "13/06/2026 03:41",
-      "status": "win",
-      "resultado": "+2.6R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": 0.0465,
-      "pnl_brl": 0.24,
-      "fechamento": "13/06/2026 09:48"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "down",
       "entrada": 6.607,
@@ -3753,6 +3735,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.7683,
+      "stop": 0.7674624,
+      "alvo": 0.7707,
+      "risco": 0.0008375999999999939,
+      "rr": 2.9,
+      "data": "13/06/2026 15:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
