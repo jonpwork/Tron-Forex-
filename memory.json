@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1679.09,
-      "stop": 1681.176,
-      "alvo": 1672.0,
-      "risco": 2.0860000000000127,
-      "rr": 3.4,
-      "data": "13/06/2026 17:01",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "a66b3b7d-e046-4e12-b7af-ad9cde0ab13e",
-      "tipo": "FVG_BEAR"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1679.09,
       "stop": 1677.22512,
@@ -3453,6 +3438,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0939,
+      "stop": 2.1323044799999997,
+      "alvo": 2.0554955200000005,
+      "risco": 0.03840447999999963,
+      "rr": 1.0,
+      "data": "13/06/2026 17:32",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_ABC_LEG_B_SHORT"
     }
   ],
   "zone_tol": 0.08,
