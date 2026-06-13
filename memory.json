@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ADAUSDT",
-      "direcao": "down",
-      "entrada": 0.169616,
-      "stop": 0.1699969146,
-      "alvo": 0.167908,
-      "risco": 0.0003809146000000041,
-      "rr": 4.5,
-      "data": "13/06/2026 02:45",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 7.88803,
@@ -3390,6 +3375,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63590.6,
+      "stop": 63523.302540000004,
+      "alvo": 63863.4,
+      "risco": 67.29745999999432,
+      "rr": 4.1,
+      "data": "13/06/2026 03:12",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BULL"
     }
   ],
   "zone_tol": 0.08,
