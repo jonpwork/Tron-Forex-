@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.7635,
-      "stop": 0.76266576,
-      "alvo": 0.7698,
-      "risco": 0.0008342399999999861,
-      "rr": 7.6,
-      "data": "13/06/2026 17:26",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "NEARUSDT",
       "direcao": "up",
       "entrada": 2.0925,
@@ -3375,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1676.72,
+      "stop": 1678.87439,
+      "alvo": 1672.0,
+      "risco": 2.154389999999921,
+      "rr": 2.2,
+      "data": "13/06/2026 17:54",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
