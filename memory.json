@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "ATOMUSDT",
-      "direcao": "down",
-      "entrada": 2.0097,
-      "stop": 2.0147093099999998,
-      "alvo": 1.9825,
-      "risco": 0.0050093099999997115,
-      "rr": 5.4,
-      "data": "12/06/2026 22:47",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "ATOMUSDT",
       "direcao": "up",
       "entrada": 2.0097,
       "stop": 2.0031967799999997,
@@ -3357,6 +3342,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0163,
+      "stop": 2.01881218,
+      "alvo": 1.9973,
+      "risco": 0.002512179999999642,
+      "rr": 7.6,
+      "data": "12/06/2026 23:15",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
