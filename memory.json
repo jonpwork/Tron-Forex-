@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "down",
-      "entrada": 605.5,
-      "stop": 607.3164999999999,
-      "alvo": 599.29,
-      "risco": 1.8164999999999054,
-      "rr": 3.4,
-      "data": "12/06/2026 23:09",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "SOLUSDT",
       "direcao": "up",
       "entrada": 67.35,
@@ -3453,6 +3438,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "up",
+      "entrada": 7.90625,
+      "stop": 7.897128137999999,
+      "alvo": 7.94803,
+      "risco": 0.009121862000000647,
+      "rr": 4.6,
+      "data": "12/06/2026 23:36",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
