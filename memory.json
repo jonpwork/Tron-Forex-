@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9757,
-      "stop": 0.97301841,
-      "alvo": 0.9819,
-      "risco": 0.0026815900000000115,
-      "rr": 2.3,
-      "data": "13/06/2026 04:05",
-      "status": "win",
-      "resultado": "+2.3R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": 0.0062,
-      "pnl_brl": 0.03,
-      "fechamento": "13/06/2026 05:03"
-    },
-    {
-      "id": 201,
       "symbol": "ATOMUSDT",
       "direcao": "up",
       "entrada": 1.9853,
@@ -3459,6 +3441,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.1123,
+      "stop": 2.1095223,
+      "alvo": 2.1184,
+      "risco": 0.002777699999999772,
+      "rr": 2.2,
+      "data": "13/06/2026 15:20",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
