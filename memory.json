@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08402,
-      "stop": 0.083691375,
-      "alvo": 0.08529,
-      "risco": 0.00032862499999999906,
-      "rr": 3.9,
-      "data": "12/06/2026 21:09",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "down",
       "entrada": 6.567,
@@ -3384,6 +3369,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "down",
+      "entrada": 1.9693,
+      "stop": 1.9728800499999999,
+      "alvo": 1.9561,
+      "risco": 0.0035800499999998348,
+      "rr": 3.7,
+      "data": "12/06/2026 21:35",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
