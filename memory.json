@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "TONUSDT",
-      "direcao": "up",
-      "entrada": 1.6727,
-      "stop": 1.67032995,
-      "alvo": 1.6844,
-      "risco": 0.0023700500000001234,
-      "rr": 4.9,
-      "data": "12/06/2026 20:46",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "TONUSDT",
       "direcao": "down",
       "entrada": 1.6727,
       "stop": 1.67477152,
@@ -3381,6 +3366,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "TONUSDT",
+      "direcao": "up",
+      "entrada": 1.6747,
+      "stop": 1.67032995,
+      "alvo": 1.6844,
+      "risco": 0.004370050000000125,
+      "rr": 2.2,
+      "data": "12/06/2026 21:13",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
