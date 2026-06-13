@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "SOLUSDT",
-      "direcao": "up",
-      "entrada": 68.37,
-      "stop": 68.27217599999999,
-      "alvo": 68.71,
-      "risco": 0.09782400000001701,
-      "rr": 3.5,
-      "data": "13/06/2026 18:11",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "SOLUSDT",
       "direcao": "down",
       "entrada": 68.37,
       "stop": 68.57511,
@@ -3426,6 +3411,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1678.55,
+      "stop": 1675.596261,
+      "alvo": 1685.08,
+      "risco": 2.9537390000000414,
+      "rr": 2.2,
+      "data": "13/06/2026 18:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BULL"
     }
   ],
   "zone_tol": 0.08,
