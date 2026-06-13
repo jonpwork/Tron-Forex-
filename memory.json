@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.08417,
       "stop": 0.084081102,
-      "alvo": 0.08529,
-      "risco": 8.889799999999004e-05,
-      "rr": 12.6,
-      "data": "12/06/2026 23:55",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08417,
-      "stop": 0.084081102,
       "alvo": 0.08442,
       "risco": 8.889799999999004e-05,
       "rr": 2.8,
@@ -3417,6 +3402,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1667.92,
+      "stop": 1669.828062,
+      "alvo": 1653.18,
+      "risco": 1.9080619999999726,
+      "rr": 7.7,
+      "data": "13/06/2026 00:22",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
