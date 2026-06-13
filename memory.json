@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.9636,
       "stop": 0.96062709,
-      "alvo": 0.971,
-      "risco": 0.0029729099999999953,
-      "rr": 2.5,
-      "data": "13/06/2026 02:36",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9636,
-      "stop": 0.96062709,
       "alvo": 0.9727,
       "risco": 0.0029729099999999953,
       "rr": 3.1,
@@ -3432,6 +3417,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.9658,
+      "stop": 0.96412464,
+      "alvo": 0.971,
+      "risco": 0.0016753600000000146,
+      "rr": 3.1,
+      "data": "13/06/2026 03:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
