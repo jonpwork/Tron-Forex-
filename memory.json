@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "BNBUSDT",
-      "direcao": "down",
-      "entrada": 608.74,
-      "stop": 609.5263699999999,
-      "alvo": 605.44,
-      "risco": 0.7863699999999199,
-      "rr": 4.2,
-      "data": "13/06/2026 15:31",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 608.74,
       "stop": 607.684323,
@@ -3561,6 +3546,21 @@
       "resultado": null,
       "order_id": "ef9ff66b-7dd4-4c7b-9cbc-ad703b1dd17f",
       "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1678.24,
+      "stop": 1676.4456659999998,
+      "alvo": 1685.08,
+      "risco": 1.7943340000001626,
+      "rr": 3.8,
+      "data": "13/06/2026 16:01",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "ac5e042b-a3cb-440a-bfa3-bf33a1b19f68",
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
