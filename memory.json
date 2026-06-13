@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.20411,
-      "stop": 43.110751334999996,
-      "alvo": 43.48234,
-      "risco": 0.09335866500000378,
-      "rr": 3.0,
-      "data": "13/06/2026 03:35",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3435,6 +3420,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "down",
+      "entrada": 0.0863907,
+      "stop": 0.08649820639,
+      "alvo": 0.0855451,
+      "risco": 0.00010750638999999784,
+      "rr": 7.9,
+      "data": "13/06/2026 04:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "249c8ebf-4800-4e2a-92f8-f97c6d5337b9",
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
