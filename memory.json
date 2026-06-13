@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1679.09,
-      "stop": 1680.3854469999999,
-      "alvo": 1677.5,
-      "risco": 1.2954469999999674,
-      "rr": 1.2,
-      "data": "13/06/2026 16:57",
-      "status": "win",
-      "resultado": "+1.2R",
-      "order_id": "8afc8354-1053-4191-85db-5d01fc4cd445",
-      "tipo": "EW_W2_SHORT",
-      "pnl_usd": 0.0159,
-      "pnl_brl": 0.08,
-      "fechamento": "13/06/2026 17:11"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.719,
@@ -3456,6 +3438,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "TONUSDT",
+      "direcao": "up",
+      "entrada": 1.7333,
+      "stop": 1.7316869700000002,
+      "alvo": 1.7449,
+      "risco": 0.0016130299999999043,
+      "rr": 7.2,
+      "data": "13/06/2026 17:27",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
