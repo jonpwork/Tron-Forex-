@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.6655,
-      "stop": 43.624861206,
-      "alvo": 44.11452,
-      "risco": 0.04063879400000303,
-      "rr": 11.0,
-      "data": "13/06/2026 15:23",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "DOGEUSDT",
       "direcao": "up",
       "entrada": 0.0876513,
@@ -3393,6 +3378,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.1167,
+      "stop": 2.1145188,
+      "alvo": 2.1583,
+      "risco": 0.0021811999999998832,
+      "rr": 19.1,
+      "data": "13/06/2026 15:53",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
