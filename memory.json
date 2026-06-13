@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "TRXUSDT",
-      "direcao": "down",
-      "entrada": 0.315469,
-      "stop": 0.31577989129999995,
-      "alvo": 0.311,
-      "risco": 0.00031089129999994913,
-      "rr": 14.4,
-      "data": "12/06/2026 21:42",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "HTF_H4_SHORT"
     },
     {
@@ -3405,6 +3390,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "down",
+      "entrada": 1.13629,
+      "stop": 1.13969887,
+      "alvo": 1.1285,
+      "risco": 0.0034088699999998973,
+      "rr": 2.3,
+      "data": "12/06/2026 22:08",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "d8a7c9b2-6a89-46f1-b0fc-ecbbc1a36f3a",
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
