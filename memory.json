@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 64274.4,
-      "stop": 64335.60341999999,
-      "alvo": 63937.2,
-      "risco": 61.20341999999073,
-      "rr": 5.5,
-      "data": "13/06/2026 18:11",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "OB_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "SUIUSDT",
       "direcao": "up",
       "entrada": 0.763,
@@ -3420,6 +3405,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "down",
+      "entrada": 1.9538,
+      "stop": 1.9615721399999997,
+      "alvo": 1.9331,
+      "risco": 0.007772139999999705,
+      "rr": 2.7,
+      "data": "13/06/2026 18:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
