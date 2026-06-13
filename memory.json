@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "up",
-      "entrada": 1.9602,
-      "stop": 1.9543194,
-      "alvo": 2.0163,
-      "risco": 0.005880600000000014,
-      "rr": 9.5,
-      "data": "13/06/2026 17:52",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "APTUSDT",
       "direcao": "up",
       "entrada": 0.6697,
@@ -3432,6 +3417,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.9768,
+      "stop": 0.97591638,
+      "alvo": 0.9933,
+      "risco": 0.0008836199999999739,
+      "rr": 18.7,
+      "data": "13/06/2026 18:20",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
