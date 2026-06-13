@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 64238.3,
-      "stop": 64306.78326,
-      "alvo": 63937.2,
-      "risco": 68.4832599999936,
-      "rr": 4.4,
-      "data": "13/06/2026 17:47",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "OB_BEAR",
-      "pnl_usd": -0.0685,
-      "pnl_brl": -0.35,
-      "fechamento": "13/06/2026 18:06"
-    },
-    {
-      "id": 201,
       "symbol": "TRXUSDT",
       "direcao": "down",
       "entrada": 0.318161,
@@ -3384,6 +3366,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "TRXUSDT",
+      "direcao": "up",
+      "entrada": 0.318083,
+      "stop": 0.3177793986,
+      "alvo": 0.3226,
+      "risco": 0.0003036014000000198,
+      "rr": 14.9,
+      "data": "13/06/2026 18:16",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
