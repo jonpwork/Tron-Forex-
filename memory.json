@@ -331,21 +331,6 @@
       "alvo": 0.10183,
       "risco": 0.00031048300000001416,
       "rr": 2.9,
-      "data": "13/06/2026 01:35",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "OPUSDT",
-      "direcao": "up",
-      "entrada": 0.10093,
-      "stop": 0.10061951699999999,
-      "alvo": 0.10183,
-      "risco": 0.00031048300000001416,
-      "rr": 2.9,
       "data": "13/06/2026 01:36",
       "status": "aberto",
       "resultado": null,
@@ -3348,6 +3333,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "up",
+      "entrada": 1.9971,
+      "stop": 1.9911087,
+      "alvo": 2.0163,
+      "risco": 0.005991300000000033,
+      "rr": 3.2,
+      "data": "13/06/2026 02:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
