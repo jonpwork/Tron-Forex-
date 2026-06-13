@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63555.8,
-      "stop": 63485.22921,
-      "alvo": 63863.4,
-      "risco": 70.57079000000522,
-      "rr": 4.4,
-      "data": "13/06/2026 01:32",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "OB_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 63555.8,
       "stop": 63624.606069999994,
@@ -3384,6 +3369,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "up",
+      "entrada": 0.170439,
+      "stop": 0.1702227606,
+      "alvo": 0.174296,
+      "risco": 0.0002162394000000123,
+      "rr": 17.8,
+      "data": "13/06/2026 02:00",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
