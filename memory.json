@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "LINKUSDT",
-      "direcao": "down",
-      "entrada": 7.88123,
-      "stop": 7.892010543,
-      "alvo": 7.84002,
-      "risco": 0.010780542999999199,
-      "rr": 3.8,
-      "data": "13/06/2026 02:31",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BEAR"
     },
     {
@@ -3439,6 +3424,21 @@
       "alvo": 0.7614,
       "risco": 0.0009236700000000431,
       "rr": 14.0,
+      "data": "13/06/2026 02:57",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "up",
+      "entrada": 0.6518,
+      "stop": 0.6511438799999999,
+      "alvo": 0.6578,
+      "risco": 0.0006561200000001488,
+      "rr": 9.1,
       "data": "13/06/2026 02:57",
       "status": "aberto",
       "resultado": null,
