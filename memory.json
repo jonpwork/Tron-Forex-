@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.170691,
       "stop": 0.1702687284,
-      "alvo": 0.171561,
-      "risco": 0.00042227159999999597,
-      "rr": 2.1,
-      "data": "13/06/2026 00:41",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "ADAUSDT",
-      "direcao": "up",
-      "entrada": 0.170691,
-      "stop": 0.1702687284,
       "alvo": 0.174296,
       "risco": 0.00042227159999999597,
       "rr": 8.5,
@@ -3396,6 +3381,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "down",
+      "entrada": 0.170095,
+      "stop": 0.1704132058,
+      "alvo": 0.169083,
+      "risco": 0.00031820579999999876,
+      "rr": 3.2,
+      "data": "13/06/2026 01:07",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
