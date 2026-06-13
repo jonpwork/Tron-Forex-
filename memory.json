@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ADAUSDT",
-      "direcao": "up",
-      "entrada": 0.169546,
-      "stop": 0.16939034369999997,
-      "alvo": 0.17446,
-      "risco": 0.00015565630000002884,
-      "rr": 31.6,
-      "data": "12/06/2026 20:47",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "TRXUSDT",
       "direcao": "down",
       "entrada": 0.315399,
@@ -3393,6 +3378,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 43.06487,
+      "stop": 43.016887086000004,
+      "alvo": 43.48234,
+      "risco": 0.04798291399999499,
+      "rr": 8.7,
+      "data": "12/06/2026 21:15",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
