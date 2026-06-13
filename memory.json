@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 605.5,
-      "stop": 604.666437,
-      "alvo": 613.13,
-      "risco": 0.8335630000000265,
-      "rr": 9.2,
-      "data": "12/06/2026 23:19",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "BNBUSDT",
       "direcao": "down",
       "entrada": 605.5,
       "stop": 607.3164999999999,
@@ -3375,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 43.30443,
+      "stop": 43.26535303799999,
+      "alvo": 43.48234,
+      "risco": 0.039076962000009985,
+      "rr": 4.6,
+      "data": "12/06/2026 23:45",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
