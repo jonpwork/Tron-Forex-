@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "APTUSDT",
-      "direcao": "up",
-      "entrada": 0.64,
-      "stop": 0.6381529799999999,
-      "alvo": 0.6552,
-      "risco": 0.0018470200000001435,
-      "rr": 8.2,
-      "data": "12/06/2026 20:55",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "APTUSDT",
       "direcao": "down",
       "entrada": 0.64,
       "stop": 0.6407482099999999,
@@ -3357,6 +3342,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "OPUSDT",
+      "direcao": "up",
+      "entrada": 0.0996,
+      "stop": 0.099370392,
+      "alvo": 0.10025,
+      "risco": 0.00022960799999999226,
+      "rr": 2.8,
+      "data": "12/06/2026 21:22",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
