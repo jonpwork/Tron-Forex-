@@ -3104,10 +3104,13 @@
       "risco": 0.005955899999999792,
       "rr": 2.2,
       "data": "13/06/2026 04:05",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+2.2R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": 0.013,
+      "pnl_brl": 0.07,
+      "fechamento": "13/06/2026 13:22"
     },
     {
       "id": 201,
