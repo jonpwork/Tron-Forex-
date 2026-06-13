@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "BNBUSDT",
-      "direcao": "down",
-      "entrada": 600.83,
-      "stop": 601.4607279999999,
-      "alvo": 599.29,
-      "risco": 0.6307279999998627,
-      "rr": 2.4,
-      "data": "13/06/2026 01:27",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 600.83,
       "stop": 599.110329,
@@ -3372,6 +3357,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.13562,
+      "stop": 1.1343254159999998,
+      "alvo": 1.15741,
+      "risco": 0.001294584000000265,
+      "rr": 16.8,
+      "data": "13/06/2026 01:54",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
