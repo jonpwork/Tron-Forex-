@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1667.84,
-      "stop": 1664.753856,
-      "alvo": 1685.89,
-      "risco": 3.0861439999998765,
-      "rr": 5.8,
-      "data": "13/06/2026 01:40",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
       "direcao": "down",
       "entrada": 1667.84,
       "stop": 1672.8435199999997,
@@ -3471,6 +3456,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "up",
+      "entrada": 7.9048,
+      "stop": 7.8871651169999994,
+      "alvo": 8.0,
+      "risco": 0.01763488300000038,
+      "rr": 5.4,
+      "data": "13/06/2026 02:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
