@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "down",
-      "entrada": 604.42,
-      "stop": 606.2332599999999,
-      "alvo": 599.29,
-      "risco": 1.8132599999999002,
-      "rr": 2.8,
-      "data": "12/06/2026 21:41",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "LINKUSDT",
       "direcao": "up",
       "entrada": 7.88027,
@@ -3378,6 +3363,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "down",
+      "entrada": 6.585,
+      "stop": 6.594612999999999,
+      "alvo": 6.523,
+      "risco": 0.009612999999998983,
+      "rr": 6.4,
+      "data": "12/06/2026 22:06",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
