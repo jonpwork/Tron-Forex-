@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "TONUSDT",
-      "direcao": "up",
-      "entrada": 1.6679,
-      "stop": 1.66553331,
-      "alvo": 1.7008,
-      "risco": 0.0023666899999998936,
-      "rr": 13.9,
-      "data": "13/06/2026 02:02",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": -0.0024,
-      "pnl_brl": -0.01,
-      "fechamento": "13/06/2026 02:12"
-    },
-    {
-      "id": 201,
-      "symbol": "TONUSDT",
       "direcao": "down",
       "entrada": 1.6679,
       "stop": 1.6714692099999997,
@@ -3393,6 +3375,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1664.0,
+      "stop": 1666.045416,
+      "alvo": 1659.58,
+      "risco": 2.045415999999932,
+      "rr": 2.2,
+      "data": "13/06/2026 02:29",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
