@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOGEUSDT",
-      "direcao": "up",
-      "entrada": 0.0876608,
-      "stop": 0.08757735291,
-      "alvo": 0.0887735,
-      "risco": 8.344708999999395e-05,
-      "rr": 13.3,
-      "data": "13/06/2026 18:14",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "ATOMUSDT",
       "direcao": "up",
       "entrada": 1.9602,
@@ -3406,6 +3391,21 @@
       "alvo": 0.9933,
       "risco": 0.0008841100000001045,
       "rr": 17.9,
+      "data": "13/06/2026 18:40",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "up",
+      "entrada": 7.9817,
+      "stop": 7.972005687,
+      "alvo": 8.03166,
+      "risco": 0.009694312999999788,
+      "rr": 5.2,
       "data": "13/06/2026 18:40",
       "status": "aberto",
       "resultado": null,
