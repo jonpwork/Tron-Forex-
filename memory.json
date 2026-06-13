@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9824,
-      "stop": 0.98101281,
-      "alvo": 0.9955,
-      "risco": 0.0013871900000000936,
-      "rr": 9.4,
-      "data": "13/06/2026 15:11",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": -0.0014,
-      "pnl_brl": -0.01,
-      "fechamento": "13/06/2026 15:25"
-    },
-    {
-      "id": 201,
       "symbol": "XRPUSDT",
       "direcao": "up",
       "entrada": 1.14577,
@@ -3399,6 +3381,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "TONUSDT",
+      "direcao": "up",
+      "entrada": 1.7416,
+      "stop": 1.73918172,
+      "alvo": 1.7588,
+      "risco": 0.002418280000000106,
+      "rr": 7.1,
+      "data": "13/06/2026 15:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
