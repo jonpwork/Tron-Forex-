@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "down",
-      "entrada": 6.581,
-      "stop": 6.5956136999999995,
-      "alvo": 6.533,
-      "risco": 0.014613699999999064,
-      "rr": 3.3,
-      "data": "13/06/2026 03:17",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BEAR",
-      "pnl_usd": -0.0015,
-      "pnl_brl": -0.01,
-      "fechamento": "13/06/2026 03:37"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 601.18,
@@ -3465,6 +3447,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "up",
+      "entrada": 0.086655,
+      "stop": 0.08628785619,
+      "alvo": 0.0923869,
+      "risco": 0.00036714380999999796,
+      "rr": 15.6,
+      "data": "13/06/2026 03:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
