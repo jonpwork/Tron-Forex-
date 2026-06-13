@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.7524,
-      "stop": 0.7508740199999999,
-      "alvo": 0.7614,
-      "risco": 0.0015259800000000379,
-      "rr": 5.9,
-      "data": "12/06/2026 22:27",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1667.23,
@@ -3474,6 +3459,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "up",
+      "entrada": 605.5,
+      "stop": 604.666437,
+      "alvo": 613.13,
+      "risco": 0.8335630000000265,
+      "rr": 9.2,
+      "data": "12/06/2026 22:57",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "75bf6216-be56-44e1-9dfe-9de31ec9a4d6",
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
