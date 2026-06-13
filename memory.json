@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.084,
-      "stop": 0.08390122800000001,
-      "alvo": 0.08498,
-      "risco": 9.877199999999697e-05,
-      "rr": 9.9,
-      "data": "13/06/2026 03:28",
-      "status": "win",
-      "resultado": "+9.9R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": 0.0049,
-      "pnl_brl": 0.02,
-      "fechamento": "13/06/2026 03:56"
-    },
-    {
-      "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 63605.2,
@@ -3480,6 +3462,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "up",
+      "entrada": 1.9838,
+      "stop": 1.97991309,
+      "alvo": 2.0065,
+      "risco": 0.0038869100000000767,
+      "rr": 5.8,
+      "data": "13/06/2026 04:02",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
