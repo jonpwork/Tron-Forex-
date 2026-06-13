@@ -599,10 +599,13 @@
       "risco": 0.0009468119999999636,
       "rr": 4.9,
       "data": "13/06/2026 03:40",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_SHORT"
+      "tipo": "HTF_H4_SHORT",
+      "pnl_usd": -0.0473,
+      "pnl_brl": -0.24,
+      "fechamento": "13/06/2026 07:21"
     },
     {
       "id": 201,
