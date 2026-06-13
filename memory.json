@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "down",
-      "entrada": 604.35,
-      "stop": 605.9238499999999,
-      "alvo": 599.29,
-      "risco": 1.5738499999998794,
-      "rr": 3.2,
-      "data": "13/06/2026 00:12",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "ATOMUSDT",
       "direcao": "up",
       "entrada": 2.0064,
@@ -3516,6 +3501,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "up",
+      "entrada": 601.08,
+      "stop": 599.110329,
+      "alvo": 606.13,
+      "risco": 1.9696710000000621,
+      "rr": 2.6,
+      "data": "13/06/2026 00:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
