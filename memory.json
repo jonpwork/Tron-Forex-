@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 1668.55,
       "stop": 1666.73247,
-      "alvo": 1680.88,
-      "risco": 1.8175300000000334,
-      "rr": 6.8,
-      "data": "12/06/2026 22:38",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "cd4f4ff3-3384-4bc2-b866-6d6642490880",
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1668.55,
-      "stop": 1666.73247,
       "alvo": 1672.96,
       "risco": 1.8175300000000334,
       "rr": 2.4,
@@ -3417,6 +3402,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.7557,
+      "stop": 0.75477129,
+      "alvo": 0.7614,
+      "risco": 0.0009287100000000548,
+      "rr": 6.1,
+      "data": "12/06/2026 23:06",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
