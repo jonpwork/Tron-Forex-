@@ -767,10 +767,13 @@
       "risco": 0.002527379999999857,
       "rr": 6.8,
       "data": "13/06/2026 16:28",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": -0.0025,
+      "pnl_brl": -0.01,
+      "fechamento": "13/06/2026 16:50"
     },
     {
       "id": 201,
@@ -1070,10 +1073,13 @@
       "risco": 0.004627379999999848,
       "rr": 3.9,
       "data": "13/06/2026 16:31",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
+      "tipo": "HTF_H1_LONG",
+      "pnl_usd": -0.0046,
+      "pnl_brl": -0.02,
+      "fechamento": "13/06/2026 16:50"
     },
     {
       "id": 201,
@@ -2246,10 +2252,13 @@
       "risco": 0.003326120000000099,
       "rr": 5.4,
       "data": "13/06/2026 16:40",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": -0.0033,
+      "pnl_brl": -0.02,
+      "fechamento": "13/06/2026 16:50"
     },
     {
       "id": 201,
@@ -2990,10 +2999,13 @@
       "risco": 0.005427379999999982,
       "rr": 3.2,
       "data": "13/06/2026 16:46",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
+      "tipo": "HTF_H1_LONG",
+      "pnl_usd": -0.0054,
+      "pnl_brl": -0.03,
+      "fechamento": "13/06/2026 16:50"
     },
     {
       "id": 201,
@@ -3005,10 +3017,13 @@
       "risco": 0.005427379999999982,
       "rr": 2.6,
       "data": "13/06/2026 16:46",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": -0.0054,
+      "pnl_brl": -0.03,
+      "fechamento": "13/06/2026 16:50"
     },
     {
       "id": 201,
