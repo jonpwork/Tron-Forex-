@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.1216,
-      "stop": 2.12388568,
-      "alvo": 2.0889,
-      "risco": 0.0022856799999999566,
-      "rr": 14.3,
-      "data": "13/06/2026 16:15",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "OB_BEAR"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
       "direcao": "up",
       "entrada": 2.1216,
       "stop": 2.11821621,
@@ -3390,6 +3375,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "EW_W2_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.1248,
+      "stop": 2.11821621,
+      "alvo": 2.1583,
+      "risco": 0.006583790000000089,
+      "rr": 5.1,
+      "data": "13/06/2026 16:41",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
