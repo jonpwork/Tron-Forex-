@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 2.0025,
       "stop": 1.99640154,
-      "alvo": 2.0163,
-      "risco": 0.006098460000000028,
-      "rr": 2.3,
-      "data": "13/06/2026 00:27",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "up",
-      "entrada": 2.0025,
-      "stop": 1.99640154,
       "alvo": 2.0293,
       "risco": 0.006098460000000028,
       "rr": 4.4,
@@ -3354,6 +3339,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63500.0,
+      "stop": 63558.159589999996,
+      "alvo": 62918.5,
+      "risco": 58.15958999999566,
+      "rr": 10.0,
+      "data": "13/06/2026 00:52",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
