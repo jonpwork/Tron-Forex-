@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 2.1113,
       "stop": 2.10832314,
-      "alvo": 2.1252,
-      "risco": 0.00297685999999997,
-      "rr": 4.7,
-      "data": "13/06/2026 16:06",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "up",
-      "entrada": 2.1113,
-      "stop": 2.10832314,
       "alvo": 2.1583,
       "risco": 0.00297685999999997,
       "rr": 15.8,
@@ -3456,6 +3441,21 @@
       "resultado": null,
       "order_id": "2f5f4b4c-01e6-451b-a6e6-720bdd249b69",
       "tipo": "OB_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "up",
+      "entrada": 6.696,
+      "stop": 6.6863163,
+      "alvo": 6.767,
+      "risco": 0.009683700000000073,
+      "rr": 7.3,
+      "data": "13/06/2026 16:32",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
