@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "LINKUSDT",
-      "direcao": "up",
-      "entrada": 7.98601,
-      "stop": 7.974693803999999,
-      "alvo": 8.03166,
-      "risco": 0.011316196000001,
-      "rr": 4.0,
-      "data": "13/06/2026 18:04",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "HTF_H4_LONG"
     },
     {
@@ -3465,6 +3450,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "up",
+      "entrada": 6.701,
+      "stop": 6.6943107,
+      "alvo": 6.879,
+      "risco": 0.006689299999999676,
+      "rr": 26.6,
+      "data": "13/06/2026 18:31",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
