@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 609.22,
-      "stop": 608.313882,
-      "alvo": 611.36,
-      "risco": 0.9061179999999922,
-      "rr": 2.4,
-      "data": "13/06/2026 17:22",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "FVG_BULL"
     },
     {
@@ -3384,6 +3369,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.0991,
+      "stop": 2.0971309799999998,
+      "alvo": 2.1883,
+      "risco": 0.00196902000000021,
+      "rr": 45.3,
+      "data": "13/06/2026 17:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
