@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "up",
-      "entrada": 2.1107,
-      "stop": 2.108523,
-      "alvo": 2.1184,
-      "risco": 0.0021770000000000955,
-      "rr": 3.5,
-      "data": "13/06/2026 16:21",
-      "status": "win",
-      "resultado": "+3.5R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": 0.0154,
-      "pnl_brl": 0.08,
-      "fechamento": "13/06/2026 16:28"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.692,
@@ -3378,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.9826,
+      "stop": 0.9813126,
+      "alvo": 0.9933,
+      "risco": 0.0012874000000000496,
+      "rr": 8.3,
+      "data": "13/06/2026 16:48",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
