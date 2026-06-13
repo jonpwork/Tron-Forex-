@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08522,
-      "stop": 0.08514036,
-      "alvo": 0.0855,
-      "risco": 7.964000000000582e-05,
-      "rr": 3.5,
-      "data": "13/06/2026 17:32",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "HTF_H4_LONG"
     },
     {
@@ -3358,6 +3343,21 @@
       "alvo": 1685.08,
       "risco": 1.6531930000001012,
       "rr": 5.2,
+      "data": "13/06/2026 18:00",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1676.47,
+      "stop": 1674.816807,
+      "alvo": 1690.78,
+      "risco": 1.6531930000001012,
+      "rr": 8.7,
       "data": "13/06/2026 18:00",
       "status": "aberto",
       "resultado": null,
