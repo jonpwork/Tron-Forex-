@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.08398,
       "stop": 0.08384127,
-      "alvo": 0.08454,
-      "risco": 0.00013873000000000357,
-      "rr": 4.0,
-      "data": "13/06/2026 01:07",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08398,
-      "stop": 0.08384127,
       "alvo": 0.08498,
       "risco": 0.00013873000000000357,
       "rr": 7.2,
@@ -3327,6 +3312,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.0095,
+      "stop": 2.0075936999999997,
+      "alvo": 2.0816,
+      "risco": 0.0019063000000003605,
+      "rr": 37.8,
+      "data": "13/06/2026 01:39",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
