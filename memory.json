@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOGEUSDT",
-      "direcao": "up",
-      "entrada": 0.0876693,
-      "stop": 0.08758574703000001,
-      "alvo": 0.0923869,
-      "risco": 8.355296999999762e-05,
-      "rr": 56.5,
-      "data": "13/06/2026 16:39",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "ARBUSDT",
       "direcao": "up",
       "entrada": 0.0856,
@@ -3447,6 +3432,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 64274.3,
+      "stop": 64368.026099999995,
+      "alvo": 63937.2,
+      "risco": 93.72609999999258,
+      "rr": 3.6,
+      "data": "13/06/2026 17:07",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "9d40e79f-55ac-40e3-a8bb-f7fc7fb7432d",
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
