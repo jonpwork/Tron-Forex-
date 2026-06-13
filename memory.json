@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "down",
-      "entrada": 1.13629,
-      "stop": 1.137365599,
-      "alvo": 1.1285,
-      "risco": 0.0010755989999999827,
-      "rr": 7.2,
-      "data": "12/06/2026 22:10",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "3b8af2df-f6f5-4e27-af31-164d4c69bd20",
-      "tipo": "BOS_BEAR",
-      "pnl_usd": -0.0108,
-      "pnl_brl": -0.05,
-      "fechamento": "12/06/2026 22:16"
-    },
-    {
-      "id": 201,
       "symbol": "LINKUSDT",
       "direcao": "up",
       "entrada": 7.90266,
@@ -3378,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.9674,
+      "stop": 0.96582345,
+      "alvo": 0.9727,
+      "risco": 0.0015765500000000099,
+      "rr": 3.4,
+      "data": "12/06/2026 22:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
