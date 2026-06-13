@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 63538.7,
-      "stop": 63620.20298999999,
-      "alvo": 62918.5,
-      "risco": 81.50298999999359,
-      "rr": 7.6,
-      "data": "13/06/2026 02:51",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "TRXUSDT",
       "direcao": "down",
       "entrada": 0.315467,
@@ -3376,6 +3361,21 @@
       "alvo": 1675.78,
       "risco": 1.5150170000001708,
       "rr": 7.3,
+      "data": "13/06/2026 03:20",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1664.66,
+      "stop": 1663.144983,
+      "alvo": 1672.96,
+      "risco": 1.5150170000001708,
+      "rr": 5.5,
       "data": "13/06/2026 03:20",
       "status": "aberto",
       "resultado": null,
