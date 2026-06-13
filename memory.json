@@ -1820,10 +1820,13 @@
       "risco": 0.005043299999999862,
       "rr": 4.9,
       "data": "13/06/2026 03:52",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": -0.005,
+      "pnl_brl": -0.03,
+      "fechamento": "13/06/2026 09:22"
     },
     {
       "id": 201,
@@ -2135,10 +2138,13 @@
       "risco": 0.005049299999999812,
       "rr": 5.2,
       "data": "13/06/2026 03:55",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": -0.005,
+      "pnl_brl": -0.03,
+      "fechamento": "13/06/2026 09:22"
     },
     {
       "id": 201,
@@ -2318,10 +2324,13 @@
       "risco": 0.003078799999999937,
       "rr": 8.3,
       "data": "13/06/2026 03:58",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": -0.0031,
+      "pnl_brl": -0.02,
+      "fechamento": "13/06/2026 09:22"
     },
     {
       "id": 201,
@@ -3362,10 +3371,13 @@
       "risco": 0.0036753699999998446,
       "rr": 5.4,
       "data": "13/06/2026 04:07",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "pnl_usd": -0.0037,
+      "pnl_brl": -0.02,
+      "fechamento": "13/06/2026 09:22"
     },
     {
       "id": 201,
@@ -3683,10 +3695,13 @@
       "risco": 0.002571800000000124,
       "rr": 3.5,
       "data": "13/06/2026 04:10",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+3.5R",
       "order_id": null,
-      "tipo": "BOS_BULL"
+      "tipo": "BOS_BULL",
+      "pnl_usd": 0.009,
+      "pnl_brl": 0.05,
+      "fechamento": "13/06/2026 09:22"
     },
     {
       "id": 201,
