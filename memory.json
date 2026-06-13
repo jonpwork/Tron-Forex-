@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.0055,
-      "stop": 2.0074041999999994,
-      "alvo": 1.9784,
-      "risco": 0.0019041999999993564,
-      "rr": 14.2,
-      "data": "12/06/2026 21:43",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "OPUSDT",
       "direcao": "up",
       "entrada": 0.09977,
@@ -3411,6 +3396,21 @@
       "resultado": null,
       "order_id": "d0cea5b9-e988-4ecf-8a42-23188bbbd9e7",
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "up",
+      "entrada": 605.09,
+      "stop": 604.116822,
+      "alvo": 608.47,
+      "risco": 0.9731780000000754,
+      "rr": 3.5,
+      "data": "12/06/2026 22:10",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
