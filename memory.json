@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.11285,
-      "stop": 43.062645032999995,
-      "alvo": 43.48234,
-      "risco": 0.050204967000006206,
-      "rr": 7.4,
-      "data": "12/06/2026 21:31",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "up",
       "entrada": 63518.1,
@@ -3381,6 +3366,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "up",
+      "entrada": 0.6404,
+      "stop": 0.63965193,
+      "alvo": 0.6432,
+      "risco": 0.0007480699999999896,
+      "rr": 3.7,
+      "data": "12/06/2026 21:56",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
