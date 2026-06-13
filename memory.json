@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "LINKUSDT",
-      "direcao": "up",
-      "entrada": 7.90461,
-      "stop": 7.892831148,
-      "alvo": 8.0,
-      "risco": 0.01177885199999995,
-      "rr": 8.1,
-      "data": "13/06/2026 03:46",
-      "status": "win",
-      "resultado": "+8.1R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": 0.0954,
-      "pnl_brl": 0.48,
-      "fechamento": "13/06/2026 10:12"
-    },
-    {
-      "id": 201,
-      "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 7.90461,
       "stop": 7.928323829999999,
@@ -3687,6 +3669,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63979.2,
+      "stop": 63916.12737,
+      "alvo": 64344.3,
+      "risco": 63.072629999995115,
+      "rr": 5.8,
+      "data": "13/06/2026 15:05",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
