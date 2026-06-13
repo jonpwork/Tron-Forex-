@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.81554,
-      "stop": 43.697670204,
-      "alvo": 44.11452,
-      "risco": 0.1178697960000008,
-      "rr": 2.5,
-      "data": "13/06/2026 17:02",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "SUIUSDT",
       "direcao": "up",
       "entrada": 0.766,
@@ -3432,6 +3417,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ARBUSDT",
+      "direcao": "up",
+      "entrada": 0.08522,
+      "stop": 0.08514036,
+      "alvo": 0.08622,
+      "risco": 7.964000000000582e-05,
+      "rr": 12.6,
+      "data": "13/06/2026 17:32",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
