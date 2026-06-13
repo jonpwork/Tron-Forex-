@@ -1484,10 +1484,13 @@
       "risco": 0.0006264480000000017,
       "rr": 3.4,
       "data": "13/06/2026 03:49",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+3.4R",
       "order_id": null,
-      "tipo": "BOS_BULL"
+      "tipo": "BOS_BULL",
+      "pnl_usd": 0.0425,
+      "pnl_brl": 0.22,
+      "fechamento": "13/06/2026 05:16"
     },
     {
       "id": 201,
@@ -2657,10 +2660,13 @@
       "risco": 0.0006808028999999993,
       "rr": 2.3,
       "data": "13/06/2026 04:02",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+2.3R",
       "order_id": null,
-      "tipo": "BOS_BULL"
+      "tipo": "BOS_BULL",
+      "pnl_usd": 0.0313,
+      "pnl_brl": 0.16,
+      "fechamento": "13/06/2026 05:16"
     },
     {
       "id": 201,
