@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "down",
-      "entrada": 0.9798,
-      "stop": 0.9827393999999999,
-      "alvo": 0.9613,
-      "risco": 0.0029393999999999254,
-      "rr": 6.3,
-      "data": "13/06/2026 18:07",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "SOLUSDT",
       "direcao": "down",
       "entrada": 68.32,
@@ -3465,6 +3450,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 64278.8,
+      "stop": 64357.218539999994,
+      "alvo": 63937.2,
+      "risco": 78.41853999999148,
+      "rr": 4.4,
+      "data": "13/06/2026 18:34",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
