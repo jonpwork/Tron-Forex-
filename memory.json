@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.6698,
       "stop": 0.6683318399999999,
-      "alvo": 0.6755,
-      "risco": 0.0014681600000000516,
-      "rr": 3.9,
-      "data": "13/06/2026 16:06",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "APTUSDT",
-      "direcao": "up",
-      "entrada": 0.6698,
-      "stop": 0.6683318399999999,
       "alvo": 0.6759,
       "risco": 0.0014681600000000516,
       "rr": 4.2,
@@ -3480,6 +3465,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "up",
+      "entrada": 0.6708,
+      "stop": 0.669531,
+      "alvo": 0.6755,
+      "risco": 0.0012689999999999646,
+      "rr": 3.7,
+      "data": "13/06/2026 16:34",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
