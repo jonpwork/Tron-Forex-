@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.0843,
-      "stop": 0.08407110899999999,
-      "alvo": 0.08529,
-      "risco": 0.00022889100000000884,
-      "rr": 4.3,
-      "data": "12/06/2026 23:23",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "SUIUSDT",
       "direcao": "up",
       "entrada": 0.7528,
@@ -3379,6 +3364,21 @@
       "alvo": 1672.96,
       "risco": 1.9370610000000852,
       "rr": 2.6,
+      "data": "12/06/2026 23:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1668.0,
+      "stop": 1666.062939,
+      "alvo": 1685.89,
+      "risco": 1.9370610000000852,
+      "rr": 9.2,
       "data": "12/06/2026 23:49",
       "status": "aberto",
       "resultado": null,
