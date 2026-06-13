@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 605.09,
       "stop": 604.116822,
-      "alvo": 613.13,
-      "risco": 0.9731780000000754,
-      "rr": 8.3,
-      "data": "12/06/2026 22:20",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 605.09,
-      "stop": 604.116822,
       "alvo": 608.47,
       "risco": 0.9731780000000754,
       "rr": 3.5,
@@ -3423,6 +3408,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "down",
+      "entrada": 605.5,
+      "stop": 607.3164999999999,
+      "alvo": 599.29,
+      "risco": 1.8164999999999054,
+      "rr": 3.4,
+      "data": "12/06/2026 22:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
