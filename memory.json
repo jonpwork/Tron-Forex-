@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 601.18,
-      "stop": 599.889783,
-      "alvo": 606.13,
-      "risco": 1.2902169999999842,
-      "rr": 3.8,
-      "data": "13/06/2026 04:10",
-      "status": "win",
-      "resultado": "+3.8R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": 0.0495,
-      "pnl_brl": 0.25,
-      "fechamento": "13/06/2026 08:23"
-    },
-    {
-      "id": 201,
       "symbol": "ADAUSDT",
       "direcao": "up",
       "entrada": 0.171423,
@@ -3378,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 64102.7,
+      "stop": 64038.141899999995,
+      "alvo": 64344.3,
+      "risco": 64.55810000000201,
+      "rr": 3.7,
+      "data": "13/06/2026 15:25",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BULL"
     }
   ],
   "zone_tol": 0.08,
