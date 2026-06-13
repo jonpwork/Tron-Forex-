@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.06487,
-      "stop": 43.016887086000004,
-      "alvo": 43.48234,
-      "risco": 0.04798291399999499,
-      "rr": 8.7,
-      "data": "12/06/2026 21:15",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "FVG_BULL"
     },
     {
@@ -3372,6 +3357,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1668.18,
+      "stop": 1666.052946,
+      "alvo": 1680.88,
+      "risco": 2.1270540000000437,
+      "rr": 6.0,
+      "data": "12/06/2026 21:40",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
