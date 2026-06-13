@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08413,
-      "stop": 0.08403113699999999,
-      "alvo": 0.08442,
-      "risco": 9.886300000000459e-05,
-      "rr": 2.9,
-      "data": "12/06/2026 22:21",
-      "status": "win",
-      "resultado": "+2.9R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": 0.0014,
-      "pnl_brl": 0.01,
-      "fechamento": "12/06/2026 22:36"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1666.91,
@@ -3417,6 +3399,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "down",
+      "entrada": 6.615,
+      "stop": 6.6366423999999995,
+      "alvo": 6.523,
+      "risco": 0.021642399999999284,
+      "rr": 4.3,
+      "data": "12/06/2026 22:48",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
