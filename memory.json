@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.06984,
-      "stop": 43.016887086000004,
-      "alvo": 43.48234,
-      "risco": 0.05295291399999513,
-      "rr": 7.8,
-      "data": "12/06/2026 21:00",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3354,6 +3339,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.752,
+      "stop": 0.749475,
+      "alvo": 0.7614,
+      "risco": 0.0025249999999999995,
+      "rr": 3.7,
+      "data": "12/06/2026 21:26",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
