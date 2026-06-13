@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9777,
-      "stop": 0.97581645,
-      "alvo": 0.9819,
-      "risco": 0.0018835500000000671,
-      "rr": 2.2,
-      "data": "13/06/2026 04:02",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": -0.0019,
-      "pnl_brl": -0.01,
-      "fechamento": "13/06/2026 04:07"
-    },
-    {
-      "id": 201,
       "symbol": "DOGEUSDT",
       "direcao": "up",
       "entrada": 0.0865658,
@@ -3489,6 +3471,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1676.63,
+      "stop": 1674.796821,
+      "alvo": 1685.08,
+      "risco": 1.8331790000002002,
+      "rr": 4.6,
+      "data": "13/06/2026 15:19",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
