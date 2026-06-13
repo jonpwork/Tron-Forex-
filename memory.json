@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.0842,
-      "stop": 0.084021144,
-      "alvo": 0.08529,
-      "risco": 0.00017885599999999113,
-      "rr": 6.1,
-      "data": "12/06/2026 22:01",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "OPUSDT",
       "direcao": "up",
       "entrada": 0.09966,
@@ -3381,6 +3366,21 @@
       "resultado": null,
       "order_id": "f2ba7ef2-58a9-4806-9d22-14c42ca944f0",
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "up",
+      "entrada": 605.09,
+      "stop": 603.996906,
+      "alvo": 608.47,
+      "risco": 1.0930940000000646,
+      "rr": 3.1,
+      "data": "12/06/2026 22:30",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "26d2a881-879d-49ba-a6d2-d879de02727b",
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
