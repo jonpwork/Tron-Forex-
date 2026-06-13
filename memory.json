@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "up",
-      "entrada": 6.698,
-      "stop": 6.6863163,
-      "alvo": 6.767,
-      "risco": 0.01168370000000074,
-      "rr": 5.9,
-      "data": "13/06/2026 16:08",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "LINKUSDT",
       "direcao": "up",
       "entrada": 7.98265,
@@ -3456,6 +3441,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 64178.2,
+      "stop": 64101.59745,
+      "alvo": 64344.3,
+      "risco": 76.60254999999597,
+      "rr": 2.2,
+      "data": "13/06/2026 16:36",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BULL"
     }
   ],
   "zone_tol": 0.08,
