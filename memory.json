@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "TONUSDT",
-      "direcao": "up",
-      "entrada": 1.6808,
-      "stop": 1.67542638,
-      "alvo": 1.7008,
-      "risco": 0.005373620000000079,
-      "rr": 3.7,
-      "data": "12/06/2026 22:00",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3356,6 +3341,21 @@
       "risco": 1.5168160000000626,
       "rr": 3.8,
       "data": "12/06/2026 22:27",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1667.23,
+      "stop": 1665.713184,
+      "alvo": 1685.89,
+      "risco": 1.5168160000000626,
+      "rr": 12.3,
+      "data": "12/06/2026 22:28",
       "status": "aberto",
       "resultado": null,
       "order_id": null,
