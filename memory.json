@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.13403,
-      "stop": 1.132196907,
-      "alvo": 1.14954,
-      "risco": 0.0018330930000001189,
-      "rr": 8.5,
-      "data": "12/06/2026 21:16",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "OPUSDT",
       "direcao": "up",
       "entrada": 0.09985,
@@ -3366,6 +3351,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "down",
+      "entrada": 7.88027,
+      "stop": 7.903910809999999,
+      "alvo": 7.82906,
+      "risco": 0.023640809999998957,
+      "rr": 2.2,
+      "data": "12/06/2026 21:41",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
