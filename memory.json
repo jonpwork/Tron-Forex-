@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "XRPUSDT",
-      "direcao": "down",
-      "entrada": 1.1324,
-      "stop": 1.133833128,
-      "alvo": 1.12949,
-      "risco": 0.0014331279999999502,
-      "rr": 2.0,
-      "data": "13/06/2026 02:38",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "XRPUSDT",
       "direcao": "up",
       "entrada": 1.1324,
       "stop": 1.1290028,
@@ -3417,6 +3402,21 @@
       "resultado": null,
       "order_id": "94e60d72-da9e-481f-81fa-75f5c3beaa65",
       "tipo": "HTF_H4_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "up",
+      "entrada": 1.9799,
+      "stop": 1.9739603,
+      "alvo": 2.0065,
+      "risco": 0.005939700000000103,
+      "rr": 4.5,
+      "data": "13/06/2026 03:04",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
