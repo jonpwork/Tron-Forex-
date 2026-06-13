@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "LINKUSDT",
-      "direcao": "up",
-      "entrada": 7.84573,
-      "stop": 7.823579658,
-      "alvo": 8.0,
-      "risco": 0.022150341999999767,
-      "rr": 7.0,
-      "data": "12/06/2026 20:49",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 7.84573,
       "stop": 7.853323480999999,
@@ -3387,6 +3372,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.9578,
+      "stop": 0.95692968,
+      "alvo": 0.9727,
+      "risco": 0.00087031999999998,
+      "rr": 17.1,
+      "data": "12/06/2026 21:17",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
