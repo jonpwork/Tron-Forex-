@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "APTUSDT",
-      "direcao": "up",
-      "entrada": 0.6493,
-      "stop": 0.6483458400000001,
-      "alvo": 0.6578,
-      "risco": 0.0009541599999999262,
-      "rr": 8.9,
-      "data": "13/06/2026 00:39",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "down",
       "entrada": 1665.24,
@@ -3391,6 +3376,21 @@
       "alvo": 0.10078,
       "risco": 0.0001500279999999965,
       "rr": 4.4,
+      "data": "13/06/2026 01:06",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.0044,
+      "stop": 1.9983868,
+      "alvo": 2.0816,
+      "risco": 0.006013199999999941,
+      "rr": 12.8,
       "data": "13/06/2026 01:06",
       "status": "aberto",
       "resultado": null,
