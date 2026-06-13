@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.0048,
-      "stop": 2.00730413,
-      "alvo": 1.9852,
-      "risco": 0.00250413000000016,
-      "rr": 7.8,
-      "data": "12/06/2026 21:08",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
       "direcao": "up",
       "entrada": 2.0048,
       "stop": 1.99969923,
@@ -3357,6 +3342,21 @@
       "resultado": null,
       "order_id": "272dec05-42da-4506-a4ee-d24b3f1c4b35",
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "down",
+      "entrada": 6.561,
+      "stop": 6.576600399999999,
+      "alvo": 6.523,
+      "risco": 0.015600399999999404,
+      "rr": 2.4,
+      "data": "12/06/2026 21:34",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
