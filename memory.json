@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 1.13747,
       "stop": 1.136074191,
-      "alvo": 1.14954,
-      "risco": 0.0013958089999999146,
-      "rr": 8.6,
-      "data": "12/06/2026 22:30",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.13747,
-      "stop": 1.136074191,
       "alvo": 1.15741,
       "risco": 0.0013958089999999146,
       "rr": 14.3,
@@ -3446,6 +3431,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "2b2e5982-20b9-44d5-9d7e-d8c48c05b106",
+      "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1674.18,
+      "stop": 1672.318557,
+      "alvo": 1690.78,
+      "risco": 1.8614430000000084,
+      "rr": 8.9,
+      "data": "12/06/2026 22:59",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
       "tipo": "BOS_BULL"
     }
   ],
