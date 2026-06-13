@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63478.3,
-      "stop": 63410.18178,
-      "alvo": 63819.7,
-      "risco": 68.11822000000393,
-      "rr": 5.0,
-      "data": "12/06/2026 20:43",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 63478.3,
       "stop": 63535.84398,
@@ -3405,6 +3390,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1666.21,
+      "stop": 1662.525417,
+      "alvo": 1690.78,
+      "risco": 3.684582999999975,
+      "rr": 6.7,
+      "data": "12/06/2026 21:11",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
