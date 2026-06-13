@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1664.75,
-      "stop": 1659.75575,
-      "alvo": 1690.78,
-      "risco": 4.994249999999965,
-      "rr": 5.2,
-      "data": "13/06/2026 00:27",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
       "direcao": "down",
       "entrada": 1664.75,
       "stop": 1667.306298,
@@ -3366,6 +3351,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "up",
+      "entrada": 0.170342,
+      "stop": 0.17009285159999998,
+      "alvo": 0.174296,
+      "risco": 0.00024914840000000993,
+      "rr": 15.9,
+      "data": "13/06/2026 00:54",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
