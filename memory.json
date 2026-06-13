@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.10012,
       "stop": 0.099999951,
-      "alvo": 0.10098,
-      "risco": 0.00012004899999999707,
-      "rr": 7.2,
-      "data": "12/06/2026 22:31",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "OPUSDT",
-      "direcao": "up",
-      "entrada": 0.10012,
-      "stop": 0.099999951,
       "alvo": 0.10078,
       "risco": 0.00012004899999999707,
       "rr": 5.5,
@@ -3447,6 +3432,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_W_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63799.4,
+      "stop": 63908.10438,
+      "alvo": 63686.99999999999,
+      "risco": 108.70437999999558,
+      "rr": 1.0,
+      "data": "12/06/2026 22:59",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_M_SHORT"
     }
   ],
   "zone_tol": 0.08,
