@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "LINKUSDT",
-      "direcao": "up",
-      "entrada": 7.88649,
-      "stop": 7.86283053,
-      "alvo": 7.9695,
-      "risco": 0.023659470000000127,
-      "rr": 3.5,
-      "data": "13/06/2026 02:13",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 7.88649,
       "stop": 7.898214883,
@@ -3396,6 +3381,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "down",
+      "entrada": 0.169878,
+      "stop": 0.17020906299999997,
+      "alvo": 0.169083,
+      "risco": 0.0003310629999999648,
+      "rr": 2.4,
+      "data": "13/06/2026 02:39",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
