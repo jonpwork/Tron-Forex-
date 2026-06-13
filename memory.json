@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 64184.8,
-      "stop": 64244.839929999995,
-      "alvo": 63937.2,
-      "risco": 60.03992999999173,
-      "rr": 4.1,
-      "data": "13/06/2026 16:32",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "2f5f4b4c-01e6-451b-a6e6-720bdd249b69",
-      "tipo": "OB_BEAR",
-      "pnl_usd": -0.06,
-      "pnl_brl": -0.3,
-      "fechamento": "13/06/2026 16:43"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.696,
@@ -3402,6 +3384,21 @@
       "resultado": null,
       "order_id": "24fad89d-1242-4e96-b785-76ca8c8323a4",
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "up",
+      "entrada": 68.25,
+      "stop": 68.032344,
+      "alvo": 68.74,
+      "risco": 0.21765600000000518,
+      "rr": 2.3,
+      "data": "13/06/2026 17:00",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "2c5eac3d-ed99-401b-be50-b77196c21290",
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
