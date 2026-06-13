@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.14509,
-      "stop": 1.143708843,
-      "alvo": 1.15741,
-      "risco": 0.0013811569999999662,
-      "rr": 8.9,
-      "data": "13/06/2026 16:01",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3483,6 +3468,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "up",
+      "entrada": 0.6703,
+      "stop": 0.66923121,
+      "alvo": 0.6759,
+      "risco": 0.0010687900000000417,
+      "rr": 5.2,
+      "data": "13/06/2026 16:27",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
