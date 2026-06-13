@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9628,
-      "stop": 0.96192618,
-      "alvo": 0.9727,
-      "risco": 0.0008738200000000251,
-      "rr": 11.3,
-      "data": "13/06/2026 00:32",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "SOLUSDT",
       "direcao": "up",
       "entrada": 66.82,
@@ -3369,6 +3354,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "down",
+      "entrada": 1.13477,
+      "stop": 1.135944605,
+      "alvo": 1.12949,
+      "risco": 0.0011746049999998842,
+      "rr": 4.5,
+      "data": "13/06/2026 00:58",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
