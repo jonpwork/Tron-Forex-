@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TRXUSDT",
-      "direcao": "down",
-      "entrada": 0.315485,
-      "stop": 0.31577989129999995,
-      "alvo": 0.311,
-      "risco": 0.00029489129999993313,
-      "rr": 15.2,
-      "data": "12/06/2026 21:27",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "DOGEUSDT",
       "direcao": "down",
       "entrada": 0.085951,
@@ -3405,6 +3390,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "down",
+      "entrada": 43.24791,
+      "stop": 43.37765372999999,
+      "alvo": 42.78633,
+      "risco": 0.12974372999999417,
+      "rr": 3.6,
+      "data": "12/06/2026 21:52",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
