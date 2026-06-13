@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.24791,
-      "stop": 43.164313815,
-      "alvo": 43.48234,
-      "risco": 0.08359618499999755,
-      "rr": 2.8,
-      "data": "12/06/2026 21:52",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "XRPUSDT",
       "direcao": "up",
       "entrada": 1.13336,
@@ -3404,6 +3389,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "22050fb5-22a6-4874-a4d9-8773e2744fdd",
+      "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "down",
+      "entrada": 1.13687,
+      "stop": 1.138276236,
+      "alvo": 1.1285,
+      "risco": 0.0014062360000000051,
+      "rr": 6.0,
+      "data": "12/06/2026 22:21",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
       "tipo": "BOS_BEAR"
     }
   ],
