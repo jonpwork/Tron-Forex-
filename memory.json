@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.1473,
-      "stop": 1.146267051,
-      "alvo": 1.15741,
-      "risco": 0.0010329490000000607,
-      "rr": 9.8,
-      "data": "13/06/2026 18:12",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": -0.0103,
-      "pnl_brl": -0.05,
-      "fechamento": "13/06/2026 18:28"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1676.36,
@@ -3414,6 +3396,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "up",
+      "entrada": 0.6705,
+      "stop": 0.66913128,
+      "alvo": 0.6759,
+      "risco": 0.00136871999999999,
+      "rr": 3.9,
+      "data": "13/06/2026 18:39",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
