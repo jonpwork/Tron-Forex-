@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9578,
-      "stop": 0.95692968,
-      "alvo": 0.9727,
-      "risco": 0.00087031999999998,
-      "rr": 17.1,
-      "data": "12/06/2026 21:17",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3366,6 +3351,21 @@
       "resultado": null,
       "order_id": "c31ee24a-eba7-4752-8943-2127cfa27e68",
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "up",
+      "entrada": 0.0860576,
+      "stop": 0.08584416699,
+      "alvo": 0.08689,
+      "risco": 0.0002134330099999998,
+      "rr": 3.9,
+      "data": "12/06/2026 21:42",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
