@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TONUSDT",
-      "direcao": "up",
-      "entrada": 1.6848,
-      "stop": 1.6826213399999999,
-      "alvo": 1.7008,
-      "risco": 0.002178660000000221,
-      "rr": 7.3,
-      "data": "12/06/2026 23:44",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": -0.0022,
-      "pnl_brl": -0.01,
-      "fechamento": "12/06/2026 23:51"
-    },
-    {
-      "id": 201,
       "symbol": "OPUSDT",
       "direcao": "up",
       "entrada": 0.10066,
@@ -3486,6 +3468,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63696.1,
+      "stop": 63756.198119999994,
+      "alvo": 63427.8,
+      "risco": 60.098119999995106,
+      "rr": 4.5,
+      "data": "13/06/2026 00:11",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
