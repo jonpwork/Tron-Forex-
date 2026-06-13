@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "LTCUSDT",
-      "direcao": "up",
-      "entrada": 43.69289,
-      "stop": 43.64792505,
-      "alvo": 44.11452,
-      "risco": 0.04496495000000067,
-      "rr": 9.4,
-      "data": "13/06/2026 16:24",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "DOTUSDT",
       "direcao": "up",
       "entrada": 0.9769,
@@ -3372,6 +3357,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1679.09,
+      "stop": 1681.176,
+      "alvo": 1672.0,
+      "risco": 2.0860000000000127,
+      "rr": 3.4,
+      "data": "13/06/2026 16:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "b8fe3403-b8b0-477f-9584-380b13299e51",
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
