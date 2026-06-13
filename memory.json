@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "up",
-      "entrada": 1.9644,
-      "stop": 1.9585067999999999,
-      "alvo": 2.0163,
-      "risco": 0.005893200000000043,
-      "rr": 8.8,
-      "data": "13/06/2026 15:34",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "SOLUSDT",
       "direcao": "down",
       "entrada": 68.28,
@@ -3531,6 +3516,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "TRXUSDT",
+      "direcao": "down",
+      "entrada": 0.317321,
+      "stop": 0.3176131737,
+      "alvo": 0.311,
+      "risco": 0.0002921736999999536,
+      "rr": 21.6,
+      "data": "13/06/2026 16:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_SHORT"
     }
   ],
   "zone_tol": 0.08,
