@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9578,
-      "stop": 0.95692968,
-      "alvo": 0.9727,
-      "risco": 0.00087031999999998,
-      "rr": 17.1,
-      "data": "12/06/2026 21:30",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "HTF_H4_LONG"
     },
     {
@@ -3383,6 +3368,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "d8ede87f-75c3-4229-8041-f7ae175a0893",
+      "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1666.29,
+      "stop": 1662.525417,
+      "alvo": 1685.89,
+      "risco": 3.7645829999999023,
+      "rr": 5.2,
+      "data": "12/06/2026 21:54",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
       "tipo": "BOS_BULL"
     }
   ],
