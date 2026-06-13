@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOGEUSDT",
-      "direcao": "up",
-      "entrada": 0.0862456,
-      "stop": 0.08614765440000001,
-      "alvo": 0.08689,
-      "risco": 9.794559999999619e-05,
-      "rr": 6.6,
-      "data": "13/06/2026 01:24",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "down",
       "entrada": 600.83,
@@ -3378,6 +3363,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "up",
+      "entrada": 600.83,
+      "stop": 599.110329,
+      "alvo": 606.13,
+      "risco": 1.7196710000000621,
+      "rr": 3.1,
+      "data": "13/06/2026 01:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
