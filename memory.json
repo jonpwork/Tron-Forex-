@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1665.24,
-      "stop": 1667.306298,
-      "alvo": 1653.18,
-      "risco": 2.0662979999999607,
-      "rr": 5.8,
-      "data": "13/06/2026 00:39",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.583,
@@ -3396,6 +3381,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "down",
+      "entrada": 0.6519,
+      "stop": 0.65275661,
+      "alvo": 0.6406,
+      "risco": 0.0008566099999999244,
+      "rr": 13.2,
+      "data": "13/06/2026 01:06",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
