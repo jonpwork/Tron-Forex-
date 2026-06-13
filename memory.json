@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "up",
-      "entrada": 2.1135,
-      "stop": 2.1095223,
-      "alvo": 2.1583,
-      "risco": 0.003977700000000084,
-      "rr": 11.3,
-      "data": "13/06/2026 15:17",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.699,
@@ -3408,6 +3393,21 @@
       "resultado": null,
       "order_id": "405bc859-4052-40d3-9f98-5e7cc2670681",
       "tipo": "OB_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "down",
+      "entrada": 68.35,
+      "stop": 68.55504999999998,
+      "alvo": 67.85,
+      "risco": 0.20504999999998574,
+      "rr": 2.4,
+      "data": "13/06/2026 15:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
