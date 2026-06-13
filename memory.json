@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "TRXUSDT",
-      "direcao": "up",
-      "entrada": 0.317321,
-      "stop": 0.3169559754,
-      "alvo": 0.3226,
-      "risco": 0.0003650246000000412,
-      "rr": 14.5,
-      "data": "13/06/2026 16:03",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "TRXUSDT",
       "direcao": "down",
       "entrada": 0.317321,
       "stop": 0.3176131737,
@@ -3471,6 +3456,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "TRXUSDT",
+      "direcao": "up",
+      "entrada": 0.317825,
+      "stop": 0.3172807479,
+      "alvo": 0.3226,
+      "risco": 0.0005442521000000311,
+      "rr": 8.8,
+      "data": "13/06/2026 16:30",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
