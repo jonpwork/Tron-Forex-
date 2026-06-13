@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1674.21,
-      "stop": 1676.9530459999999,
-      "alvo": 1671.2,
-      "risco": 2.743045999999822,
-      "rr": 1.1,
-      "data": "12/06/2026 23:05",
-      "status": "win",
-      "resultado": "+1.1R",
-      "order_id": null,
-      "tipo": "M1_M_SHORT",
-      "pnl_usd": 0.0301,
-      "pnl_brl": 0.15,
-      "fechamento": "12/06/2026 23:28"
-    },
-    {
-      "id": 201,
       "symbol": "ADAUSDT",
       "direcao": "up",
       "entrada": 0.172907,
@@ -3471,6 +3453,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0139,
+      "stop": 2.01881218,
+      "alvo": 1.9852,
+      "risco": 0.004912179999999822,
+      "rr": 5.8,
+      "data": "12/06/2026 23:32",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
