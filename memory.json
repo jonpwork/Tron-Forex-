@@ -328,21 +328,6 @@
       "direcao": "down",
       "entrada": 2.1296,
       "stop": 2.1320914199999996,
-      "alvo": 2.0858103999999997,
-      "risco": 0.002491419999999689,
-      "rr": 17.6,
-      "data": "13/06/2026 16:47",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FIB_1.272_SHORT"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.1296,
-      "stop": 2.1320914199999996,
       "alvo": 2.0889,
       "risco": 0.002491419999999689,
       "rr": 16.3,
@@ -3501,6 +3486,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "TONUSDT",
+      "direcao": "up",
+      "entrada": 1.7366,
+      "stop": 1.7316869700000002,
+      "alvo": 1.7718,
+      "risco": 0.004913029999999763,
+      "rr": 7.2,
+      "data": "13/06/2026 17:18",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
