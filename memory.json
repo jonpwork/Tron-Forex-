@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.7496,
-      "stop": 0.7485756299999999,
-      "alvo": 0.7614,
-      "risco": 0.0010243700000001077,
-      "rr": 11.5,
-      "data": "13/06/2026 03:28",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "ARBUSDT",
       "direcao": "up",
       "entrada": 0.084,
@@ -3485,6 +3470,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "e09d2a04-7f2d-4db7-a4be-17cfa8657877",
+      "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "up",
+      "entrada": 1.9838,
+      "stop": 1.97991309,
+      "alvo": 2.0065,
+      "risco": 0.0038869100000000767,
+      "rr": 5.8,
+      "data": "13/06/2026 04:02",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
       "tipo": "HTF_H1_LONG"
     }
   ],
