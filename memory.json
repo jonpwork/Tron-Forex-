@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.0327,
-      "stop": 2.0387981,
-      "alvo": 2.0176,
-      "risco": 0.006098099999999995,
-      "rr": 2.5,
-      "data": "13/06/2026 00:12",
-      "status": "win",
-      "resultado": "+2.5R",
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT",
-      "pnl_usd": 0.0302,
-      "pnl_brl": 0.15,
-      "fechamento": "13/06/2026 00:25"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
       "direcao": "up",
       "entrada": 2.0327,
       "stop": 2.0096922299999997,
@@ -3507,6 +3489,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.7497,
+      "stop": 0.74827584,
+      "alvo": 0.7614,
+      "risco": 0.0014241600000000076,
+      "rr": 8.2,
+      "data": "13/06/2026 00:39",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
