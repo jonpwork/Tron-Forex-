@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SOLUSDT",
-      "direcao": "down",
-      "entrada": 66.77,
-      "stop": 66.836753,
-      "alvo": 66.63,
-      "risco": 0.06675300000000561,
-      "rr": 2.1,
-      "data": "13/06/2026 03:07",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "ADAUSDT",
       "direcao": "down",
       "entrada": 0.169818,
@@ -3466,6 +3451,21 @@
       "alvo": 0.0855451,
       "risco": 0.00025911659999998393,
       "rr": 3.2,
+      "data": "13/06/2026 03:35",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "down",
+      "entrada": 0.170273,
+      "stop": 0.17042921699999997,
+      "alvo": 0.169083,
+      "risco": 0.00015621699999995853,
+      "rr": 7.6,
       "data": "13/06/2026 03:35",
       "status": "aberto",
       "resultado": null,
