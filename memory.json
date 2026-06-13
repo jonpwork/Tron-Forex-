@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SOLUSDT",
-      "direcao": "down",
-      "entrada": 67.44,
-      "stop": 67.64231999999998,
-      "alvo": 66.49,
-      "risco": 0.20231999999998607,
-      "rr": 4.7,
-      "data": "12/06/2026 22:46",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "60825f27-bc6e-468b-a1d1-2d2d460585f6",
-      "tipo": "FVG_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "XRPUSDT",
       "direcao": "up",
       "entrada": 1.13946,
@@ -3357,6 +3342,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "TRXUSDT",
+      "direcao": "down",
+      "entrada": 0.315389,
+      "stop": 0.31570183669999996,
+      "alvo": 0.311,
+      "risco": 0.0003128366999999854,
+      "rr": 14.0,
+      "data": "12/06/2026 23:14",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_SHORT"
     }
   ],
   "zone_tol": 0.08,
