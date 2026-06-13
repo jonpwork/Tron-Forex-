@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "LINKUSDT",
-      "direcao": "up",
-      "entrada": 8.02046,
-      "stop": 7.9914920369999995,
-      "alvo": 8.11447,
-      "risco": 0.028967963000000374,
-      "rr": 3.2,
-      "data": "13/06/2026 15:12",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 8.02046,
       "stop": 8.044521379999999,
@@ -3414,6 +3399,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "EW_ABC_LEG_B_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 43.76363,
+      "stop": 43.67867351099999,
+      "alvo": 44.11452,
+      "risco": 0.08495648900000674,
+      "rr": 4.1,
+      "data": "13/06/2026 15:40",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
