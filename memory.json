@@ -2150,10 +2150,13 @@
       "risco": 62.782179999994696,
       "rr": 2.6,
       "data": "13/06/2026 15:52",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "OB_BEAR"
+      "tipo": "OB_BEAR",
+      "pnl_usd": -0.0628,
+      "pnl_brl": -0.32,
+      "fechamento": "13/06/2026 16:04"
     },
     {
       "id": 201,
