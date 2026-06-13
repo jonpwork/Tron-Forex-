@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "DOGEUSDT",
-      "direcao": "down",
-      "entrada": 0.0861754,
-      "stop": 0.08626044007,
-      "alvo": 0.0855451,
-      "risco": 8.504007000000036e-05,
-      "rr": 7.4,
-      "data": "13/06/2026 03:10",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT",
-      "pnl_usd": -0.0085,
-      "pnl_brl": -0.04,
-      "fechamento": "13/06/2026 03:37"
-    },
-    {
-      "id": 201,
-      "symbol": "DOGEUSDT",
       "direcao": "up",
       "entrada": 0.0861754,
       "stop": 0.08605931628,
@@ -3519,6 +3501,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "down",
+      "entrada": 7.89836,
+      "stop": 7.92205508,
+      "alvo": 7.84002,
+      "risco": 0.023695079999999535,
+      "rr": 2.5,
+      "data": "13/06/2026 03:39",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
