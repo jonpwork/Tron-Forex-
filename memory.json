@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1668.09,
-      "stop": 1670.1883139999998,
-      "alvo": 1653.18,
-      "risco": 2.0983139999998457,
-      "rr": 7.1,
-      "data": "12/06/2026 22:05",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "5d8cf5a8-75f9-4d7a-b71a-e58488ca817e",
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "ARBUSDT",
       "direcao": "up",
       "entrada": 0.08419,
@@ -3393,6 +3378,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.966,
+      "stop": 0.9650240099999999,
+      "alvo": 0.9727,
+      "risco": 0.0009759900000000377,
+      "rr": 6.9,
+      "data": "12/06/2026 22:34",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
