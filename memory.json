@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ADAUSDT",
-      "direcao": "up",
-      "entrada": 0.172691,
-      "stop": 0.1720155048,
-      "alvo": 0.174205,
-      "risco": 0.0006754952000000147,
-      "rr": 2.2,
-      "data": "13/06/2026 15:15",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1676.61,
@@ -3406,6 +3391,21 @@
       "alvo": 0.1125,
       "risco": 0.000235761000000001,
       "rr": 17.4,
+      "data": "13/06/2026 15:43",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.7693,
+      "stop": 0.76786212,
+      "alvo": 0.7768,
+      "risco": 0.0014378800000000025,
+      "rr": 5.2,
       "data": "13/06/2026 15:43",
       "status": "aberto",
       "resultado": null,
