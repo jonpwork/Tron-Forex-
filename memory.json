@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TRXUSDT",
-      "direcao": "down",
-      "entrada": 0.315247,
-      "stop": 0.31561977929999996,
-      "alvo": 0.311,
-      "risco": 0.00037277929999995907,
-      "rr": 11.4,
-      "data": "12/06/2026 21:12",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "NEARUSDT",
       "direcao": "up",
       "entrada": 2.0012,
@@ -3372,6 +3357,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1668.21,
+      "stop": 1670.1883139999998,
+      "alvo": 1659.58,
+      "risco": 1.9783139999997275,
+      "rr": 4.4,
+      "data": "12/06/2026 21:37",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
