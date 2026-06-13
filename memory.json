@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1679.73,
-      "stop": 1680.3854469999999,
-      "alvo": 1677.5,
-      "risco": 0.6554469999998673,
-      "rr": 3.4,
-      "data": "13/06/2026 16:44",
-      "status": "win",
-      "resultado": "+3.4R",
-      "order_id": "f5c5d5ea-ded1-4f4f-b8d8-5fd6b66afd9f",
-      "tipo": "EW_W2_SHORT",
-      "pnl_usd": 0.0223,
-      "pnl_brl": 0.11,
-      "fechamento": "13/06/2026 17:10"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1679.73,
       "stop": 1677.584868,
@@ -3546,6 +3528,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.1063,
+      "stop": 2.1322915599999996,
+      "alvo": 2.0650000000000004,
+      "risco": 0.02599155999999958,
+      "rr": 1.6,
+      "data": "13/06/2026 17:14",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_M_SHORT"
     }
   ],
   "zone_tol": 0.08,
