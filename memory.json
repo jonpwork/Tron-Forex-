@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TRXUSDT",
-      "direcao": "down",
-      "entrada": 0.315434,
-      "stop": 0.315740864,
-      "alvo": 0.311,
-      "risco": 0.0003068640000000178,
-      "rr": 14.4,
-      "data": "13/06/2026 03:43",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_SHORT",
-      "pnl_usd": -0.0153,
-      "pnl_brl": -0.08,
-      "fechamento": "13/06/2026 05:48"
-    },
-    {
-      "id": 201,
       "symbol": "DOGEUSDT",
       "direcao": "down",
       "entrada": 0.0864242,
@@ -3738,6 +3720,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.1144,
+      "stop": 2.11182069,
+      "alvo": 2.1583,
+      "risco": 0.0025793099999997793,
+      "rr": 17.0,
+      "data": "13/06/2026 15:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
