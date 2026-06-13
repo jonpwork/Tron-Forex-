@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 63621.3,
       "stop": 63501.11807999999,
-      "alvo": 63863.4,
-      "risco": 120.18192000001,
-      "rr": 2.0,
-      "data": "13/06/2026 01:42",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "OB_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63621.3,
-      "stop": 63501.11807999999,
       "alvo": 64391.0,
       "risco": 120.18192000001,
       "rr": 6.4,
@@ -3435,6 +3420,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "up",
+      "entrada": 7.9048,
+      "stop": 7.8871651169999994,
+      "alvo": 7.9695,
+      "risco": 0.01763488300000038,
+      "rr": 3.7,
+      "data": "13/06/2026 02:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
