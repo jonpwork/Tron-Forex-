@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "DOTUSDT",
-      "direcao": "up",
-      "entrada": 0.9666,
-      "stop": 0.9653238,
-      "alvo": 0.9727,
-      "risco": 0.0012762000000000606,
-      "rr": 4.8,
-      "data": "12/06/2026 23:47",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": -0.0013,
-      "pnl_brl": -0.01,
-      "fechamento": "12/06/2026 23:56"
-    },
-    {
-      "id": 201,
       "symbol": "TRXUSDT",
       "direcao": "down",
       "entrada": 0.314823,
@@ -3444,6 +3426,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "up",
+      "entrada": 0.6526,
+      "stop": 0.6510439499999999,
+      "alvo": 0.6578,
+      "risco": 0.001556050000000031,
+      "rr": 3.3,
+      "data": "13/06/2026 00:13",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
