@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.13804,
-      "stop": 1.13360592,
-      "alvo": 1.14954,
-      "risco": 0.004434080000000007,
-      "rr": 2.6,
-      "data": "13/06/2026 03:55",
-      "status": "win",
-      "resultado": "+2.6R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": 0.115,
-      "pnl_brl": 0.58,
-      "fechamento": "13/06/2026 09:29"
-    },
-    {
-      "id": 201,
-      "symbol": "XRPUSDT",
       "direcao": "down",
       "entrada": 1.13804,
       "stop": 1.14145412,
@@ -3594,6 +3576,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.1152,
+      "stop": 2.11160936,
+      "alvo": 2.1187906400000003,
+      "risco": 0.0035906400000000893,
+      "rr": 1.0,
+      "data": "13/06/2026 15:13",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_TRI_E_LONG"
     }
   ],
   "zone_tol": 0.08,
