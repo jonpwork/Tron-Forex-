@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "LINKUSDT",
-      "direcao": "up",
-      "entrada": 7.88803,
-      "stop": 7.875713139,
-      "alvo": 7.93229,
-      "risco": 0.012316860999999513,
-      "rr": 3.6,
-      "data": "13/06/2026 02:56",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 7.88803,
       "stop": 7.898214883,
@@ -3369,6 +3354,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "up",
+      "entrada": 1.9834,
+      "stop": 1.97991309,
+      "alvo": 2.0065,
+      "risco": 0.0034869100000001207,
+      "rr": 6.6,
+      "data": "13/06/2026 03:24",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
