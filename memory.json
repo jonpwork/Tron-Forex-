@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08396,
-      "stop": 0.083701368,
-      "alvo": 0.08454,
-      "risco": 0.00025863200000000863,
-      "rr": 2.2,
-      "data": "12/06/2026 21:32",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "NEARUSDT",
       "direcao": "up",
       "entrada": 1.9962,
@@ -3378,6 +3363,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63562.8,
+      "stop": 63635.513699999996,
+      "alvo": 62918.5,
+      "risco": 72.71369999999297,
+      "rr": 8.9,
+      "data": "12/06/2026 21:56",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
