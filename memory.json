@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "NEARUSDT",
-      "direcao": "up",
-      "entrada": 2.1186,
-      "stop": 2.11591782,
-      "alvo": 2.1883,
-      "risco": 0.0026821799999998674,
-      "rr": 26.0,
-      "data": "13/06/2026 16:27",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "OB_BULL",
-      "pnl_usd": -0.0054,
-      "pnl_brl": -0.03,
-      "fechamento": "13/06/2026 16:32"
-    },
-    {
-      "id": 201,
-      "symbol": "NEARUSDT",
       "direcao": "down",
       "entrada": 2.1186,
       "stop": 2.12388568,
@@ -3387,6 +3369,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "down",
+      "entrada": 8.00406,
+      "stop": 8.011684256,
+      "alvo": 7.9525,
+      "risco": 0.007624255999999718,
+      "rr": 6.8,
+      "data": "13/06/2026 16:55",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
