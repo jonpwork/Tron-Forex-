@@ -334,21 +334,6 @@
       "data": "13/06/2026 17:26",
       "status": "aberto",
       "resultado": null,
-      "order_id": "5af064e2-a75f-485b-a3e9-f93f16453b12",
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 64256.7,
-      "stop": 64197.23045999999,
-      "alvo": 64391.0,
-      "risco": 59.46954000000551,
-      "rr": 2.3,
-      "data": "13/06/2026 17:26",
-      "status": "aberto",
-      "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
     },
@@ -3381,6 +3366,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.7633,
+      "stop": 0.7624659,
+      "alvo": 0.7698,
+      "risco": 0.0008340999999999488,
+      "rr": 7.8,
+      "data": "13/06/2026 17:53",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
