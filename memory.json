@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.1482,
-      "stop": 1.145427639,
-      "alvo": 1.15741,
-      "risco": 0.002772361000000112,
-      "rr": 3.3,
-      "data": "13/06/2026 16:45",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3522,6 +3507,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "TRXUSDT",
+      "direcao": "down",
+      "entrada": 0.318055,
+      "stop": 0.3183466868,
+      "alvo": 0.311,
+      "risco": 0.0002916868000000239,
+      "rr": 24.2,
+      "data": "13/06/2026 17:14",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_SHORT"
     }
   ],
   "zone_tol": 0.08,
