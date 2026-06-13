@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.1004,
-      "stop": 2.1322915599999996,
-      "alvo": 2.0650000000000004,
-      "risco": 0.0318915599999996,
-      "rr": 1.1,
-      "data": "13/06/2026 17:10",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "M1_M_SHORT"
-    },
-    {
-      "id": 201,
       "symbol": "TONUSDT",
       "direcao": "up",
       "entrada": 1.737,
@@ -3441,6 +3426,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "up",
+      "entrada": 2.101,
+      "stop": 2.0971309799999998,
+      "alvo": 2.1184,
+      "risco": 0.003869020000000223,
+      "rr": 4.5,
+      "data": "13/06/2026 17:39",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
