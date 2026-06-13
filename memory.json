@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 600.83,
-      "stop": 599.110329,
-      "alvo": 606.13,
-      "risco": 1.7196710000000621,
-      "rr": 3.1,
-      "data": "13/06/2026 01:27",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "LTCUSDT",
       "direcao": "up",
       "entrada": 43.32475,
@@ -3372,6 +3357,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "down",
+      "entrada": 1.13562,
+      "stop": 1.137385613,
+      "alvo": 1.12949,
+      "risco": 0.0017656129999998882,
+      "rr": 3.5,
+      "data": "13/06/2026 01:54",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.08,
