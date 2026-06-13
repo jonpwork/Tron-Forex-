@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TONUSDT",
-      "direcao": "up",
-      "entrada": 1.7547,
-      "stop": 1.75217262,
-      "alvo": 1.7718,
-      "risco": 0.002527379999999857,
-      "rr": 6.8,
-      "data": "13/06/2026 16:28",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": -0.0025,
-      "pnl_brl": -0.01,
-      "fechamento": "13/06/2026 16:50"
-    },
-    {
-      "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 64178.6,
@@ -3378,6 +3360,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "APTUSDT",
+      "direcao": "up",
+      "entrada": 0.672,
+      "stop": 0.6708300899999999,
+      "alvo": 0.6755,
+      "risco": 0.0011699100000001073,
+      "rr": 3.0,
+      "data": "13/06/2026 16:55",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
