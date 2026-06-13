@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 609.22,
-      "stop": 608.313882,
-      "alvo": 611.36,
-      "risco": 0.9061179999999922,
-      "rr": 2.4,
-      "data": "13/06/2026 17:35",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "FVG_BULL"
     },
     {
@@ -3363,6 +3348,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 64284.9,
+      "stop": 64368.026099999995,
+      "alvo": 63937.2,
+      "risco": 83.12609999999404,
+      "rr": 4.2,
+      "data": "13/06/2026 18:02",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
