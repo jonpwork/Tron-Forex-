@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.7693,
-      "stop": 0.76786212,
-      "alvo": 0.7768,
-      "risco": 0.0014378800000000025,
-      "rr": 5.2,
-      "data": "13/06/2026 15:43",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": -0.0072,
-      "pnl_brl": -0.04,
-      "fechamento": "13/06/2026 15:55"
-    },
-    {
-      "id": 201,
       "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 8.00959,
@@ -3435,6 +3417,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 64173.0,
+      "stop": 64238.93579999999,
+      "alvo": 63937.2,
+      "risco": 65.93579999999201,
+      "rr": 3.6,
+      "data": "13/06/2026 16:12",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
