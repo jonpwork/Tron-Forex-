@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63696.1,
-      "stop": 63636.52323,
-      "alvo": 63863.4,
-      "risco": 59.57676999999967,
-      "rr": 2.8,
-      "data": "13/06/2026 00:11",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "OB_BULL",
-      "pnl_usd": -0.0596,
-      "pnl_brl": -0.3,
-      "fechamento": "13/06/2026 00:25"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 63696.1,
       "stop": 63756.198119999994,
@@ -3528,6 +3510,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.0143,
+      "stop": 2.0359241499999996,
+      "alvo": 1.9834999999999998,
+      "risco": 0.02162414999999962,
+      "rr": 1.4,
+      "data": "13/06/2026 00:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_M_SHORT"
     }
   ],
   "zone_tol": 0.08,
