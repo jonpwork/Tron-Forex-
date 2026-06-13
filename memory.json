@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.0139,
-      "stop": 2.01881218,
-      "alvo": 1.9973,
-      "risco": 0.004912179999999822,
-      "rr": 3.4,
-      "data": "12/06/2026 23:32",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1670.21,
@@ -3549,6 +3534,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "down",
+      "entrada": 2.0159,
+      "stop": 2.0219476999999997,
+      "alvo": 1.9825,
+      "risco": 0.006047699999999878,
+      "rr": 5.5,
+      "data": "12/06/2026 23:59",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
