@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 608.74,
       "stop": 607.684323,
-      "alvo": 613.13,
-      "risco": 1.0556770000000597,
-      "rr": 4.2,
-      "data": "13/06/2026 15:41",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 608.74,
-      "stop": 607.684323,
       "alvo": 611.36,
       "risco": 1.0556770000000597,
       "rr": 2.5,
@@ -3462,6 +3447,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 43.72528,
+      "stop": 43.64792505,
+      "alvo": 44.11452,
+      "risco": 0.07735495000000014,
+      "rr": 5.0,
+      "data": "13/06/2026 16:11",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
