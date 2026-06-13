@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "up",
-      "entrada": 2.0072,
-      "stop": 2.0031967799999997,
-      "alvo": 2.0293,
-      "risco": 0.004003220000000418,
-      "rr": 5.5,
-      "data": "12/06/2026 23:08",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": -0.004,
-      "pnl_brl": -0.02,
-      "fechamento": "12/06/2026 23:16"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 605.5,
@@ -3456,6 +3438,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 43.29566,
+      "stop": 43.255519926,
+      "alvo": 43.52098,
+      "risco": 0.04014007399999997,
+      "rr": 5.6,
+      "data": "12/06/2026 23:35",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BULL"
     }
   ],
   "zone_tol": 0.08,
