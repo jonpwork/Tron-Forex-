@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.7641,
-      "stop": 0.76306548,
-      "alvo": 0.7698,
-      "risco": 0.0010345200000000387,
-      "rr": 5.5,
-      "data": "13/06/2026 17:58",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": -0.0052,
-      "pnl_brl": -0.03,
-      "fechamento": "13/06/2026 18:13"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.715,
@@ -3399,6 +3381,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "down",
+      "entrada": 1.9538,
+      "stop": 1.9615721399999997,
+      "alvo": 1.9331,
+      "risco": 0.007772139999999705,
+      "rr": 2.7,
+      "data": "13/06/2026 18:26",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
