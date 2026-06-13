@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1668.21,
-      "stop": 1666.052946,
-      "alvo": 1672.96,
-      "risco": 2.1570540000000165,
-      "rr": 2.2,
-      "data": "12/06/2026 21:37",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "APTUSDT",
       "direcao": "up",
       "entrada": 0.6401,
@@ -3387,6 +3372,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.13484,
+      "stop": 1.1337058500000001,
+      "alvo": 1.14954,
+      "risco": 0.001134149999999945,
+      "rr": 13.0,
+      "data": "12/06/2026 22:03",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
