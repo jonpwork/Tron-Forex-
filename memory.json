@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 63524.7,
       "stop": 63455.549999999996,
-      "alvo": 63819.7,
-      "risco": 69.15000000000146,
-      "rr": 4.3,
-      "data": "13/06/2026 02:02",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63524.7,
-      "stop": 63455.549999999996,
       "alvo": 63900.0,
       "risco": 69.15000000000146,
       "rr": 5.4,
@@ -3387,6 +3372,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "up",
+      "entrada": 6.586,
+      "stop": 6.5773926,
+      "alvo": 6.66,
+      "risco": 0.008607400000000709,
+      "rr": 8.6,
+      "data": "13/06/2026 02:29",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
