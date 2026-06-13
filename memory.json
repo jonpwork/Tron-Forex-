@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "SOLUSDT",
-      "direcao": "down",
-      "entrada": 67.14,
-      "stop": 67.217019,
-      "alvo": 66.49,
-      "risco": 0.07701899999999284,
-      "rr": 8.4,
-      "data": "12/06/2026 23:26",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "FVG_BEAR"
-    },
-    {
-      "id": 201,
-      "symbol": "SOLUSDT",
       "direcao": "up",
       "entrada": 67.14,
       "stop": 67.073016,
@@ -3453,6 +3438,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.13449,
+      "stop": 1.13108653,
+      "alvo": 1.14954,
+      "risco": 0.003403470000000075,
+      "rr": 4.4,
+      "data": "12/06/2026 23:52",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
