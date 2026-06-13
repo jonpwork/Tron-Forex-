@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.7699,
-      "stop": 0.76776219,
-      "alvo": 0.7768,
-      "risco": 0.0021378100000000178,
-      "rr": 3.2,
-      "data": "13/06/2026 15:28",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": -0.0107,
-      "pnl_brl": -0.05,
-      "fechamento": "13/06/2026 15:54"
-    },
-    {
-      "id": 201,
       "symbol": "TONUSDT",
       "direcao": "up",
       "entrada": 1.7414,
@@ -3486,6 +3468,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.7651,
+      "stop": 0.7639648499999999,
+      "alvo": 0.7698,
+      "risco": 0.0011351500000000847,
+      "rr": 4.1,
+      "data": "13/06/2026 15:59",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
