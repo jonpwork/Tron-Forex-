@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 64158.6,
-      "stop": 64053.83091,
-      "alvo": 64391.0,
-      "risco": 104.7690900000016,
-      "rr": 2.2,
-      "data": "13/06/2026 15:29",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.708,
@@ -3570,6 +3555,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.14509,
+      "stop": 1.143708843,
+      "alvo": 1.14954,
+      "risco": 0.0013811569999999662,
+      "rr": 3.2,
+      "data": "13/06/2026 16:01",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
