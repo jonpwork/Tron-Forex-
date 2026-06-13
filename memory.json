@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.13449,
-      "stop": 1.13108653,
-      "alvo": 1.14954,
-      "risco": 0.003403470000000075,
-      "rr": 4.4,
-      "data": "12/06/2026 23:52",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3408,6 +3393,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63660.7,
+      "stop": 63738.785939999994,
+      "alvo": 63413.4,
+      "risco": 78.08593999999721,
+      "rr": 3.2,
+      "data": "13/06/2026 00:18",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
