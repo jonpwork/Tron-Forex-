@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08433,
-      "stop": 0.08403113699999999,
-      "alvo": 0.08529,
-      "risco": 0.0002988630000000103,
-      "rr": 3.2,
-      "data": "12/06/2026 22:12",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3366,6 +3351,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "up",
+      "entrada": 43.29656,
+      "stop": 43.217636463,
+      "alvo": 43.48234,
+      "risco": 0.07892353700000143,
+      "rr": 2.4,
+      "data": "12/06/2026 22:39",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
