@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SUIUSDT",
-      "direcao": "up",
-      "entrada": 0.75,
-      "stop": 0.74927514,
-      "alvo": 0.7614,
-      "risco": 0.0007248600000000494,
-      "rr": 15.7,
-      "data": "13/06/2026 01:30",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "APTUSDT",
       "direcao": "down",
       "entrada": 0.654,
@@ -3351,6 +3336,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "TONUSDT",
+      "direcao": "up",
+      "entrada": 1.6704,
+      "stop": 1.6683313499999999,
+      "alvo": 1.7008,
+      "risco": 0.0020686500000002273,
+      "rr": 14.7,
+      "data": "13/06/2026 01:57",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
