@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 1.1326,
       "stop": 1.1315373690000001,
-      "alvo": 1.13682,
-      "risco": 0.001062630999999925,
-      "rr": 4.0,
-      "data": "13/06/2026 02:21",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.1326,
-      "stop": 1.1315373690000001,
       "alvo": 1.14954,
       "risco": 0.001062630999999925,
       "rr": 15.9,
@@ -3369,6 +3354,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "TONUSDT",
+      "direcao": "up",
+      "entrada": 1.6616,
+      "stop": 1.6566152,
+      "alvo": 1.7008,
+      "risco": 0.0049847999999999,
+      "rr": 7.9,
+      "data": "13/06/2026 02:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
