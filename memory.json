@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "SOLUSDT",
-      "direcao": "up",
-      "entrada": 68.15,
-      "stop": 68.072316,
-      "alvo": 68.74,
-      "risco": 0.07768400000000497,
-      "rr": 7.6,
-      "data": "13/06/2026 16:05",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "pnl_usd": -0.0078,
-      "pnl_brl": -0.04,
-      "fechamento": "13/06/2026 16:22"
-    },
-    {
-      "id": 201,
       "symbol": "ADAUSDT",
       "direcao": "up",
       "entrada": 0.172242,
@@ -3459,6 +3441,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "EW_W2_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1677.55,
+      "stop": 1679.4147679999999,
+      "alvo": 1672.0,
+      "risco": 1.8647679999999127,
+      "rr": 3.0,
+      "data": "13/06/2026 16:31",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
