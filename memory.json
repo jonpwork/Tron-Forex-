@@ -325,21 +325,6 @@
     {
       "id": 201,
       "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63555.8,
-      "stop": 63485.22921,
-      "alvo": 63900.0,
-      "risco": 70.57079000000522,
-      "rr": 4.9,
-      "data": "13/06/2026 01:31",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
       "direcao": "down",
       "entrada": 63555.8,
       "stop": 63624.606069999994,
@@ -3390,6 +3375,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LTCUSDT",
+      "direcao": "down",
+      "entrada": 43.33385,
+      "stop": 43.375151367,
+      "alvo": 43.22969,
+      "risco": 0.04130136700000264,
+      "rr": 2.5,
+      "data": "13/06/2026 02:00",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.08,
