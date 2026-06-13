@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ADAUSDT",
-      "direcao": "up",
-      "entrada": 0.170294,
-      "stop": 0.17007086700000001,
-      "alvo": 0.174296,
-      "risco": 0.00022313299999998648,
-      "rr": 17.9,
-      "data": "13/06/2026 00:31",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H4_LONG"
-    },
-    {
-      "id": 201,
       "symbol": "LTCUSDT",
       "direcao": "up",
       "entrada": 43.24489,
@@ -3354,6 +3339,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63514.5,
+      "stop": 63455.549999999996,
+      "alvo": 63863.4,
+      "risco": 58.950000000004366,
+      "rr": 5.9,
+      "data": "13/06/2026 00:56",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BULL"
     }
   ],
   "zone_tol": 0.08,
