@@ -325,24 +325,6 @@
     {
       "id": 201,
       "symbol": "ADAUSDT",
-      "direcao": "down",
-      "entrada": 0.17078,
-      "stop": 0.17129233999999996,
-      "alvo": 0.169083,
-      "risco": 0.0005123399999999723,
-      "rr": 3.3,
-      "data": "13/06/2026 03:47",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT",
-      "pnl_usd": -0.0102,
-      "pnl_brl": -0.05,
-      "fechamento": "13/06/2026 03:56"
-    },
-    {
-      "id": 201,
-      "symbol": "ADAUSDT",
       "direcao": "up",
       "entrada": 0.17078,
       "stop": 0.170520552,
@@ -3699,6 +3681,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.14451,
+      "stop": 1.142909403,
+      "alvo": 1.14954,
+      "risco": 0.0016005969999999259,
+      "rr": 3.1,
+      "data": "13/06/2026 15:07",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
