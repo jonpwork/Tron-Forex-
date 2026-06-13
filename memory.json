@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BNBUSDT",
-      "direcao": "up",
-      "entrada": 601.05,
-      "stop": 599.110329,
-      "alvo": 606.13,
-      "risco": 1.9396709999999757,
-      "rr": 2.6,
-      "data": "13/06/2026 00:49",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "ATOMUSDT",
       "direcao": "down",
       "entrada": 1.9968,
@@ -3462,6 +3447,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1664.27,
+      "stop": 1662.6952979999999,
+      "alvo": 1675.78,
+      "risco": 1.5747020000001157,
+      "rr": 7.3,
+      "data": "13/06/2026 01:17",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BULL"
     }
   ],
   "zone_tol": 0.08,
