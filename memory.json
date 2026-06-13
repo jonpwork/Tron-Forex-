@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 6.702,
       "stop": 6.6923121,
-      "alvo": 6.767,
-      "risco": 0.009687900000000305,
-      "rr": 6.7,
-      "data": "13/06/2026 17:50",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "up",
-      "entrada": 6.702,
-      "stop": 6.6923121,
       "alvo": 6.879,
       "risco": 0.009687900000000305,
       "rr": 18.3,
@@ -3432,6 +3417,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "BNBUSDT",
+      "direcao": "down",
+      "entrada": 609.38,
+      "stop": 611.20814,
+      "alvo": 605.44,
+      "risco": 1.8281399999999621,
+      "rr": 2.2,
+      "data": "13/06/2026 18:19",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
