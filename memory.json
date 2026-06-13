@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08525,
-      "stop": 0.08499425000000001,
-      "alvo": 0.08622,
-      "risco": 0.00025574999999999903,
-      "rr": 3.8,
-      "data": "13/06/2026 15:57",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BULL"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1677.5,
@@ -3489,6 +3474,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "FVG_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "LINKUSDT",
+      "direcao": "up",
+      "entrada": 7.97251,
+      "stop": 7.9485924699999995,
+      "alvo": 8.03166,
+      "risco": 0.023917530000000298,
+      "rr": 2.5,
+      "data": "13/06/2026 16:25",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BULL"
     }
   ],
   "zone_tol": 0.08,
