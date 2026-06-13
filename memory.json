@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "TONUSDT",
-      "direcao": "down",
-      "entrada": 1.6784,
-      "stop": 1.6848785899999998,
-      "alvo": 1.6566,
-      "risco": 0.006478589999999951,
-      "rr": 3.4,
-      "data": "12/06/2026 23:06",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "SUIUSDT",
       "direcao": "up",
       "entrada": 0.7557,
@@ -3450,6 +3435,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "up",
+      "entrada": 6.601,
+      "stop": 6.593381399999999,
+      "alvo": 6.66,
+      "risco": 0.007618600000000697,
+      "rr": 7.7,
+      "data": "12/06/2026 23:33",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
