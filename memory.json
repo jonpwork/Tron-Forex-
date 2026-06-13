@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "down",
-      "entrada": 1665.22,
-      "stop": 1666.9960809999998,
-      "alvo": 1653.18,
-      "risco": 1.776080999999749,
-      "rr": 6.8,
-      "data": "13/06/2026 02:14",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "SUIUSDT",
       "direcao": "up",
       "entrada": 0.7508,
@@ -3400,6 +3385,21 @@
       "alvo": 0.9727,
       "risco": 0.0008745199999999897,
       "rr": 10.2,
+      "data": "13/06/2026 02:41",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.13331,
+      "stop": 1.132246872,
+      "alvo": 1.13682,
+      "risco": 0.0010631279999999688,
+      "rr": 3.3,
       "data": "13/06/2026 02:41",
       "status": "aberto",
       "resultado": null,
