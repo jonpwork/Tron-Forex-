@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "down",
-      "entrada": 1.13946,
-      "stop": 1.141038168,
-      "alvo": 1.1285,
-      "risco": 0.001578167999999991,
-      "rr": 6.9,
-      "data": "12/06/2026 22:46",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 605.5,
@@ -3357,6 +3342,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 63773.4,
+      "stop": 63863.07288,
+      "alvo": 63413.4,
+      "risco": 89.67287999999826,
+      "rr": 4.0,
+      "data": "12/06/2026 23:14",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
