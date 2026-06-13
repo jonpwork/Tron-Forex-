@@ -328,21 +328,6 @@
       "direcao": "up",
       "entrada": 0.08391,
       "stop": 0.083821284,
-      "alvo": 0.08442,
-      "risco": 8.871600000000257e-05,
-      "rr": 5.7,
-      "data": "13/06/2026 02:55",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "HTF_H1_LONG"
-    },
-    {
-      "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "up",
-      "entrada": 0.08391,
-      "stop": 0.083821284,
       "alvo": 0.08454,
       "risco": 8.871600000000257e-05,
       "rr": 7.1,
@@ -3381,6 +3366,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "up",
+      "entrada": 0.7494,
+      "stop": 0.7484757,
+      "alvo": 0.7561,
+      "risco": 0.000924299999999989,
+      "rr": 7.2,
+      "data": "13/06/2026 03:23",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
