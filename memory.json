@@ -2171,10 +2171,13 @@
       "risco": 0.0009675999999999574,
       "rr": 2.5,
       "data": "13/06/2026 18:31",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+2.5R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": 0.0024,
+      "pnl_brl": 0.01,
+      "fechamento": "13/06/2026 18:47"
     },
     {
       "id": 201,
