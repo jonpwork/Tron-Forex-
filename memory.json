@@ -548,10 +548,13 @@
       "risco": 0.0001710289700000006,
       "rr": 2.6,
       "data": "13/06/2026 03:40",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+2.6R",
       "order_id": "cec9ee91-a947-42f4-8d78-54cafd07d13c",
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": 0.0452,
+      "pnl_brl": 0.23,
+      "fechamento": "13/06/2026 04:32"
     },
     {
       "id": 201,
@@ -1379,10 +1382,13 @@
       "risco": 0.000259964999999987,
       "rr": 4.3,
       "data": "13/06/2026 03:49",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H1_SHORT"
+      "tipo": "HTF_H1_SHORT",
+      "pnl_usd": -0.026,
+      "pnl_brl": -0.13,
+      "fechamento": "13/06/2026 04:32"
     },
     {
       "id": 201,
@@ -1844,10 +1850,13 @@
       "risco": 0.0001755806899999962,
       "rr": 5.8,
       "data": "13/06/2026 03:53",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H1_SHORT"
+      "tipo": "HTF_H1_SHORT",
+      "pnl_usd": -0.0176,
+      "pnl_brl": -0.09,
+      "fechamento": "13/06/2026 04:32"
     },
     {
       "id": 201,
@@ -2954,10 +2963,13 @@
       "risco": 0.0002506806900000047,
       "rr": 3.8,
       "data": "13/06/2026 04:06",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "3fe045ec-9808-4da2-8207-425a1d31c13c",
-      "tipo": "HTF_H1_SHORT"
+      "tipo": "HTF_H1_SHORT",
+      "pnl_usd": -0.0251,
+      "pnl_brl": -0.13,
+      "fechamento": "13/06/2026 04:32"
     },
     {
       "id": 201,
@@ -3197,10 +3209,13 @@
       "risco": 0.00010284381000000287,
       "rr": 4.9,
       "data": "13/06/2026 04:09",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+4.9R",
       "order_id": "3b5afff1-c867-4dce-a159-3b904dc249eb",
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": 0.0499,
+      "pnl_brl": 0.25,
+      "fechamento": "13/06/2026 04:32"
     },
     {
       "id": 201,
