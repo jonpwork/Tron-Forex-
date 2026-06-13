@@ -335,21 +335,6 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null,
-      "tipo": "OB_BULL"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1664.27,
-      "stop": 1662.6952979999999,
-      "alvo": 1675.78,
-      "risco": 1.5747020000001157,
-      "rr": 7.3,
-      "data": "13/06/2026 01:17",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
       "tipo": "BOS_BULL"
     },
     {
@@ -3387,6 +3372,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "up",
+      "entrada": 0.0863914,
+      "stop": 0.08624228811,
+      "alvo": 0.08689,
+      "risco": 0.0001491118899999977,
+      "rr": 3.3,
+      "data": "13/06/2026 01:46",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.08,
