@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "down",
-      "entrada": 1.9838,
-      "stop": 1.9859892199999998,
-      "alvo": 1.9723,
-      "risco": 0.0021892199999997697,
-      "rr": 5.3,
-      "data": "13/06/2026 03:50",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BEAR",
-      "pnl_usd": -0.0022,
-      "pnl_brl": -0.01,
-      "fechamento": "13/06/2026 04:46"
-    },
-    {
-      "id": 201,
       "symbol": "LINKUSDT",
       "direcao": "down",
       "entrada": 7.90685,
@@ -3648,6 +3630,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_SWING_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 64054.1,
+      "stop": 63978.883409999995,
+      "alvo": 64344.3,
+      "risco": 75.21659000000363,
+      "rr": 3.9,
+      "data": "13/06/2026 15:09",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_LONG"
     }
   ],
   "zone_tol": 0.08,
