@@ -324,21 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "down",
-      "entrada": 6.571,
-      "stop": 6.583605299999999,
-      "alvo": 6.523,
-      "risco": 0.012605299999999708,
-      "rr": 3.8,
-      "data": "12/06/2026 21:38",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null,
-      "tipo": "BOS_BEAR"
-    },
-    {
-      "id": 201,
       "symbol": "XRPUSDT",
       "direcao": "up",
       "entrada": 1.13426,
@@ -3378,6 +3363,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "OB_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1668.09,
+      "stop": 1670.1883139999998,
+      "alvo": 1659.58,
+      "risco": 2.0983139999998457,
+      "rr": 4.1,
+      "data": "12/06/2026 22:04",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "b2e48ad9-b25d-4e91-841e-e6693c652a9b",
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
