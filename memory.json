@@ -324,24 +324,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ADAUSDT",
-      "direcao": "down",
-      "entrada": 0.169511,
-      "stop": 0.1696866976,
-      "alvo": 0.167908,
-      "risco": 0.00017569759999999657,
-      "rr": 9.1,
-      "data": "12/06/2026 20:41",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BEAR",
-      "pnl_usd": -0.0035,
-      "pnl_brl": -0.02,
-      "fechamento": "12/06/2026 21:02"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "up",
       "entrada": 604.54,
@@ -3393,6 +3375,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BULL"
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "down",
+      "entrada": 0.0859175,
+      "stop": 0.08606810553,
+      "alvo": 0.0855451,
+      "risco": 0.00015060553000000032,
+      "rr": 2.5,
+      "data": "12/06/2026 21:08",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.08,
