@@ -3929,10 +3929,13 @@
       "rr": 7.3,
       "data": "14/06/2026 14:38",
       "qty": 39.6259,
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "H4_ABC_C_LONG_SIMULT"
+      "tipo": "H4_ABC_C_LONG_SIMULT",
+      "pnl_usd": -0.2346,
+      "pnl_brl": -1.19,
+      "fechamento": "14/06/2026 14:58"
     }
   ],
   "zone_tol": 0.08,
