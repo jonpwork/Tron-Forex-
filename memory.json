@@ -337,24 +337,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 64241.4,
-      "stop": 64306.78326,
-      "alvo": 63937.2,
-      "risco": 65.38325999999506,
-      "rr": 4.7,
-      "data": "13/06/2026 18:17",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "OB_BEAR",
-      "pnl_usd": -0.0654,
-      "pnl_brl": -0.33,
-      "fechamento": "13/06/2026 20:40"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "up",
       "entrada": 6.703,
@@ -3930,6 +3912,21 @@
       "resultado": null,
       "order_id": "ec982e76-a7dd-4dc7-9fe4-4cd7735c24cb",
       "tipo": "FIB_1.272_SHORT"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "down",
+      "entrada": 1665.65,
+      "stop": 1668.116865,
+      "alvo": 1655.36,
+      "risco": 2.4668649999998706,
+      "rr": 4.2,
+      "data": "14/06/2026 16:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "353a5760-6aa2-4174-b3fc-766acf05a7ae",
+      "tipo": "OB_BEAR"
     }
   ],
   "zone_tol": 0.08,
