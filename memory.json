@@ -3930,10 +3930,13 @@
       "rr": 3.3,
       "data": "14/06/2026 14:59",
       "qty": 0.04704,
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "M15_ABC_B_LONG"
+      "tipo": "M15_ABC_B_LONG",
+      "pnl_usd": -0.0825,
+      "pnl_brl": -0.42,
+      "fechamento": "14/06/2026 15:21"
     }
   ],
   "zone_tol": 0.08,
