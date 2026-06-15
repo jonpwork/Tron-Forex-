@@ -126,6 +126,21 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M15_FLUXO_SHORT"
+    },
+    {
+      "id": 5,
+      "symbol": "SOLUSDT",
+      "direcao": "down",
+      "entrada": 74.01,
+      "stop": 74.08182099999999,
+      "alvo": 73.69,
+      "risco": 0.0718209999999857,
+      "rr": 4.5,
+      "data": "15/06/2026 20:56",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "ba6bfb77-1ea5-4dfd-bc02-fab09096d785",
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.2,
