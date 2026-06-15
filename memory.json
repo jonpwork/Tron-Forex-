@@ -32,6 +32,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M15_3TF_LONG"
+    },
+    {
+      "id": 3,
+      "symbol": "NEARUSDT",
+      "direcao": "down",
+      "entrada": 2.2279,
+      "stop": 2.258,
+      "alvo": 1.9738,
+      "risco": 0.030100000000000016,
+      "rr": 8.4,
+      "data": "14/06/2026 22:31",
+      "qty": 2.0,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M15_FLUXO_SHORT"
     }
   ],
   "zone_tol": 0.2,
