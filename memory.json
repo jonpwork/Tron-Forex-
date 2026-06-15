@@ -353,24 +353,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "up",
-      "entrada": 6.703,
-      "stop": 6.69531,
-      "alvo": 6.767,
-      "risco": 0.007690000000000197,
-      "rr": 8.3,
-      "data": "13/06/2026 18:17",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "BOS_BULL",
-      "pnl_usd": -0.0008,
-      "pnl_brl": -0.0,
-      "fechamento": "14/06/2026 10:35"
-    },
-    {
-      "id": 201,
       "symbol": "BNBUSDT",
       "direcao": "down",
       "entrada": 609.38,
@@ -3958,6 +3940,21 @@
       "pnl_usd": 0.05,
       "pnl_brl": 0.25,
       "fechamento": "14/06/2026 22:09"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "up",
+      "entrada": 70.86,
+      "stop": 70.900335,
+      "alvo": 71.71,
+      "risco": 0.0403349999999989,
+      "rr": 21.1,
+      "data": "14/06/2026 22:18",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "EW_W2_LONG"
     }
   ],
   "zone_tol": 0.08,
