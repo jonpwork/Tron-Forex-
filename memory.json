@@ -3915,10 +3915,13 @@
       "risco": 0.0403349999999989,
       "rr": 21.1,
       "data": "14/06/2026 22:18",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "EW_W2_LONG"
+      "tipo": "EW_W2_LONG",
+      "pnl_usd": -0.004,
+      "pnl_brl": -0.02,
+      "fechamento": "14/06/2026 22:18"
     },
     {
       "id": 201,
