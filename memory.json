@@ -3694,10 +3694,13 @@
       "rr": 31.1,
       "data": "14/06/2026 13:19",
       "qty": 45.3172,
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "H4_ABC_B_SHORT_SIMULT"
+      "tipo": "H4_ABC_B_SHORT_SIMULT",
+      "pnl_usd": -0.0022,
+      "pnl_brl": -0.01,
+      "fechamento": "14/06/2026 22:11"
     },
     {
       "id": 201,
