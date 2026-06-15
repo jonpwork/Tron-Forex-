@@ -16,6 +16,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M5_3TF_SHORT"
+    },
+    {
+      "id": 2,
+      "symbol": "DOTUSDT",
+      "direcao": "up",
+      "entrada": 0.984,
+      "stop": 0.9805589202757197,
+      "alvo": 1.0004,
+      "risco": 0.003441079724280316,
+      "rr": 4.8,
+      "data": "14/06/2026 22:31",
+      "qty": 1.0,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M15_3TF_LONG"
     }
   ],
   "zone_tol": 0.2,
