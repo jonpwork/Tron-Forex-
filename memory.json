@@ -28,6 +28,19 @@
       "padroes": [],
       "qualidade_setup": "media",
       "data": "15/06/2026 19:08"
+    },
+    {
+      "timeframe": "",
+      "tendencia": "up",
+      "tipo_onda": "",
+      "nivel_entrada": 0,
+      "nivel_stop": 0,
+      "nivel_alvo": 0,
+      "correcao_pct": 0,
+      "observacoes": "",
+      "padroes": [],
+      "qualidade_setup": "alta",
+      "data": "15/06/2026 20:32"
     }
   ],
   "signals": [
@@ -100,6 +113,6 @@
     }
   ],
   "zone_tol": 0.2,
-  "total_prints": 2,
-  "last_update": "15/06/2026 19:08"
+  "total_prints": 3,
+  "last_update": "15/06/2026 20:32"
 }
