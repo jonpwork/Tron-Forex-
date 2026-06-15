@@ -3948,10 +3948,13 @@
       "risco": 0.0012254899999999402,
       "rr": 8.2,
       "data": "14/06/2026 17:59",
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+8.2R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "pnl_usd": 0.05,
+      "pnl_brl": 0.25,
+      "fechamento": "14/06/2026 22:09"
     }
   ],
   "zone_tol": 0.08,
