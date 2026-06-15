@@ -1,5 +1,22 @@
 {
-  "analyses": [],
+  "analyses": [
+    {
+      "timeframe": "1m",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 1.15974,
+      "nivel_stop": 1.15938,
+      "nivel_alvo": 1.16012,
+      "correcao_pct": 0.05,
+      "observacoes": "Possível continuação de alta após rompimento da resistência",
+      "padroes": [
+        "Rompimento de resistência",
+        "Onda impulsiva"
+      ],
+      "qualidade_setup": "alta",
+      "data": "14/06/2026 23:54"
+    }
+  ],
   "signals": [
     {
       "id": 1,
@@ -70,6 +87,6 @@
     }
   ],
   "zone_tol": 0.2,
-  "total_prints": 0,
-  "last_update": ""
+  "total_prints": 1,
+  "last_update": "14/06/2026 23:54"
 }
