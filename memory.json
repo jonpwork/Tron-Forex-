@@ -51,6 +51,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M15_FLUXO_SHORT"
+    },
+    {
+      "id": 4,
+      "symbol": "DOGEUSDT",
+      "direcao": "down",
+      "entrada": 0.0886489,
+      "stop": 0.0890713,
+      "alvo": 0.0849699,
+      "risco": 0.00042240000000000333,
+      "rr": 8.7,
+      "data": "14/06/2026 22:39",
+      "qty": 100.0,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M15_FLUXO_SHORT"
     }
   ],
   "zone_tol": 0.2,
