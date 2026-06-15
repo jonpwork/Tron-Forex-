@@ -87,10 +87,13 @@
       "rr": 4.8,
       "data": "14/06/2026 22:31",
       "qty": 1.0,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+4.8R",
       "order_id": null,
-      "tipo": "M15_3TF_LONG"
+      "tipo": "M15_3TF_LONG",
+      "pnl_usd": 0.0164,
+      "pnl_brl": 0.08,
+      "fechamento": "15/06/2026 20:55"
     },
     {
       "id": 3,
