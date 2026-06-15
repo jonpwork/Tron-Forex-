@@ -12,10 +12,13 @@
       "rr": 12.2,
       "data": "14/06/2026 22:31",
       "qty": 0.001,
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "M5_3TF_SHORT"
+      "tipo": "M5_3TF_SHORT",
+      "pnl_usd": -0.1399,
+      "pnl_brl": -0.71,
+      "fechamento": "14/06/2026 22:39"
     },
     {
       "id": 2,
