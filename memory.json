@@ -281,9 +281,12 @@
       "qty": 0.001,
       "data": "16/06/2026 06:32",
       "tipo": "PRINT_DOWN",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+1.16R",
+      "order_id": null,
+      "pnl_usd": 0.58,
+      "pnl_brl": 2.95,
+      "fechamento": "16/06/2026 11:16"
     },
     {
       "id": 8,
