@@ -267,6 +267,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H4_LONG"
+    },
+    {
+      "id": 10,
+      "symbol": "ADAUSDT",
+      "direcao": "down",
+      "entrada": 0.179553,
+      "stop": 0.1800339356,
+      "alvo": 0.176945,
+      "risco": 0.0004809356000000098,
+      "rr": 5.4,
+      "data": "16/06/2026 06:52",
+      "qty": 157.3,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.2,
