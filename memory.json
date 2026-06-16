@@ -283,6 +283,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 11,
+      "symbol": "DOTUSDT",
+      "direcao": "down",
+      "entrada": 1.0216,
+      "stop": 1.02351596,
+      "alvo": 1.0016,
+      "risco": 0.0019159599999998278,
+      "rr": 10.4,
+      "data": "16/06/2026 06:52",
+      "qty": 27.6548,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.2,
