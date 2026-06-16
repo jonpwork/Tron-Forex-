@@ -251,6 +251,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_LONG"
+    },
+    {
+      "id": 9,
+      "symbol": "XRPUSDT",
+      "direcao": "up",
+      "entrada": 1.23959,
+      "stop": 1.238062749,
+      "alvo": 1.2925,
+      "risco": 0.0015272509999999517,
+      "rr": 34.6,
+      "data": "16/06/2026 06:52",
+      "qty": 22.79,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H4_LONG"
     }
   ],
   "zone_tol": 0.2,
