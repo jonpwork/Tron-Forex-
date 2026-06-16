@@ -137,10 +137,13 @@
       "risco": 0.0718209999999857,
       "rr": 4.5,
       "data": "15/06/2026 20:56",
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": "ba6bfb77-1ea5-4dfd-bc02-fab09096d785",
-      "tipo": "FVG_BEAR"
+      "tipo": "FVG_BEAR",
+      "pnl_usd": -0.0072,
+      "pnl_brl": -0.04,
+      "fechamento": "15/06/2026 21:20"
     }
   ],
   "zone_tol": 0.2,
