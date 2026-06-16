@@ -144,6 +144,21 @@
       "pnl_usd": -0.0072,
       "pnl_brl": -0.04,
       "fechamento": "15/06/2026 21:20"
+    },
+    {
+      "id": 6,
+      "symbol": "BNBUSDT",
+      "direcao": "down",
+      "entrada": 616.5,
+      "stop": 618.3494999999999,
+      "alvo": 608.68,
+      "risco": 1.8494999999999209,
+      "rr": 4.2,
+      "data": "15/06/2026 21:21",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "BOS_BEAR"
     }
   ],
   "zone_tol": 0.2,
