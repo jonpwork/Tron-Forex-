@@ -315,6 +315,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_M_SHORT"
+    },
+    {
+      "id": 13,
+      "symbol": "LINKUSDT",
+      "direcao": "down",
+      "entrada": 8.35005,
+      "stop": 8.374498047999998,
+      "alvo": 8.26757,
+      "risco": 0.024448047999998224,
+      "rr": 3.4,
+      "data": "16/06/2026 06:52",
+      "qty": 3.3835,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "HTF_H1_SHORT"
     }
   ],
   "zone_tol": 0.2,
