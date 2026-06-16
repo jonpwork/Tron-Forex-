@@ -114,6 +114,21 @@
         }
       ],
       "data": "16/06/2026 06:34"
+    },
+    {
+      "timeframe": "5m",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 66991.7,
+      "nivel_stop": 66700,
+      "nivel_alvo": 68000,
+      "correcao_pct": 2.5,
+      "observacoes": "Possível continuação de alta após rompimento de triângulo",
+      "padroes": [
+        "Triângulo de continuação"
+      ],
+      "qualidade_setup": "alta",
+      "data": "16/06/2026 07:30"
     }
   ],
   "signals": [
@@ -353,6 +368,6 @@
     }
   ],
   "zone_tol": 0.2,
-  "total_prints": 6,
-  "last_update": "16/06/2026 06:34"
+  "total_prints": 7,
+  "last_update": "16/06/2026 07:30"
 }
