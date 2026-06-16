@@ -54,6 +54,36 @@
       "padroes": [],
       "qualidade_setup": "media",
       "data": "15/06/2026 20:33"
+    },
+    {
+      "timeframe": "5m",
+      "simbolo": "BTC/USDT",
+      "figura": "Cunha Descendente",
+      "observacoes": "Cunha descendente com rompimento para cima",
+      "qualidade_setup": "alta",
+      "setups": [
+        {
+          "direcao": "up",
+          "tipo": "COMPRA",
+          "nivel_entrada": 66820.0,
+          "nivel_stop": 65910.0,
+          "nivel_alvo": 67408.7,
+          "correcao_pct": 50,
+          "rr": 1.5,
+          "justificativa": "Rompimento da cunha descendente"
+        },
+        {
+          "direcao": "down",
+          "tipo": "VENDA",
+          "nivel_entrada": 66490.0,
+          "nivel_stop": 66991.7,
+          "nivel_alvo": 65910.0,
+          "correcao_pct": 50,
+          "rr": 1.0,
+          "justificativa": "Correção de 50% da pernada"
+        }
+      ],
+      "data": "16/06/2026 06:32"
     }
   ],
   "signals": [
@@ -162,6 +192,6 @@
     }
   ],
   "zone_tol": 0.2,
-  "total_prints": 4,
-  "last_update": "15/06/2026 20:33"
+  "total_prints": 5,
+  "last_update": "16/06/2026 06:32"
 }
