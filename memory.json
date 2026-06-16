@@ -334,6 +334,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HTF_H1_SHORT"
+    },
+    {
+      "id": 14,
+      "symbol": "LTCUSDT",
+      "direcao": "down",
+      "entrada": 45.54527,
+      "stop": 45.689110004999996,
+      "alvo": 45.35899,
+      "risco": 0.14384000499999416,
+      "rr": 1.3,
+      "data": "16/06/2026 06:53",
+      "qty": 0.6203,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "FVG_BEAR"
     }
   ],
   "zone_tol": 0.2,
