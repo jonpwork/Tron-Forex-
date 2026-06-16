@@ -189,6 +189,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "BOS_BEAR"
+    },
+    {
+      "id": 7,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 66490.0,
+      "stop": 66991.7,
+      "alvo": 65910.0,
+      "risco": 501.6999999999971,
+      "rr": 1.16,
+      "qty": 0.001,
+      "data": "16/06/2026 06:32",
+      "tipo": "PRINT_DOWN",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
