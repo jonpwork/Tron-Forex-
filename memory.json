@@ -1948,6 +1948,20 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "34009983-bac1-49c8-ad86-98919c6c4d7d"
+    },
+    {
+      "id": 89,
+      "symbol": "BNBUSDT",
+      "direcao": "down",
+      "entrada": 561.66,
+      "stop": 562.83,
+      "alvo": 558.7199999999999,
+      "risco": 1.1700000000000728,
+      "rr": 2.5,
+      "data": "02/07/2026 17:00",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "d37fa90b-1ad6-49b7-ae73-2a740a86f3ea"
     }
   ],
   "zone_tol": 0.2,
