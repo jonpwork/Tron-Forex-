@@ -1992,6 +1992,20 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "2db7d626-5d83-4d4c-a943-05c368863e78"
+    },
+    {
+      "id": 92,
+      "symbol": "BNBUSDT",
+      "direcao": "down",
+      "entrada": 562.17,
+      "stop": 563.34,
+      "alvo": 559.9599999999999,
+      "risco": 1.1700000000000728,
+      "rr": 1.9,
+      "data": "02/07/2026 17:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "20086840-d5c2-4a9e-ab11-d21b83739335"
     }
   ],
   "zone_tol": 0.2,
