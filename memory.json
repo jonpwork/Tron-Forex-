@@ -2169,9 +2169,10 @@
       "risco": 46.400000000001455,
       "rr": 2.6,
       "data": "02/07/2026 22:59",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "151f7827-0cb0-4e6d-8def-8f61c48491ba"
+      "status": "win",
+      "resultado": "+2.6R",
+      "order_id": "151f7827-0cb0-4e6d-8def-8f61c48491ba",
+      "fechamento": "02/07/2026 23:03"
     }
   ],
   "zone_tol": 0.2,
