@@ -212,10 +212,11 @@
       "rr": 8.4,
       "data": "14/06/2026 22:31",
       "qty": 2.0,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+8.4R",
       "order_id": null,
-      "tipo": "M15_FLUXO_SHORT"
+      "tipo": "M15_FLUXO_SHORT",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 4,
@@ -228,10 +229,11 @@
       "rr": 8.7,
       "data": "14/06/2026 22:39",
       "qty": 100.0,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+8.7R",
       "order_id": null,
-      "tipo": "M15_FLUXO_SHORT"
+      "tipo": "M15_FLUXO_SHORT",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 5,
@@ -299,10 +301,11 @@
       "rr": 34.6,
       "data": "16/06/2026 06:52",
       "qty": 22.79,
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H1_LONG"
+      "tipo": "HTF_H1_LONG",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 9,
@@ -315,10 +318,11 @@
       "rr": 34.6,
       "data": "16/06/2026 06:52",
       "qty": 22.79,
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HTF_H4_LONG"
+      "tipo": "HTF_H4_LONG",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 10,
@@ -331,10 +335,11 @@
       "rr": 5.4,
       "data": "16/06/2026 06:52",
       "qty": 157.3,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+5.4R",
       "order_id": null,
-      "tipo": "BOS_BEAR"
+      "tipo": "BOS_BEAR",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 11,
@@ -347,10 +352,11 @@
       "rr": 10.4,
       "data": "16/06/2026 06:52",
       "qty": 27.6548,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+10.4R",
       "order_id": null,
-      "tipo": "HTF_H1_SHORT"
+      "tipo": "HTF_H1_SHORT",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 12,
@@ -363,10 +369,11 @@
       "rr": 1.0,
       "data": "16/06/2026 06:52",
       "qty": 3.3835,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.0R",
       "order_id": null,
-      "tipo": "M1_M_SHORT"
+      "tipo": "M1_M_SHORT",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 13,
@@ -379,10 +386,11 @@
       "rr": 3.4,
       "data": "16/06/2026 06:52",
       "qty": 3.3835,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+3.4R",
       "order_id": null,
-      "tipo": "HTF_H1_SHORT"
+      "tipo": "HTF_H1_SHORT",
+      "fechamento": "02/07/2026 16:53"
     },
     {
       "id": 14,
@@ -395,10 +403,11 @@
       "rr": 1.3,
       "data": "16/06/2026 06:53",
       "qty": 0.6203,
-      "status": "aberto",
-      "resultado": null,
+      "status": "win",
+      "resultado": "+1.3R",
       "order_id": null,
-      "tipo": "FVG_BEAR"
+      "tipo": "FVG_BEAR",
+      "fechamento": "02/07/2026 16:54"
     },
     {
       "id": 15,
