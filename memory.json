@@ -1902,10 +1902,13 @@
       "rr": 2.0,
       "data": "02/07/2026 10:06",
       "qty": 0.002897,
-      "status": "aberto",
-      "resultado": null,
+      "status": "loss",
+      "resultado": "-1R",
       "order_id": null,
-      "tipo": "HEDGE_CANAL_SHORT_M1"
+      "tipo": "HEDGE_CANAL_SHORT_M1",
+      "pnl_usd": -0.0481,
+      "pnl_brl": -0.25,
+      "fechamento": "02/07/2026 10:06"
     },
     {
       "id": 87,
