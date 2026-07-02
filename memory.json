@@ -1962,6 +1962,20 @@
       "status": "aberto",
       "resultado": null,
       "order_id": "d37fa90b-1ad6-49b7-ae73-2a740a86f3ea"
+    },
+    {
+      "id": 90,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 61675.1,
+      "stop": 61766.8,
+      "alvo": 61530.399999999994,
+      "risco": 91.70000000000437,
+      "rr": 1.6,
+      "data": "02/07/2026 17:01",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "47becaa4-e88a-4b23-8730-b7310260dc7d"
     }
   ],
   "zone_tol": 0.2,
