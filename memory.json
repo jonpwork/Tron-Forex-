@@ -2062,9 +2062,10 @@
       "risco": 48.30000000000291,
       "rr": 2.2,
       "data": "02/07/2026 18:51",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "87b77b93-bfb7-41b0-b1b0-c3987b61c84b"
+      "status": "win",
+      "resultado": "+2.2R",
+      "order_id": "87b77b93-bfb7-41b0-b1b0-c3987b61c84b",
+      "fechamento": "02/07/2026 19:05"
     },
     {
       "id": 97,
