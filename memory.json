@@ -1959,9 +1959,10 @@
       "risco": 1.1700000000000728,
       "rr": 2.5,
       "data": "02/07/2026 17:00",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "d37fa90b-1ad6-49b7-ae73-2a740a86f3ea"
+      "status": "loss",
+      "resultado": "-1R",
+      "order_id": "d37fa90b-1ad6-49b7-ae73-2a740a86f3ea",
+      "fechamento": "02/07/2026 17:24"
     },
     {
       "id": 90,
