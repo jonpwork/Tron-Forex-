@@ -1934,6 +1934,20 @@
       "resultado": null,
       "order_id": null,
       "tipo": "M1_W_LONG"
+    },
+    {
+      "id": 88,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1699.38,
+      "stop": 1690.55,
+      "alvo": 1712.17,
+      "risco": 8.830000000000155,
+      "rr": 1.4,
+      "data": "02/07/2026 16:57",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "34009983-bac1-49c8-ad86-98919c6c4d7d"
     }
   ],
   "zone_tol": 0.2,
