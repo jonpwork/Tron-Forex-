@@ -1906,6 +1906,22 @@
       "resultado": null,
       "order_id": null,
       "tipo": "HEDGE_CANAL_SHORT_M1"
+    },
+    {
+      "id": 87,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 61618.6,
+      "stop": 61274.77761,
+      "alvo": 61962.42239,
+      "risco": 343.8223900000012,
+      "rr": 1.0,
+      "data": "02/07/2026 10:06",
+      "qty": 0.002897,
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null,
+      "tipo": "M1_W_LONG"
     }
   ],
   "zone_tol": 0.2,
