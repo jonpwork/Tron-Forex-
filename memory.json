@@ -2217,6 +2217,20 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null
+    },
+    {
+      "id": 107,
+      "symbol": "BTCUSDT",
+      "direcao": "down",
+      "entrada": 61338.7,
+      "stop": 61366.5,
+      "alvo": 61287.399999999994,
+      "risco": 27.80000000000291,
+      "rr": 1.8,
+      "data": "03/07/2026 00:47",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
