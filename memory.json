@@ -2306,9 +2306,10 @@
       "risco": 4.9699999999998,
       "rr": 2.3,
       "data": "03/07/2026 05:42",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "d8bac7ad-2b4e-416e-a40a-59e3428a0b51"
+      "status": "win",
+      "resultado": "+2.3R",
+      "order_id": "d8bac7ad-2b4e-416e-a40a-59e3428a0b51",
+      "fechamento": "03/07/2026 08:43"
     },
     {
       "id": 113,
@@ -2320,9 +2321,10 @@
       "risco": 3.740000000000009,
       "rr": 1.7,
       "data": "03/07/2026 06:13",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "46f896ac-bc40-41b6-a8a3-8ebfafd3e2b8"
+      "status": "win",
+      "resultado": "+1.7R",
+      "order_id": "46f896ac-bc40-41b6-a8a3-8ebfafd3e2b8",
+      "fechamento": "03/07/2026 08:43"
     },
     {
       "id": 114,
@@ -2409,9 +2411,10 @@
       "risco": 3.660000000000082,
       "rr": 1.9,
       "data": "03/07/2026 08:30",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "a218619e-0787-49f2-bc1a-380cb8f7b0ad"
+      "status": "win",
+      "resultado": "+1.9R",
+      "order_id": "a218619e-0787-49f2-bc1a-380cb8f7b0ad",
+      "fechamento": "03/07/2026 08:43"
     }
   ],
   "zone_tol": 0.2,
