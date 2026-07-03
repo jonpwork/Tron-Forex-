@@ -2189,6 +2189,20 @@
       "resultado": "+1.5R",
       "order_id": "f319bd3c-311e-4b6b-85d5-e19033c05c73",
       "fechamento": "03/07/2026 00:23"
+    },
+    {
+      "id": 105,
+      "symbol": "BNBUSDT",
+      "direcao": "down",
+      "entrada": 557.97,
+      "stop": 558.96,
+      "alvo": 556.04,
+      "risco": 0.9900000000000091,
+      "rr": 1.9,
+      "data": "03/07/2026 00:37",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "0761f892-ea0a-41b9-84b4-e91aa2d512bf"
     }
   ],
   "zone_tol": 0.2,
