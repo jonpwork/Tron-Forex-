@@ -2334,9 +2334,10 @@
       "risco": 51.30000000000291,
       "rr": 1.5,
       "data": "03/07/2026 06:17",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": "04351fab-87a6-4be3-9289-938ca1e35261"
+      "status": "win",
+      "resultado": "+1.5R",
+      "order_id": "04351fab-87a6-4be3-9289-938ca1e35261",
+      "fechamento": "03/07/2026 06:38"
     }
   ],
   "zone_tol": 0.2,
