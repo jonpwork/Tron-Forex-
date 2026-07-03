@@ -2415,6 +2415,20 @@
       "resultado": "+1.9R",
       "order_id": "a218619e-0787-49f2-bc1a-380cb8f7b0ad",
       "fechamento": "03/07/2026 08:43"
+    },
+    {
+      "id": 120,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1727.37,
+      "stop": 1721.39,
+      "alvo": 1736.2899999999997,
+      "risco": 5.979999999999791,
+      "rr": 1.5,
+      "data": "03/07/2026 09:52",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": "5503fa6d-69e1-421b-a7a4-e68eb8e7b768"
     }
   ],
   "zone_tol": 0.2,
