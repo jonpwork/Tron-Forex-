@@ -160,6 +160,21 @@
       ],
       "qualidade_setup": "alta",
       "data": "16/06/2026 10:15"
+    },
+    {
+      "timeframe": "4h",
+      "tendencia": "up",
+      "tipo_onda": "impulso",
+      "nivel_entrada": 62583.3,
+      "nivel_stop": 62100,
+      "nivel_alvo": 65000,
+      "correcao_pct": 2,
+      "observacoes": "O preco atual e de 62,583.3. O ativo esta em tendencia de alta, com um impulso de onda recente.",
+      "padroes": [
+        "comprado"
+      ],
+      "qualidade_setup": "alta",
+      "data": "04/07/2026 09:49"
     }
   ],
   "signals": [
@@ -2673,7 +2688,7 @@
     }
   ],
   "zone_tol": 0.2,
-  "total_prints": 9,
-  "last_update": "02/07/2026 10:05",
+  "total_prints": 10,
+  "last_update": "04/07/2026 09:49",
   "total_signals": 85
 }
