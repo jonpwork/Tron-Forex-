@@ -3289,9 +3289,10 @@
       "rr": 1.6,
       "qty_usada": 0.006422,
       "data": "05/07/2026 18:33",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+R$ 3,20",
+      "order_id": null,
+      "fechamento": "05/07/2026 18:55"
     },
     {
       "id": 175,
@@ -3319,9 +3320,10 @@
       "rr": 0.8,
       "qty_usada": 0.006758,
       "data": "05/07/2026 18:49",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+R$ 1,60",
+      "order_id": null,
+      "fechamento": "05/07/2026 18:55"
     }
   ],
   "zone_tol": 0.2,
