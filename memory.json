@@ -3211,6 +3211,21 @@
       "resultado": "+R$ 3,80",
       "order_id": null,
       "fechamento": "05/07/2026 16:13"
+    },
+    {
+      "id": 170,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1783.08,
+      "stop": 1782.2,
+      "alvo": 1784.58,
+      "risco": 0.8799999999998818,
+      "rr": 1.7,
+      "qty_usada": 0.44002,
+      "data": "05/07/2026 16:21",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
