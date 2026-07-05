@@ -3292,6 +3292,21 @@
       "status": "aberto",
       "resultado": null,
       "order_id": null
+    },
+    {
+      "id": 175,
+      "symbol": "SOLUSDT",
+      "direcao": "up",
+      "entrada": 81.71,
+      "stop": 80.79,
+      "alvo": 82.19,
+      "risco": 0.9199999999999875,
+      "rr": 0.5,
+      "qty_usada": 0.421,
+      "data": "05/07/2026 18:33",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
