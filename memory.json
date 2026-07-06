@@ -3689,9 +3689,10 @@
       "rr": 1.9,
       "qty_usada": 0.50937,
       "data": "06/07/2026 00:30",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-R$ 2,00",
+      "order_id": null,
+      "fechamento": "06/07/2026 00:32"
     }
   ],
   "zone_tol": 0.2,
