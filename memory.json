@@ -179,25 +179,6 @@
   ],
   "signals": [
     {
-      "id": 7,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 66490.0,
-      "stop": 66991.7,
-      "alvo": 65910.0,
-      "risco": 501.6999999999971,
-      "rr": 1.16,
-      "qty": 0.001,
-      "data": "16/06/2026 06:32",
-      "tipo": "PRINT_DOWN",
-      "status": "win",
-      "resultado": "+1.16R",
-      "order_id": null,
-      "pnl_usd": 0.58,
-      "pnl_brl": 2.95,
-      "fechamento": "16/06/2026 11:16"
-    },
-    {
       "id": 8,
       "symbol": "XRPUSDT",
       "direcao": "up",
@@ -3697,6 +3678,21 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 02:28"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63035.0,
+      "stop": 63000.0,
+      "alvo": 63064.5,
+      "risco": 35.0,
+      "rr": 0.8,
+      "qty_usada": 0.011055,
+      "data": "06/07/2026 03:49",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
