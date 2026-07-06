@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 17,
-      "symbol": "XRPUSDT",
-      "tf": "M1",
-      "direcao": "BUY",
-      "entrada": 1.0928,
-      "stop": 1.0896,
-      "alvo": 1.097,
-      "qty": 156.2,
-      "rr": 1.31,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:39:34",
-      "ts_open_epoch": 1782995974.6298456,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.0032000000000000917,
-      "breakeven_done": false
-    },
-    {
       "id": 18,
       "symbol": "LTCUSDT",
       "tf": "M1",
@@ -3698,6 +3677,22 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 10:38"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 61845.4,
+      "stop": 61781.8,
+      "alvo": 61932.6,
+      "risco": 63.599999999998545,
+      "rr": 1.4,
+      "qty_usada": 0.006073,
+      "tipo": "rapido",
+      "data": "06/07/2026 11:04",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
