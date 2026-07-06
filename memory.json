@@ -3614,9 +3614,10 @@
       "qty_usada": 0.13223,
       "tipo": "denso",
       "data": "06/07/2026 14:13",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "loss",
+      "resultado": "-R$ 2,00",
+      "order_id": null,
+      "fechamento": "06/07/2026 14:37"
     },
     {
       "id": 201,
