@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 28,
-      "symbol": "BTCUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 61298.6,
-      "stop": 61430.0,
-      "alvo": 61154.8,
-      "qty": 0.003,
-      "rr": 1.09,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:41:16",
-      "ts_open_epoch": 1782996076.8948317,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 131.40000000000146,
-      "breakeven_done": false
-    },
-    {
       "id": 29,
       "symbol": "AVAXUSDT",
       "tf": "M1",
@@ -3653,6 +3632,22 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 14:35"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63681.5,
+      "stop": 63571.6,
+      "alvo": 63957.4,
+      "risco": 109.90000000000146,
+      "rr": 2.5,
+      "qty_usada": 0.003536,
+      "tipo": "denso",
+      "data": "06/07/2026 15:08",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
