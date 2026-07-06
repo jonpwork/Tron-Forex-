@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 15,
-      "symbol": "AVAXUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 6.796,
-      "stop": 6.804,
-      "alvo": 6.759,
-      "qty": 62.4,
-      "rr": 4.62,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:39:34",
-      "ts_open_epoch": 1782995974.5913162,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.008000000000000007,
-      "breakeven_done": false
-    },
-    {
       "id": 16,
       "symbol": "DOGEUSDT",
       "tf": "M5",
@@ -3706,6 +3685,22 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 10:27"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1735.02,
+      "stop": 1732.62,
+      "alvo": 1740.14,
+      "risco": 2.400000000000091,
+      "rr": 2.1,
+      "qty_usada": 0.16059,
+      "tipo": "rapido",
+      "data": "06/07/2026 10:33",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
