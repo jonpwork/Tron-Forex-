@@ -192,23 +192,6 @@
   ],
   "signals": [
     {
-      "id": 9,
-      "symbol": "XRPUSDT",
-      "direcao": "up",
-      "entrada": 1.23959,
-      "stop": 1.1642,
-      "alvo": 1.2925,
-      "risco": 0.0015272509999999517,
-      "rr": 34.6,
-      "data": "16/06/2026 06:52",
-      "qty": 22.79,
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HTF_H4_LONG",
-      "fechamento": "02/07/2026 16:53"
-    },
-    {
       "id": 10,
       "symbol": "ADAUSDT",
       "direcao": "down",
@@ -3706,6 +3689,22 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 04:30"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 62930.5,
+      "stop": 62880.8,
+      "alvo": 63000.4,
+      "risco": 49.69999999999709,
+      "rr": 1.4,
+      "qty_usada": 0.007784,
+      "tipo": "rapido",
+      "data": "06/07/2026 07:43",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
