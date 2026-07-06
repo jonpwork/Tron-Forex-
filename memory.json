@@ -179,23 +179,6 @@
   ],
   "signals": [
     {
-      "id": 4,
-      "symbol": "DOGEUSDT",
-      "direcao": "down",
-      "entrada": 0.0886489,
-      "stop": 0.08143,
-      "alvo": 0.0849699,
-      "risco": 0.00042240000000000333,
-      "rr": 8.7,
-      "data": "14/06/2026 22:39",
-      "qty": 100.0,
-      "status": "win",
-      "resultado": "+8.7R",
-      "order_id": null,
-      "tipo": "M15_FLUXO_SHORT",
-      "fechamento": "02/07/2026 16:53"
-    },
-    {
       "id": 5,
       "symbol": "SOLUSDT",
       "direcao": "down",
@@ -3702,6 +3685,21 @@
       "resultado": "+R$ 1,00",
       "order_id": null,
       "fechamento": "06/07/2026 01:38"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63311.4,
+      "stop": 63191.3,
+      "alvo": 63369.6,
+      "risco": 120.09999999999854,
+      "rr": 0.5,
+      "qty_usada": 0.003223,
+      "data": "06/07/2026 01:45",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
