@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 19,
-      "symbol": "DOTUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 0.8517,
-      "stop": 0.8536,
-      "alvo": 0.8489,
-      "qty": 263.1,
-      "rr": 1.47,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:39:34",
-      "ts_open_epoch": 1782995974.7799776,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.0019000000000000128,
-      "breakeven_done": false
-    },
-    {
       "id": 20,
       "symbol": "XRPUSDT",
       "tf": "M1",
@@ -3690,6 +3669,22 @@
       "resultado": "+R$ 3,80",
       "order_id": null,
       "fechamento": "06/07/2026 11:14"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1762.27,
+      "stop": 1759.94,
+      "alvo": 1765.62,
+      "risco": 2.3299999999999272,
+      "rr": 1.4,
+      "qty_usada": 0.16571,
+      "tipo": "rapido",
+      "data": "06/07/2026 12:18",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
