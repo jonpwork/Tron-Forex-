@@ -179,23 +179,6 @@
   ],
   "signals": [
     {
-      "id": 3,
-      "symbol": "NEARUSDT",
-      "direcao": "down",
-      "entrada": 2.2279,
-      "stop": 2.0778,
-      "alvo": 1.9738,
-      "risco": 0.030100000000000016,
-      "rr": 8.4,
-      "data": "14/06/2026 22:31",
-      "qty": 2.0,
-      "status": "win",
-      "resultado": "+8.4R",
-      "order_id": null,
-      "tipo": "M15_FLUXO_SHORT",
-      "fechamento": "02/07/2026 16:53"
-    },
-    {
       "id": 4,
       "symbol": "DOGEUSDT",
       "direcao": "down",
@@ -3703,6 +3686,21 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 01:28"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63263.4,
+      "stop": 63191.3,
+      "alvo": 63302.6,
+      "risco": 72.09999999999854,
+      "rr": 0.5,
+      "qty_usada": 0.005368,
+      "data": "06/07/2026 01:37",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
