@@ -179,25 +179,6 @@
   ],
   "signals": [
     {
-      "id": 1,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 65417.4,
-      "stop": 65557.34852489298,
-      "alvo": 63708.0,
-      "risco": 139.94852489297773,
-      "rr": 12.2,
-      "data": "14/06/2026 22:31",
-      "qty": 0.001,
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "M5_3TF_SHORT",
-      "pnl_usd": -0.1399,
-      "pnl_brl": -0.71,
-      "fechamento": "14/06/2026 22:39"
-    },
-    {
       "id": 2,
       "symbol": "DOTUSDT",
       "direcao": "up",
@@ -3705,6 +3686,21 @@
       "rr": 0.5,
       "qty_usada": 0.003213,
       "data": "06/07/2026 00:41",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63221.1,
+      "stop": 63191.8,
+      "alvo": 63247.7,
+      "risco": 29.299999999995634,
+      "rr": 0.9,
+      "qty_usada": 0.013208,
+      "data": "06/07/2026 00:52",
       "status": "aberto",
       "resultado": null,
       "order_id": null
