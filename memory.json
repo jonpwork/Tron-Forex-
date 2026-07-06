@@ -3701,9 +3701,10 @@
       "qty_usada": 0.15225,
       "tipo": "rapido",
       "data": "06/07/2026 09:22",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+R$ 2,21",
+      "order_id": null,
+      "fechamento": "06/07/2026 09:33"
     }
   ],
   "zone_tol": 0.2,
