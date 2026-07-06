@@ -175,6 +175,19 @@
       ],
       "qualidade_setup": "alta",
       "data": "04/07/2026 09:49"
+    },
+    {
+      "timeframe": "1m",
+      "tendencia": "down",
+      "tipo_onda": "",
+      "nivel_entrada": 62869.3,
+      "nivel_stop": 62754.1,
+      "nivel_alvo": 0,
+      "correcao_pct": 0,
+      "observacoes": "",
+      "padroes": [],
+      "qualidade_setup": "baixa",
+      "data": "06/07/2026 06:08"
     }
   ],
   "signals": [
@@ -3696,7 +3709,7 @@
     }
   ],
   "zone_tol": 0.2,
-  "total_prints": 10,
-  "last_update": "04/07/2026 09:49",
+  "total_prints": 11,
+  "last_update": "06/07/2026 06:08",
   "total_signals": 85
 }
