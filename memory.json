@@ -3643,9 +3643,10 @@
       "qty_usada": 0.004828,
       "tipo": "denso",
       "data": "06/07/2026 13:50",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+R$ 4,20",
+      "order_id": null,
+      "fechamento": "06/07/2026 14:07"
     },
     {
       "id": 201,
@@ -3659,9 +3660,10 @@
       "qty_usada": 0.007951,
       "tipo": "denso",
       "data": "06/07/2026 13:55",
-      "status": "aberto",
-      "resultado": null,
-      "order_id": null
+      "status": "win",
+      "resultado": "+R$ 5,20",
+      "order_id": null,
+      "fechamento": "06/07/2026 14:07"
     }
   ],
   "zone_tol": 0.2,
