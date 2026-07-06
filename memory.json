@@ -192,23 +192,6 @@
   ],
   "signals": [
     {
-      "id": 11,
-      "symbol": "DOTUSDT",
-      "direcao": "down",
-      "entrada": 1.0216,
-      "stop": 0.9353,
-      "alvo": 1.0016,
-      "risco": 0.0019159599999998278,
-      "rr": 10.4,
-      "data": "16/06/2026 06:52",
-      "qty": 27.6548,
-      "status": "win",
-      "resultado": "+10.4R",
-      "order_id": null,
-      "tipo": "HTF_H1_SHORT",
-      "fechamento": "02/07/2026 16:53"
-    },
-    {
       "id": 12,
       "symbol": "LINKUSDT",
       "direcao": "down",
@@ -3706,6 +3689,22 @@
       "resultado": "+R$ 2,60",
       "order_id": null,
       "fechamento": "06/07/2026 09:12"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 61998.2,
+      "stop": 61866.7,
+      "alvo": 62136.2,
+      "risco": 131.5,
+      "rr": 1.0,
+      "qty_usada": 0.002936,
+      "tipo": "rapido",
+      "data": "06/07/2026 09:16",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
