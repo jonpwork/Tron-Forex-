@@ -3597,6 +3597,21 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "05/07/2026 22:27"
+    },
+    {
+      "id": 194,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63827.1,
+      "stop": 63647.1,
+      "alvo": 63914.8,
+      "risco": 180.0,
+      "rr": 0.5,
+      "qty_usada": 0.002143,
+      "data": "05/07/2026 22:38",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
