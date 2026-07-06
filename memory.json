@@ -192,23 +192,6 @@
   ],
   "signals": [
     {
-      "id": 12,
-      "symbol": "LINKUSDT",
-      "direcao": "down",
-      "entrada": 8.35005,
-      "stop": 8.023,
-      "alvo": 8.281260934999999,
-      "risco": 0.0687890650000007,
-      "rr": 1.0,
-      "data": "16/06/2026 06:52",
-      "qty": 3.3835,
-      "status": "win",
-      "resultado": "+1.0R",
-      "order_id": null,
-      "tipo": "M1_M_SHORT",
-      "fechamento": "02/07/2026 16:53"
-    },
-    {
       "id": 13,
       "symbol": "LINKUSDT",
       "direcao": "down",
@@ -3702,6 +3685,22 @@
       "qty_usada": 0.002936,
       "tipo": "rapido",
       "data": "06/07/2026 09:16",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 62018.3,
+      "stop": 61964.1,
+      "alvo": 62092.7,
+      "risco": 54.200000000004366,
+      "rr": 1.4,
+      "qty_usada": 0.007135,
+      "tipo": "rapido",
+      "data": "06/07/2026 09:22",
       "status": "aberto",
       "resultado": null,
       "order_id": null
