@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 21,
-      "symbol": "AVAXUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 6.794,
-      "stop": 6.804,
-      "alvo": 6.759,
-      "qty": 49.9,
-      "rr": 3.5,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:40:00",
-      "ts_open_epoch": 1782996000.9793131,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.010000000000000675,
-      "breakeven_done": false
-    },
-    {
       "id": 22,
       "symbol": "DOTUSDT",
       "tf": "M1",
@@ -3682,6 +3661,22 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 12:35"
+    },
+    {
+      "id": 201,
+      "symbol": "BTCUSDT",
+      "direcao": "up",
+      "entrada": 63478.8,
+      "stop": 63380.3,
+      "alvo": 63999.9,
+      "risco": 98.5,
+      "rr": 5.3,
+      "qty_usada": 0.003931,
+      "tipo": "denso",
+      "data": "06/07/2026 13:05",
+      "status": "aberto",
+      "resultado": null,
+      "order_id": null
     }
   ],
   "zone_tol": 0.2,
