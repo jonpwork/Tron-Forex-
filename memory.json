@@ -3599,8 +3599,9 @@
       "tipo": "denso",
       "order_id": "d655ac10-1e76-4f60-a1aa-0b845d8142e8",
       "data": "06/07/2026 23:38",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,10",
+      "fechamento": "07/07/2026 00:16"
     }
   ],
   "zone_tol": 0.2,
