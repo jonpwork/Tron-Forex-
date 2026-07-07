@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 39,
-      "symbol": "LTCUSDT",
-      "tf": "M1",
-      "direcao": "BUY",
-      "entrada": 43.05,
-      "stop": 42.98,
-      "alvo": 43.12,
-      "qty": 7.1,
-      "rr": 1.0,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:45:02",
-      "ts_open_epoch": 1782996302.4853249,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.07000000000000028,
-      "breakeven_done": false
-    },
-    {
       "id": 40,
       "symbol": "DOGEUSDT",
       "tf": "M5",
@@ -3610,6 +3589,22 @@
       "resultado": "-R$ 2,00",
       "order_id": null,
       "fechamento": "06/07/2026 16:59"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "up",
+      "entrada": 1790.19,
+      "stop": 1788.69,
+      "alvo": 1807.57,
+      "risco": 1.5,
+      "rr": 11.6,
+      "qty_usada": 0.01,
+      "tipo": "denso",
+      "order_id": "25d000d8-6aa9-4b5d-8f71-500173d900f5",
+      "data": "06/07/2026 22:39",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
