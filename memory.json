@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 43,
-      "symbol": "BNBUSDT",
-      "tf": "M1",
-      "direcao": "BUY",
-      "entrada": 560.9,
-      "stop": 560.3,
-      "alvo": 561.5,
-      "qty": 0.83,
-      "rr": 1.0,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:47:00",
-      "ts_open_epoch": 1782996420.8023198,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.6000000000000227,
-      "breakeven_done": false
-    },
-    {
       "id": 44,
       "symbol": "LTCUSDT",
       "tf": "M1",
@@ -3594,6 +3573,22 @@
       "status": "win",
       "resultado": "+R$ 1,09",
       "fechamento": "07/07/2026 12:46"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "SELL",
+      "entrada": 6.777,
+      "stop": 6.82832135287921,
+      "alvo": 6.674357294241581,
+      "risco": 0.051321352879210025,
+      "rr": 2.0,
+      "qty_usada": 1.1,
+      "rsi": 54.7,
+      "order_id": "5af213ba-69af-48b0-833a-f740c101d01f",
+      "data": "07/07/2026 14:02",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
