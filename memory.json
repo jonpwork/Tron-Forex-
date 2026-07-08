@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 44,
-      "symbol": "LTCUSDT",
-      "tf": "M1",
-      "direcao": "BUY",
-      "entrada": 43.03,
-      "stop": 42.98,
-      "alvo": 43.12,
-      "qty": 9.9,
-      "rr": 1.8,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:47:00",
-      "ts_open_epoch": 1782996420.8702998,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.05000000000000426,
-      "breakeven_done": false
-    },
-    {
       "id": 45,
       "symbol": "BTCUSDT",
       "tf": "M1",
@@ -3590,6 +3569,22 @@
       "status": "win",
       "resultado": "+R$ 0,58",
       "fechamento": "07/07/2026 19:01"
+    },
+    {
+      "id": 201,
+      "symbol": "OPUSDT",
+      "direcao": "SELL",
+      "entrada": 0.09854,
+      "stop": 0.0996715951569769,
+      "alvo": 0.09627680968604621,
+      "risco": 0.0011315951569769028,
+      "rr": 2.0,
+      "qty_usada": 137.0,
+      "rsi": 53.0,
+      "order_id": "1f15e370-3213-4d24-94ac-0ae6ee2660fb",
+      "data": "08/07/2026 08:46",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
