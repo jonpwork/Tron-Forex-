@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 47,
-      "symbol": "BTCUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 61388.0,
-      "stop": 61462.6,
-      "alvo": 61154.8,
-      "qty": 0.006,
-      "rr": 3.13,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:48:18",
-      "ts_open_epoch": 1782996498.4108336,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 74.59999999999854,
-      "breakeven_done": false
-    },
-    {
       "id": 48,
       "symbol": "SOLUSDT",
       "tf": "M1",
@@ -3575,6 +3554,22 @@
       "rsi": 38.2,
       "order_id": "1025ef84-91fe-4936-b3df-9a1e838a808b",
       "data": "09/07/2026 17:03",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "BUY",
+      "entrada": 6.708,
+      "stop": 6.670220710516372,
+      "alvo": 6.783558578967255,
+      "risco": 0.03777928948362774,
+      "rr": 2.0,
+      "qty_usada": 3.8,
+      "rsi": 46.1,
+      "order_id": "882e91fd-e011-41e1-a43f-e9c34fc4f830",
+      "data": "09/07/2026 17:35",
       "status": "aberto",
       "resultado": null
     }
