@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 56,
-      "symbol": "DOGEUSDT",
-      "tf": "M5",
-      "direcao": "BUY",
-      "entrada": 0.07432,
-      "stop": 0.07398,
-      "alvo": 0.07479,
-      "qty": 1470.0,
-      "rr": 1.38,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:50:40",
-      "ts_open_epoch": 1782996640.631197,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.0003399999999999931,
-      "breakeven_done": false
-    },
-    {
       "id": 57,
       "symbol": "1000NEIROCTOUSDT",
       "tf": "M1",
@@ -3539,6 +3518,22 @@
       "rsi": 45.1,
       "order_id": "eb48dd68-995c-4aa6-8612-47e12d53dbb6",
       "data": "10/07/2026 12:03",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "DOGEUSDT",
+      "direcao": "BUY",
+      "entrada": 0.0739847,
+      "stop": 0.07361055530588191,
+      "alvo": 0.07473298938823617,
+      "risco": 0.00037414469411808926,
+      "rr": 2.0,
+      "qty_usada": 159.0,
+      "rsi": 48.2,
+      "order_id": "a9bbb621-c700-4fae-a6c1-8e517fda28bd",
+      "data": "10/07/2026 12:17",
       "status": "aberto",
       "resultado": null
     }
