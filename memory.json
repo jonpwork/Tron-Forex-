@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 48,
-      "symbol": "SOLUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 81.36,
-      "stop": 81.47,
-      "alvo": 81.25,
-      "qty": 4.5,
-      "rr": 1.0,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:48:37",
-      "ts_open_epoch": 1782996517.7217996,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.10999999999999943,
-      "breakeven_done": false
-    },
-    {
       "id": 49,
       "symbol": "XRPUSDT",
       "tf": "M1",
@@ -3574,6 +3553,22 @@
       "status": "loss",
       "resultado": "-R$ 0,74",
       "fechamento": "09/07/2026 21:24"
+    },
+    {
+      "id": 201,
+      "symbol": "ARBUSDT",
+      "direcao": "BUY",
+      "entrada": 0.08778,
+      "stop": 0.08615516277633584,
+      "alvo": 0.0910296744473283,
+      "risco": 0.0016248372236641606,
+      "rr": 2.0,
+      "qty_usada": 87.0,
+      "rsi": 46.3,
+      "order_id": "5dfcf89d-a2bb-48d0-a847-1db15ecc9403",
+      "data": "09/07/2026 21:41",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
