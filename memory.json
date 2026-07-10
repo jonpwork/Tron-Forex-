@@ -3526,8 +3526,9 @@
       "rsi": 45.2,
       "order_id": "458ca568-472a-43c6-b7dc-c582215230ee",
       "data": "10/07/2026 09:26",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,75",
+      "fechamento": "10/07/2026 11:19"
     },
     {
       "id": 201,
