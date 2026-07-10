@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 50,
-      "symbol": "XRPUSDT",
-      "tf": "M5",
-      "direcao": "BUY",
-      "entrada": 1.0924,
-      "stop": 1.0847,
-      "alvo": 1.1038,
-      "qty": 64.9,
-      "rr": 1.48,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:49:00",
-      "ts_open_epoch": 1782996540.7897556,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.00770000000000004,
-      "breakeven_done": false
-    },
-    {
       "id": 51,
       "symbol": "SOLUSDT",
       "tf": "M1",
@@ -3566,6 +3545,22 @@
       "status": "win",
       "resultado": "+R$ 1,18",
       "fechamento": "09/07/2026 23:46"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "BUY",
+      "entrada": 6.75,
+      "stop": 6.7208138724215685,
+      "alvo": 6.808372255156863,
+      "risco": 0.02918612757843153,
+      "rr": 2.0,
+      "qty_usada": 4.5,
+      "rsi": 45.1,
+      "order_id": "02828ad9-7816-4edb-ad25-136a6587af43",
+      "data": "10/07/2026 04:31",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
