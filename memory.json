@@ -3554,8 +3554,9 @@
       "rsi": 49.5,
       "order_id": "4e050afc-6aed-4289-b0bd-c3093ad99277",
       "data": "10/07/2026 06:15",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,64",
+      "fechamento": "10/07/2026 06:34"
     }
   ],
   "zone_tol": 0.2,
