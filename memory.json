@@ -3546,8 +3546,9 @@
       "rsi": 46.3,
       "order_id": "5dfcf89d-a2bb-48d0-a847-1db15ecc9403",
       "data": "09/07/2026 21:41",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 1,45",
+      "fechamento": "09/07/2026 23:46"
     },
     {
       "id": 201,
@@ -3562,8 +3563,9 @@
       "rsi": 49.4,
       "order_id": "a0a2bd57-56d6-40d2-bb3a-7d8a652a503f",
       "data": "09/07/2026 22:16",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 1,18",
+      "fechamento": "09/07/2026 23:46"
     }
   ],
   "zone_tol": 0.2,
