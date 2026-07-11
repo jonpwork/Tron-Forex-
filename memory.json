@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 57,
-      "symbol": "1000NEIROCTOUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 0.06413,
-      "stop": 0.0643,
-      "alvo": 0.06373,
-      "qty": 2941.0,
-      "rr": 2.35,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:51:30",
-      "ts_open_epoch": 1782996690.9130905,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.0001699999999999896,
-      "breakeven_done": false
-    },
-    {
       "id": 58,
       "symbol": "1000PEPEUSDT",
       "tf": "M1",
@@ -3538,6 +3517,22 @@
       "status": "win",
       "resultado": "+R$ 0,61",
       "fechamento": "11/07/2026 10:33"
+    },
+    {
+      "id": 201,
+      "symbol": "SUIUSDT",
+      "direcao": "BUY",
+      "entrada": 0.7413,
+      "stop": 0.737286679622042,
+      "alvo": 0.7493266407559159,
+      "risco": 0.004013320377957985,
+      "rr": 2.0,
+      "qty_usada": 37.0,
+      "rsi": 45.2,
+      "order_id": "dce99ab6-56c5-42f6-a892-6d6304df7a73",
+      "data": "11/07/2026 13:49",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
