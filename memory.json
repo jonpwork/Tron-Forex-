@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 67,
-      "symbol": "1000LUNCUSDT",
-      "tf": "M1",
-      "direcao": "BUY",
-      "entrada": 0.06056,
-      "stop": 0.0605,
-      "alvo": 0.06065,
-      "qty": 8333.0,
-      "rr": 1.5,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:56:15",
-      "ts_open_epoch": 1782996975.0564456,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 6.0000000000004494e-05,
-      "breakeven_done": false
-    },
-    {
       "id": 68,
       "symbol": "1000CATUSDT",
       "tf": "M1",
@@ -3530,6 +3509,25 @@
       "resultado": "-R$ 0,93",
       "preco_saida": 0.09692,
       "fechamento": "12/07/2026 05:12"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "SELL",
+      "entrada": 6.386,
+      "stop": 6.406978161828701,
+      "alvo": 6.344043676342598,
+      "risco": 0.020978161828701047,
+      "rr": 2.0,
+      "qty_usada": 4.7,
+      "atr": 0.013985441219134137,
+      "origem": "M5",
+      "melhor_preco": 6.386,
+      "trail_ativo": false,
+      "order_id": "3fbcedfb-dba0-4e47-84c6-2581f61d4ad8",
+      "data": "12/07/2026 06:13",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
