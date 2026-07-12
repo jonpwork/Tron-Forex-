@@ -3505,8 +3505,10 @@
       "trail_ativo": false,
       "order_id": "405e1b74-172f-43e3-a350-00a0c81f50a7",
       "data": "12/07/2026 01:02",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,48",
+      "preco_saida": 6.536,
+      "fechamento": "12/07/2026 01:27"
     },
     {
       "id": 201,
@@ -3520,7 +3522,7 @@
       "qty_usada": 27.0,
       "atr": 0.0008248085592147892,
       "origem": "M5",
-      "melhor_preco": 1.09817,
+      "melhor_preco": 1.09787,
       "trail_ativo": false,
       "order_id": "dca26556-877e-4ed5-a038-7c21f2c1e710",
       "data": "12/07/2026 01:19",
