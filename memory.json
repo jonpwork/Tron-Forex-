@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 60,
-      "symbol": "1000BONKUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 0.004387,
-      "stop": 0.004393,
-      "alvo": 0.004372,
-      "qty": 83300.0,
-      "rr": 2.5,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:52:08",
-      "ts_open_epoch": 1782996728.6339011,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 5.999999999999929e-06,
-      "breakeven_done": false
-    },
-    {
       "id": 61,
       "symbol": "1000PEPEUSDT",
       "tf": "M1",
@@ -3530,6 +3509,25 @@
       "resultado": "-R$ 0,76",
       "preco_saida": 0.09516,
       "fechamento": "11/07/2026 20:27"
+    },
+    {
+      "id": 201,
+      "symbol": "ARBUSDT",
+      "direcao": "BUY",
+      "entrada": 0.09598,
+      "stop": 0.09426938750506819,
+      "alvo": 0.0994012249898636,
+      "risco": 0.0017106124949318041,
+      "rr": 2.0,
+      "qty_usada": 86.0,
+      "atr": 0.001140408329954538,
+      "origem": "M15",
+      "melhor_preco": 0.09598,
+      "trail_ativo": false,
+      "order_id": "11289718-985f-4554-b34f-0994cd770b7e",
+      "data": "11/07/2026 21:29",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
