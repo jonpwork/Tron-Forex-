@@ -3505,8 +3505,10 @@
       "trail_ativo": true,
       "order_id": "11289718-985f-4554-b34f-0994cd770b7e",
       "data": "11/07/2026 21:29",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 1,48",
+      "preco_saida": 0.09936,
+      "fechamento": "12/07/2026 01:01"
     },
     {
       "id": 201,
