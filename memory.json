@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 63,
-      "symbol": "1000PEPEUSDT",
-      "tf": "M1",
-      "direcao": "BUY",
-      "entrada": 0.002433,
-      "stop": 0.002432,
-      "alvo": 0.002444,
-      "qty": 500000.0,
-      "rr": 11.0,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 09:53:08",
-      "ts_open_epoch": 1782996788.955085,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 9.99999999999699e-07,
-      "breakeven_done": false
-    },
-    {
       "id": 64,
       "symbol": "1000PEPEUSDT",
       "tf": "M1",
@@ -3526,6 +3505,25 @@
       "trail_ativo": false,
       "order_id": "405e1b74-172f-43e3-a350-00a0c81f50a7",
       "data": "12/07/2026 01:02",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "SELL",
+      "entrada": 1.09817,
+      "stop": 1.0994072128388224,
+      "alvo": 1.0956955743223558,
+      "risco": 0.001237212838822277,
+      "rr": 2.0,
+      "qty_usada": 27.0,
+      "atr": 0.0008248085592147892,
+      "origem": "M5",
+      "melhor_preco": 1.09817,
+      "trail_ativo": false,
+      "order_id": "dca26556-877e-4ed5-a038-7c21f2c1e710",
+      "data": "12/07/2026 01:19",
       "status": "aberto",
       "resultado": null
     }
