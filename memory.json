@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 86,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 61618.6,
-      "stop": 61635.21309709644,
-      "alvo": 61585.81016949176,
-      "risco": 16.613097096444108,
-      "rr": 2.0,
-      "data": "02/07/2026 10:06",
-      "qty": 0.002897,
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": null,
-      "tipo": "HEDGE_CANAL_SHORT_M1",
-      "pnl_usd": -0.0481,
-      "pnl_brl": -0.25,
-      "fechamento": "02/07/2026 10:06"
-    },
-    {
       "id": 87,
       "symbol": "BTCUSDT",
       "direcao": "up",
@@ -3530,6 +3511,25 @@
       "resultado": "-R$ 0,38",
       "preco_saida": 1.8999,
       "fechamento": "13/07/2026 15:55"
+    },
+    {
+      "id": 201,
+      "symbol": "ETHUSDT",
+      "direcao": "SELL",
+      "entrada": 1774.94,
+      "stop": 1782.9892032670375,
+      "alvo": 1758.8415934659251,
+      "risco": 8.049203267037456,
+      "rr": 2.0,
+      "qty_usada": 0.01,
+      "atr": 5.366135511358287,
+      "origem": "M15",
+      "melhor_preco": 1774.94,
+      "trail_ativo": false,
+      "order_id": "91f03c08-ada8-4e4a-aec0-7297f474462b",
+      "data": "13/07/2026 17:00",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
