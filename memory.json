@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 79,
-      "symbol": "1000000MOGUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 0.10899,
-      "stop": 0.10919,
-      "alvo": 0.10865,
-      "qty": 2500.0,
-      "rr": 1.7,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 10:03:52",
-      "ts_open_epoch": 1782997432.1379309,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 0.00019999999999999185,
-      "breakeven_done": false
-    },
-    {
       "id": 80,
       "symbol": "1000000MOGUSDT",
       "tf": "M1",
@@ -3526,6 +3505,25 @@
       "trail_ativo": false,
       "order_id": "6ea846c1-eb51-49a8-a6bd-49331fb75f74",
       "data": "13/07/2026 04:34",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "SELL",
+      "entrada": 76.62,
+      "stop": 76.94510635110726,
+      "alvo": 75.9697872977855,
+      "risco": 0.3251063511072516,
+      "rr": 2.0,
+      "qty_usada": 0.4,
+      "atr": 0.21673756740483413,
+      "origem": "M15",
+      "melhor_preco": 76.62,
+      "trail_ativo": false,
+      "order_id": "b1ada727-fc72-4a75-aed7-317071fce359",
+      "data": "13/07/2026 06:20",
       "status": "aberto",
       "resultado": null
     }
