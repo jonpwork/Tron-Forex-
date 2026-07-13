@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 76,
-      "symbol": "1000RATSUSDT",
-      "tf": "M1",
-      "direcao": "BUY",
-      "entrada": 0.02901,
-      "stop": 0.02893,
-      "alvo": 0.02916,
-      "qty": 6240.0,
-      "rr": 1.87,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 10:01:01",
-      "ts_open_epoch": 1782997261.5289762,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 8.000000000000021e-05,
-      "breakeven_done": false
-    },
-    {
       "id": 77,
       "symbol": "1000000MOGUSDT",
       "tf": "M1",
@@ -3530,6 +3509,25 @@
       "resultado": "+R$ 2,20",
       "preco_saida": 1833.84,
       "fechamento": "12/07/2026 21:13"
+    },
+    {
+      "id": 201,
+      "symbol": "XRPUSDT",
+      "direcao": "SELL",
+      "entrada": 1.09674,
+      "stop": 1.1020001870073763,
+      "alvo": 1.0862196259852475,
+      "risco": 0.0052601870073762935,
+      "rr": 2.0,
+      "qty_usada": 27.0,
+      "atr": 0.003506791338250829,
+      "origem": "M15",
+      "melhor_preco": 1.09674,
+      "trail_ativo": false,
+      "order_id": "a9212c17-70b4-4b4d-8482-1d78450c3808",
+      "data": "12/07/2026 21:25",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
