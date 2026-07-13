@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 83,
-      "symbol": "1000BONKUSDT",
-      "tf": "M1",
-      "direcao": "SELL",
-      "entrada": 0.004392,
-      "stop": 0.0044,
-      "alvo": 0.004374,
-      "qty": 62400.0,
-      "rr": 2.25,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 10:05:14",
-      "ts_open_epoch": 1782997514.5219345,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 8.000000000000194e-06,
-      "breakeven_done": false
-    },
-    {
       "id": 84,
       "symbol": "10000NEXUSDT",
       "tf": "M5",
@@ -3530,6 +3509,25 @@
       "resultado": "-R$ 0,24",
       "preco_saida": 0.7307,
       "fechamento": "13/07/2026 11:26"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "SELL",
+      "entrada": 0.15971,
+      "stop": 0.16039732889266126,
+      "alvo": 0.15833534221467743,
+      "risco": 0.0006873288926612653,
+      "rr": 2.0,
+      "qty_usada": 61.0,
+      "atr": 0.0004582192617741847,
+      "origem": "M15",
+      "melhor_preco": 0.15971,
+      "trail_ativo": false,
+      "order_id": "90250d23-fe07-4222-99cc-adea1a927cd3",
+      "data": "13/07/2026 11:51",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
