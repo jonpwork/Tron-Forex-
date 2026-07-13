@@ -192,27 +192,6 @@
   ],
   "signals": [
     {
-      "id": 85,
-      "symbol": "1000CATUSDT",
-      "tf": "M5",
-      "direcao": "BUY",
-      "entrada": 0.0013321,
-      "stop": 0.0013264,
-      "alvo": 0.0013399,
-      "qty": 87719.0,
-      "rr": 1.37,
-      "status": "falhou",
-      "real": false,
-      "order_id": "",
-      "ts_open": "02/07/2026 10:05:17",
-      "ts_open_epoch": 1782997517.3966012,
-      "ts_close": "",
-      "pnl_usd": 0.0,
-      "pnl_brl": 0.0,
-      "risco_inicial": 5.699999999999976e-06,
-      "breakeven_done": false
-    },
-    {
       "id": 86,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3526,6 +3505,25 @@
       "trail_ativo": false,
       "order_id": "a7f14f6c-05eb-458a-9dbe-2e2f34b6382f",
       "data": "13/07/2026 14:05",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "BUY",
+      "entrada": 1.9245,
+      "stop": 1.900519630749433,
+      "alvo": 1.9724607385011343,
+      "risco": 0.023980369250567124,
+      "rr": 2.0,
+      "qty_usada": 3.0,
+      "atr": 0.015986912833711443,
+      "origem": "M15",
+      "melhor_preco": 1.9245,
+      "trail_ativo": false,
+      "order_id": "c746813e-0fa3-454b-9ea7-a6b6b8844633",
+      "data": "13/07/2026 15:01",
       "status": "aberto",
       "resultado": null
     }
