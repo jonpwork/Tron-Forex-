@@ -192,21 +192,6 @@
   ],
   "signals": [
     {
-      "id": 94,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1699.97,
-      "stop": 1695.68,
-      "alvo": 1706.95,
-      "risco": 4.289999999999964,
-      "rr": 1.6,
-      "data": "02/07/2026 18:18",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "22f3aabb-17b8-48ca-bc7c-45a3d8455a95",
-      "fechamento": "02/07/2026 19:22"
-    },
-    {
       "id": 95,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3572,6 +3557,25 @@
       "resultado": "-R$ 0,93",
       "preco_saida": 62776.9,
       "fechamento": "14/07/2026 05:42"
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "SELL",
+      "entrada": 75.18,
+      "stop": 75.44774115264988,
+      "alvo": 74.64451769470024,
+      "risco": 0.26774115264987586,
+      "rr": 2.0,
+      "qty_usada": 0.4,
+      "atr": 0.17849410176658664,
+      "origem": "M15",
+      "melhor_preco": 75.18,
+      "trail_ativo": false,
+      "order_id": "4d06221b-40af-45ea-bad1-5ea1b87eebdf",
+      "data": "14/07/2026 05:54",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
