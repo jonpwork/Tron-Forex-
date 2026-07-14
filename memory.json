@@ -3564,12 +3564,14 @@
       "qty_usada": 0.001,
       "atr": 110.38223875899989,
       "origem": "M15",
-      "melhor_preco": 62596.6,
+      "melhor_preco": 62520.8,
       "trail_ativo": false,
       "order_id": "d9610589-25c0-4cce-b217-acd7730bd359",
       "data": "14/07/2026 03:57",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,93",
+      "preco_saida": 62776.9,
+      "fechamento": "14/07/2026 05:42"
     }
   ],
   "zone_tol": 0.2,
