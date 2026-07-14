@@ -3556,8 +3556,10 @@
       "trail_ativo": false,
       "order_id": "32ef73e5-9ed4-452b-9be0-8af8a643d724",
       "data": "13/07/2026 23:54",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,53",
+      "preco_saida": 0.7277,
+      "fechamento": "14/07/2026 02:00"
     }
   ],
   "zone_tol": 0.2,
