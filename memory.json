@@ -192,21 +192,6 @@
   ],
   "signals": [
     {
-      "id": 116,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 61697.9,
-      "stop": 61746.6,
-      "alvo": 61620.9,
-      "risco": 48.69999999999709,
-      "rr": 1.6,
-      "data": "03/07/2026 07:10",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "0f9358ae-bcf6-471c-8d5e-d39eb087c1c4",
-      "fechamento": "03/07/2026 07:22"
-    },
-    {
       "id": 117,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3696,10 +3681,29 @@
       "qty_usada": 7.0,
       "atr": 0.01263074325339884,
       "origem": "M15",
-      "melhor_preco": 2.0481,
+      "melhor_preco": 2.0621,
       "trail_ativo": false,
       "order_id": "8dd6591b-4237-4035-9505-2d4d73cab4e1",
       "data": "15/07/2026 17:22",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "BUY",
+      "entrada": 6.694,
+      "stop": 6.679049017822726,
+      "alvo": 6.723901964354548,
+      "risco": 0.01495098217727353,
+      "rr": 2.0,
+      "qty_usada": 0.9,
+      "atr": 0.009967321451515928,
+      "origem": "M5",
+      "melhor_preco": 6.694,
+      "trail_ativo": false,
+      "order_id": "d99e846c-05d3-47f3-8747-c9516495f2c3",
+      "data": "15/07/2026 18:22",
       "status": "aberto",
       "resultado": null
     }
