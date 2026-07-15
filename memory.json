@@ -192,21 +192,6 @@
   ],
   "signals": [
     {
-      "id": 111,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 61385.7,
-      "stop": 61414.2,
-      "alvo": 61337.0,
-      "risco": 28.5,
-      "rr": 1.7,
-      "data": "03/07/2026 03:56",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "d60fdacf-b107-4ffa-a038-9f07272e5ffb",
-      "fechamento": "03/07/2026 03:59"
-    },
-    {
       "id": 112,
       "symbol": "ETHUSDT",
       "direcao": "up",
@@ -3674,6 +3659,25 @@
       "resultado": "-R$ 0,40",
       "preco_saida": 77.74,
       "fechamento": "15/07/2026 13:08"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "BUY",
+      "entrada": 1.5723,
+      "stop": 1.569566629181366,
+      "alvo": 1.5777667416372683,
+      "risco": 0.0027333708186341177,
+      "rr": 2.0,
+      "qty_usada": 18.0,
+      "atr": 0.0018222472124227247,
+      "origem": "M15",
+      "melhor_preco": 1.5723,
+      "trail_ativo": false,
+      "order_id": "af392cc8-bf17-4f95-a817-50dd6ceb3def",
+      "data": "15/07/2026 13:12",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
