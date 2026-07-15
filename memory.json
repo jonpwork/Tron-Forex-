@@ -3631,8 +3631,10 @@
       "trail_ativo": true,
       "order_id": "d69b0e42-7a93-4563-9299-b57d98468fa3",
       "data": "15/07/2026 08:01",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 0,13",
+      "preco_saida": 6.662,
+      "fechamento": "15/07/2026 09:22"
     },
     {
       "id": 201,
@@ -3646,7 +3648,7 @@
       "qty_usada": 194.0,
       "atr": 0.0004884313384587921,
       "origem": "M15",
-      "melhor_preco": 0.08941,
+      "melhor_preco": 0.08923,
       "trail_ativo": false,
       "order_id": "a9fb49d3-e598-4371-9160-a8473bd0f6df",
       "data": "15/07/2026 09:18",
