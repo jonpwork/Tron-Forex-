@@ -192,21 +192,6 @@
   ],
   "signals": [
     {
-      "id": 108,
-      "symbol": "BTCUSDT",
-      "direcao": "down",
-      "entrada": 61580.0,
-      "stop": 61705.5,
-      "alvo": 61390.8,
-      "risco": 125.5,
-      "rr": 1.5,
-      "data": "03/07/2026 01:22",
-      "status": "loss",
-      "resultado": "-1R",
-      "order_id": "cf3abdac-a793-4b03-9568-81be60416778",
-      "fechamento": "03/07/2026 01:36"
-    },
-    {
       "id": 109,
       "symbol": "BTCUSDT",
       "direcao": "down",
@@ -3648,10 +3633,29 @@
       "qty_usada": 194.0,
       "atr": 0.0004884313384587921,
       "origem": "M15",
-      "melhor_preco": 0.08923,
+      "melhor_preco": 0.0892,
       "trail_ativo": false,
       "order_id": "a9fb49d3-e598-4371-9160-a8473bd0f6df",
       "data": "15/07/2026 09:18",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "SOLUSDT",
+      "direcao": "BUY",
+      "entrada": 77.67,
+      "stop": 77.38239024912495,
+      "alvo": 78.2452195017501,
+      "risco": 0.28760975087504903,
+      "rr": 2.0,
+      "qty_usada": 0.2,
+      "atr": 0.19173983391669874,
+      "origem": "M15",
+      "melhor_preco": 77.67,
+      "trail_ativo": false,
+      "order_id": "64a23d55-ed60-4340-bbf4-85a21eef4a08",
+      "data": "15/07/2026 09:30",
       "status": "aberto",
       "resultado": null
     }
