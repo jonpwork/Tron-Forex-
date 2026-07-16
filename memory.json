@@ -3780,12 +3780,14 @@
       "qty_usada": 3.9,
       "atr": 0.014134067772215582,
       "origem": "M5",
-      "melhor_preco": 6.582,
+      "melhor_preco": 6.575,
       "trail_ativo": false,
       "order_id": "46118be8-f033-4561-a4f0-59541b56df46",
       "data": "16/07/2026 16:23",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,44",
+      "preco_saida": 6.604,
+      "fechamento": "16/07/2026 18:08"
     }
   ],
   "zone_tol": 0.2,
