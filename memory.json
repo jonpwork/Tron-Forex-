@@ -3703,8 +3703,10 @@
       "trail_ativo": false,
       "order_id": "acf05aa2-8c8d-405b-8396-da91475afed7",
       "data": "15/07/2026 20:55",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,47",
+      "preco_saida": 1910.04,
+      "fechamento": "15/07/2026 22:18"
     },
     {
       "id": 201,
@@ -3722,8 +3724,10 @@
       "trail_ativo": false,
       "order_id": "6c8a72ba-191c-484f-88c5-16dbbd8fad0f",
       "data": "15/07/2026 22:08",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,41",
+      "preco_saida": 1910.04,
+      "fechamento": "15/07/2026 22:18"
     }
   ],
   "zone_tol": 0.2,
