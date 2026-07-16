@@ -192,21 +192,6 @@
   ],
   "signals": [
     {
-      "id": 120,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1727.37,
-      "stop": 1721.39,
-      "alvo": 1736.2899999999997,
-      "risco": 5.979999999999791,
-      "rr": 1.5,
-      "data": "03/07/2026 09:52",
-      "status": "win",
-      "resultado": "+1.5R",
-      "order_id": "5503fa6d-69e1-421b-a7a4-e68eb8e7b768",
-      "fechamento": "03/07/2026 10:13"
-    },
-    {
       "id": 121,
       "symbol": "ETHUSDT",
       "direcao": "up",
@@ -3728,6 +3713,25 @@
       "resultado": "-R$ 0,41",
       "preco_saida": 1910.04,
       "fechamento": "15/07/2026 22:18"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "BUY",
+      "entrada": 2.0585,
+      "stop": 2.0416761487633184,
+      "alvo": 2.0921477024733637,
+      "risco": 0.01682385123668162,
+      "rr": 2.0,
+      "qty_usada": 8.0,
+      "atr": 0.011215900824454547,
+      "origem": "M15",
+      "melhor_preco": 2.0585,
+      "trail_ativo": false,
+      "order_id": "6e4cd59f-4667-4828-9dd4-18f1b5e42b31",
+      "data": "15/07/2026 22:31",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
