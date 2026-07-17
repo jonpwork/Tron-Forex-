@@ -192,21 +192,6 @@
   ],
   "signals": [
     {
-      "id": 134,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
-      "entrada": 1759.37,
-      "stop": 1757.9,
-      "alvo": 1761.5299999999997,
-      "risco": 1.4699999999998,
-      "rr": 1.5,
-      "data": "03/07/2026 19:24",
-      "status": "loss",
-      "resultado": "-R$ 0,08",
-      "order_id": "c2db8eac-9fef-43c6-8b5e-5c11d9a417ad",
-      "fechamento": "03/07/2026 19:41"
-    },
-    {
       "id": 135,
       "symbol": "ETHUSDT",
       "direcao": "up",
@@ -3812,6 +3797,25 @@
       "resultado": "+R$ 0,13",
       "preco_saida": 6.499,
       "fechamento": "17/07/2026 01:28"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "SELL",
+      "entrada": 6.515,
+      "stop": 6.533983978646861,
+      "alvo": 6.477032042706276,
+      "risco": 0.018983978646861743,
+      "rr": 2.0,
+      "qty_usada": 4.2,
+      "atr": 0.012655985764574515,
+      "origem": "M5",
+      "melhor_preco": 6.515,
+      "trail_ativo": false,
+      "order_id": "3d447778-c055-4a33-bb4a-e71fee6be665",
+      "data": "17/07/2026 01:58",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
