@@ -3896,7 +3896,7 @@
       "qty_usada": 183.0,
       "atr": 0.0004720196596424635,
       "origem": "M15",
-      "melhor_preco": 0.09013,
+      "melhor_preco": 0.09014,
       "trail_ativo": false,
       "order_id": "4d1b80a6-361f-4aa6-b1f8-b5979ff9003a",
       "data": "18/07/2026 09:34",
@@ -3915,12 +3915,14 @@
       "qty_usada": 156.0,
       "atr": 0.0002486080925997512,
       "origem": "M5",
-      "melhor_preco": 0.08998,
+      "melhor_preco": 0.09014,
       "trail_ativo": false,
       "order_id": "acfa9d39-915e-45ba-8a3c-0f9476f068a8",
       "data": "18/07/2026 10:15",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,35",
+      "preco_saida": 0.08954,
+      "fechamento": "18/07/2026 11:04"
     }
   ],
   "zone_tol": 0.2,
