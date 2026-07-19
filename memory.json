@@ -192,22 +192,6 @@
   ],
   "signals": [
     {
-      "id": 168,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 62832.5,
-      "stop": 62737.5,
-      "alvo": 62881.1,
-      "risco": 95.0,
-      "rr": 0.5,
-      "qty_usada": 0.004076,
-      "data": "05/07/2026 15:55",
-      "status": "loss",
-      "resultado": "-R$ 2,00",
-      "order_id": null,
-      "fechamento": "05/07/2026 17:27"
-    },
-    {
       "id": 169,
       "symbol": "ETHUSDT",
       "direcao": "up",
@@ -3971,6 +3955,23 @@
       "origem": "M15",
       "order_id": "5ca49151-2bd6-4a5f-a824-3b3d2af6a837",
       "data": "19/07/2026 09:24",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "SELL",
+      "entrada": 6.448,
+      "stop": 6.465000159175088,
+      "alvo": 6.325938857122871,
+      "risco": 0.01700015917508768,
+      "rr": 7.18,
+      "qty_usada": 3.0,
+      "atr": 0.011333439450058245,
+      "origem": "M5",
+      "order_id": "95229cd6-e547-449d-9365-ef01e33b85a5",
+      "data": "19/07/2026 11:39",
       "status": "aberto",
       "resultado": null
     }
