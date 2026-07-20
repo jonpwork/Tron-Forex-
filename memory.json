@@ -192,22 +192,6 @@
   ],
   "signals": [
     {
-      "id": 176,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 62988.7,
-      "stop": 62931.4,
-      "alvo": 63034.3,
-      "risco": 57.299999999995634,
-      "rr": 0.8,
-      "qty_usada": 0.006758,
-      "data": "05/07/2026 18:49",
-      "status": "win",
-      "resultado": "+R$ 1,60",
-      "order_id": null,
-      "fechamento": "05/07/2026 18:55"
-    },
-    {
       "id": 177,
       "symbol": "BTCUSDT",
       "direcao": "up",
@@ -3997,6 +3981,23 @@
       "resultado": "-R$ 0,91",
       "preco_saida": 0.16536,
       "fechamento": "20/07/2026 12:43"
+    },
+    {
+      "id": 201,
+      "symbol": "AVAXUSDT",
+      "direcao": "BUY",
+      "entrada": 6.57,
+      "stop": 6.551101789901082,
+      "alvo": 6.663924104191622,
+      "risco": 0.0188982100989179,
+      "rr": 4.97,
+      "qty_usada": 3.9,
+      "atr": 0.01259880673261184,
+      "origem": "M5",
+      "order_id": "dd6234f2-15e0-4d81-9697-4de564a43c12",
+      "data": "20/07/2026 14:43",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
