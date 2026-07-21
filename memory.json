@@ -4008,8 +4008,10 @@
       "origem": "M15",
       "order_id": "8f37c7b4-f998-4a43-9ff3-3d184ff43058",
       "data": "21/07/2026 06:26",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,78",
+      "preco_saida": 1.9875,
+      "fechamento": "21/07/2026 07:51"
     }
   ],
   "zone_tol": 0.2,
