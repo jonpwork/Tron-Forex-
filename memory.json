@@ -192,22 +192,6 @@
   ],
   "signals": [
     {
-      "id": 180,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63737.7,
-      "stop": 63522.1,
-      "alvo": 63926.6,
-      "risco": 215.59999999999854,
-      "rr": 0.9,
-      "qty_usada": 0.001796,
-      "data": "05/07/2026 19:33",
-      "status": "win",
-      "resultado": "+R$ 1,80",
-      "order_id": null,
-      "fechamento": "05/07/2026 20:14"
-    },
-    {
       "id": 181,
       "symbol": "BTCUSDT",
       "direcao": "up",
@@ -4009,6 +3993,23 @@
       "resultado": "-R$ 0,37",
       "preco_saida": 0.7709,
       "fechamento": "21/07/2026 06:02"
+    },
+    {
+      "id": 201,
+      "symbol": "NEARUSDT",
+      "direcao": "BUY",
+      "entrada": 2.0094,
+      "stop": 1.9924405073861873,
+      "alvo": 2.061804832176681,
+      "risco": 0.016959492613812577,
+      "rr": 3.09,
+      "qty_usada": 7.0,
+      "atr": 0.011306328409208333,
+      "origem": "M15",
+      "order_id": "8f37c7b4-f998-4a43-9ff3-3d184ff43058",
+      "data": "21/07/2026 06:26",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
