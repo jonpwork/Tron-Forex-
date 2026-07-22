@@ -4041,8 +4041,10 @@
       "origem": "M1-GATILHO",
       "order_id": "8df8fd31-9f8c-4311-a80b-b6a226460888",
       "data": "22/07/2026 20:06",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,09",
+      "preco_saida": 77.76,
+      "fechamento": "22/07/2026 20:13"
     }
   ],
   "zone_tol": 0.2,
