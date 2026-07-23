@@ -4039,8 +4039,10 @@
       "origem": "M5",
       "order_id": "4525feaa-17ba-48a1-b9bd-2305c3b632c1",
       "data": "23/07/2026 06:48",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 2,21",
+      "preco_saida": 0.08714,
+      "fechamento": "23/07/2026 09:38"
     },
     {
       "id": 201,
