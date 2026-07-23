@@ -192,22 +192,6 @@
   ],
   "signals": [
     {
-      "id": 193,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63791.2,
-      "stop": 63707.3,
-      "alvo": 63853.2,
-      "risco": 83.89999999999418,
-      "rr": 0.7,
-      "qty_usada": 0.004598,
-      "data": "05/07/2026 22:12",
-      "status": "loss",
-      "resultado": "-R$ 2,00",
-      "order_id": null,
-      "fechamento": "05/07/2026 22:27"
-    },
-    {
       "id": 194,
       "symbol": "BTCUSDT",
       "direcao": "up",
@@ -4050,6 +4034,23 @@
       "resultado": "-R$ 0,64",
       "preco_saida": 6.55,
       "fechamento": "23/07/2026 00:09"
+    },
+    {
+      "id": 201,
+      "symbol": "ADAUSDT",
+      "direcao": "BUY",
+      "entrada": 0.175529,
+      "stop": 0.17478420155007077,
+      "alvo": 0.17843371395472396,
+      "risco": 0.0007447984499292237,
+      "rr": 3.9,
+      "qty_usada": 127.0,
+      "atr": 0.0004965322999528174,
+      "origem": "M15",
+      "order_id": "a6a19069-e1ac-45f8-aba9-e991217fde91",
+      "data": "23/07/2026 01:30",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
