@@ -4092,8 +4092,10 @@
       "origem": "M15",
       "order_id": "e254a3b9-cac5-4da4-b345-5a558f31b036",
       "data": "24/07/2026 20:40",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,38",
+      "preco_saida": 0.16435,
+      "fechamento": "24/07/2026 21:44"
     }
   ],
   "zone_tol": 0.2,
