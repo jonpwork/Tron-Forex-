@@ -4128,8 +4128,10 @@
       "origem": "M5",
       "order_id": "22a60f13-1ca2-447c-a028-5f3ccdf8f1eb",
       "data": "28/07/2026 03:13",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,09",
+      "preco_saida": 0.07793,
+      "fechamento": "28/07/2026 03:31"
     }
   ],
   "zone_tol": 0.2,
