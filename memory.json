@@ -193,23 +193,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
-      "entrada": 63681.5,
-      "stop": 63571.6,
-      "alvo": 63957.4,
-      "risco": 109.90000000000146,
-      "rr": 2.5,
-      "qty_usada": 0.003536,
-      "tipo": "denso",
-      "data": "06/07/2026 15:08",
-      "status": "win",
-      "resultado": "+R$ 5,00",
-      "order_id": null,
-      "fechamento": "06/07/2026 18:09"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
       "entrada": 1789.23,
@@ -4132,6 +4115,23 @@
       "origem": "M5",
       "order_id": "f098a81c-a8b6-4d93-b46c-3384444d67e0",
       "data": "28/07/2026 04:08",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 201,
+      "symbol": "ARBUSDT",
+      "direcao": "SELL",
+      "entrada": 0.07794,
+      "stop": 0.07831872391048385,
+      "alvo": 0.07286131236041153,
+      "risco": 0.00037872391048385246,
+      "rr": 13.41,
+      "qty_usada": 72.0,
+      "atr": 0.0002524826069892339,
+      "origem": "M15",
+      "order_id": "2cc83484-c3b6-4f6c-a85d-3b1608ba3af0",
+      "data": "28/07/2026 04:22",
       "status": "aberto",
       "resultado": null
     }
