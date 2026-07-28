@@ -195,23 +195,6 @@
       "id": 201,
       "symbol": "BTCUSDT",
       "direcao": "up",
-      "entrada": 63847.3,
-      "stop": 63818.9,
-      "alvo": 63957.4,
-      "risco": 28.400000000001455,
-      "rr": 3.9,
-      "qty_usada": 0.013675,
-      "tipo": "denso",
-      "data": "06/07/2026 16:29",
-      "status": "loss",
-      "resultado": "-R$ 2,00",
-      "order_id": null,
-      "fechamento": "06/07/2026 16:33"
-    },
-    {
-      "id": 201,
-      "symbol": "BTCUSDT",
-      "direcao": "up",
       "entrada": 63804.5,
       "stop": 63767.8,
       "alvo": 63883.2,
@@ -4150,6 +4133,23 @@
       "resultado": "-R$ 0,24",
       "preco_saida": 74.31,
       "fechamento": "28/07/2026 16:51"
+    },
+    {
+      "id": 201,
+      "symbol": "ATOMUSDT",
+      "direcao": "SELL",
+      "entrada": 1.2982,
+      "stop": 1.301751448573031,
+      "alvo": 1.225395304252864,
+      "risco": 0.003551448573031024,
+      "rr": 20.5,
+      "qty_usada": 5.0,
+      "atr": 0.0023676323820207372,
+      "origem": "M15",
+      "order_id": "a7f8d110-07de-416b-884e-5e27971dfd77",
+      "data": "28/07/2026 19:57",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -4157,5 +4157,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 201
+  "next_id": 202
 }
