@@ -195,23 +195,6 @@
       "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "up",
-      "entrada": 1790.19,
-      "stop": 1788.69,
-      "alvo": 1807.57,
-      "risco": 1.5,
-      "rr": 11.6,
-      "qty_usada": 0.01,
-      "tipo": "denso",
-      "order_id": "25d000d8-6aa9-4b5d-8f71-500173d900f5",
-      "data": "06/07/2026 22:39",
-      "status": "loss",
-      "resultado": "-R$ 0,08",
-      "fechamento": "06/07/2026 23:23"
-    },
-    {
-      "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "up",
       "entrada": 1780.37,
       "stop": 1778.43,
       "alvo": 1807.57,
@@ -4156,6 +4139,23 @@
       "resultado": "-R$ 0,37",
       "preco_saida": 0.07858,
       "fechamento": "30/07/2026 11:27"
+    },
+    {
+      "id": 204,
+      "symbol": "ARBUSDT",
+      "direcao": "SELL",
+      "entrada": 0.07837,
+      "stop": 0.07866474627452837,
+      "alvo": 0.0765602578743958,
+      "risco": 0.00029474627452837077,
+      "rr": 6.14,
+      "qty_usada": 203.0,
+      "atr": 0.00019649751635224597,
+      "origem": "M5",
+      "order_id": "66b12940-f3ea-47d5-a3ee-4c7c6f468cf2",
+      "data": "30/07/2026 11:35",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -4163,5 +4163,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 204
+  "next_id": 205
 }
