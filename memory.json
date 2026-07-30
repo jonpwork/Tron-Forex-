@@ -4160,8 +4160,10 @@
       "origem": "M1-TECNICO",
       "order_id": "457954da-56ee-415f-bf72-dc486cc13f4c",
       "data": "30/07/2026 18:36",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 0,04",
+      "preco_saida": 6.45,
+      "fechamento": "30/07/2026 18:45"
     }
   ],
   "zone_tol": 0.2,
