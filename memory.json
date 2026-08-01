@@ -4164,8 +4164,10 @@
       "origem": "MANUAL",
       "order_id": "",
       "data": "31/07/2026 06:33",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 2,78",
+      "preco_saida": 6.19,
+      "fechamento": "01/08/2026 19:18"
     }
   ],
   "zone_tol": 0.2,
