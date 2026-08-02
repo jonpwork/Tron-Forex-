@@ -195,23 +195,6 @@
       "id": 201,
       "symbol": "ARBUSDT",
       "direcao": "BUY",
-      "entrada": 0.08778,
-      "stop": 0.08615516277633584,
-      "alvo": 0.0910296744473283,
-      "risco": 0.0016248372236641606,
-      "rr": 2.0,
-      "qty_usada": 87.0,
-      "rsi": 46.3,
-      "order_id": "5dfcf89d-a2bb-48d0-a847-1db15ecc9403",
-      "data": "09/07/2026 21:41",
-      "status": "win",
-      "resultado": "+R$ 1,45",
-      "fechamento": "09/07/2026 23:46"
-    },
-    {
-      "id": 201,
-      "symbol": "ARBUSDT",
-      "direcao": "BUY",
       "entrada": 0.08802,
       "stop": 0.08650200144610404,
       "alvo": 0.09105599710779193,
@@ -4176,6 +4159,23 @@
       "resultado": "-R$ 0,59",
       "preco_saida": 6.281,
       "fechamento": "01/08/2026 23:08"
+    },
+    {
+      "id": 213,
+      "symbol": "AVAXUSDT",
+      "direcao": "BUY",
+      "entrada": 6.567,
+      "stop": 6.536591068001603,
+      "alvo": 6.7035361046728035,
+      "risco": 0.030408931998397115,
+      "rr": 4.49,
+      "qty_usada": 2.7,
+      "atr": 0.02027262133226478,
+      "origem": "M5",
+      "order_id": "6b914f31-9940-4929-be17-615e6c90ee28",
+      "data": "02/08/2026 05:41",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -4183,5 +4183,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 213
+  "next_id": 214
 }
