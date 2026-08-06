@@ -193,27 +193,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "XRPUSDT",
-      "direcao": "SELL",
-      "entrada": 1.09674,
-      "stop": 1.089268149605901,
-      "alvo": 1.0862196259852475,
-      "risco": 0.0052601870073762935,
-      "rr": 2.0,
-      "qty_usada": 27.0,
-      "atr": 0.003506791338250829,
-      "origem": "M15",
-      "melhor_preco": 1.08506,
-      "trail_ativo": true,
-      "order_id": "a9212c17-70b4-4b4d-8482-1d78450c3808",
-      "data": "12/07/2026 21:25",
-      "status": "win",
-      "resultado": "+R$ 0,95",
-      "preco_saida": 1.08988,
-      "fechamento": "12/07/2026 21:45"
-    },
-    {
-      "id": 201,
       "symbol": "ATOMUSDT",
       "direcao": "SELL",
       "entrada": 1.5675,
@@ -4164,6 +4143,23 @@
       "resultado": "-R$ 0,37",
       "preco_saida": 0.07898,
       "fechamento": "06/08/2026 12:39"
+    },
+    {
+      "id": 241,
+      "symbol": "XRPUSDT",
+      "direcao": "SELL",
+      "entrada": 1.04908,
+      "stop": 1.0524794964890478,
+      "alvo": 1.0208981741057936,
+      "risco": 0.003399496489047804,
+      "rr": 8.29,
+      "qty_usada": 13.0,
+      "atr": 0.0022663309926985145,
+      "origem": "M15",
+      "order_id": "d6e4c678-abd4-4b09-a3d9-4518461170e1",
+      "data": "06/08/2026 13:03",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -4171,5 +4167,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 241
+  "next_id": 242
 }
