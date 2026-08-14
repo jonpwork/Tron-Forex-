@@ -3877,8 +3877,10 @@
       "origem": "M15",
       "order_id": "19dcfe75-5d05-4ffe-9595-3aecc9d12f9b",
       "data": "08/08/2026 05:01",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 3,90",
+      "preco_saida": 1.5607,
+      "fechamento": "14/08/2026 07:20"
     },
     {
       "id": 246,
@@ -4122,8 +4124,10 @@
       "origem": "M15",
       "order_id": "a64f55bf-30f2-4432-ac5f-8bf29fd7805c",
       "data": "11/08/2026 20:03",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,48",
+      "preco_saida": 6.366,
+      "fechamento": "14/08/2026 07:20"
     }
   ],
   "zone_tol": 0.2,
