@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 379,
-      "symbol": "OPUSDT",
-      "direcao": "BUY",
-      "entrada": 0.0883,
-      "stop": 0.08803,
-      "alvo": 0.08935814,
-      "risco": 0.00027000000000000635,
-      "rr": 3.9,
-      "qty_usada": 7407.0,
-      "atr": 0.0003308602808042047,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788013528433",
-      "data": "29/08/2026 11:25",
-      "status": "win",
-      "resultado": "+R$ 40,64",
-      "preco_saida": 0.08935814,
-      "fechamento": "29/08/2026 15:27"
-    },
-    {
       "id": 380,
       "symbol": "LTCUSDT",
       "direcao": "BUY",
@@ -3950,6 +3931,23 @@
       "data": "29/08/2026 19:07",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 579,
+      "symbol": "BNBUSDT",
+      "direcao": "SELL",
+      "entrada": 692.54,
+      "stop": 692.8748,
+      "alvo": 692.24586,
+      "risco": 0.3348000000000866,
+      "rr": 0.9,
+      "qty_usada": 5.97,
+      "atr": 0.7098321568509863,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788041377947",
+      "data": "29/08/2026 19:09",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 579
+  "next_id": 580
 }
