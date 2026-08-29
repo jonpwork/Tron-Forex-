@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 242,
-      "symbol": "ADAUSDT",
-      "direcao": "BUY",
-      "entrada": 0.200081,
-      "stop": 0.19875559749971503,
-      "alvo": 0.20638991590135652,
-      "risco": 0.0013254025002849834,
-      "rr": 4.76,
-      "qty_usada": 58.0,
-      "atr": 0.0008836016668566498,
-      "origem": "M15",
-      "order_id": "7f0840a8-e1ee-40ac-83cc-752d8b078c8b",
-      "data": "07/08/2026 01:35",
-      "status": "loss",
-      "resultado": "-R$ 0,41",
-      "preco_saida": 0.198681,
-      "fechamento": "07/08/2026 11:05"
-    },
-    {
       "id": 243,
       "symbol": "AVAXUSDT",
       "direcao": "SELL",
@@ -3956,6 +3937,23 @@
       "data": "29/08/2026 13:22",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 442,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "entrada": 77923.0,
+      "stop": 77876.56,
+      "alvo": 78059.565,
+      "risco": 46.44000000000233,
+      "rr": 2.9,
+      "qty_usada": 0.043,
+      "atr": 129.27157143286524,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788020552997",
+      "data": "29/08/2026 13:22",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3963,5 +3961,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 442
+  "next_id": 443
 }
