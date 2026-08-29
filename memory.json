@@ -193,25 +193,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "SELL",
-      "entrada": 1.3885,
-      "stop": 1.390389142852372,
-      "alvo": 1.32719731444053,
-      "risco": 0.0018891428523719611,
-      "rr": 32.45,
-      "qty_usada": 6.0,
-      "atr": 0.0012594285682479228,
-      "origem": "M15",
-      "order_id": "5c3a0c8c-43c5-4e4f-8162-bef6081ea0b8",
-      "data": "26/07/2026 22:37",
-      "status": "loss",
-      "resultado": "-R$ 0,06",
-      "preco_saida": 1.3905,
-      "fechamento": "26/07/2026 22:58"
-    },
-    {
-      "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "BUY",
       "entrada": 6.703,
@@ -3974,6 +3955,23 @@
       "data": "29/08/2026 11:30",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 382,
+      "symbol": "TRXUSDT",
+      "direcao": "BUY",
+      "entrada": 0.33814,
+      "stop": 0.338063,
+      "alvo": 0.33821808000000003,
+      "risco": 7.699999999999374e-05,
+      "rr": 1.0,
+      "qty_usada": 25974.0,
+      "atr": 0.00027232464359547477,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788013822047",
+      "data": "29/08/2026 11:30",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3981,5 +3979,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 382
+  "next_id": 383
 }
