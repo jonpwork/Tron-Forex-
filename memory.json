@@ -3809,8 +3809,10 @@
       "origem": "M1-TECNICO",
       "order_id": "SIM-1788004511778",
       "data": "29/08/2026 08:55",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,37",
+      "preco_saida": 1.381464,
+      "fechamento": "29/08/2026 09:10"
     },
     {
       "id": 314,
