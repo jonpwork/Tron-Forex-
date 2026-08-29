@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 250,
-      "symbol": "ARBUSDT",
-      "direcao": "BUY",
-      "entrada": 0.08076,
-      "stop": 0.08048202889252107,
-      "alvo": 0.08300600654842975,
-      "risco": 0.0002779711074789304,
-      "rr": 8.08,
-      "qty_usada": 163.0,
-      "atr": 0.00018531407165262218,
-      "origem": "M5",
-      "order_id": "56541ff4-48e0-4444-ae22-e83c8b16923a",
-      "data": "11/08/2026 00:02",
-      "status": "loss",
-      "resultado": "-R$ 0,24",
-      "preco_saida": 0.08047,
-      "fechamento": "11/08/2026 00:20"
-    },
-    {
       "id": 251,
       "symbol": "ARBUSDT",
       "direcao": "BUY",
@@ -3956,6 +3937,23 @@
       "data": "29/08/2026 13:33",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 450,
+      "symbol": "XRPUSDT",
+      "direcao": "SELL",
+      "entrada": 1.3915,
+      "stop": 1.3963519999999998,
+      "alvo": 1.3813388,
+      "risco": 0.004851999999999856,
+      "rr": 2.1,
+      "qty_usada": 412.0,
+      "atr": 0.004617437534212692,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788021437692",
+      "data": "29/08/2026 13:37",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3963,5 +3961,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 450
+  "next_id": 451
 }
