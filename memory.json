@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 264,
-      "symbol": "BTCUSDT",
-      "direcao": "SELL",
-      "entrada": 77422.5,
-      "stop": 77462.9,
-      "alvo": 76851.3,
-      "risco": 40.39999999999418,
-      "rr": 14.1,
-      "qty_usada": 0.005,
-      "atr": 106.83292505497714,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787986692248",
-      "data": "29/08/2026 03:58",
-      "status": "loss",
-      "resultado": "-R$ 1,50",
-      "preco_saida": 77480.2,
-      "fechamento": "29/08/2026 04:03"
-    },
-    {
       "id": 265,
       "symbol": "ARBUSDT",
       "direcao": "SELL",
@@ -3950,6 +3931,23 @@
       "data": "29/08/2026 14:06",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 464,
+      "symbol": "ADAUSDT",
+      "direcao": "BUY",
+      "entrada": 0.2005,
+      "stop": 0.20028,
+      "alvo": 0.2006348,
+      "risco": 0.00021999999999999797,
+      "rr": 0.6,
+      "qty_usada": 9091.0,
+      "atr": 0.0009182672193779424,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788023249080",
+      "data": "29/08/2026 14:07",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 464
+  "next_id": 465
 }
