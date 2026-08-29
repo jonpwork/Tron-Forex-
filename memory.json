@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 248,
-      "symbol": "ARBUSDT",
-      "direcao": "BUY",
-      "entrada": 0.08004,
-      "stop": 0.07939995662300016,
-      "alvo": 0.08343222989809916,
-      "risco": 0.0006400433769998409,
-      "rr": 5.3,
-      "qty_usada": 108.0,
-      "atr": 0.00042669558466656136,
-      "origem": "M15",
-      "order_id": "f24a9700-3393-49bb-8d9d-72bcc757968c",
-      "data": "10/08/2026 12:16",
-      "status": "loss",
-      "resultado": "-R$ 0,44",
-      "preco_saida": 0.07925,
-      "fechamento": "10/08/2026 19:07"
-    },
-    {
       "id": 249,
       "symbol": "AVAXUSDT",
       "direcao": "SELL",
@@ -3956,6 +3937,23 @@
       "data": "29/08/2026 13:31",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 448,
+      "symbol": "ATOMUSDT",
+      "direcao": "SELL",
+      "entrada": 1.509,
+      "stop": 1.51108,
+      "alvo": 1.503652,
+      "risco": 0.002080000000000082,
+      "rr": 2.6,
+      "qty_usada": 962.0,
+      "atr": 0.006538033755961963,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788021201144",
+      "data": "29/08/2026 13:33",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3963,5 +3961,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 448
+  "next_id": 449
 }
