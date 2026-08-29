@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 267,
-      "symbol": "DOTUSDT",
-      "direcao": "BUY",
-      "entrada": 0.8387,
-      "stop": 0.8364,
-      "alvo": 0.8427874,
-      "risco": 0.0022999999999999687,
-      "rr": 1.8,
-      "qty_usada": 870.0,
-      "atr": 0.002893228432109338,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787988213991",
-      "data": "29/08/2026 04:23",
-      "status": "loss",
-      "resultado": "-R$ 10,38",
-      "preco_saida": 0.8364,
-      "fechamento": "29/08/2026 05:09"
-    },
-    {
       "id": 268,
       "symbol": "APTUSDT",
       "direcao": "SELL",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 14:15",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 467,
+      "symbol": "ATOMUSDT",
+      "direcao": "SELL",
+      "entrada": 1.5,
+      "stop": 1.5117999999999998,
+      "alvo": 1.4866300000000001,
+      "risco": 0.01179999999999981,
+      "rr": 1.1,
+      "qty_usada": 169.0,
+      "atr": 0.006055370051202431,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788023750137",
+      "data": "29/08/2026 14:15",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 467
+  "next_id": 468
 }
