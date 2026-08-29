@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 371,
-      "symbol": "SOLUSDT",
-      "direcao": "SELL",
-      "entrada": 103.803,
-      "stop": 103.8283,
-      "alvo": 103.80007400000001,
-      "risco": 0.025300000000001432,
-      "rr": 0.1,
-      "qty_usada": 79.1,
-      "atr": 0.2395138239947249,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1788012330653",
-      "data": "29/08/2026 11:05",
-      "status": "win",
-      "resultado": "+R$ 1,20",
-      "preco_saida": 103.80007400000001,
-      "fechamento": "29/08/2026 11:06"
-    },
-    {
       "id": 372,
       "symbol": "BNBUSDT",
       "direcao": "SELL",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 18:53",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 571,
+      "symbol": "ETHUSDT",
+      "direcao": "SELL",
+      "entrada": 2451.18,
+      "stop": 2451.7079999999996,
+      "alvo": 2451.1000000000004,
+      "risco": 0.5279999999997926,
+      "rr": 0.2,
+      "qty_usada": 3.79,
+      "atr": 3.9250395139927092,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788040517284",
+      "data": "29/08/2026 18:55",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 571
+  "next_id": 572
 }
