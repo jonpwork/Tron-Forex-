@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 279,
-      "symbol": "TRXUSDT",
-      "direcao": "SELL",
-      "entrada": 0.33801,
-      "stop": 0.33822,
-      "alvo": 0.33465604,
-      "risco": 0.00021000000000004349,
-      "rr": 16.0,
-      "qty_usada": 9524.0,
-      "atr": 0.00041115970738683755,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787988694517",
-      "data": "29/08/2026 04:31",
-      "status": "loss",
-      "resultado": "-R$ 32,10",
-      "preco_saida": 0.33866,
-      "fechamento": "29/08/2026 04:40"
-    },
-    {
       "id": 280,
       "symbol": "AVAXUSDT",
       "direcao": "SELL",
@@ -3956,6 +3937,23 @@
       "data": "29/08/2026 14:31",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 479,
+      "symbol": "DOGEUSDT",
+      "direcao": "SELL",
+      "entrada": 0.08481,
+      "stop": 0.08535,
+      "alvo": 0.084237,
+      "risco": 0.0005399999999999988,
+      "rr": 1.1,
+      "qty_usada": 3704.0,
+      "atr": 0.000255405585871239,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788024894319",
+      "data": "29/08/2026 14:34",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3963,5 +3961,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 479
+  "next_id": 480
 }
