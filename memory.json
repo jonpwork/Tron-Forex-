@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 231,
-      "symbol": "ATOMUSDT",
-      "direcao": "BUY",
-      "entrada": 1.3779,
-      "stop": 1.3757396319765705,
-      "alvo": 1.411061649159642,
-      "risco": 0.0021603680234294487,
-      "rr": 15.35,
-      "qty_usada": 11.0,
-      "atr": 0.0014402453489528939,
-      "origem": "M15",
-      "order_id": "a343ff19-fc18-4641-9d2c-bbf83cb57271",
-      "data": "04/08/2026 20:05",
-      "status": "loss",
-      "resultado": "-R$ 0,13",
-      "preco_saida": 1.3756,
-      "fechamento": "04/08/2026 21:01"
-    },
-    {
       "id": 232,
       "symbol": "ETHUSDT",
       "direcao": "BUY",
@@ -3950,6 +3931,23 @@
       "data": "29/08/2026 12:53",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 431,
+      "symbol": "SUIUSDT",
+      "direcao": "BUY",
+      "entrada": 0.7446,
+      "stop": 0.74339,
+      "alvo": 0.7454954,
+      "risco": 0.0012100000000000444,
+      "rr": 0.7,
+      "qty_usada": 1653.0,
+      "atr": 0.0028033579737721795,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788018822580",
+      "data": "29/08/2026 12:53",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 431
+  "next_id": 432
 }
