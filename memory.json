@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 373,
-      "symbol": "LINKUSDT",
-      "direcao": "SELL",
-      "entrada": 11.354,
-      "stop": 11.3606,
-      "alvo": 11.343158,
-      "risco": 0.006600000000000605,
-      "rr": 1.6,
-      "qty_usada": 303.0,
-      "atr": 0.022634630835961907,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1788012963238",
-      "data": "29/08/2026 11:16",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 11.3606,
-      "fechamento": "29/08/2026 11:23"
-    },
-    {
       "id": 374,
       "symbol": "NEARUSDT",
       "direcao": "BUY",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 19:01",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 573,
+      "symbol": "DOTUSDT",
+      "direcao": "BUY",
+      "entrada": 0.8436,
+      "stop": 0.84338,
+      "alvo": 0.84385,
+      "risco": 0.00021999999999999797,
+      "rr": 1.1,
+      "qty_usada": 9091.0,
+      "atr": 0.0028213507856050335,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788040955209",
+      "data": "29/08/2026 19:02",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 573
+  "next_id": 574
 }
