@@ -193,27 +193,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ETHUSDT",
-      "direcao": "BUY",
-      "entrada": 1918.04,
-      "stop": 1911.2237223223003,
-      "alvo": 1931.6725553553993,
-      "risco": 6.816277677699645,
-      "rr": 2.0,
-      "qty_usada": 0.01,
-      "atr": 4.544185118466441,
-      "origem": "M15",
-      "melhor_preco": 1918.04,
-      "trail_ativo": false,
-      "order_id": "6c8a72ba-191c-484f-88c5-16dbbd8fad0f",
-      "data": "15/07/2026 22:08",
-      "status": "loss",
-      "resultado": "-R$ 0,41",
-      "preco_saida": 1910.04,
-      "fechamento": "15/07/2026 22:18"
-    },
-    {
-      "id": 201,
       "symbol": "NEARUSDT",
       "direcao": "BUY",
       "entrada": 2.0585,
@@ -4048,6 +4027,23 @@
       "data": "29/08/2026 04:53",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 284,
+      "symbol": "OPUSDT",
+      "direcao": "BUY",
+      "entrada": 0.08897,
+      "stop": 0.08894,
+      "alvo": 0.08917628,
+      "risco": 2.999999999998837e-05,
+      "rr": 6.9,
+      "qty_usada": 66667.0,
+      "atr": 0.0003640563575973427,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1787990206440",
+      "data": "29/08/2026 04:56",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -4055,5 +4051,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 284
+  "next_id": 285
 }
