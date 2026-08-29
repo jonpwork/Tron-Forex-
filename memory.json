@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 316,
-      "symbol": "DOTUSDT",
-      "direcao": "BUY",
-      "entrada": 0.84,
-      "stop": 0.83989,
-      "alvo": 0.8401696,
-      "risco": 0.00010999999999994348,
-      "rr": 1.5,
-      "qty_usada": 18182.0,
-      "atr": 0.002353607246666962,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1788004538522",
-      "data": "29/08/2026 08:55",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 0.83989,
-      "fechamento": "29/08/2026 08:57"
-    },
-    {
       "id": 317,
       "symbol": "LTCUSDT",
       "direcao": "SELL",
@@ -3966,6 +3947,23 @@
       "data": "29/08/2026 16:15",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 516,
+      "symbol": "SOLUSDT",
+      "direcao": "BUY",
+      "entrada": 105.604,
+      "stop": 104.98128000000001,
+      "alvo": 108.74786,
+      "risco": 0.6227199999999868,
+      "rr": 5.0,
+      "qty_usada": 3.2,
+      "atr": 0.3582956343587162,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788031071685",
+      "data": "29/08/2026 16:17",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3973,5 +3971,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 516
+  "next_id": 517
 }
