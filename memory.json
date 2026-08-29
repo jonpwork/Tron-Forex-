@@ -193,25 +193,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "BUY",
-      "entrada": 6.581,
-      "stop": 6.568353245369499,
-      "alvo": 6.949905832571725,
-      "risco": 0.012646754630501356,
-      "rr": 29.17,
-      "qty_usada": 1.0,
-      "atr": 0.008431169753667334,
-      "origem": "M5",
-      "order_id": "0c08e247-d404-40d9-a857-8b514c6fe1f1",
-      "data": "23/07/2026 09:14",
-      "status": "loss",
-      "resultado": "-R$ 0,07",
-      "preco_saida": 6.568,
-      "fechamento": "23/07/2026 09:29"
-    },
-    {
-      "id": 201,
       "symbol": "NEARUSDT",
       "direcao": "SELL",
       "entrada": 1.877,
@@ -3948,6 +3929,23 @@
       "data": "29/08/2026 10:37",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 361,
+      "symbol": "SUIUSDT",
+      "direcao": "SELL",
+      "entrada": 0.7365,
+      "stop": 0.73672,
+      "alvo": 0.736036,
+      "risco": 0.00021999999999999797,
+      "rr": 2.1,
+      "qty_usada": 9091.0,
+      "atr": 0.0023451595608991087,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788010742025",
+      "data": "29/08/2026 10:39",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3955,5 +3953,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 361
+  "next_id": 362
 }
