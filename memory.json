@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 294,
-      "symbol": "NEARUSDT",
-      "direcao": "BUY",
-      "entrada": 1.787,
-      "stop": 1.782,
-      "alvo": 1.7915839999999998,
-      "risco": 0.004999999999999893,
-      "rr": 0.9,
-      "qty_usada": 400.0,
-      "atr": 0.007477272839513349,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787991780129",
-      "data": "29/08/2026 05:23",
-      "status": "loss",
-      "resultado": "-R$ 14,52",
-      "preco_saida": 1.78,
-      "fechamento": "29/08/2026 05:46"
-    },
-    {
       "id": 295,
       "symbol": "SUIUSDT",
       "direcao": "BUY",
@@ -3956,6 +3937,23 @@
       "resultado": "-R$ 10,37",
       "preco_saida": 1.8463,
       "fechamento": "29/08/2026 15:14"
+    },
+    {
+      "id": 494,
+      "symbol": "DOGEUSDT",
+      "direcao": "BUY",
+      "entrada": 0.08501,
+      "stop": 0.084988,
+      "alvo": 0.085045,
+      "risco": 2.2000000000008124e-05,
+      "rr": 1.6,
+      "qty_usada": 90909.0,
+      "atr": 0.0002311954915074395,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788027390640",
+      "data": "29/08/2026 15:16",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3963,5 +3961,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 494
+  "next_id": 495
 }
