@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 347,
-      "symbol": "BNBUSDT",
-      "direcao": "SELL",
-      "entrada": 688.08,
-      "stop": 688.2959999999999,
-      "alvo": 686.9798400000001,
-      "risco": 0.2159999999998945,
-      "rr": 5.1,
-      "qty_usada": 9.26,
-      "atr": 0.7998841795529142,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788008571744",
-      "data": "29/08/2026 10:02",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 688.2959999999999,
-      "fechamento": "29/08/2026 10:18"
-    },
-    {
       "id": 348,
       "symbol": "ETHUSDT",
       "direcao": "BUY",
@@ -3948,6 +3929,23 @@
       "data": "29/08/2026 17:40",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 547,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "entrada": 78105.1,
+      "stop": 78088.16,
+      "alvo": 78134.8774,
+      "risco": 16.94000000000233,
+      "rr": 1.8,
+      "qty_usada": 0.118,
+      "atr": 119.46657022946953,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788036182452",
+      "data": "29/08/2026 17:43",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3955,5 +3953,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 547
+  "next_id": 548
 }
