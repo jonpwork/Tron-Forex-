@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 372,
-      "symbol": "BNBUSDT",
-      "direcao": "SELL",
-      "entrada": 688.48,
-      "stop": 688.513,
-      "alvo": 688.28788,
-      "risco": 0.03300000000001546,
-      "rr": 5.8,
-      "qty_usada": 60.61,
-      "atr": 0.7328751736503183,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1788012757707",
-      "data": "29/08/2026 11:12",
-      "status": "win",
-      "resultado": "+R$ 60,38",
-      "preco_saida": 688.28788,
-      "fechamento": "29/08/2026 11:17"
-    },
-    {
       "id": 373,
       "symbol": "LINKUSDT",
       "direcao": "SELL",
@@ -3954,6 +3935,23 @@
       "resultado": "+R$ 1,57",
       "preco_saida": 2451.1000000000004,
       "fechamento": "29/08/2026 18:55"
+    },
+    {
+      "id": 572,
+      "symbol": "TRXUSDT",
+      "direcao": "SELL",
+      "entrada": 0.34025,
+      "stop": 0.340272,
+      "alvo": 0.34024,
+      "risco": 2.2000000000022002e-05,
+      "rr": 0.5,
+      "qty_usada": 90909.0,
+      "atr": 0.00023460307098460706,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788040864554",
+      "data": "29/08/2026 19:01",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3961,5 +3959,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 572
+  "next_id": 573
 }
