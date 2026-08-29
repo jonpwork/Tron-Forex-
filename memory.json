@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 290,
-      "symbol": "BTCUSDT",
-      "direcao": "SELL",
-      "entrada": 77509.7,
-      "stop": 77583.1,
-      "alvo": 77400.6008,
-      "risco": 73.40000000000873,
-      "rr": 1.5,
-      "qty_usada": 0.027,
-      "atr": 99.63321163209856,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787991588358",
-      "data": "29/08/2026 05:19",
-      "status": "loss",
-      "resultado": "-R$ 10,28",
-      "preco_saida": 77583.1,
-      "fechamento": "29/08/2026 05:53"
-    },
-    {
       "id": 291,
       "symbol": "SOLUSDT",
       "direcao": "SELL",
@@ -3950,6 +3931,23 @@
       "data": "29/08/2026 15:01",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 490,
+      "symbol": "NEARUSDT",
+      "direcao": "BUY",
+      "entrada": 1.848,
+      "stop": 1.83504,
+      "alvo": 1.9205800000000002,
+      "risco": 0.012960000000000083,
+      "rr": 5.6,
+      "qty_usada": 154.0,
+      "atr": 0.00974201435151018,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788026523837",
+      "data": "29/08/2026 15:02",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 490
+  "next_id": 491
 }
