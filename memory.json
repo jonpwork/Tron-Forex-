@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 256,
-      "symbol": "SOLUSDT",
-      "direcao": "SELL",
-      "entrada": 76.06,
-      "stop": 76.26629463665111,
-      "alvo": 74.22810362653816,
-      "risco": 0.20629463665110848,
-      "rr": 8.88,
-      "qty_usada": 0.2,
-      "atr": 0.13752975776740728,
-      "origem": "M15",
-      "order_id": "846ddb62-a7ba-4047-bc29-2afd5b48a469",
-      "data": "11/08/2026 09:23",
-      "status": "loss",
-      "resultado": "-R$ 0,30",
-      "preco_saida": 76.35,
-      "fechamento": "11/08/2026 18:58"
-    },
-    {
       "id": 257,
       "symbol": "ARBUSDT",
       "direcao": "SELL",
@@ -3960,6 +3941,23 @@
       "data": "29/08/2026 13:52",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 456,
+      "symbol": "LINKUSDT",
+      "direcao": "BUY",
+      "entrada": 11.412,
+      "stop": 11.36556,
+      "alvo": 11.460896,
+      "risco": 0.04644000000000048,
+      "rr": 1.1,
+      "qty_usada": 43.0,
+      "atr": 0.034955805494718904,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788022566578",
+      "data": "29/08/2026 13:56",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3967,5 +3965,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 456
+  "next_id": 457
 }
