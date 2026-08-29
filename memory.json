@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 202,
-      "symbol": "NEARUSDT",
-      "direcao": "SELL",
-      "entrada": 1.6196,
-      "stop": 1.652,
-      "alvo": 1.25,
-      "risco": 0,
-      "rr": 0,
-      "qty_usada": 7.0,
-      "atr": 0,
-      "origem": "MANUAL",
-      "order_id": "",
-      "data": "29/07/2026 15:20",
-      "status": "loss",
-      "resultado": "-R$ 1,17",
-      "preco_saida": 1.6523,
-      "fechamento": "30/07/2026 06:41"
-    },
-    {
       "id": 203,
       "symbol": "ARBUSDT",
       "direcao": "SELL",
@@ -3972,6 +3953,23 @@
       "data": "29/08/2026 12:08",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 402,
+      "symbol": "SUIUSDT",
+      "direcao": "SELL",
+      "entrada": 0.7451,
+      "stop": 0.74598,
+      "alvo": 0.74485,
+      "risco": 0.0008799999999999919,
+      "rr": 0.3,
+      "qty_usada": 2273.0,
+      "atr": 0.002907141193890545,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788016204388",
+      "data": "29/08/2026 12:10",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3979,5 +3977,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 402
+  "next_id": 403
 }
