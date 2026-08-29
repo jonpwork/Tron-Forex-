@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 305,
-      "symbol": "ETHUSDT",
-      "direcao": "SELL",
-      "entrada": 2435.3,
-      "stop": 2436.4660000000003,
-      "alvo": 2433.29158,
-      "risco": 1.1660000000001673,
-      "rr": 1.7,
-      "qty_usada": 1.72,
-      "atr": 3.5690190772062533,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1787996525928",
-      "data": "29/08/2026 06:42",
-      "status": "win",
-      "resultado": "+R$ 17,91",
-      "preco_saida": 2433.29158,
-      "fechamento": "29/08/2026 07:04"
-    },
-    {
       "id": 306,
       "symbol": "XRPUSDT",
       "direcao": "BUY",
@@ -3968,6 +3949,23 @@
       "data": "29/08/2026 15:51",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 505,
+      "symbol": "AVAXUSDT",
+      "direcao": "BUY",
+      "entrada": 7.317,
+      "stop": 7.3094399999999995,
+      "alvo": 7.356346,
+      "risco": 0.007560000000000677,
+      "rr": 5.2,
+      "qty_usada": 264.6,
+      "atr": 0.020602880693788583,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788029623070",
+      "data": "29/08/2026 15:53",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3975,5 +3973,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 505
+  "next_id": 506
 }
