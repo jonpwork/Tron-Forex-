@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 306,
-      "symbol": "XRPUSDT",
-      "direcao": "BUY",
-      "entrada": 1.385,
-      "stop": 1.3823,
-      "alvo": 1.3912266,
-      "risco": 0.0026999999999999247,
-      "rr": 2.3,
-      "qty_usada": 741.0,
-      "atr": 0.00380791610593543,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787997342308",
-      "data": "29/08/2026 06:55",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 1.3823,
-      "fechamento": "29/08/2026 07:03"
-    },
-    {
       "id": 307,
       "symbol": "DOTUSDT",
       "direcao": "BUY",
@@ -3966,6 +3947,23 @@
       "data": "29/08/2026 15:53",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 506,
+      "symbol": "DOGEUSDT",
+      "direcao": "SELL",
+      "entrada": 0.08533,
+      "stop": 0.08553519999999999,
+      "alvo": 0.08513136,
+      "risco": 0.00020519999999998872,
+      "rr": 1.0,
+      "qty_usada": 9747.0,
+      "atr": 0.0002568214463897197,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788029718309",
+      "data": "29/08/2026 15:55",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3973,5 +3971,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 506
+  "next_id": 507
 }
