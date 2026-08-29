@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 239,
-      "symbol": "ETHUSDT",
-      "direcao": "BUY",
-      "entrada": 1904.36,
-      "stop": 1899.0566348049176,
-      "alvo": 1940.9001861941167,
-      "risco": 5.303365195082279,
-      "rr": 6.89,
-      "qty_usada": 0.01,
-      "atr": 3.5355767967214873,
-      "origem": "M15",
-      "order_id": "9e0c6f32-a563-421e-b076-1a25b4b9a374",
-      "data": "06/08/2026 08:16",
-      "status": "loss",
-      "resultado": "-R$ 0,28",
-      "preco_saida": 1898.97,
-      "fechamento": "06/08/2026 10:03"
-    },
-    {
       "id": 240,
       "symbol": "ARBUSDT",
       "direcao": "SELL",
@@ -3960,6 +3941,23 @@
       "resultado": "+R$ 2,09",
       "preco_saida": 78007.9432,
       "fechamento": "29/08/2026 13:18"
+    },
+    {
+      "id": 439,
+      "symbol": "DOTUSDT",
+      "direcao": "BUY",
+      "entrada": 0.8404,
+      "stop": 0.8399599999999999,
+      "alvo": 0.8409898,
+      "risco": 0.00044000000000010697,
+      "rr": 1.3,
+      "qty_usada": 4545.0,
+      "atr": 0.0031900349816733134,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788020397252",
+      "data": "29/08/2026 13:19",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3967,5 +3965,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 439
+  "next_id": 440
 }
