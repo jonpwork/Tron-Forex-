@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 358,
-      "symbol": "XRPUSDT",
-      "direcao": "SELL",
-      "entrada": 1.3853,
-      "stop": 1.3861800000000002,
-      "alvo": 1.384199,
-      "risco": 0.0008800000000002139,
-      "rr": 1.3,
-      "qty_usada": 2273.0,
-      "atr": 0.003243026071136521,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1788010102052",
-      "data": "29/08/2026 10:28",
-      "status": "win",
-      "resultado": "+R$ 12,98",
-      "preco_saida": 1.384199,
-      "fechamento": "29/08/2026 10:44"
-    },
-    {
       "id": 359,
       "symbol": "DOGEUSDT",
       "direcao": "SELL",
@@ -3954,6 +3935,23 @@
       "resultado": "-R$ 10,37",
       "preco_saida": 0.088006,
       "fechamento": "29/08/2026 18:16"
+    },
+    {
+      "id": 558,
+      "symbol": "ETHUSDT",
+      "direcao": "BUY",
+      "entrada": 2451.0,
+      "stop": 2450.1639999999998,
+      "alvo": 2453.03434,
+      "risco": 0.8360000000002401,
+      "rr": 2.4,
+      "qty_usada": 2.39,
+      "atr": 4.13750565208631,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788038293944",
+      "data": "29/08/2026 18:18",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3961,5 +3959,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 558
+  "next_id": 559
 }
