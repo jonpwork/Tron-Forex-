@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 210,
-      "symbol": "SOLUSDT",
-      "direcao": "SELL",
-      "entrada": 71.91,
-      "stop": 72.0,
-      "alvo": 63.8,
-      "risco": 0.2216513271733902,
-      "rr": 16.63,
-      "qty_usada": 0.1,
-      "atr": 0.1477675514489239,
-      "origem": "M15",
-      "order_id": "c334b9e3-1a62-4777-9c00-420b9f44991a",
-      "data": "01/08/2026 20:17",
-      "status": "loss",
-      "resultado": "-R$ 0,05",
-      "preco_saida": 72.0,
-      "fechamento": "01/08/2026 21:04"
-    },
-    {
       "id": 211,
       "symbol": "ADAUSDT",
       "direcao": "BUY",
@@ -3956,6 +3937,23 @@
       "data": "29/08/2026 12:13",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 410,
+      "symbol": "XRPUSDT",
+      "direcao": "BUY",
+      "entrada": 1.3937,
+      "stop": 1.3931499999999999,
+      "alvo": 1.3956638,
+      "risco": 0.0005500000000000504,
+      "rr": 3.6,
+      "qty_usada": 3636.0,
+      "atr": 0.004418659444223131,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788016467101",
+      "data": "29/08/2026 12:14",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3963,5 +3961,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 410
+  "next_id": 411
 }
