@@ -193,25 +193,6 @@
   "signals": [
     {
       "id": 201,
-      "symbol": "ATOMUSDT",
-      "direcao": "SELL",
-      "entrada": 1.4866,
-      "stop": 1.4975518755630108,
-      "alvo": 1.4458590229055992,
-      "risco": 0.010951875563010915,
-      "rr": 3.72,
-      "qty_usada": 9.0,
-      "atr": 0.0073012503753405915,
-      "origem": "M15",
-      "order_id": "e1701123-3b11-413b-a504-683eec1881ee",
-      "data": "19/07/2026 12:14",
-      "status": "loss",
-      "resultado": "-R$ 0,61",
-      "preco_saida": 1.4999,
-      "fechamento": "20/07/2026 18:27"
-    },
-    {
-      "id": 201,
       "symbol": "ETHUSDT",
       "direcao": "BUY",
       "entrada": 1867.99,
@@ -3960,6 +3941,23 @@
       "data": "29/08/2026 09:27",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 334,
+      "symbol": "LTCUSDT",
+      "direcao": "BUY",
+      "entrada": 48.73,
+      "stop": 48.719,
+      "alvo": 48.759660000000004,
+      "risco": 0.01099999999999568,
+      "rr": 2.7,
+      "qty_usada": 181.8,
+      "atr": 0.11079125224899108,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788006491989",
+      "data": "29/08/2026 09:28",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3967,5 +3965,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 334
+  "next_id": 335
 }
