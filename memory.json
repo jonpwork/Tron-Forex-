@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 214,
-      "symbol": "SOLUSDT",
-      "direcao": "BUY",
-      "entrada": 73.49,
-      "stop": 73.26712273749114,
-      "alvo": 75.33319496094826,
-      "risco": 0.22287726250885953,
-      "rr": 8.27,
-      "qty_usada": 0.2,
-      "atr": 0.1485848416725696,
-      "origem": "M15",
-      "order_id": "a23b6fe9-d6bd-4d99-bf08-1ca270796863",
-      "data": "02/08/2026 21:20",
-      "status": "loss",
-      "resultado": "-R$ 0,24",
-      "preco_saida": 73.25,
-      "fechamento": "02/08/2026 21:32"
-    },
-    {
       "id": 215,
       "symbol": "ETHUSDT",
       "direcao": "BUY",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 12:16",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 414,
+      "symbol": "DOGEUSDT",
+      "direcao": "SELL",
+      "entrada": 0.0853,
+      "stop": 0.08539719999999999,
+      "alvo": 0.08491800000000001,
+      "risco": 9.719999999999174e-05,
+      "rr": 3.9,
+      "qty_usada": 20576.0,
+      "atr": 0.00021586183232705052,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788016616518",
+      "data": "29/08/2026 12:16",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 414
+  "next_id": 415
 }
