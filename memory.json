@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 361,
-      "symbol": "SUIUSDT",
-      "direcao": "SELL",
-      "entrada": 0.7365,
-      "stop": 0.73672,
-      "alvo": 0.736036,
-      "risco": 0.00021999999999999797,
-      "rr": 2.1,
-      "qty_usada": 9091.0,
-      "atr": 0.0023451595608991087,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1788010742025",
-      "data": "29/08/2026 10:39",
-      "status": "win",
-      "resultado": "+R$ 21,87",
-      "preco_saida": 0.736036,
-      "fechamento": "29/08/2026 10:41"
-    },
-    {
       "id": 362,
       "symbol": "APTUSDT",
       "direcao": "SELL",
@@ -3948,6 +3929,23 @@
       "data": "29/08/2026 18:20",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 561,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "entrada": 78131.8,
+      "stop": 78143.90000000001,
+      "alvo": 78104.5166,
+      "risco": 12.10000000000582,
+      "rr": 2.3,
+      "qty_usada": 0.165,
+      "atr": 110.50198742077684,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788038535920",
+      "data": "29/08/2026 18:22",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3955,5 +3953,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 561
+  "next_id": 562
 }
