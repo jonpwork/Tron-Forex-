@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 360,
-      "symbol": "TRXUSDT",
-      "direcao": "BUY",
-      "entrada": 0.3381,
-      "stop": 0.3380028,
-      "alvo": 0.33820314,
-      "risco": 9.720000000001949e-05,
-      "rr": 1.1,
-      "qty_usada": 20576.0,
-      "atr": 0.0002784974248203894,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788010626487",
-      "data": "29/08/2026 10:37",
-      "status": "win",
-      "resultado": "+R$ 11,00",
-      "preco_saida": 0.33820314,
-      "fechamento": "29/08/2026 10:51"
-    },
-    {
       "id": 361,
       "symbol": "SUIUSDT",
       "direcao": "SELL",
@@ -3950,6 +3931,23 @@
       "data": "29/08/2026 18:20",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 560,
+      "symbol": "APTUSDT",
+      "direcao": "BUY",
+      "entrada": 0.542,
+      "stop": 0.5417799999999999,
+      "alvo": 0.5422549999999999,
+      "risco": 0.000220000000000109,
+      "rr": 1.2,
+      "qty_usada": 9091.0,
+      "atr": 0.001882034062665263,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788038422240",
+      "data": "29/08/2026 18:20",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 560
+  "next_id": 561
 }
