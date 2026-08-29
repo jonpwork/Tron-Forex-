@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 280,
-      "symbol": "AVAXUSDT",
-      "direcao": "SELL",
-      "entrada": 7.274,
-      "stop": 7.281,
-      "alvo": 7.25108,
-      "risco": 0.006999999999999673,
-      "rr": 3.3,
-      "qty_usada": 285.7,
-      "atr": 0.01832863573301164,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787989277733",
-      "data": "29/08/2026 04:41",
-      "status": "win",
-      "resultado": "+R$ 44,44",
-      "preco_saida": 7.244,
-      "fechamento": "29/08/2026 05:05"
-    },
-    {
       "id": 281,
       "symbol": "ADAUSDT",
       "direcao": "BUY",
@@ -3954,6 +3935,23 @@
       "data": "29/08/2026 14:34",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 480,
+      "symbol": "NEARUSDT",
+      "direcao": "BUY",
+      "entrada": 1.834,
+      "stop": 1.8329,
+      "alvo": 1.83873,
+      "risco": 0.001100000000000101,
+      "rr": 4.3,
+      "qty_usada": 1818.0,
+      "atr": 0.010215169501753187,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788024922993",
+      "data": "29/08/2026 14:35",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3961,5 +3959,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 480
+  "next_id": 481
 }
