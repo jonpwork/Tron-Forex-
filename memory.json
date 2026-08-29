@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 309,
-      "symbol": "APTUSDT",
-      "direcao": "BUY",
-      "entrada": 0.5337,
-      "stop": 0.53293,
-      "alvo": 0.5341932,
-      "risco": 0.0007699999999999374,
-      "rr": 0.6,
-      "qty_usada": 2597.0,
-      "atr": 0.0020141306218310466,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1787998320934",
-      "data": "29/08/2026 07:12",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 0.53293,
-      "fechamento": "29/08/2026 08:57"
-    },
-    {
       "id": 310,
       "symbol": "ADAUSDT",
       "direcao": "SELL",
@@ -3962,6 +3943,23 @@
       "data": "29/08/2026 15:59",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 509,
+      "symbol": "SUIUSDT",
+      "direcao": "BUY",
+      "entrada": 0.7446,
+      "stop": 0.74028,
+      "alvo": 0.7480380000000001,
+      "risco": 0.0043199999999999905,
+      "rr": 0.8,
+      "qty_usada": 463.0,
+      "atr": 0.003000121626266206,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788030084029",
+      "data": "29/08/2026 16:01",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3969,5 +3967,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 509
+  "next_id": 510
 }
