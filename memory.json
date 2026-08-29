@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 208,
-      "symbol": "AVAXUSDT",
-      "direcao": "SELL",
-      "entrada": 6.418,
-      "stop": 6.554,
-      "alvo": 5.684,
-      "risco": 0,
-      "rr": 0,
-      "qty_usada": 2.4,
-      "atr": 0,
-      "origem": "MANUAL",
-      "order_id": "",
-      "data": "31/07/2026 06:33",
-      "status": "win",
-      "resultado": "+R$ 2,78",
-      "preco_saida": 6.19,
-      "fechamento": "01/08/2026 19:18"
-    },
-    {
       "id": 209,
       "symbol": "SUIUSDT",
       "direcao": "SELL",
@@ -3960,6 +3941,23 @@
       "data": "29/08/2026 12:12",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 408,
+      "symbol": "DOGEUSDT",
+      "direcao": "BUY",
+      "entrada": 0.08529,
+      "stop": 0.085268,
+      "alvo": 0.08537426,
+      "risco": 2.2000000000008124e-05,
+      "rr": 3.8,
+      "qty_usada": 90909.0,
+      "atr": 0.00023092858649720956,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788016354430",
+      "data": "29/08/2026 12:12",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3967,5 +3965,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 408
+  "next_id": 409
 }
