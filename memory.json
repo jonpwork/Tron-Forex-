@@ -190,11 +190,29 @@
       "data": "06/07/2026 06:08"
     }
   ],
-  "signals": [],
+  "signals": [
+    {
+      "id": 580,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "entrada": 78092.4,
+      "stop": 78026.304,
+      "alvo": 78140.6466,
+      "risco": 66.09599999999045,
+      "rr": 0.7,
+      "qty_usada": 0.03,
+      "atr": 109.71671166065313,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788041658351",
+      "data": "29/08/2026 19:14",
+      "status": "aberto",
+      "resultado": null
+    }
+  ],
   "zone_tol": 0.2,
   "total_prints": 11,
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 580
+  "next_id": 581
 }
