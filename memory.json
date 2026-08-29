@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 312,
-      "symbol": "NEARUSDT",
-      "direcao": "BUY",
-      "entrada": 1.795,
-      "stop": 1.7896,
-      "alvo": 1.810662,
-      "risco": 0.005399999999999849,
-      "rr": 2.9,
-      "qty_usada": 370.0,
-      "atr": 0.006775598344294112,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788004502690",
-      "data": "29/08/2026 08:55",
-      "status": "win",
-      "resultado": "+R$ 30,05",
-      "preco_saida": 1.810662,
-      "fechamento": "29/08/2026 11:04"
-    },
-    {
       "id": 313,
       "symbol": "XRPUSDT",
       "direcao": "BUY",
@@ -3960,6 +3941,23 @@
       "data": "29/08/2026 16:06",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 512,
+      "symbol": "ETHUSDT",
+      "direcao": "BUY",
+      "entrada": 2452.36,
+      "stop": 2450.5348,
+      "alvo": 2453.75048,
+      "risco": 1.8252000000002226,
+      "rr": 0.8,
+      "qty_usada": 1.1,
+      "atr": 4.660266503297549,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788030504196",
+      "data": "29/08/2026 16:08",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3967,5 +3965,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 512
+  "next_id": 513
 }
