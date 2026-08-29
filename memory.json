@@ -3218,8 +3218,10 @@
       "origem": "M1-TECNICO",
       "order_id": "SIM-1788015123455",
       "data": "29/08/2026 11:52",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,35",
+      "preco_saida": 104.79696,
+      "fechamento": "29/08/2026 12:57"
     },
     {
       "id": 392,
@@ -3736,8 +3738,10 @@
       "origem": "M1-TECNICO",
       "order_id": "SIM-1788017331968",
       "data": "29/08/2026 12:28",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,37",
+      "preco_saida": 0.200352,
+      "fechamento": "29/08/2026 12:57"
     },
     {
       "id": 420,
@@ -3859,8 +3863,10 @@
       "origem": "M1-TECNICO",
       "order_id": "SIM-1788018138475",
       "data": "29/08/2026 12:42",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,37",
+      "preco_saida": 0.8391519999999999,
+      "fechamento": "29/08/2026 12:57"
     },
     {
       "id": 427,
@@ -3948,8 +3954,10 @@
       "origem": "M1-ABC",
       "order_id": "SIM-1788018822580",
       "data": "29/08/2026 12:53",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,37",
+      "preco_saida": 0.74339,
+      "fechamento": "29/08/2026 12:57"
     }
   ],
   "zone_tol": 0.2,
