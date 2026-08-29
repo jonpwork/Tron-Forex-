@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 350,
-      "symbol": "SOLUSDT",
-      "direcao": "BUY",
-      "entrada": 103.536,
-      "stop": 103.47984,
-      "alvo": 104.1281,
-      "risco": 0.05616000000000554,
-      "rr": 10.5,
-      "qty_usada": 35.6,
-      "atr": 0.23488593255279136,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788009329834",
-      "data": "29/08/2026 10:15",
-      "status": "win",
-      "resultado": "+R$ 109,29",
-      "preco_saida": 104.1281,
-      "fechamento": "29/08/2026 11:21"
-    },
-    {
       "id": 351,
       "symbol": "NEARUSDT",
       "direcao": "SELL",
@@ -3942,6 +3923,23 @@
       "data": "29/08/2026 17:46",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 550,
+      "symbol": "SOLUSDT",
+      "direcao": "SELL",
+      "entrada": 105.245,
+      "stop": 105.25269999999999,
+      "alvo": 105.154152,
+      "risco": 0.007699999999985607,
+      "rr": 11.8,
+      "qty_usada": 259.7,
+      "atr": 0.3202948066748207,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788036395166",
+      "data": "29/08/2026 17:46",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3949,5 +3947,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 550
+  "next_id": 551
 }
