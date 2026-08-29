@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 281,
-      "symbol": "ADAUSDT",
-      "direcao": "BUY",
-      "entrada": 0.2003,
-      "stop": 0.1999,
-      "alvo": 0.20072020000000002,
-      "risco": 0.00040000000000001146,
-      "rr": 1.1,
-      "qty_usada": 5000.0,
-      "atr": 0.0007853303042587264,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787989704893",
-      "data": "29/08/2026 04:48",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 0.1999,
-      "fechamento": "29/08/2026 05:02"
-    },
-    {
       "id": 282,
       "symbol": "BNBUSDT",
       "direcao": "SELL",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 14:35",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 481,
+      "symbol": "BNBUSDT",
+      "direcao": "SELL",
+      "entrada": 690.46,
+      "stop": 691.7869609316027,
+      "alvo": 687.8060781367948,
+      "risco": 1.3269609316026845,
+      "rr": 2.0,
+      "qty_usada": 1.51,
+      "atr": 0.8846406210684344,
+      "origem": "M15",
+      "order_id": "SIM-1788024931030",
+      "data": "29/08/2026 14:35",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 481
+  "next_id": 482
 }
