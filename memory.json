@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 327,
-      "symbol": "APTUSDT",
-      "direcao": "SELL",
-      "entrada": 0.5343,
-      "stop": 0.5363185297693003,
-      "alvo": 0.5302629404613995,
-      "risco": 0.0020185297693002813,
-      "rr": 2.0,
-      "qty_usada": 991.0,
-      "atr": 0.0013456865128668304,
-      "origem": "M5",
-      "order_id": "SIM-1788006250066",
-      "data": "29/08/2026 09:24",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 0.5363185297693003,
-      "fechamento": "29/08/2026 10:39"
-    },
-    {
       "id": 328,
       "symbol": "SOLUSDT",
       "direcao": "BUY",
@@ -3956,6 +3937,23 @@
       "data": "29/08/2026 16:43",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 527,
+      "symbol": "LINKUSDT",
+      "direcao": "BUY",
+      "entrada": 11.44,
+      "stop": 11.4345,
+      "alvo": 11.440999999999999,
+      "risco": 0.005499999999999616,
+      "rr": 0.2,
+      "qty_usada": 364.0,
+      "atr": 0.03242545532470229,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788032953053",
+      "data": "29/08/2026 16:49",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3963,5 +3961,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 527
+  "next_id": 528
 }
