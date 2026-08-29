@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 283,
-      "symbol": "TRXUSDT",
-      "direcao": "SELL",
-      "entrada": 0.33862,
-      "stop": 0.33872,
-      "alvo": 0.33526604,
-      "risco": 0.0001000000000000445,
-      "rr": 33.5,
-      "qty_usada": 20000.0,
-      "atr": 0.00044276065759591825,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787990003041",
-      "data": "29/08/2026 04:53",
-      "status": "loss",
-      "resultado": "-R$ 16,59",
-      "preco_saida": 0.33878,
-      "fechamento": "29/08/2026 05:09"
-    },
-    {
       "id": 284,
       "symbol": "OPUSDT",
       "direcao": "BUY",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 14:37",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 483,
+      "symbol": "LINKUSDT",
+      "direcao": "SELL",
+      "entrada": 11.369,
+      "stop": 11.40248,
+      "alvo": 11.287634,
+      "risco": 0.03348000000000084,
+      "rr": 2.4,
+      "qty_usada": 60.0,
+      "atr": 0.03653050595795537,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788025176032",
+      "data": "29/08/2026 14:39",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 483
+  "next_id": 484
 }
