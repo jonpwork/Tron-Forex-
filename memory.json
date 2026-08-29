@@ -3951,8 +3951,10 @@
       "origem": "M1-ABC",
       "order_id": "SIM-1788005443028",
       "data": "29/08/2026 09:10",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 1,23",
+      "preco_saida": 0.5311786,
+      "fechamento": "29/08/2026 09:12"
     },
     {
       "id": 323,
