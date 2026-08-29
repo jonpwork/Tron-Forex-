@@ -3328,8 +3328,10 @@
       "origem": "M5",
       "order_id": "SIM-1788006250066",
       "data": "29/08/2026 09:24",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,37",
+      "preco_saida": 0.5363185297693003,
+      "fechamento": "29/08/2026 10:39"
     },
     {
       "id": 328,
