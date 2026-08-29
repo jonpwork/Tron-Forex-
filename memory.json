@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 310,
-      "symbol": "ADAUSDT",
-      "direcao": "SELL",
-      "entrada": 0.1998,
-      "stop": 0.200556,
-      "alvo": 0.1991124,
-      "risco": 0.0007560000000000067,
-      "rr": 0.9,
-      "qty_usada": 2646.0,
-      "atr": 0.0007869329108100988,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788004482358",
-      "data": "29/08/2026 08:54",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 0.200556,
-      "fechamento": "29/08/2026 09:18"
-    },
-    {
       "id": 311,
       "symbol": "AVAXUSDT",
       "direcao": "BUY",
@@ -3960,6 +3941,23 @@
       "data": "29/08/2026 16:01",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 510,
+      "symbol": "OPUSDT",
+      "direcao": "SELL",
+      "entrada": 0.08935,
+      "stop": 0.089471,
+      "alvo": 0.089295,
+      "risco": 0.00012099999999999611,
+      "rr": 0.5,
+      "qty_usada": 16529.0,
+      "atr": 0.000423310993019543,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788030187599",
+      "data": "29/08/2026 16:03",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3967,5 +3965,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 510
+  "next_id": 511
 }
