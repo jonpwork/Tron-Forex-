@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 368,
-      "symbol": "OPUSDT",
-      "direcao": "SELL",
-      "entrada": 0.0879,
-      "stop": 0.08815263526792501,
-      "alvo": 0.08739472946415001,
-      "risco": 0.0002526352679250027,
-      "rr": 2.0,
-      "qty_usada": 7917.0,
-      "atr": 0.00016842351194999732,
-      "origem": "M5",
-      "order_id": "SIM-1788012096475",
-      "data": "29/08/2026 11:01",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 0.08815263526792501,
-      "fechamento": "29/08/2026 11:23"
-    },
-    {
       "id": 369,
       "symbol": "LTCUSDT",
       "direcao": "SELL",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 18:40",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 568,
+      "symbol": "ETHUSDT",
+      "direcao": "SELL",
+      "entrada": 2448.94,
+      "stop": 2450.0424000000003,
+      "alvo": 2447.03,
+      "risco": 1.102400000000216,
+      "rr": 1.7,
+      "qty_usada": 1.81,
+      "atr": 4.060034371675657,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788039840872",
+      "data": "29/08/2026 18:44",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 568
+  "next_id": 569
 }
