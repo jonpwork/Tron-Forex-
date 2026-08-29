@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 285,
-      "symbol": "BTCUSDT",
-      "direcao": "BUY",
-      "entrada": 77577.0,
-      "stop": 77570.0,
-      "alvo": 77794.0906,
-      "risco": 7.0,
-      "rr": 31.0,
-      "qty_usada": 0.286,
-      "atr": 103.16844512092835,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787990426897",
-      "data": "29/08/2026 05:00",
-      "status": "loss",
-      "resultado": "-R$ 35,00",
-      "preco_saida": 77553.4,
-      "fechamento": "29/08/2026 05:02"
-    },
-    {
       "id": 286,
       "symbol": "DOGEUSDT",
       "direcao": "BUY",
@@ -3950,6 +3931,23 @@
       "resultado": "-R$ 10,36",
       "preco_saida": 2448.5936,
       "fechamento": "29/08/2026 14:45"
+    },
+    {
+      "id": 485,
+      "symbol": "LTCUSDT",
+      "direcao": "BUY",
+      "entrada": 48.78,
+      "stop": 48.6944,
+      "alvo": 48.8755,
+      "risco": 0.08559999999999945,
+      "rr": 1.1,
+      "qty_usada": 23.4,
+      "atr": 0.11175995674037652,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788025609544",
+      "data": "29/08/2026 14:46",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 485
+  "next_id": 486
 }
