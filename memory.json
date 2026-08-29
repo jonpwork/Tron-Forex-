@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 284,
-      "symbol": "OPUSDT",
-      "direcao": "BUY",
-      "entrada": 0.08897,
-      "stop": 0.08894,
-      "alvo": 0.08917628,
-      "risco": 2.999999999998837e-05,
-      "rr": 6.9,
-      "qty_usada": 66667.0,
-      "atr": 0.0003640563575973427,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787990206440",
-      "data": "29/08/2026 04:56",
-      "status": "loss",
-      "resultado": "-R$ 24,20",
-      "preco_saida": 0.0889,
-      "fechamento": "29/08/2026 05:02"
-    },
-    {
       "id": 285,
       "symbol": "BTCUSDT",
       "direcao": "BUY",
@@ -3950,6 +3931,23 @@
       "data": "29/08/2026 14:39",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 484,
+      "symbol": "ETHUSDT",
+      "direcao": "SELL",
+      "entrada": 2447.88,
+      "stop": 2448.5936,
+      "alvo": 2442.19966,
+      "risco": 0.7136000000000422,
+      "rr": 8.0,
+      "qty_usada": 2.8,
+      "atr": 4.95371771264457,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788025365267",
+      "data": "29/08/2026 14:42",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 484
+  "next_id": 485
 }
