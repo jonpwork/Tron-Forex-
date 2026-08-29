@@ -224,8 +224,10 @@
       "origem": "M1-ABC",
       "order_id": "SIM-1788041862252",
       "data": "29/08/2026 19:17",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,40",
+      "preco_saida": 78075.6,
+      "fechamento": "29/08/2026 19:18"
     }
   ],
   "zone_tol": 0.2,
