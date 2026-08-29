@@ -3702,8 +3702,10 @@
       "origem": "M1-TECNICO",
       "order_id": "SIM-1788016238951",
       "data": "29/08/2026 12:10",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,37",
+      "preco_saida": 0.201376,
+      "fechamento": "29/08/2026 12:27"
     },
     {
       "id": 405,
@@ -3719,8 +3721,10 @@
       "origem": "M1-ABC",
       "order_id": "SIM-1788016245718",
       "data": "29/08/2026 12:10",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 13,94",
+      "preco_saida": 0.5412608,
+      "fechamento": "29/08/2026 12:27"
     },
     {
       "id": 406,
@@ -3867,8 +3871,10 @@
       "origem": "M1-ABC",
       "order_id": "SIM-1788016604044",
       "data": "29/08/2026 12:16",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 36,49",
+      "preco_saida": 11.395,
+      "fechamento": "29/08/2026 12:27"
     },
     {
       "id": 414,
