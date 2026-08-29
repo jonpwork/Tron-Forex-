@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 377,
-      "symbol": "ETHUSDT",
-      "direcao": "BUY",
-      "entrada": 2435.27,
-      "stop": 2434.8912,
-      "alvo": 2437.87524,
-      "risco": 0.3787999999999556,
-      "rr": 6.9,
-      "qty_usada": 5.28,
-      "atr": 2.7725274877942856,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788013159033",
-      "data": "29/08/2026 11:19",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 2434.8912,
-      "fechamento": "29/08/2026 11:21"
-    },
-    {
       "id": 378,
       "symbol": "XRPUSDT",
       "direcao": "SELL",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 19:05",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 577,
+      "symbol": "SUIUSDT",
+      "direcao": "SELL",
+      "entrada": 0.741,
+      "stop": 0.742604,
+      "alvo": 0.7336656,
+      "risco": 0.0016040000000000498,
+      "rr": 4.6,
+      "qty_usada": 1247.0,
+      "atr": 0.002772058883984771,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788041215388",
+      "data": "29/08/2026 19:06",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 577
+  "next_id": 578
 }
