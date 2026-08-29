@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 236,
-      "symbol": "ARBUSDT",
-      "direcao": "SELL",
-      "entrada": 0.08122,
-      "stop": 0.08159889668027884,
-      "alvo": 0.07908681169003015,
-      "risco": 0.00037889668027883683,
-      "rr": 5.63,
-      "qty_usada": 171.0,
-      "atr": 0.00025259778685255736,
-      "origem": "M15",
-      "order_id": "87b6e088-2eef-4fe4-abdf-bbb60770cb1b",
-      "data": "05/08/2026 09:48",
-      "status": "win",
-      "resultado": "+R$ 3,09",
-      "preco_saida": 0.07769,
-      "fechamento": "06/08/2026 06:12"
-    },
-    {
       "id": 237,
       "symbol": "ETHUSDT",
       "direcao": "BUY",
@@ -3964,6 +3945,23 @@
       "data": "29/08/2026 13:07",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 436,
+      "symbol": "XRPUSDT",
+      "direcao": "BUY",
+      "entrada": 1.3932,
+      "stop": 1.39232,
+      "alvo": 1.39395,
+      "risco": 0.0008799999999999919,
+      "rr": 0.9,
+      "qty_usada": 2273.0,
+      "atr": 0.004370433243778343,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788020269385",
+      "data": "29/08/2026 13:17",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3971,5 +3969,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 436
+  "next_id": 437
 }
