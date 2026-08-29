@@ -195,27 +195,6 @@
       "id": 201,
       "symbol": "AVAXUSDT",
       "direcao": "SELL",
-      "entrada": 6.509,
-      "stop": 6.498620764339425,
-      "alvo": 6.469948089151436,
-      "risco": 0.019525955424281705,
-      "rr": 2.0,
-      "qty_usada": 2.5,
-      "atr": 0.01301730361618801,
-      "origem": "M5",
-      "melhor_preco": 6.483,
-      "trail_ativo": true,
-      "order_id": "5a13f11f-f86d-4042-97d0-c25fa8b73d2d",
-      "data": "17/07/2026 01:02",
-      "status": "win",
-      "resultado": "+R$ 0,13",
-      "preco_saida": 6.499,
-      "fechamento": "17/07/2026 01:28"
-    },
-    {
-      "id": 201,
-      "symbol": "AVAXUSDT",
-      "direcao": "SELL",
       "entrada": 6.515,
       "stop": 6.456187182917489,
       "alvo": 6.477032042706276,
@@ -4020,6 +3999,23 @@
       "data": "29/08/2026 05:35",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 298,
+      "symbol": "DOTUSDT",
+      "direcao": "SELL",
+      "entrada": 0.8375,
+      "stop": 0.8391,
+      "alvo": 0.8364304,
+      "risco": 0.0015999999999999348,
+      "rr": 0.7,
+      "qty_usada": 1250.0,
+      "atr": 0.0026903404022817303,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1787992605782",
+      "data": "29/08/2026 05:36",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -4027,5 +4023,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 298
+  "next_id": 299
 }
