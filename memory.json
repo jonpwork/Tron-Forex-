@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 254,
-      "symbol": "ETHUSDT",
-      "direcao": "SELL",
-      "entrada": 1877.99,
-      "stop": 1881.3990462725797,
-      "alvo": 1841.3768430324947,
-      "risco": 3.409046272579644,
-      "rr": 10.74,
-      "qty_usada": 0.01,
-      "atr": 2.2726975150531,
-      "origem": "M15",
-      "order_id": "a9c586bd-b119-433a-add4-f52448e7da61",
-      "data": "11/08/2026 05:49",
-      "status": "loss",
-      "resultado": "-R$ 0,24",
-      "preco_saida": 1882.64,
-      "fechamento": "11/08/2026 06:54"
-    },
-    {
       "id": 255,
       "symbol": "AVAXUSDT",
       "direcao": "SELL",
@@ -3950,6 +3931,23 @@
       "data": "29/08/2026 13:43",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 454,
+      "symbol": "NEARUSDT",
+      "direcao": "SELL",
+      "entrada": 1.844,
+      "stop": 1.8473,
+      "alvo": 1.842798,
+      "risco": 0.0032999999999998586,
+      "rr": 0.4,
+      "qty_usada": 606.0,
+      "atr": 0.010073851198043767,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788021895325",
+      "data": "29/08/2026 13:44",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3957,5 +3955,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 454
+  "next_id": 455
 }
