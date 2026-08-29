@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 270,
-      "symbol": "LTCUSDT",
-      "direcao": "SELL",
-      "entrada": 49.16,
-      "stop": 49.33980659351234,
-      "alvo": 48.80038681297531,
-      "risco": 0.17980659351234607,
-      "rr": 2.0,
-      "qty_usada": 11.1,
-      "atr": 0.11987106234156279,
-      "origem": "M15",
-      "order_id": "SIM-1787988247907",
-      "data": "29/08/2026 04:24",
-      "status": "win",
-      "resultado": "+R$ 20,70",
-      "preco_saida": 48.80038681297531,
-      "fechamento": "29/08/2026 07:10"
-    },
-    {
       "id": 271,
       "symbol": "ATOMUSDT",
       "direcao": "SELL",
@@ -3954,6 +3935,23 @@
       "data": "29/08/2026 14:18",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 470,
+      "symbol": "ADAUSDT",
+      "direcao": "BUY",
+      "entrada": 0.2004,
+      "stop": 0.20029,
+      "alvo": 0.2006348,
+      "risco": 0.00010999999999999899,
+      "rr": 2.1,
+      "qty_usada": 18182.0,
+      "atr": 0.0008883884761580221,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788024093893",
+      "data": "29/08/2026 14:21",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3961,5 +3959,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 470
+  "next_id": 471
 }
