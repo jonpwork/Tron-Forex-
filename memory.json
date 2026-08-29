@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 336,
-      "symbol": "ETHUSDT",
-      "direcao": "BUY",
-      "entrada": 2434.75,
-      "stop": 2434.1767999999997,
-      "alvo": 2439.24614,
-      "risco": 0.5732000000002699,
-      "rr": 7.8,
-      "qty_usada": 3.49,
-      "atr": 3.1290595446366436,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1788006603699",
-      "data": "29/08/2026 09:30",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 2434.1767999999997,
-      "fechamento": "29/08/2026 09:34"
-    },
-    {
       "id": 337,
       "symbol": "BNBUSDT",
       "direcao": "BUY",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 17:03",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 536,
+      "symbol": "APTUSDT",
+      "direcao": "SELL",
+      "entrada": 0.5432,
+      "stop": 0.543416,
+      "alvo": 0.540717,
+      "risco": 0.00021599999999999397,
+      "rr": 11.5,
+      "qty_usada": 9259.0,
+      "atr": 0.00203925275655748,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788033827216",
+      "data": "29/08/2026 17:03",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 536
+  "next_id": 537
 }
