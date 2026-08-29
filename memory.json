@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 308,
-      "symbol": "ARBUSDT",
-      "direcao": "SELL",
-      "entrada": 0.08708,
-      "stop": 0.0871556,
-      "alvo": 0.08690428,
-      "risco": 7.559999999999512e-05,
-      "rr": 2.3,
-      "qty_usada": 26455.0,
-      "atr": 0.00027814889316018474,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787998209027",
-      "data": "29/08/2026 07:10",
-      "status": "win",
-      "resultado": "+R$ 24,10",
-      "preco_saida": 0.08690428,
-      "fechamento": "29/08/2026 08:59"
-    },
-    {
       "id": 309,
       "symbol": "APTUSDT",
       "direcao": "BUY",
@@ -3964,6 +3945,23 @@
       "data": "29/08/2026 15:55",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 508,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "entrada": 78119.0,
+      "stop": 78181.632,
+      "alvo": 78027.2436,
+      "risco": 62.63199999999779,
+      "rr": 1.5,
+      "qty_usada": 0.032,
+      "atr": 127.49713629711667,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788029977235",
+      "data": "29/08/2026 15:59",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3971,5 +3969,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 508
+  "next_id": 509
 }
