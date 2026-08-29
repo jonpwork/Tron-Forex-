@@ -2593,8 +2593,10 @@
       "origem": "M15",
       "order_id": "SIM-1788024576698",
       "data": "29/08/2026 14:29",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,37",
+      "preco_saida": 0.08824571584248644,
+      "fechamento": "29/08/2026 17:46"
     },
     {
       "id": 478,
@@ -3904,8 +3906,10 @@
       "origem": "M1-ABC",
       "order_id": "SIM-1788036272840",
       "data": "29/08/2026 17:44",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 4,39",
+      "preco_saida": 1.868068,
+      "fechamento": "29/08/2026 17:46"
     },
     {
       "id": 549,
