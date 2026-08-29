@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 345,
-      "symbol": "XRPUSDT",
-      "direcao": "BUY",
-      "entrada": 1.384,
-      "stop": 1.38301,
-      "alvo": 1.3849,
-      "risco": 0.0009899999999998244,
-      "rr": 0.9,
-      "qty_usada": 2020.0,
-      "atr": 0.003377695684981081,
-      "origem": "M1-ABC",
-      "order_id": "SIM-1788008141453",
-      "data": "29/08/2026 09:55",
-      "status": "loss",
-      "resultado": "-R$ 10,37",
-      "preco_saida": 1.38301,
-      "fechamento": "29/08/2026 10:05"
-    },
-    {
       "id": 346,
       "symbol": "SOLUSDT",
       "direcao": "BUY",
@@ -3948,6 +3929,23 @@
       "data": "29/08/2026 17:28",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 545,
+      "symbol": "LINKUSDT",
+      "direcao": "SELL",
+      "entrada": 11.45,
+      "stop": 11.47592,
+      "alvo": 11.428989999999999,
+      "risco": 0.025920000000001053,
+      "rr": 0.8,
+      "qty_usada": 77.0,
+      "atr": 0.03281133860021444,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788035430860",
+      "data": "29/08/2026 17:30",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3955,5 +3953,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 545
+  "next_id": 546
 }
