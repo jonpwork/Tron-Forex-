@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 221,
-      "symbol": "SUIUSDT",
-      "direcao": "BUY",
-      "entrada": 0.6937,
-      "stop": 0.6923468514222232,
-      "alvo": 0.7304650468581956,
-      "risco": 0.001353148577776797,
-      "rr": 27.17,
-      "qty_usada": 10.0,
-      "atr": 0.0009020990518511789,
-      "origem": "M5",
-      "order_id": "2bf7cb1e-449e-4c30-ba0e-2e654b87ad50",
-      "data": "03/08/2026 18:32",
-      "status": "loss",
-      "resultado": "-R$ 0,11",
-      "preco_saida": 0.6915,
-      "fechamento": "03/08/2026 19:03"
-    },
-    {
       "id": 222,
       "symbol": "SOLUSDT",
       "direcao": "BUY",
@@ -3958,6 +3939,23 @@
       "data": "29/08/2026 12:32",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 421,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "entrada": 77798.7,
+      "stop": 77942.77200000001,
+      "alvo": 77550.9348,
+      "risco": 144.07200000001467,
+      "rr": 1.7,
+      "qty_usada": 0.014,
+      "atr": 122.57097407383334,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788017576407",
+      "data": "29/08/2026 12:32",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3965,5 +3963,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 421
+  "next_id": 422
 }
