@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 226,
-      "symbol": "ARBUSDT",
-      "direcao": "BUY",
-      "entrada": 0.08267,
-      "stop": 0.08219179863328148,
-      "alvo": 0.08869533722065327,
-      "risco": 0.0004782013667185142,
-      "rr": 12.6,
-      "qty_usada": 61.0,
-      "atr": 0.0003188009111456744,
-      "origem": "M15",
-      "order_id": "eb37c70a-41a7-431d-8aa8-a50746e5e118",
-      "data": "04/08/2026 04:50",
-      "status": "loss",
-      "resultado": "-R$ 0,17",
-      "preco_saida": 0.08213,
-      "fechamento": "04/08/2026 07:16"
-    },
-    {
       "id": 227,
       "symbol": "ADAUSDT",
       "direcao": "BUY",
@@ -3954,6 +3935,23 @@
       "data": "29/08/2026 12:40",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 426,
+      "symbol": "DOTUSDT",
+      "direcao": "BUY",
+      "entrada": 0.8398,
+      "stop": 0.8391519999999999,
+      "alvo": 0.8478602,
+      "risco": 0.000648000000000093,
+      "rr": 12.4,
+      "qty_usada": 3086.0,
+      "atr": 0.003380656274199887,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788018138475",
+      "data": "29/08/2026 12:42",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3961,5 +3959,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 426
+  "next_id": 427
 }
