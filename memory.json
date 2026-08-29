@@ -192,25 +192,6 @@
   ],
   "signals": [
     {
-      "id": 271,
-      "symbol": "ATOMUSDT",
-      "direcao": "SELL",
-      "entrada": 1.489,
-      "stop": 1.495,
-      "alvo": 1.4706640000000002,
-      "risco": 0.006000000000000005,
-      "rr": 3.1,
-      "qty_usada": 333.0,
-      "atr": 0.006932678050823024,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1787988255112",
-      "data": "29/08/2026 04:24",
-      "status": "loss",
-      "resultado": "-R$ 10,36",
-      "preco_saida": 1.495,
-      "fechamento": "29/08/2026 08:55"
-    },
-    {
       "id": 272,
       "symbol": "LINKUSDT",
       "direcao": "SELL",
@@ -3952,6 +3933,23 @@
       "data": "29/08/2026 14:21",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 471,
+      "symbol": "NEARUSDT",
+      "direcao": "SELL",
+      "entrada": 1.842,
+      "stop": 1.84516,
+      "alvo": 1.8332140000000001,
+      "risco": 0.0031599999999998296,
+      "rr": 2.8,
+      "qty_usada": 633.0,
+      "atr": 0.009967988214508967,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788024106686",
+      "data": "29/08/2026 14:21",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -3959,5 +3957,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 471
+  "next_id": 472
 }
