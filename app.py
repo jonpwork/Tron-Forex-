@@ -1349,14 +1349,15 @@ def gatilho_tres_topos_abc(c1, direcao, lado=2, tol_nivel=None):
 #  estrutura interna da correção.
 # ═══════════════════════════════════════════════════════════════
 
-def detectar_figura_m1(c1, lado=2, min_pivots=4):
-    """Identifica a figura geométrica que o M1 está desenhando, a partir
-    da inclinação das linhas que ligam os topos e os fundos.
+def detectar_figura(candles, lado=2, min_pivots=4):
+    """Identifica a figura geométrica que o timeframe está desenhando, a
+    partir da inclinação das linhas que ligam os topos e os fundos.
+    Funciona pra candles de QUALQUER tempo gráfico (M1, M15, H1, H4...).
       - convergente  -> triângulo / cunha
       - paralela     -> canal / bandeira
       - divergente   -> megafone
     Retorna a figura, os pivots e o sentido da última sub-perna."""
-    piv = _limpa_pivots(_pivots_m1(c1, lado=lado))
+    piv = _limpa_pivots(_pivots_m1(candles, lado=lado))
     if len(piv) < min_pivots: return None
 
     topos  = [p for p in piv if p[1] == "high"][-3:]
@@ -1369,7 +1370,7 @@ def detectar_figura_m1(c1, lado=2, min_pivots=4):
         return (pts[-1][2] - pts[0][2]) / dx
 
     inc_t, inc_f = incl(topos), incl(fundos)
-    preco = c1[-1]["close"]
+    preco = candles[-1]["close"]
     if preco <= 0: return None
 
     # normaliza as inclinações pelo preço pra comparar entre ativos
@@ -1396,6 +1397,11 @@ def detectar_figura_m1(c1, lado=2, min_pivots=4):
     sentido = "alta" if ultimo[1] == "low" else "baixa"
     return {"figura": figura, "pivots": piv, "sentido_atual": sentido,
             "ultimo_pivot": ultimo, "topos": topos, "fundos": fundos}
+
+
+def detectar_figura_m1(c1, lado=2, min_pivots=4):
+    """Wrapper de compatibilidade: detectar_figura aplicado ao M1."""
+    return detectar_figura(c1, lado=lado, min_pivots=min_pivots)
 
 
 def gatilho_abc_construcao(c1, ctx_direcao, lado=2):
@@ -1569,6 +1575,48 @@ def contexto_maior(symbol):
         if d and d["ok"]:
             return tf, d
     return None, None
+
+
+def estrutura_ancora(symbol, tf, lado=2, lookback=150):
+    """Estrutura do timeframe âncora (H4/H1/M15): a figura geométrica que
+    está sendo desenhada (megafone, triângulo, cunha, canal), os limites
+    dela (topo e fundo) e o nível de 50% da última pernada do timeframe.
+    É daqui que vem o alvo quando a âncora está em alargamento ou
+    correção lateral — mais real que uma projeção fixa de 38.2%."""
+    candles = get_candles(symbol, tf, lookback)
+    if not candles or len(candles) < 20: return None
+    fig   = detectar_figura(candles, lado=lado)
+    perna = detectar_perna(symbol, tf)
+    if not fig and not perna: return None
+
+    topo = fundo = None
+    if fig:
+        topos_val  = [p[2] for p in fig["topos"]]
+        fundos_val = [p[2] for p in fig["fundos"]]
+        topo  = max(topos_val) if topos_val else None
+        fundo = min(fundos_val) if fundos_val else None
+    if perna:
+        if topo  is None: topo  = perna.get("alto")
+        if fundo is None: fundo = perna.get("baixo")
+
+    return {"tf": tf, "figura": fig["figura"] if fig else None,
+            "topo": topo, "fundo": fundo,
+            "alvo_50": perna.get("alvo_50") if perna else None}
+
+
+def alvo_ancora(preco, direcao, estrutura):
+    """Alvo pela estrutura do timeframe âncora: numa venda, o fundo da
+    estrutura ou o 50% da pernada dela (o que estiver à frente do
+    preço); numa compra, o topo ou o 50%. Tem prioridade sobre a
+    projeção de 38.2% do M1 quando a âncora está em alargamento
+    (megafone) ou correção lateral/ABC."""
+    if not estrutura: return None
+    limite = estrutura.get("fundo") if direcao == "SELL" else estrutura.get("topo")
+    for candidato in (limite, estrutura.get("alvo_50")):
+        if candidato is None: continue
+        if (direcao == "SELL" and candidato < preco) or (direcao == "BUY" and candidato > preco):
+            return candidato
+    return None
 
 
 def origem_da_pernada(c1, direcao, lado=2):
@@ -2837,21 +2885,37 @@ def main_loop():
                         preco_tec = check_macro_m1(sym, {"direcao": direcao_tec})
                         if preco_tec:
                             sl_tec = stop_tecnico_m1(sym, direcao_tec)
-                            # ALVO PRIMÁRIO: projeção de 38.2% da onda 1 do
-                            # timeframe âncora, medida do preço de entrada.
-                            tp_tec = alvo_projecao_382(preco_tec, direcao_tec, ctx)
+                            # ALVO: se a âncora estiver em alargamento (megafone)
+                            # ou correção lateral/ABC, o alvo da ESTRUTURA da
+                            # âncora (fundo/topo dela, ou o 50% da pernada) tem
+                            # prioridade — é o cenário real de continuação.
+                            # Senão, cai na projeção de 38.2% da onda 1.
+                            estrutura = estrutura_ancora(sym, tf_ancora)
+                            tp_tec = None
+                            alvo_desc = None
+                            if estrutura and estrutura.get("figura") in ("megafone", "lateral"):
+                                tp_tec = alvo_ancora(preco_tec, direcao_tec, estrutura)
+                                if tp_tec is not None:
+                                    alvo_desc = f"{'fundo' if direcao_tec == 'SELL' else 'topo'} {tf_ancora.upper()}"
+                            if tp_tec is None:
+                                tp_tec = alvo_projecao_382(preco_tec, direcao_tec, ctx)
+                                alvo_desc = "proj. 38.2%"
                             if tp_tec is None:
                                 tp_tec = ctx["alvo_50"]
+                                alvo_desc = "50% da pernada"
                             if sl_tec is not None and tp_tec is not None:
                                 risco_dist = abs(preco_tec - sl_tec)
                                 alvo_dist  = abs(tp_tec - preco_tec)
                                 if risco_dist > 0:
+                                    desc_ancora = (f"{tf_ancora.upper()} {estrutura['figura']}"
+                                                   if estrutura and estrutura.get("figura")
+                                                   else f"{tf_ancora.upper()} corrigindo {int(ctx['retr']*100)}%")
                                     entry_tec = {"direcao": direcao_tec, "entrada": preco_tec,
                                                  "stop": sl_tec, "alvo": tp_tec,
                                                  "atr": data.get("atr", 0), "origem": "M1-TECNICO",
-                                                 "rsi": (f"{tf_ancora.upper()} corrigindo {int(ctx['retr']*100)}%"
+                                                 "rsi": (f"{desc_ancora}"
                                                          f" | M1: {_ultimo_gatilho.get(sym, 'gatilho')}"
-                                                         f" | alvo proj. 38.2%")}
+                                                         f" | alvo {alvo_desc}")}
                                     fire_signal(sym, entry_tec, ignorar_travas=True)
                                     last_signal_time[key] = now_ts
 
