@@ -509,8 +509,10 @@
       "origem": "M1-TECNICO",
       "order_id": "SIM-1788081310297",
       "data": "30/08/2026 06:15",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 10,35",
+      "preco_saida": 78049.152,
+      "fechamento": "30/08/2026 06:20"
     }
   ],
   "zone_tol": 0.2,
@@ -518,5 +520,8 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 597
+  "next_id": 597,
+  "config_lote": {
+    "modo": "auto"
+  }
 }
