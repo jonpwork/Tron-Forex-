@@ -260,7 +260,8 @@ memory = {
     "total_prints": 0,
     "last_update":  "",
     "macro_views":  {},
-    "next_id":      1
+    "next_id":      1,
+    "config_lote":  {"modo": "auto"}
 }
 
 # ─── HTTP ────────────────────────────────────────────────────
@@ -778,9 +779,28 @@ def calc_qty(symbol, entry, stop):
     qty = (saldo_usdt * RISCO_PCT) / dist
     qty = round(qty, _futures_dec(symbol))
 
+    # /lote: multiplicador ou quantidade fixa por cima do cálculo por risco.
+    # Ajustado no Telegram, sobrevive a reinício (memory["config_lote"]).
+    # Sem trava de valor — só muda o tamanho, quem decide entrar é o cenário.
+    cfg_lote = memory.get("config_lote", {"modo": "auto"})
+    if cfg_lote.get("modo") == "fixo":
+        qty = cfg_lote.get("valor", qty)
+    elif cfg_lote.get("modo") == "mult":
+        qty = round(qty * cfg_lote.get("valor", 1), _futures_dec(symbol))
+
     if qty < qty_cfg:
         qty = qty_cfg      # piso operacional do par, não uma trava de risco
     return qty if qty > 0 else (qty_cfg or None)
+
+def lote_texto():
+    """Rótulo do modo de lote ativo agora, pra mostrar no sinal e no /status."""
+    cfg = memory.get("config_lote", {"modo": "auto"})
+    modo = cfg.get("modo", "auto")
+    if modo == "fixo":
+        return f"🔧 FIXO {cfg.get('valor')}"
+    if modo == "mult":
+        return f"✖️ {cfg.get('valor')}x"
+    return "🧮 AUTO (risco)"
 
 def freio_diario_ok():
     """Sem freio por valor. O bot opera livre — quem decide é o cenário
@@ -946,6 +966,7 @@ def load_memory():
                 memory = json.load(f)
             memory.setdefault("macro_views", {})
             memory.setdefault("next_id", len(memory.get("signals", [])) + 1)
+            memory.setdefault("config_lote", {"modo": "auto"})
             print(f"[MEM] carregada do disco: {len(memory.get('signals', []))} sinais")
             return
     except Exception as e:
@@ -960,6 +981,7 @@ def load_memory():
             memory = json.loads(base64.b64decode(r.json()["content"]).decode())
             memory.setdefault("macro_views", {})
             memory.setdefault("next_id", len(memory.get("signals", [])) + 1)
+            memory.setdefault("config_lote", {"modo": "auto"})
             print(f"[MEM] recuperada do GitHub: {len(memory.get('signals', []))} sinais")
             _salvar_local()
     except Exception as e: print(f"[MEM] {e}")
@@ -1884,7 +1906,8 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         f"{desc_gatilho}\n"
         f"💰 Entrada: <b>${ep:,.4f}</b>\n"
         f"{desc_stop}: <b>${sp:,.4f}</b>  🎯 Alvo: <b>${tp:,.4f}</b>\n"
-        f"📐 R:R 1:{rr}  |  ⚠️ Risco: R$ {risco_brl:,.2f}  |  🏆 Potencial: R$ {alvo_brl:,.2f}"
+        f"📐 R:R 1:{rr}  |  ⚠️ Risco: R$ {risco_brl:,.2f}  |  🏆 Potencial: R$ {alvo_brl:,.2f}\n"
+        f"⚖️ Lote: {lote_texto()}"
         f"{bi}{saldo_txt}\n⏰ {ts} (Brasília)")
 
 def check_signals(price_map):
@@ -1960,7 +1983,8 @@ def handle_command(text, chat_id):
             f"🤖 <b>Tron Forex Bot - Dev: Jon Padilha</b> [{modo}]\n\n"
             "📊 <b>MERCADO:</b>\n"
             "/status · /analise · /diag\n"
-            "/performance [hoje|semana|mes|N|tudo] · /motores · /zerar · /backup · /relatorio · /hoje · /saldo · /patrimonio · /posicoes · /ordem (id) · /debug (par) · /editar (par) sl= tp= · /fundir (par) · /status_freio · /retomar · /freio_on · /freio_off\n\n"
+            "/performance [hoje|semana|mes|N|tudo] · /motores · /zerar · /backup · /relatorio · /hoje · /saldo · /patrimonio · /posicoes · /ordem (id) · /debug (par) · /editar (par) sl= tp= · /fundir (par) · /status_freio · /retomar · /freio_on · /freio_off\n"
+            "/lote · /lote 2 · /lote 0.5 · /lote fixo 0.01 · /lote auto\n\n"
             "🎯 <b>M1 TÉCNICO (automático, roda sozinho):</b>\n"
             "Todos os símbolos, o tempo todo: direção pela tendência de H1, "
             "gatilho na pernada de M1 corrigindo ~50%, stop no fundo/topo do "
@@ -2034,6 +2058,7 @@ def handle_command(text, chat_id):
             msg += f"{em} <b>{sym}</b> ${d['price']:,.4f} {d['tendencia'].upper()} RSI:{d['rsi']}\n"
         msg += (f"\n🛡️ Freio diário: {'🛑 pausado' if _freio_diario.get('pausado') else '✅ ativo'} | "
                 f"Trades abertos: {trades_abertos_agora()} (sem limite)\n"
+                f"⚖️ Lote: {lote_texto()}\n"
                 f"⏰ {agora_br().strftime('%d/%m %H:%M')} (Brasília)")
         send_telegram(msg, chat_id)
 
@@ -2674,6 +2699,46 @@ def handle_command(text, chat_id):
         cancel_open_orders(sym, "linear")
         cancel_open_orders(sym, "spot")
         send_telegram(f"✅ Ordens pendentes canceladas: {sym}", chat_id)
+
+    # ── LOTE (ajusta a quantidade operada sem reiniciar o bot) ────
+    elif cmd == "/lote":
+        if len(parts) == 1:
+            linhas = [f"⚖️ <b>Lote</b> — modo atual: {lote_texto()}\n"]
+            for sym in SYMBOLS:
+                d = analyze_symbol(sym)
+                if not d:
+                    linhas.append(f"⚪ {sym}: sem dado agora")
+                    continue
+                dist = d["atr"] * ATR_STOP_MULT
+                q = calc_qty(sym, d["price"], d["price"] - dist)
+                linhas.append(f"• <b>{sym}</b>: {q}")
+            send_telegram("\n".join(linhas), chat_id)
+            return
+        arg = parts[1].lower()
+        if arg == "auto":
+            memory["config_lote"] = {"modo": "auto"}
+            save_memory()
+            send_telegram(f"✅ Lote: {lote_texto()}", chat_id)
+            return
+        if arg == "fixo":
+            if len(parts) < 3:
+                send_telegram("Uso: /lote fixo 0.01", chat_id); return
+            try:
+                valor = float(parts[2])
+            except ValueError:
+                send_telegram("Valor inválido. Uso: /lote fixo 0.01", chat_id); return
+            memory["config_lote"] = {"modo": "fixo", "valor": valor}
+            save_memory()
+            send_telegram(f"✅ Lote: {lote_texto()}", chat_id)
+            return
+        try:
+            mult = float(arg)
+        except ValueError:
+            send_telegram("Uso: /lote (mostra atual) · /lote 2 · /lote 0.5 · /lote fixo 0.01 · /lote auto", chat_id)
+            return
+        memory["config_lote"] = {"modo": "mult", "valor": mult}
+        save_memory()
+        send_telegram(f"✅ Lote: {lote_texto()}", chat_id)
 
     else:
         send_telegram("Comando nao reconhecido. /help", chat_id)
