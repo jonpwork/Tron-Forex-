@@ -637,9 +637,12 @@ def close_futures_symbol(symbol):
         size = float(pos.get("size", 0))
         if size == 0: continue
         side_c = "Sell" if pos["side"] == "Buy" else "Buy"
+        # positionIdx: 0 em one-way, 1/2 em hedge (arbitragem) — sem isso
+        # a Bybit rejeita a ordem de fechamento quando a conta está em
+        # hedge mode ("position idx not match position mode").
         bybit_post("/v5/order/create", {
             "category": "linear", "symbol": symbol, "side": side_c,
-            "orderType": "Market", "qty": str(size),
+            "orderType": "Market", "qty": str(size), "positionIdx": pos.get("positionIdx", 0),
             "reduceOnly": True, "timeInForce": "IOC"})
         closed += 1
     return closed > 0, f"{closed} posicao(oes) fechada(s)"
@@ -661,7 +664,7 @@ def close_futures_all():
         side_c = "Sell" if pos["side"] == "Buy" else "Buy"
         bybit_post("/v5/order/create", {
             "category": "linear", "symbol": pos["symbol"], "side": side_c,
-            "orderType": "Market", "qty": str(size),
+            "orderType": "Market", "qty": str(size), "positionIdx": pos.get("positionIdx", 0),
             "reduceOnly": True, "timeInForce": "IOC"})
 
 def cancel_open_orders(symbol, category="linear"):
@@ -840,20 +843,23 @@ def _parse_sym(s):
 def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="MANUAL"):
     """Depois de QUALQUER ordem manual que mexe numa posição de futuros,
     sincroniza o rastreamento interno (memory['signals']) com o que
-    REALMENTE está na Bybit agora. Sem isso, um registro velho de uma
+    REALMENTE está na corretora agora. Sem isso, um registro velho de uma
     entrada automática anterior fica esquecido lá dentro com um alvo/stop
     diferente do que você acabou de configurar — e quando o preço bate
     nesse alvo velho, o bot manda uma notificação de TAKE PROFIT/STOP
     LOSS falsa, sem fechar nada de verdade na corretora. Isso resolve
-    isso: só existe UM registro aberto por símbolo, e ele sempre reflete
-    a posição real (preço médio, tamanho, SL, TP)."""
+    isso: existe no máximo UM registro aberto POR LADO (compra/venda) em
+    cada símbolo, e cada um sempre reflete a posição real daquele lado
+    (preço médio, tamanho, SL, TP) — com ARBITRAGEM_ATIVA, compra e
+    venda podem estar abertas ao mesmo tempo no mesmo par, então nunca
+    fundir/cancelar um lado por causa do outro."""
     r = broker_positions()
-    pos = None
+    posicoes = []
     if r and r.get("retCode") == 0:
-        for p in r.get("result", {}).get("list", []):
-            if p["symbol"] == symbol and float(p.get("size", 0)) > 0:
-                pos = p; break
-    if not pos:
+        posicoes = [p for p in r.get("result", {}).get("list", [])
+                    if p["symbol"] == symbol and float(p.get("size", 0)) > 0]
+
+    if not posicoes:
         # não tem posição aberta (fechou na hora, ou é spot) — cancela
         # qualquer registro velho "aberto" desse símbolo, pra não sobrar
         # fantasma rastreado sem posição real por trás.
@@ -862,30 +868,54 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
                 s["status"] = "cancelado"; s["resultado"] = "sem posição real"
         save_memory()
         return
-    direcao = "BUY" if pos["side"] == "Buy" else "SELL"
-    entrada = float(pos.get("avgPrice", 0))
-    qty     = float(pos.get("size", 0))
-    sl = float(sl_informado) if sl_informado else (float(pos["stopLoss"]) if pos.get("stopLoss") else None)
-    tp = float(tp_informado) if tp_informado else (float(pos["takeProfit"]) if pos.get("takeProfit") else None)
-    abertos = [s for s in memory.get("signals", []) if s["symbol"] == symbol and s["status"] == "aberto"]
-    if abertos:
-        principal = max(abertos, key=lambda s: s["id"])
-        for s in abertos:
-            if s["id"] != principal["id"]:
-                s["status"] = "cancelado"; s["resultado"] = "fundido"
-    else:
-        novo_id = memory.get("next_id", len(memory["signals"])+1)
-        memory["next_id"] = novo_id + 1
-        principal = {"id": novo_id, "symbol": symbol, "direcao": direcao,
-                     "entrada": entrada, "stop": sl or entrada, "alvo": tp or entrada,
-                     "risco": 0, "rr": 0, "qty_usada": qty, "atr": 0, "origem": origem,
-                     "order_id": "", "data": agora_br().strftime("%d/%m/%Y %H:%M"),
-                     "status": "aberto", "resultado": None}
-        memory["signals"].append(principal)
-        if len(memory["signals"]) > 200: memory["signals"] = memory["signals"][-200:]
-    principal["direcao"] = direcao; principal["entrada"] = entrada; principal["qty_usada"] = qty
-    if sl: principal["stop"] = sl
-    if tp: principal["alvo"] = tp
+
+    # sl_informado/tp_informado (vindo do /editar) só valem quando existe
+    # UMA posição só nesse símbolo — com os dois lados abertos ao mesmo
+    # tempo não dá pra saber qual dos dois o SL/TP informado é sobre.
+    aplicar_informado = len(posicoes) == 1
+    direcoes_reais = set()
+
+    for pos in posicoes:
+        direcao = "BUY" if pos["side"] == "Buy" else "SELL"
+        direcoes_reais.add(direcao)
+        entrada = float(pos.get("avgPrice", 0))
+        qty     = float(pos.get("size", 0))
+        sl = (float(sl_informado) if (aplicar_informado and sl_informado)
+              else (float(pos["stopLoss"]) if pos.get("stopLoss") else None))
+        tp = (float(tp_informado) if (aplicar_informado and tp_informado)
+              else (float(pos["takeProfit"]) if pos.get("takeProfit") else None))
+
+        # funde/atualiza só os registros abertos DO MESMO LADO — nunca
+        # mistura compra com venda quando os dois estão abertos.
+        abertos = [s for s in memory.get("signals", [])
+                   if s["symbol"] == symbol and s["status"] == "aberto" and s["direcao"] == direcao]
+        if abertos:
+            principal = max(abertos, key=lambda s: s["id"])
+            for s in abertos:
+                if s["id"] != principal["id"]:
+                    s["status"] = "cancelado"; s["resultado"] = "fundido"
+        else:
+            novo_id = memory.get("next_id", len(memory["signals"])+1)
+            memory["next_id"] = novo_id + 1
+            principal = {"id": novo_id, "symbol": symbol, "direcao": direcao,
+                         "entrada": entrada, "stop": sl or entrada, "alvo": tp or entrada,
+                         "risco": 0, "rr": 0, "qty_usada": qty, "atr": 0, "origem": origem,
+                         "order_id": "", "data": agora_br().strftime("%d/%m/%Y %H:%M"),
+                         "status": "aberto", "resultado": None}
+            memory["signals"].append(principal)
+            if len(memory["signals"]) > 200: memory["signals"] = memory["signals"][-200:]
+        principal["direcao"] = direcao; principal["entrada"] = entrada; principal["qty_usada"] = qty
+        if sl: principal["stop"] = sl
+        if tp: principal["alvo"] = tp
+
+    # lado que tinha registro aberto mas não existe mais na corretora
+    # (ex: fechou só um dos dois lados da arbitragem) — cancela só ele,
+    # preserva o outro lado.
+    for s in memory.get("signals", []):
+        if (s["symbol"] == symbol and s["status"] == "aberto"
+                and s["direcao"] not in direcoes_reais):
+            s["status"] = "cancelado"; s["resultado"] = "sem posição real"
+
     save_memory()
 
 def sincronizar_fechamento(symbol):
@@ -1942,7 +1972,7 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         return  # não vale a pena notificar o grupo de uma ordem que nem chegou a existir
     risco_brl = risk * qty_calc * get_usd_brl()
     alvo_brl  = risk * rr * qty_calc * get_usd_brl()
-    if origem in ("M1-TECNICO", "M1-GATILHO", "M1-MACRO", "M1-ABC", "M1-FLUXO"):
+    if origem in ("M1-TECNICO", "M1-GATILHO", "M1-MACRO", "M1-ABC", "M1-FLUXO-COMPRA", "M1-FLUXO-VENDA"):
         info_extra = entry.get("rsi", "")
         desc_gatilho = f"📊 {info_extra}" if info_extra else "📊 Pernada de M1 corrigindo ~50%"
         desc_stop    = "🛑 Stop (técnico, origem M1)"
@@ -2037,10 +2067,13 @@ def handle_command(text, chat_id):
             "gatilho na pernada de M1 corrigindo ~50%, stop no fundo/topo do "
             "M1, alvo na estrutura do M15. Sem comando — é sempre ligado.\n\n"
             "🌊 <b>FLUXO M1 PURO (automático, em paralelo):</b>\n"
-            "Perna + correção ~50% direto no M1, sem esperar H4/H1/M15: "
+            "Dois motores independentes (compra e venda), mesmo critério: "
+            "perna + correção ~50% direto no M1, sem esperar H4/H1/M15, "
             "stop na origem da pernada, alvo no PRÓXIMO topo/fundo do M1 "
-            "(não uma projeção). Trades curtos e frequentes. Sem comando "
-            "— é sempre ligado.\n\n"
+            "(não uma projeção). Os dois podem disparar no mesmo par ao "
+            "mesmo tempo (arbitragem — precisa ARBITRAGEM_ATIVA=true pra "
+            "coexistir). Trades curtos e frequentes. Sem comando — sempre "
+            "ligado.\n\n"
             "🗺️ <b>VISÃO MACRO (M1 dentro de cenário maior):</b>\n"
             "/macro BTC BUY 105000 118000 [nota]\n"
             "/macro BTC BUY auto auto [nota]  (stop técnico + alvo M15)\n"
@@ -2474,25 +2507,42 @@ def handle_command(text, chat_id):
     # ── EDITAR (altera SL/TP de uma posição já aberta) ───────
     elif cmd == "/editar":
         # Uso: /editar BTC sl=61000 tp=64000   (pode mandar só sl= ou só tp=)
+        # Com ARBITRAGEM_ATIVA e os dois lados abertos no mesmo par,
+        # informe o lado: /editar BTC compra sl=... ou /editar BTC venda tp=...
         if len(parts) < 2:
-            send_telegram("Uso: /editar BTC sl=61000 tp=64000 (pode mandar só um dos dois)", chat_id); return
+            send_telegram("Uso: /editar BTC sl=61000 tp=64000 (pode mandar só um dos dois).\n"
+                           "Com compra E venda abertas no mesmo par, informe o lado: "
+                           "/editar BTC compra sl=... ou /editar BTC venda tp=...", chat_id); return
         sym = parts[1].upper()
         if not sym.endswith("USDT"): sym += "USDT"
+        resto = parts[2:]
+        lado_arg = None
+        if resto and resto[0].lower() in ("compra", "venda"):
+            lado_arg = "Buy" if resto[0].lower() == "compra" else "Sell"
+            resto = resto[1:]
         novo_sl = novo_tp = None
-        for p in parts[2:]:
+        for p in resto:
             if p.lower().startswith("sl="): novo_sl = p.split("=", 1)[1]
             elif p.lower().startswith("tp="): novo_tp = p.split("=", 1)[1]
         if not novo_sl and not novo_tp:
             send_telegram("Informe pelo menos sl= ou tp=. Ex: /editar BTC sl=61000", chat_id); return
         r = broker_positions()
-        pos = None
+        candidatos = []
         if r and r.get("retCode") == 0:
-            for p in r.get("result", {}).get("list", []):
-                if p["symbol"] == sym and float(p.get("size", 0)) > 0:
-                    pos = p; break
-        if not pos:
-            send_telegram(f"❌ Não achei posição aberta em {sym}.", chat_id); return
-        payload = {"category": "linear", "symbol": sym, "positionIdx": 0}
+            candidatos = [p for p in r.get("result", {}).get("list", [])
+                          if p["symbol"] == sym and float(p.get("size", 0)) > 0]
+        if lado_arg:
+            candidatos = [p for p in candidatos if p["side"] == lado_arg]
+        if not candidatos:
+            lado_txt = f" do lado {'compra' if lado_arg == 'Buy' else 'venda'}" if lado_arg else ""
+            send_telegram(f"❌ Não achei posição aberta em {sym}{lado_txt}.", chat_id); return
+        if len(candidatos) > 1:
+            send_telegram(f"⚠️ {sym} tem compra E venda abertas ao mesmo tempo (arbitragem). "
+                           "Informe o lado: /editar BTC compra sl=... ou /editar BTC venda tp=...", chat_id); return
+        pos = candidatos[0]
+        # positionIdx: 0 em one-way, 1/2 em hedge (arbitragem) — usa o da
+        # própria posição, nunca fixo, senão a Bybit rejeita em hedge mode.
+        payload = {"category": "linear", "symbol": sym, "positionIdx": pos.get("positionIdx", 0)}
         if novo_sl: payload["stopLoss"] = novo_sl
         if novo_tp: payload["takeProfit"] = novo_tp
         res = bybit_post("/v5/position/trading-stop", payload)
@@ -2501,7 +2551,7 @@ def handle_command(text, chat_id):
             partes = []
             if novo_sl: partes.append(f"🛑 SL → {novo_sl}")
             if novo_tp: partes.append(f"🎯 TP → {novo_tp}")
-            send_telegram(f"✅ {sym} atualizado:\n" + "\n".join(partes), chat_id)
+            send_telegram(f"✅ {sym} ({pos['side']}) atualizado:\n" + "\n".join(partes), chat_id)
         else:
             erro = res.get("retMsg", "?") if res else "sem resposta"
             send_telegram(f"❌ Falha ao editar {sym}: {erro}", chat_id)
@@ -2976,35 +3026,43 @@ def main_loop():
                                     fire_signal(sym, entry_abc, ignorar_travas=True)
                                     last_signal_time[key] = now_ts
 
-                # ── FLUXO M1 PURO — réplica do operacional manual: perna +
-                # correção ~50% direto no M1 (sem esperar a âncora de
-                # H4/H1/M15), stop na origem da pernada, alvo no PRÓXIMO
-                # topo/fundo real do M1. Trades curtos e frequentes, pra
-                # girar volume — roda em paralelo ao M1-TECNICO/M1-ABC
-                # (que buscam alvo de M15/H4).
+                # ── FLUXO M1 PURO — réplica do operacional manual: DOIS
+                # motores independentes, um só pra COMPRA e um só pra
+                # VENDA, com o MESMO critério (perna + correção ~50% no
+                # M1, stop na origem, alvo no próximo topo/fundo real) —
+                # cada um com cooldown próprio, então os dois podem
+                # disparar no mesmo ciclo. É exatamente a "arbitragem"
+                # manual do Jon: dois gatilhos técnicos independentes que
+                # às vezes coexistem no mesmo par (ARBITRAGEM_ATIVA=true
+                # decide se os dois lados podem ficar abertos ao mesmo
+                # tempo; senão, o segundo lado é ignorado até o primeiro
+                # fechar). Roda em paralelo ao M1-TECNICO/M1-ABC (que
+                # buscam alvo de M15/H4).
                 if FLUXO_M1_ATIVO:
-                    key = f"{sym}_FLUXO"
-                    if now_ts - last_signal_time.get(key, 0) >= SIGNAL_COOLDOWN_FLUXO:
-                        d_fluxo = detectar_perna(sym, "1m")
-                        if d_fluxo and d_fluxo["ok"]:
-                            direcao_fluxo = d_fluxo["direcao"]
-                            preco_fluxo = check_macro_m1(sym, {"direcao": direcao_fluxo})
-                            if preco_fluxo:
-                                sl_fluxo = stop_tecnico_m1(sym, direcao_fluxo)
-                                tp_fluxo = alvo_m1_estrutura(sym, direcao_fluxo)
-                                if sl_fluxo is not None and tp_fluxo is not None:
-                                    coerente = ((direcao_fluxo == "BUY"  and sl_fluxo < preco_fluxo < tp_fluxo) or
-                                                (direcao_fluxo == "SELL" and tp_fluxo < preco_fluxo < sl_fluxo))
-                                    if coerente:
-                                        alvo_desc = "topo" if direcao_fluxo == "BUY" else "fundo"
-                                        entry_fluxo = {"direcao": direcao_fluxo, "entrada": preco_fluxo,
-                                                       "stop": sl_fluxo, "alvo": tp_fluxo,
-                                                       "atr": data.get("atr", 0), "origem": "M1-FLUXO",
-                                                       "rsi": (f"Fluxo M1: pernada corrigindo {int(d_fluxo['retr']*100)}%"
-                                                               f" | M1: {_ultimo_gatilho.get(sym, 'gatilho')}"
-                                                               f" | alvo no próximo {alvo_desc} do M1")}
-                                        fire_signal(sym, entry_fluxo, ignorar_travas=True)
-                                        last_signal_time[key] = now_ts
+                    for direcao_fluxo, tag_fluxo in (("BUY", "M1-FLUXO-COMPRA"), ("SELL", "M1-FLUXO-VENDA")):
+                        key = f"{sym}_{tag_fluxo}"
+                        if now_ts - last_signal_time.get(key, 0) < SIGNAL_COOLDOWN_FLUXO:
+                            continue
+                        preco_fluxo = check_macro_m1(sym, {"direcao": direcao_fluxo})
+                        if not preco_fluxo:
+                            continue
+                        sl_fluxo = stop_tecnico_m1(sym, direcao_fluxo)
+                        tp_fluxo = alvo_m1_estrutura(sym, direcao_fluxo)
+                        if sl_fluxo is None or tp_fluxo is None:
+                            continue
+                        coerente = ((direcao_fluxo == "BUY"  and sl_fluxo < preco_fluxo < tp_fluxo) or
+                                    (direcao_fluxo == "SELL" and tp_fluxo < preco_fluxo < sl_fluxo))
+                        if not coerente:
+                            continue
+                        alvo_desc = "topo" if direcao_fluxo == "BUY" else "fundo"
+                        entry_fluxo = {"direcao": direcao_fluxo, "entrada": preco_fluxo,
+                                       "stop": sl_fluxo, "alvo": tp_fluxo,
+                                       "atr": data.get("atr", 0), "origem": tag_fluxo,
+                                       "rsi": (f"Fluxo M1 ({'compra' if direcao_fluxo == 'BUY' else 'venda'}): "
+                                               f"{_ultimo_gatilho.get(sym, 'gatilho')}"
+                                               f" | alvo no próximo {alvo_desc} do M1")}
+                        fire_signal(sym, entry_fluxo, ignorar_travas=True)
+                        last_signal_time[key] = now_ts
 
                 # ── visão macro (M1), só roda pra símbolo com /macro ativo ──
                 view = memory.get("macro_views", {}).get(sym)
