@@ -1,0 +1,8 @@
+.env
+.env.*
+*.save
+memory*.json
+app_backup.py
+app.py~
+__pycache__/
+*.log
