@@ -1489,34 +1489,6 @@ def zona_fib_ok(preco, imp, direcao, minimo=0.5, maximo=1.05):
     return pos
 
 
-def alvo_subperna(c1, direcao, fig, imp=None):
-    """Alvo de uma sub-perna do ABC.
-
-    PRIMÁRIO: o nível de 38.2% do impulso que está sendo corrigido
-    (com 50% como segunda opção se o 38.2 já tiver sido superado).
-    É pra onde a correção realmente vai — é o alvo usado na mão.
-
-    ALTERNATIVA: se não der pra identificar o impulso, cai na borda
-    oposta da figura (topo da estrutura numa perna de alta, fundo numa
-    de baixa) — o comportamento anterior, mantido como respaldo."""
-    preco = c1[-1]["close"] if c1 else None
-
-    if imp and preco is not None:
-        for nivel in ("fib_382", "fib_500"):
-            alvo = imp.get(nivel)
-            if alvo is None: continue
-            # o alvo precisa estar à frente do preço, na direção do trade
-            if direcao == "BUY" and alvo > preco:  return alvo
-            if direcao == "SELL" and alvo < preco: return alvo
-
-    if not fig: return None
-    if direcao == "BUY":
-        alvos = [p[2] for p in fig["topos"]]
-        return max(alvos) if alvos else None
-    alvos = [p[2] for p in fig["fundos"]]
-    return min(alvos) if alvos else None
-
-
 def check_macro_m1(symbol, view):
     """Roda os TRÊS gatilhos de M1 na direção do contexto maior.
     O primeiro que confirmar dispara a entrada. Retorna só o preço
@@ -1893,7 +1865,6 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         return  # não vale a pena notificar o grupo de uma ordem que nem chegou a existir
     risco_brl = risk * qty_calc * get_usd_brl()
     alvo_brl  = risk * rr * qty_calc * get_usd_brl()
-    saldo_txt = saldo_brl_txt()
     if origem in ("M1-TECNICO", "M1-GATILHO", "M1-MACRO", "M1-ABC"):
         info_extra = entry.get("rsi", "")
         desc_gatilho = f"📊 {info_extra}" if info_extra else "📊 Pernada de M1 corrigindo ~50%"
@@ -1908,7 +1879,7 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         f"{desc_stop}: <b>${sp:,.4f}</b>  🎯 Alvo: <b>${tp:,.4f}</b>\n"
         f"📐 R:R 1:{rr}  |  ⚠️ Risco: R$ {risco_brl:,.2f}  |  🏆 Potencial: R$ {alvo_brl:,.2f}\n"
         f"⚖️ Lote: {lote_texto()}"
-        f"{bi}{saldo_txt}\n⏰ {ts} (Brasília)")
+        f"{bi}\n⏰ {ts} (Brasília)")
 
 def check_signals(price_map):
     ab = [s for s in memory.get("signals", []) if s["status"] == "aberto"]
@@ -1957,11 +1928,10 @@ def check_signals(price_map):
             s["status"] = "win" if lucro >= 0 else "loss"
             s["resultado"] = fmt_brl(resultado_brl(s))
             alt = True
-            saldo_txt = saldo_brl_txt()
             if s["status"] == "win":
-                send_telegram(f"🏆 <b>TAKE PROFIT!</b> {sym} ✅ <b>{s['resultado']}</b>{saldo_txt}")
+                send_telegram(f"🏆 <b>TAKE PROFIT!</b> {sym} ✅ <b>{s['resultado']}</b>")
             else:
-                send_telegram(f"🛑 <b>STOP LOSS</b> {sym} ❌ <b>{s['resultado']}</b>{saldo_txt}")
+                send_telegram(f"🛑 <b>STOP LOSS</b> {sym} ❌ <b>{s['resultado']}</b>")
     if alt: save_memory()
 
 # ═══════════════════════════════════════════════════════════════
@@ -2853,19 +2823,24 @@ def main_loop():
 
                 # ── ABC EM CONSTRUÇÃO — opera as sub-pernas da correção,
                 # sem esperar a figura fechar. Roda em paralelo, direção
-                # própria (a da sub-perna), não a da âncora.
-                if ABC_CONSTRUCAO_ATIVO:
+                # própria (a da sub-perna), não a da âncora. M1 é só
+                # critério de ENTRADA e STOP — o ALVO é sempre o cenário
+                # maior (H4/H1/M15) da âncora, nunca o impulso local de M1
+                # (senão o alvo fica curto demais, RR invertido).
+                if ABC_CONSTRUCAO_ATIVO and ctx:
                     key = f"{sym}_ABC"
                     if now_ts - last_signal_time.get(key, 0) >= SIGNAL_COOLDOWN_ABC:
                         try:
                             c1_abc = get_candles(sym, "1m", 80)
                             fig = detectar_figura_m1(c1_abc) if c1_abc else None
-                            g = gatilho_abc_construcao(c1_abc, ctx["direcao"] if ctx else None) if c1_abc else None
+                            g = gatilho_abc_construcao(c1_abc, ctx["direcao"]) if c1_abc else None
                         except Exception as e:
                             print(f"[ABC] {sym}: {e}"); g = None; fig = None
                         if g and fig:
                             d_abc = g["direcao"]
-                            # impulso que está sendo corrigido -> níveis 38.2/50
+                            # impulso que está sendo corrigido -> só pro filtro
+                            # de ZONA de entrada (critério de M1); o alvo não
+                            # sai daqui.
                             imp = impulso_corrigido_m1(c1_abc, d_abc)
                             # filtro de zona: só entra na região de retração
                             # onde as entradas realmente acontecem
@@ -2884,10 +2859,14 @@ def main_loop():
                                     # folga mínima pra não colar no pavio
                                     folga = abs(g["preco"] - sl_abc) * 0.10
                                     sl_abc = sl_abc - folga if d_abc == "BUY" else sl_abc + folga
-                                tp_abc = alvo_subperna(c1_abc, d_abc, fig, imp)
-                                if imp and tp_abc in (imp.get("fib_382"), imp.get("fib_500")):
-                                    alvo_nome = "38.2%" if tp_abc == imp.get("fib_382") else "50%"
-                                    g["desc"] += f" | alvo {alvo_nome} do impulso"
+                                # ALVO PRIMÁRIO: projeção de 38.2% da onda do
+                                # timeframe âncora (H4/H1/M15) — mesmo cálculo
+                                # do M1-TECNICO. Stop curto no M1, alvo longo
+                                # no cenário maior.
+                                tp_abc = alvo_projecao_382(g["preco"], d_abc, ctx)
+                                if tp_abc is None:
+                                    tp_abc = ctx["alvo_50"]
+                                g["desc"] += " | alvo proj. 38.2% do cenário maior"
                             if sl_abc is not None and tp_abc is not None:
                                 coerente = ((d_abc == "BUY"  and sl_abc < g["preco"] < tp_abc) or
                                             (d_abc == "SELL" and tp_abc < g["preco"] < sl_abc))
