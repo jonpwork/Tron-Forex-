@@ -201,6 +201,15 @@ ABC_CONSTRUCAO_ATIVO = os.environ.get("ABC_CONSTRUCAO_ATIVO", "true").strip().lo
 # 50-100% de retração do impulso. ZONA_FIB_ATIVA=false desliga o filtro.
 ZONA_FIB_ATIVA = os.environ.get("ZONA_FIB_ATIVA", "true").strip().lower() in ("1","true","sim","yes")
 
+# ── FLUXO M1 PURO ───────────────────────────────────────────────
+# Réplica do operacional manual no M1: perna + correção ~50% direto no
+# M1 (sem esperar a âncora de H4/H1/M15), stop na origem da pernada,
+# alvo no PRÓXIMO topo/fundo real do M1 — não uma projeção. Trades
+# mais curtos e mais frequentes, pra girar volume — roda em paralelo
+# ao M1-TECNICO/M1-ABC (que buscam alvo de M15/H4).
+FLUXO_M1_ATIVO = os.environ.get("FLUXO_M1_ATIVO", "true").strip().lower() in ("1","true","sim","yes")
+SIGNAL_COOLDOWN_FLUXO = int(os.environ.get("SIGNAL_COOLDOWN_FLUXO", "120"))
+
 # ── ARBITRAGEM DE FLUXO ────────────────────────────────────────
 # Permite compra e venda ABERTAS AO MESMO TEMPO no mesmo par — mas
 # nunca no mesmo ponto: cada uma nasce de um gatilho próprio, em
@@ -1648,6 +1657,26 @@ def alvo_m15(symbol, direcao, lookback=150):
             return nivel  # achou um nível com espaço real de lucro
     return nivel  # nenhum teve distância boa — devolve o mais distante mesmo assim
 
+def alvo_m1_estrutura(symbol, direcao, c1=None, lookback=90):
+    """Alvo do FLUXO M1 PURO: o PRÓXIMO topo/fundo real do M1 — não uma
+    projeção calculada, é a estrutura que o preço precisa romper pra
+    continuar o movimento. Mesma ideia do alvo_m15, só que na escala do
+    M1: stop curto (origem da pernada) e alvo curto (a estrutura mais
+    próxima), pra trades rápidos que giram volume."""
+    c1 = c1 if c1 is not None else get_candles(symbol, "1m", lookback)
+    if not c1 or len(c1) < 20: return None
+    preco_atual = c1[-1]["close"]
+    ignorar = 3
+    nivel = None
+    for janela_tam in (20, 40, lookback):
+        fatia = c1[:-ignorar] if ignorar and len(c1) > ignorar else c1
+        janela = fatia[-janela_tam:] if len(fatia) > janela_tam else fatia
+        if not janela: continue
+        nivel = max(c["high"] for c in janela) if direcao == "BUY" else min(c["low"] for c in janela)
+        if nivel != preco_atual:
+            return nivel
+    return nivel
+
 MIN_RR_TECNICO = float(os.environ.get("MIN_RR_TECNICO", "0"))  # 0 = sem filtro de R:R
 
 def analyze_symbol(symbol):
@@ -1865,7 +1894,7 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         return  # não vale a pena notificar o grupo de uma ordem que nem chegou a existir
     risco_brl = risk * qty_calc * get_usd_brl()
     alvo_brl  = risk * rr * qty_calc * get_usd_brl()
-    if origem in ("M1-TECNICO", "M1-GATILHO", "M1-MACRO", "M1-ABC"):
+    if origem in ("M1-TECNICO", "M1-GATILHO", "M1-MACRO", "M1-ABC", "M1-FLUXO"):
         info_extra = entry.get("rsi", "")
         desc_gatilho = f"📊 {info_extra}" if info_extra else "📊 Pernada de M1 corrigindo ~50%"
         desc_stop    = "🛑 Stop (técnico, origem M1)"
@@ -1959,6 +1988,11 @@ def handle_command(text, chat_id):
             "Todos os símbolos, o tempo todo: direção pela tendência de H1, "
             "gatilho na pernada de M1 corrigindo ~50%, stop no fundo/topo do "
             "M1, alvo na estrutura do M15. Sem comando — é sempre ligado.\n\n"
+            "🌊 <b>FLUXO M1 PURO (automático, em paralelo):</b>\n"
+            "Perna + correção ~50% direto no M1, sem esperar H4/H1/M15: "
+            "stop na origem da pernada, alvo no PRÓXIMO topo/fundo do M1 "
+            "(não uma projeção). Trades curtos e frequentes. Sem comando "
+            "— é sempre ligado.\n\n"
             "🗺️ <b>VISÃO MACRO (M1 dentro de cenário maior):</b>\n"
             "/macro BTC BUY 105000 118000 [nota]\n"
             "/macro BTC BUY auto auto [nota]  (stop técnico + alvo M15)\n"
@@ -2877,6 +2911,36 @@ def main_loop():
                                                  "rsi": g["desc"]}
                                     fire_signal(sym, entry_abc, ignorar_travas=True)
                                     last_signal_time[key] = now_ts
+
+                # ── FLUXO M1 PURO — réplica do operacional manual: perna +
+                # correção ~50% direto no M1 (sem esperar a âncora de
+                # H4/H1/M15), stop na origem da pernada, alvo no PRÓXIMO
+                # topo/fundo real do M1. Trades curtos e frequentes, pra
+                # girar volume — roda em paralelo ao M1-TECNICO/M1-ABC
+                # (que buscam alvo de M15/H4).
+                if FLUXO_M1_ATIVO:
+                    key = f"{sym}_FLUXO"
+                    if now_ts - last_signal_time.get(key, 0) >= SIGNAL_COOLDOWN_FLUXO:
+                        d_fluxo = detectar_perna(sym, "1m")
+                        if d_fluxo and d_fluxo["ok"]:
+                            direcao_fluxo = d_fluxo["direcao"]
+                            preco_fluxo = check_macro_m1(sym, {"direcao": direcao_fluxo})
+                            if preco_fluxo:
+                                sl_fluxo = stop_tecnico_m1(sym, direcao_fluxo)
+                                tp_fluxo = alvo_m1_estrutura(sym, direcao_fluxo)
+                                if sl_fluxo is not None and tp_fluxo is not None:
+                                    coerente = ((direcao_fluxo == "BUY"  and sl_fluxo < preco_fluxo < tp_fluxo) or
+                                                (direcao_fluxo == "SELL" and tp_fluxo < preco_fluxo < sl_fluxo))
+                                    if coerente:
+                                        alvo_desc = "topo" if direcao_fluxo == "BUY" else "fundo"
+                                        entry_fluxo = {"direcao": direcao_fluxo, "entrada": preco_fluxo,
+                                                       "stop": sl_fluxo, "alvo": tp_fluxo,
+                                                       "atr": data.get("atr", 0), "origem": "M1-FLUXO",
+                                                       "rsi": (f"Fluxo M1: pernada corrigindo {int(d_fluxo['retr']*100)}%"
+                                                               f" | M1: {_ultimo_gatilho.get(sym, 'gatilho')}"
+                                                               f" | alvo no próximo {alvo_desc} do M1")}
+                                        fire_signal(sym, entry_fluxo, ignorar_travas=True)
+                                        last_signal_time[key] = now_ts
 
                 # ── visão macro (M1), só roda pra símbolo com /macro ativo ──
                 view = memory.get("macro_views", {}).get(sym)
