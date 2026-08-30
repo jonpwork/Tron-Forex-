@@ -608,6 +608,42 @@
       "resultado": "+R$ 5,63",
       "preco_saida": 77972.3398,
       "fechamento": "30/08/2026 07:20"
+    },
+    {
+      "id": 602,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "entrada": 78022.3,
+      "stop": 78008.10999999999,
+      "alvo": 78026.0,
+      "risco": 14.19000000001688,
+      "rr": 0.3,
+      "qty_usada": 0.04,
+      "atr": 79.35836666153045,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788085809666",
+      "data": "30/08/2026 07:30",
+      "status": "win",
+      "resultado": "+R$ 0,77",
+      "preco_saida": 78026.0,
+      "fechamento": "30/08/2026 07:30"
+    },
+    {
+      "id": 603,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "entrada": 78034.4,
+      "stop": 78067.07,
+      "alvo": 78026.55,
+      "risco": 32.670000000012806,
+      "rr": 0.2,
+      "qty_usada": 0.04,
+      "atr": 83.07265237581616,
+      "origem": "M1-ABC",
+      "order_id": "SIM-1788086045342",
+      "data": "30/08/2026 07:34",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -615,7 +651,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 602,
+  "next_id": 604,
   "config_lote": {
     "modo": "fixo",
     "valor": 0.04
