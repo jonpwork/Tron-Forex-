@@ -218,10 +218,14 @@ SIGNAL_COOLDOWN_FLUXO = int(os.environ.get("SIGNAL_COOLDOWN_FLUXO", "120"))
 # fecharia a primeira).
 ARBITRAGEM_ATIVA = os.environ.get("ARBITRAGEM_ATIVA", "false").strip().lower() in ("1","true","sim","yes")
 # distância mínima entre as duas entradas, em % do preço — impede que
-# vire hedge no mesmo ponto por dois gatilhos quase simultâneos
-ARB_DIST_MIN_PCT = float(os.environ.get("ARB_DIST_MIN_PCT", "0.0015"))
-# intervalo mínimo entre a entrada de um lado e a do outro (segundos)
-ARB_INTERVALO_MIN = int(os.environ.get("ARB_INTERVALO_MIN", "120"))  # espera mínima entre sinais do MESMO par (15min = 1 candle de M15)
+# vire hedge no mesmo ponto por dois gatilhos quase simultâneos. Solto
+# de propósito (0,02% ~ uns poucos dólares no BTC): no operacional
+# manual do Jon os dois lados nascem bem próximos um do outro — só
+# precisa não ser o MESMO ponto exato.
+ARB_DIST_MIN_PCT = float(os.environ.get("ARB_DIST_MIN_PCT", "0.0002"))
+# intervalo mínimo entre a entrada de um lado e a do outro (segundos) —
+# também solto, só pra não deixar os dois nascerem no mesmo instante.
+ARB_INTERVALO_MIN = int(os.environ.get("ARB_INTERVALO_MIN", "30"))
 
 # ── Estratégia: tendência (EMA) + pullback (RSI) + risco por volatilidade (ATR) ──
 EMA_RAPIDA   = int(os.environ.get("EMA_RAPIDA", "21"))     # EMA rápida no H1 (tendência)
