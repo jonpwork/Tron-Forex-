@@ -323,6 +323,23 @@
       "resultado": "+R$ 9,05",
       "preco_saida": 78173.4816,
       "fechamento": "30/08/2026 00:33"
+    },
+    {
+      "id": 587,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "entrada": 78141.0,
+      "stop": 78133.664,
+      "alvo": 78270.689,
+      "risco": 7.335999999995693,
+      "rr": 17.7,
+      "qty_usada": 0.273,
+      "atr": 94.13270834518305,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788061292598",
+      "data": "30/08/2026 00:41",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -330,5 +347,5 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 587
+  "next_id": 588
 }
