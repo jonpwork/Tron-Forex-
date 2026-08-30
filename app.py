@@ -933,7 +933,25 @@ def gh_h():
             "Accept": "application/vnd.github.v3+json"}
 
 def load_memory():
+    """Carrega a memória. O arquivo LOCAL tem prioridade: ele é gravado a
+    cada mudança, enquanto o GitHub recebe só backup periódico — então o
+    local é sempre igual ou mais novo. O GitHub serve de recuperação
+    quando o arquivo local não existe (máquina nova, Render, etc)."""
     global memory
+
+    # 1) disco
+    try:
+        if os.path.exists(GITHUB_FILE):
+            with open(GITHUB_FILE, encoding="utf-8") as f:
+                memory = json.load(f)
+            memory.setdefault("macro_views", {})
+            memory.setdefault("next_id", len(memory.get("signals", [])) + 1)
+            print(f"[MEM] carregada do disco: {len(memory.get('signals', []))} sinais")
+            return
+    except Exception as e:
+        print(f"[MEM local] arquivo ilegível ({e}) — tentando GitHub.")
+
+    # 2) GitHub, como recuperação
     if not GITHUB_TOKEN or not GITHUB_REPO: return
     try:
         url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_FILE}"
@@ -942,19 +960,62 @@ def load_memory():
             memory = json.loads(base64.b64decode(r.json()["content"]).decode())
             memory.setdefault("macro_views", {})
             memory.setdefault("next_id", len(memory.get("signals", [])) + 1)
-            print(f"[MEM] {memory['total_prints']} prints")
+            print(f"[MEM] recuperada do GitHub: {len(memory.get('signals', []))} sinais")
+            _salvar_local()
     except Exception as e: print(f"[MEM] {e}")
 
-def save_memory():
+# Intervalo mínimo entre dois envios da memória pro GitHub (segundos).
+# Antes cada save_memory() virava um commit — 12 pontos de chamada, um
+# commit por trade/sinal/análise, o que gerou dezenas de milhares de
+# commits e inchou o repositório. Agora o disco é a fonte de verdade e
+# o GitHub recebe só um backup periódico.
+GITHUB_SYNC_SEG = int(os.environ.get("GITHUB_SYNC_SEG", "3600"))
+_ultimo_push_gh = 0.0
+
+def _salvar_local():
+    """Grava a memória no disco. É rápido, não depende de rede e é o que
+    o bot relê ao reiniciar (load_memory tenta o GitHub primeiro, mas o
+    arquivo local é o mais recente)."""
+    try:
+        tmp = f"{GITHUB_FILE}.tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(memory, f, indent=2, ensure_ascii=False)
+        os.replace(tmp, GITHUB_FILE)   # troca atômica: nunca deixa arquivo pela metade
+        return True
+    except Exception as e:
+        print(f"[MEM local] {e}")
+        return False
+
+
+def _push_github(forcar=False):
+    """Envia a memória pro GitHub, no máximo uma vez a cada
+    GITHUB_SYNC_SEG. forcar=True ignora o intervalo."""
+    global _ultimo_push_gh
     if not GITHUB_TOKEN or not GITHUB_REPO: return
+    agora = time.time()
+    if not forcar and (agora - _ultimo_push_gh) < GITHUB_SYNC_SEG:
+        return
     try:
         url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_FILE}"
         ct  = base64.b64encode(json.dumps(memory, indent=2, ensure_ascii=False).encode()).decode()
         r   = requests.get(url, headers=gh_h(), timeout=10)
-        pl  = {"message": f"mem:{memory['total_prints']}", "content": ct}
+        n_sinais = len(memory.get("signals", []))
+        pl  = {"message": f"backup memoria ({n_sinais} sinais)", "content": ct}
         if r.status_code == 200: pl["sha"] = r.json()["sha"]
-        requests.put(url, headers=gh_h(), json=pl, timeout=15)
-    except Exception as e: print(f"[MEM save] {e}")
+        resp = requests.put(url, headers=gh_h(), json=pl, timeout=15)
+        if resp.status_code in (200, 201):
+            _ultimo_push_gh = agora
+            print(f"[MEM] backup enviado ao GitHub ({n_sinais} sinais).")
+        else:
+            print(f"[MEM push] HTTP {resp.status_code}")
+    except Exception as e:
+        print(f"[MEM push] {e}")
+
+
+def save_memory(forcar_github=False):
+    """Salva local sempre; sincroniza com o GitHub só de tempos em tempos."""
+    _salvar_local()
+    _push_github(forcar=forcar_github)
 
 # ─── GROQ VISION ─────────────────────────────────────────────
 VISION_PROMPT = ('Analise este grafico de trading. Retorne APENAS JSON valido:\n'
@@ -1899,7 +1960,7 @@ def handle_command(text, chat_id):
             f"🤖 <b>Tron Forex Bot - Dev: Jon Padilha</b> [{modo}]\n\n"
             "📊 <b>MERCADO:</b>\n"
             "/status · /analise · /diag\n"
-            "/performance [hoje|semana|mes|N|tudo] · /motores · /zerar · /relatorio · /hoje · /saldo · /patrimonio · /posicoes · /ordem (id) · /debug (par) · /editar (par) sl= tp= · /fundir (par) · /status_freio · /retomar · /freio_on · /freio_off\n\n"
+            "/performance [hoje|semana|mes|N|tudo] · /motores · /zerar · /backup · /relatorio · /hoje · /saldo · /patrimonio · /posicoes · /ordem (id) · /debug (par) · /editar (par) sl= tp= · /fundir (par) · /status_freio · /retomar · /freio_on · /freio_off\n\n"
             "🎯 <b>M1 TÉCNICO (automático, roda sozinho):</b>\n"
             "Todos os símbolos, o tempo todo: direção pela tendência de H1, "
             "gatilho na pernada de M1 corrigindo ~50%, stop no fundo/topo do "
@@ -2133,6 +2194,11 @@ def handle_command(text, chat_id):
             f"{bkp}\n\n"
             f"📊 Operando: {', '.join(SYMBOLS.keys())}\n"
             f"O relatório recomeça a partir de agora.", chat_id)
+
+    elif cmd == "/backup":
+        n = len(memory.get("signals", []))
+        _push_github(forcar=True)
+        send_telegram(f"💾 Backup enviado ao GitHub ({n} sinais no registro).", chat_id)
 
     elif cmd == "/relatorio":
         sinais = memory.get("signals", [])
