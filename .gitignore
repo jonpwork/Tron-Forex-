@@ -6,3 +6,4 @@ app_backup.py
 app.py~
 __pycache__/
 *.log
+memory.json
