@@ -1986,17 +1986,37 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
         if saida is not None: precos.append(saida)
         ymin, ymax = min(precos), max(precos)
         faixa_visivel = ymax - ymin
-        folga = faixa_visivel * 0.10 or ymax * 0.001
+        # margem maior que o normal: sobra espaço pras setas de cenário
+        # (mais abaixo) sem estourar pra fora do gráfico
+        folga = faixa_visivel * 0.22 or ymax * 0.001
         ax.set_ylim(ymin - folga, ymax + folga)
-        ax.set_xlim(-1, len(c) + 12)
+        ax.set_xlim(-1, len(c) + 18)
 
         # faixa destacando a zona de risco (entrada até o stop), como as
         # caixas laranjas que o Jon desenha marcando zona de interesse
         ax.axhspan(min(entrada, stop), max(entrada, stop), color="#f5a623", alpha=0.10, zorder=0.5)
 
-        # pivots (bolinhas azuis, como o Jon marca na mão)
-        for (i, tipo, preco) in piv:
-            ax.scatter([i], [preco], s=42, facecolor="#1e63e0", edgecolor="white", linewidth=0.8, zorder=6)
+        # figura geométrica (a mesma detectar_figura usada no resto do
+        # bot) — qualquer estrutura corretiva (triângulo/cunha/megafone/
+        # lateral) com 5+ pivots é lida como ABCDE de Elliott: rotula os
+        # 5 últimos pivots em vez de bolinhas anônimas. Só um canal
+        # limpo (impulso, não correção) fica de fora.
+        fig_info = detectar_figura(c, lado=2)
+        eh_corretiva = bool(fig_info) and fig_info["figura"] not in ("canal de alta", "canal de baixa")
+        if eh_corretiva and len(piv) >= 5:
+            letras = ["A", "B", "C", "D", "E"]
+            for letra, (i, tipo, preco) in zip(letras, piv[-5:]):
+                ax.scatter([i], [preco], s=70, facecolor="#1e63e0", edgecolor="white", linewidth=1, zorder=6)
+                ax.annotate(letra, xy=(i, preco), xytext=(0, 10 if tipo == "high" else -14),
+                            textcoords="offset points", color="#1e63e0", fontsize=10,
+                            fontweight="bold", ha="center", annotation_clip=False)
+            # os pivots restantes (fora do ABCDE), se houver, seguem simples
+            for (i, tipo, preco) in piv[:-5]:
+                ax.scatter([i], [preco], s=42, facecolor="#1e63e0", edgecolor="white", linewidth=0.8, zorder=6)
+        else:
+            # pivots (bolinhas azuis, como o Jon marca na mão)
+            for (i, tipo, preco) in piv:
+                ax.scatter([i], [preco], s=42, facecolor="#1e63e0", edgecolor="white", linewidth=0.8, zorder=6)
 
         # linhas de tendência do topo/fundo — a MESMA leitura de
         # detectar_figura (liga o primeiro ao último pivot de cada tipo).
@@ -2006,14 +2026,15 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
         def linha_tendencia(pontos):
             if len(pontos) < 2: return
             x = [p[0] for p in pontos]; y = [p[2] for p in pontos]
-            ax.plot([x[0], x[-1]], [y[0], y[-1]], color="#1a1a1a", linewidth=1.6, zorder=4)
+            ax.plot([x[0], x[-1]], [y[0], y[-1]], color="#1a1a1a", linewidth=1.6,
+                    linestyle="--" if eh_corretiva else "-", zorder=4)
 
         linha_tendencia(topos)
         linha_tendencia(fundos)
 
-        # zona de fibonacci da pernada corrigida (origem -> extremo) — só
-        # desenha se tiver altura de verdade na tela; senão (pernada bem
-        # curta, ex. ponta de um triângulo já fechado) só polui.
+        # zona de fibonacci da pernada corrigida (origem -> extremo) e as
+        # DUAS setas de cenário (rompe pra cima / rompe pra baixo), do
+        # tamanho da própria pernada — mesma ideia dos prints do Jon.
         tipo_extremo = "high" if direcao == "BUY" else "low"
         tipo_origem  = "low" if direcao == "BUY" else "high"
         extremos = [p for p in piv if p[1] == tipo_extremo]
@@ -2034,6 +2055,20 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
                                  linestyle="-", alpha=0.85, zorder=3)
                         ax.annotate(label, xy=(x0, nivel), xytext=(-4, 0), textcoords="offset points",
                                     color="#b8790a", fontsize=7.5, va="center", ha="right", annotation_clip=False)
+
+                preco_atual = c[-1]["close"]
+                # tamanho da seta proporcional ao gráfico, não o tamanho
+                # bruto da pernada — senão uma pernada grande (ex. âncora
+                # H4) faz a seta disparar pra fora da imagem
+                projecao = min(abs(tam), faixa_visivel * 0.18) if faixa_visivel > 0 else abs(tam)
+                x_seta = len(c) - 1
+                for sinal_proj, curva in ((1, 0.35), (-1, -0.35)):
+                    ax.annotate("", xy=(x_seta + 9, preco_atual + sinal_proj * projecao),
+                                xytext=(x_seta, preco_atual),
+                                arrowprops=dict(arrowstyle="-|>", color="#3f51b5",
+                                                linewidth=1.6, alpha=0.85,
+                                                connectionstyle=f"arc3,rad={curva}"),
+                                zorder=9, annotation_clip=False)
 
         def linha_nivel(preco, cor, label):
             ax.plot([len(c) - 8, len(c) - 1], [preco, preco], color=cor, linestyle="--", linewidth=1.4, zorder=5)
