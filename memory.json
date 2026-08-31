@@ -1708,6 +1708,25 @@
       "resultado": "+R$ 51,13",
       "preco_saida": 78339.8,
       "fechamento": "31/08/2026 07:07"
+    },
+    {
+      "id": 660,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "entrada": 78458.5,
+      "stop": 78790.90800000001,
+      "alvo": 78282.1,
+      "risco": 332.40800000001036,
+      "rr": 0.5,
+      "qty_usada": 0.04,
+      "atr": 219.92056528759502,
+      "origem": "M1-FLUXO-VENDA",
+      "order_id": "SIM-1788171395900",
+      "data": "31/08/2026 07:16",
+      "status": "win",
+      "resultado": "+R$ 36,58",
+      "preco_saida": 78282.1,
+      "fechamento": "31/08/2026 08:54"
     }
   ],
   "zone_tol": 0.2,
@@ -1715,7 +1734,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 660,
+  "next_id": 661,
   "config_lote": {
     "modo": "fixo",
     "valor": 0.04
