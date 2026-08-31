@@ -210,6 +210,20 @@ ZONA_FIB_ATIVA = os.environ.get("ZONA_FIB_ATIVA", "true").strip().lower() in ("1
 FLUXO_M1_ATIVO = os.environ.get("FLUXO_M1_ATIVO", "true").strip().lower() in ("1","true","sim","yes")
 SIGNAL_COOLDOWN_FLUXO = int(os.environ.get("SIGNAL_COOLDOWN_FLUXO", "120"))
 
+# ── MOTOR ÂNCORA (posições de longo prazo) ──────────────────────
+# Roda os MESMOS critérios (perna corrigindo 38-65%, figura geométrica,
+# os 3 gatilhos de confirmação, stop técnico na origem) só que direto
+# no timeframe âncora (H4, H1, M30) em vez de usar o M1 como gatilho —
+# aqui o gatilho de confirmação e o stop também são do próprio
+# timeframe âncora. Objetivo: posições que ficam abertas dias/semanas,
+# pra pegar o movimento de fundo, rodando em paralelo ao day
+# trade/arbitragem de M1 (cada timeframe rastreado é um motor próprio,
+# independente, com sua origem e cooldown — "ANCORA-H4", "ANCORA-H1",
+# "ANCORA-M30").
+ANCORA_ATIVO = os.environ.get("ANCORA_ATIVO", "true").strip().lower() in ("1","true","sim","yes")
+ANCORA_TIMEFRAMES = [tf.strip() for tf in os.environ.get("ANCORA_TIMEFRAMES", "4h,1h,30m").split(",") if tf.strip()]
+SIGNAL_COOLDOWN_ANCORA = int(os.environ.get("SIGNAL_COOLDOWN_ANCORA", "1800"))
+
 # ── ARBITRAGEM DE FLUXO ────────────────────────────────────────
 # Permite compra e venda ABERTAS AO MESMO TEMPO no mesmo par — mas
 # nunca no mesmo ponto: cada uma nasce de um gatilho próprio, em
@@ -402,7 +416,7 @@ def bingx_post(path, params=None):
     return _bingx_req("POST", path, params, True)
 
 def _bingx_candles(symbol, tf, limit):
-    iv = {"1m":"1m","5m":"5m","15m":"15m","1h":"1h","4h":"4h"}.get(tf, "1h")
+    iv = {"1m":"1m","5m":"5m","15m":"15m","30m":"30m","1h":"1h","4h":"4h"}.get(tf, "1h")
     d = bingx_get(f"{BINGX_SWAP}/quote/klines",
                   {"symbol": bingx_symbol(symbol), "interval": iv, "limit": limit},
                   signed=False)
@@ -943,11 +957,11 @@ def sincronizar_fechamento(symbol):
     if alt: save_memory()
 
 # ─── KRAKEN DATA ─────────────────────────────────────────────
-TF_MAP = {"1m": 1, "5m": 5, "15m": 15, "1h": 60, "4h": 240}
+TF_MAP = {"1m": 1, "5m": 5, "15m": 15, "30m": 30, "1h": 60, "4h": 240}
 
 def _bybit_candles(symbol, tf, limit):
     """Fallback: candles via Bybit public API."""
-    interval_map = {"1m":1,"5m":5,"15m":15,"1h":60,"4h":240}
+    interval_map = {"1m":1,"5m":5,"15m":15,"30m":30,"1h":60,"4h":240}
     iv = interval_map.get(tf, 60)
     try:
         r = requests.get("https://api.bybit.com/v5/market/kline",
@@ -1538,26 +1552,32 @@ def zona_fib_ok(preco, imp, direcao, minimo=0.5, maximo=1.05):
     return pos
 
 
-def check_macro_m1(symbol, view):
-    """Roda os TRÊS gatilhos de M1 na direção do contexto maior.
-    O primeiro que confirmar dispara a entrada. Retorna só o preço
-    (compatível com o resto do código); a descrição fica em
-    _ultimo_gatilho[symbol] pra aparecer na mensagem do Telegram."""
-    c1 = get_candles(symbol, "1m", 80)
+def check_gatilhos_tf(symbol, direcao, tf="1m", candles_qtd=80):
+    """Roda os TRÊS gatilhos (candle de retração, pernada de Elliott, 3
+    topos/fundos + ABC) no timeframe pedido. Generaliza check_macro_m1
+    pra QUALQUER tempo gráfico — os três gatilhos são funções puras de
+    candle, não têm nada de específico do M1. É o que permite o motor
+    ÂNCORA (H4/H1/M30) usar o mesmo critério de confirmação, só que na
+    escala dele em vez da escala do M1."""
+    c1 = get_candles(symbol, tf, candles_qtd)
     if not c1 or len(c1) < 10: return None
-    direcao = view["direcao"]
 
     for fn in (gatilho_candle_retracao, gatilho_pernada_50, gatilho_tres_topos_abc):
         try:
             r = fn(c1, direcao)
         except Exception as e:
-            print(f"[GATILHO {fn.__name__}] {symbol}: {e}")
+            print(f"[GATILHO {fn.__name__} {tf}] {symbol}: {e}")
             continue
         if r:
             _ultimo_gatilho[symbol] = r["desc"]
-            print(f"[GATILHO] {symbol} {direcao}: {r['desc']}")
+            print(f"[GATILHO {tf}] {symbol} {direcao}: {r['desc']}")
             return r["preco"]
     return None
+
+
+def check_macro_m1(symbol, view):
+    """Wrapper de compatibilidade: check_gatilhos_tf aplicado ao M1."""
+    return check_gatilhos_tf(symbol, view["direcao"], tf="1m")
 
 
 def detectar_perna(symbol, tf, lado=2, candles_qtd=60, tolerancia=(0.38, 0.65)):
@@ -1685,15 +1705,17 @@ def origem_da_pernada(c1, direcao, lado=2):
     return origem[2]
 
 
-def stop_tecnico_m1(symbol, direcao, lookback=60, folga_pct=0.08):
+def stop_tecnico(symbol, direcao, tf="1m", lookback=60, folga_pct=0.08):
     """Stop TÉCNICO: a ORIGEM da pernada corrigida, não a extremidade de
-    uma janela fixa de candles.
+    uma janela fixa de candles. Generaliza stop_tecnico_m1 pra QUALQUER
+    tempo gráfico — é o que dá o stop técnico (na origem) pro motor
+    ÂNCORA (H4/H1/M30), na escala dele em vez da escala do M1.
 
     Antes esta função pegava a mínima/máxima dos últimos 20 candles — um
     retângulo arbitrário que não tinha relação com o setup detectado.
     Agora lê a estrutura (pivots) e devolve o ponto que realmente
     invalida o trade, com uma folga pequena pra não colar no pavio."""
-    c1 = get_candles(symbol, "1m", lookback + 5)
+    c1 = get_candles(symbol, tf, lookback + 5)
     if not c1 or len(c1) < 10: return None
 
     origem = origem_da_pernada(c1, direcao)
@@ -1715,6 +1737,11 @@ def stop_tecnico_m1(symbol, direcao, lookback=60, folga_pct=0.08):
 
     folga = abs(preco - origem) * folga_pct
     return origem - folga if direcao == "BUY" else origem + folga
+
+
+def stop_tecnico_m1(symbol, direcao, lookback=60, folga_pct=0.08):
+    """Wrapper de compatibilidade: stop_tecnico aplicado ao M1."""
+    return stop_tecnico(symbol, direcao, tf="1m", lookback=lookback, folga_pct=folga_pct)
 
 def alvo_m15(symbol, direcao, lookback=150):
     """Alvo pela estrutura do M15 — topo/fundo relevante na direção do
@@ -1980,11 +2007,17 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         info_extra = entry.get("rsi", "")
         desc_gatilho = f"📊 {info_extra}" if info_extra else "📊 Pernada de M1 corrigindo ~50%"
         desc_stop    = "🛑 Stop (técnico, origem M1)"
+    elif origem.startswith("ANCORA-"):
+        tf_nome = origem.split("-", 1)[1]
+        info_extra = entry.get("rsi", "")
+        desc_gatilho = f"📊 {info_extra}" if info_extra else f"📊 Pernada {tf_nome} corrigindo ~50%"
+        desc_stop    = f"🛑 Stop (técnico, origem {tf_nome})"
     else:
         desc_gatilho = f"📊 Tendência H1 + pullback de RSI ({entry.get('rsi', '')})"
         desc_stop    = "🛑 Stop (ATR)"
+    posicao_txt = "\n📌 Posição de longo prazo (âncora)" if origem.startswith("ANCORA-") else ""
     send_telegram(
-        f"{emoji} <b>SINAL {action}</b> — {sym}  [{origem}]\n"
+        f"{emoji} <b>SINAL {action}</b> — {sym}  [{origem}]{posicao_txt}\n"
         f"{desc_gatilho}\n"
         f"💰 Entrada: <b>${ep:,.4f}</b>\n"
         f"{desc_stop}: <b>${sp:,.4f}</b>  🎯 Alvo: <b>${tp:,.4f}</b>\n"
@@ -2078,6 +2111,13 @@ def handle_command(text, chat_id):
             "mesmo tempo (arbitragem — precisa ARBITRAGEM_ATIVA=true pra "
             "coexistir). Trades curtos e frequentes. Sem comando — sempre "
             "ligado.\n\n"
+            "⚓ <b>MOTOR ÂNCORA — posições de longo prazo (automático):</b>\n"
+            "Mesmo critério (perna corrigindo 38-65%, figura geométrica, "
+            "os 3 gatilhos, stop técnico na origem), só que direto no "
+            "H4/H1/M30 — gatilho e stop também nesse timeframe, sem "
+            "esperar o M1. Cada timeframe é um motor próprio (ANCORA-H4/"
+            "ANCORA-H1/ANCORA-30M), pra ficar posicionado dias/semanas em "
+            "paralelo ao day trade de M1. Sem comando — sempre ligado.\n\n"
             "🗺️ <b>VISÃO MACRO (M1 dentro de cenário maior):</b>\n"
             "/macro BTC BUY 105000 118000 [nota]\n"
             "/macro BTC BUY auto auto [nota]  (stop técnico + alvo M15)\n"
@@ -3087,6 +3127,62 @@ def main_loop():
                                                "rsi": data.get("rsi", "")}
                                 fire_signal(sym, entry_macro)
                                 last_signal_time[key] = now_ts
+
+                # ── MOTOR ÂNCORA — posições de longo prazo, direto no
+                # timeframe âncora (H4/H1/M30): MESMO critério (perna
+                # corrigindo 38-65%, figura geométrica, os 3 gatilhos de
+                # confirmação, stop técnico na origem) só que o gatilho e
+                # o stop também são do próprio timeframe âncora — não
+                # espera o M1. Cada timeframe é um motor independente
+                # (própria origem "ANCORA-H4"/"ANCORA-H1"/"ANCORA-30M",
+                # próprio cooldown), pra ficar posicionado dias/semanas,
+                # em paralelo ao day trade/arbitragem de M1 acima.
+                if ANCORA_ATIVO:
+                    for tf_anc in ANCORA_TIMEFRAMES:
+                        key = f"{sym}_ANCORA_{tf_anc}"
+                        if now_ts - last_signal_time.get(key, 0) < SIGNAL_COOLDOWN_ANCORA:
+                            continue
+                        d_anc = detectar_perna(sym, tf_anc, candles_qtd=100)
+                        if not d_anc or not d_anc["ok"]:
+                            continue
+                        direcao_anc = d_anc["direcao"]
+                        preco_anc = check_gatilhos_tf(sym, direcao_anc, tf=tf_anc, candles_qtd=100)
+                        if not preco_anc:
+                            continue
+                        sl_anc = stop_tecnico(sym, direcao_anc, tf=tf_anc, lookback=100)
+                        if sl_anc is None:
+                            continue
+                        # ALVO: estrutura da própria âncora (megafone/
+                        # lateral) tem prioridade, senão a projeção de
+                        # 38.2% da onda, senão o 50% da pernada — mesma
+                        # cascata do M1-TECNICO, só que na escala âncora.
+                        estrutura_anc = estrutura_ancora(sym, tf_anc)
+                        tp_anc = alvo_desc_anc = None
+                        if estrutura_anc and estrutura_anc.get("figura") in ("megafone", "lateral"):
+                            tp_anc = alvo_ancora(preco_anc, direcao_anc, estrutura_anc)
+                            if tp_anc is not None:
+                                alvo_desc_anc = f"{'fundo' if direcao_anc == 'SELL' else 'topo'} {tf_anc.upper()}"
+                        if tp_anc is None:
+                            tp_anc = alvo_projecao_382(preco_anc, direcao_anc, d_anc)
+                            alvo_desc_anc = "proj. 38.2%"
+                        if tp_anc is None:
+                            tp_anc = d_anc["alvo_50"]
+                            alvo_desc_anc = "50% da pernada"
+                        coerente = ((direcao_anc == "BUY"  and sl_anc < preco_anc < tp_anc) or
+                                    (direcao_anc == "SELL" and tp_anc < preco_anc < sl_anc))
+                        if not coerente:
+                            continue
+                        desc_fig = (f"{tf_anc.upper()} {estrutura_anc['figura']}"
+                                    if estrutura_anc and estrutura_anc.get("figura")
+                                    else f"{tf_anc.upper()} corrigindo {int(d_anc['retr']*100)}%")
+                        entry_anc = {"direcao": direcao_anc, "entrada": preco_anc,
+                                     "stop": sl_anc, "alvo": tp_anc,
+                                     "atr": data.get("atr", 0), "origem": f"ANCORA-{tf_anc.upper()}",
+                                     "rsi": (f"{desc_fig} | {tf_anc.upper()}: {_ultimo_gatilho.get(sym, 'gatilho')}"
+                                             f" | alvo {alvo_desc_anc}")}
+                        fire_signal(sym, entry_anc, ignorar_travas=True)
+                        last_signal_time[key] = now_ts
+
             check_signals(price_map)
         except Exception as e:
             print(f"[ERRO] {e}")
