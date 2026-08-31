@@ -1520,6 +1520,23 @@
       "resultado": "-R$ 21,77",
       "preco_saida": 77700.424,
       "fechamento": "31/08/2026 01:00"
+    },
+    {
+      "id": 650,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "entrada": 78082.3,
+      "stop": 77920.192,
+      "alvo": 79005.63220000001,
+      "risco": 162.10800000000745,
+      "rr": 5.7,
+      "qty_usada": 0.04,
+      "atr": 233.8446739303069,
+      "origem": "ANCORA-4H",
+      "order_id": "SIM-1788157200584",
+      "data": "31/08/2026 03:20",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -1527,7 +1544,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 650,
+  "next_id": 651,
   "config_lote": {
     "modo": "fixo",
     "valor": 0.04
