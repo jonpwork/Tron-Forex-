@@ -1941,11 +1941,13 @@ def _tf_do_grafico(origem):
     return "1m"   # M1-TECNICO/ABC/FLUXO-*/GATILHO/MACRO
 
 def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titulo_extra=""):
-    """Gera um PNG do gráfico de candles com entrada/stop/alvo marcados,
-    parecido com o que o Jon desenha na mão. Só um extra VISUAL — se o
-    matplotlib não estiver instalado ou qualquer coisa der errado,
-    devolve None e o sinal continua indo só com o texto de sempre
-    (nunca trava/derruba o bot por causa do gráfico)."""
+    """Gera um PNG do gráfico de candles com entrada/stop/alvo marcados —
+    pivots (bolinhas), linha de tendência do topo/fundo (a mesma leitura
+    de detectar_figura) e a zona de fibonacci da pernada corrigida
+    (0.0/38.2/50.0/100.0), do jeito que o Jon desenha na mão. Só um
+    extra VISUAL — se o matplotlib não estiver instalado ou qualquer
+    coisa der errado, devolve None e o sinal continua indo só com o
+    texto de sempre (nunca trava/derruba o bot por causa do gráfico)."""
     try:
         import matplotlib
         matplotlib.use("Agg")
@@ -1957,46 +1959,92 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
     try:
         c = candles[-80:]
         if len(c) < 5: return None
-        fig, ax = plt.subplots(figsize=(9, 5), dpi=130)
-        fig.patch.set_facecolor("#131722")
-        ax.set_facecolor("#131722")
-        largura = 0.6
+        piv = _limpa_pivots(_pivots_m1(c, lado=2))
+
+        fig, ax = plt.subplots(figsize=(9.5, 5.5), dpi=140)
+        fig.patch.set_facecolor("white")
+        ax.set_facecolor("white")
+
+        largura = 0.55
         for i, k in enumerate(c):
             o, h, l, cl = k["open"], k["high"], k["low"], k["close"]
             cor = "#26a69a" if cl >= o else "#ef5350"
             ax.add_line(Line2D([i, i], [l, h], color=cor, linewidth=1))
             baixo = min(o, cl); alto_corpo = max(o, cl)
             altura = max(alto_corpo - baixo, (h - l) * 0.01 or 0.0001)
-            ax.add_patch(Rectangle((i - largura/2, baixo), largura, altura, facecolor=cor, edgecolor=cor))
+            ax.add_patch(Rectangle((i - largura/2, baixo), largura, altura, facecolor=cor, edgecolor=cor, linewidth=0.4))
 
         precos = [k["high"] for k in c] + [k["low"] for k in c] + [entrada, stop, alvo]
         ymin, ymax = min(precos), max(precos)
-        folga = (ymax - ymin) * 0.08 or ymax * 0.001
+        faixa_visivel = ymax - ymin
+        folga = faixa_visivel * 0.10 or ymax * 0.001
         ax.set_ylim(ymin - folga, ymax + folga)
-        ax.set_xlim(-1, len(c))
+        ax.set_xlim(-1, len(c) + 12)
 
-        def linha(preco, cor, label):
-            ax.axhline(preco, color=cor, linestyle="--", linewidth=1.2, alpha=0.9)
+        # pivots (bolinhas azuis, como o Jon marca na mão)
+        for (i, tipo, preco) in piv:
+            ax.scatter([i], [preco], s=42, facecolor="#1e63e0", edgecolor="white", linewidth=0.8, zorder=6)
+
+        # linhas de tendência do topo/fundo — a MESMA leitura de
+        # detectar_figura (liga o primeiro ao último pivot de cada tipo).
+        topos  = [p for p in piv if p[1] == "high"][-4:]
+        fundos = [p for p in piv if p[1] == "low"][-4:]
+
+        def linha_tendencia(pontos):
+            if len(pontos) < 2: return
+            x = [p[0] for p in pontos]; y = [p[2] for p in pontos]
+            ax.plot([x[0], x[-1]], [y[0], y[-1]], color="#1a1a1a", linewidth=1.6, zorder=4)
+
+        linha_tendencia(topos)
+        linha_tendencia(fundos)
+
+        # zona de fibonacci da pernada corrigida (origem -> extremo) — só
+        # desenha se tiver altura de verdade na tela; senão (pernada bem
+        # curta, ex. ponta de um triângulo já fechado) só polui.
+        tipo_extremo = "high" if direcao == "BUY" else "low"
+        tipo_origem  = "low" if direcao == "BUY" else "high"
+        extremos = [p for p in piv if p[1] == tipo_extremo]
+        origens  = [p for p in piv if p[1] == tipo_origem]
+        if extremos and origens:
+            extremo = extremos[-1]
+            anteriores = [p for p in origens if p[0] < extremo[0]]
+            if anteriores:
+                origem = anteriores[-1]
+                tam = extremo[2] - origem[2]
+                if faixa_visivel > 0 and abs(tam) >= faixa_visivel * 0.35:
+                    x0, x1 = origem[0], extremo[0] if extremo[0] > origem[0] else len(c) - 1
+                    x1 = max(x1, x0 + 3)
+                    niveis = {"0.0": extremo[2], "38.2": extremo[2] - tam * 0.382,
+                              "50.0": extremo[2] - tam * 0.5, "100.0": origem[2]}
+                    for label, nivel in niveis.items():
+                        ax.plot([x0, x1], [nivel, nivel], color="#f5a623", linewidth=0.9,
+                                 linestyle="-", alpha=0.85, zorder=3)
+                        ax.annotate(label, xy=(x0, nivel), xytext=(-4, 0), textcoords="offset points",
+                                    color="#b8790a", fontsize=7.5, va="center", ha="right", annotation_clip=False)
+
+        def linha_nivel(preco, cor, label):
+            ax.plot([len(c) - 8, len(c) - 1], [preco, preco], color=cor, linestyle="--", linewidth=1.4, zorder=5)
             ax.annotate(f" {label} {preco:,.4f}", xy=(len(c)-1, preco), xytext=(4, 0),
                         textcoords="offset points", color=cor, fontsize=9, va="center",
                         fontweight="bold", annotation_clip=False)
 
-        linha(stop, "#ff7043", "SL")
-        linha(alvo, "#66bb6a", "TP")
-        linha(entrada, "#42a5f5", "Entrada")
+        linha_nivel(stop, "#e65100", "SL")
+        linha_nivel(alvo, "#2e7d32", "TP")
+        linha_nivel(entrada, "#1565c0", "Entrada")
 
         cor_dir = "#26a69a" if direcao == "BUY" else "#ef5350"
-        ax.scatter([len(c)-1], [entrada], color=cor_dir, s=140, zorder=5,
-                   marker="^" if direcao == "BUY" else "v", edgecolors="white", linewidths=1)
+        ax.scatter([len(c)-1], [entrada], color=cor_dir, s=150, zorder=7,
+                   marker="^" if direcao == "BUY" else "v", edgecolors="black", linewidths=0.8)
 
         seta = "▲" if direcao == "BUY" else "▼"
         acao = "COMPRA" if direcao == "BUY" else "VENDA"
         ax.set_title(f"{symbol}  {tf.upper()}  {acao} {seta}{titulo_extra}",
-                     color="white", fontsize=13, fontweight="bold", loc="left", pad=12)
-        ax.tick_params(colors="#787b86", labelsize=8)
-        for spine in ax.spines.values(): spine.set_color("#2a2e39")
+                     color="#1a1a1a", fontsize=13, fontweight="bold", loc="left", pad=12)
+        ax.tick_params(colors="#555555", labelsize=8)
+        for spine in ax.spines.values(): spine.set_color("#dddddd")
         ax.set_xticks([])
-        ax.grid(True, color="#2a2e39", linewidth=0.5, alpha=0.5)
+        ax.grid(True, color="#eeeeee", linewidth=0.7)
+        ax.set_axisbelow(True)
 
         caminho = os.path.join(tempfile.gettempdir(), f"sinal_{symbol}_{int(time.time()*1000)}.png")
         fig.tight_layout()
