@@ -3,7 +3,7 @@ TRON FOREX BOT - Dev: Jon Padilha — Multi-Símbolo + Ordens Manuais + Performa
 BTC/ETH/SOL/BNB/XRP + Bybit Spot + Futuros + Ordens Limitadas
 """
 
-import requests, time, os, json, base64, threading, hmac, hashlib
+import requests, time, os, json, base64, threading, hmac, hashlib, subprocess
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from datetime import datetime, timezone, timedelta
 
@@ -131,6 +131,23 @@ def modo_texto():
         return "DEMO 🟡 (VST)" if BINGX_MODE == "demo" else "REAL 🔴"
     return "TESTNET 🟡" if BYBIT_MODE == "testnet" else "REAL 🔴"
 LEVERAGE_ATUAL = BINGX_LEVERAGE if USANDO_BINGX else BYBIT_LEVERAGE
+
+def ultima_atualizacao_texto():
+    """Data/hora (Brasília) do último commit que mexeu no app.py — pra
+    sempre saber quando o CÓDIGO rodando foi atualizado pela última
+    vez. Filtra só por app.py (-- app.py) de propósito: o bot também
+    empurra backups periódicos de memory.json pro GitHub via API, e
+    esses não deveriam contar como "atualização de código"."""
+    try:
+        repo_dir = os.path.dirname(os.path.abspath(__file__))
+        r = subprocess.run(["git", "log", "-1", "--format=%ct", "--", "app.py"],
+                           cwd=repo_dir, capture_output=True, text=True, timeout=5)
+        if r.returncode == 0 and r.stdout.strip():
+            dt = datetime.fromtimestamp(int(r.stdout.strip()), tz=BR_TZ)
+            return dt.strftime("%d/%m/%Y %H:%M")
+    except Exception as e:
+        print(f"[GIT] não consegui ler a data do último commit: {e}")
+    return "desconhecida"
 
 def bingx_symbol(symbol):
     """BingX usa hífen: BTCUSDT -> BTC-USDT. Fonte clássica de erro ao portar."""
@@ -3206,6 +3223,7 @@ send_telegram(
     f"📊 {', '.join(SYMBOLS.keys())}\n"
     f"🏦 {NOME_CORRETORA} [{modo_b}]: {broker_s}\n"
     f"⚡ Alavancagem: {LEVERAGE_ATUAL}x\n"
+    f"🛠️ Código atualizado em: {ultima_atualizacao_texto()} (Brasília)\n"
     f"/help para comandos\n"
     f"🧠 {memory['total_prints']} prints\n"
     f"⏰ {agora_br().strftime('%d/%m/%Y %H:%M')} (Brasília)")
