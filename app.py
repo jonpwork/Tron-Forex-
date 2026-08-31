@@ -3,7 +3,7 @@ TRON FOREX BOT - Dev: Jon Padilha — Multi-Símbolo + Ordens Manuais + Performa
 BTC/ETH/SOL/BNB/XRP + Bybit Spot + Futuros + Ordens Limitadas
 """
 
-import requests, time, os, json, base64, threading, hmac, hashlib, subprocess
+import requests, time, os, json, base64, threading, hmac, hashlib, subprocess, tempfile
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from datetime import datetime, timezone, timedelta
 
@@ -332,6 +332,22 @@ def send_telegram(msg, chat_id=None):
         print(f"[TG] {msg[:80].strip()}")
     except Exception as e:
         print(f"Erro TG: {e}")
+
+def send_telegram_foto(caminho, legenda="", chat_id=None):
+    """Manda uma imagem (PNG) pro Telegram. Some com o arquivo depois,
+    dê certo ou não — é sempre um arquivo temporário."""
+    cid = chat_id or CHAT_ID
+    try:
+        with open(caminho, "rb") as f:
+            requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendPhoto",
+                data={"chat_id": cid, "caption": legenda[:1024], "parse_mode": "HTML"},
+                files={"photo": f}, timeout=20)
+    except Exception as e:
+        print(f"Erro TG foto: {e}")
+    finally:
+        try: os.remove(caminho)
+        except OSError: pass
 
 def get_updates():
     global last_update_id
@@ -1916,6 +1932,81 @@ def filtrar_por_periodo(sinais, arg):
 def trades_abertos_agora():
     return len([s for s in memory.get("signals", []) if s["status"] == "aberto"])
 
+def _tf_do_grafico(origem):
+    """Qual timeframe mostrar no gráfico do sinal, a partir da origem."""
+    if origem.startswith("ANCORA-"):
+        return origem.split("-", 1)[1].lower()   # "4h", "1h", "30m"
+    if origem == "M15": return "15m"
+    if origem == "M5":  return "5m"
+    return "1m"   # M1-TECNICO/ABC/FLUXO-*/GATILHO/MACRO
+
+def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titulo_extra=""):
+    """Gera um PNG do gráfico de candles com entrada/stop/alvo marcados,
+    parecido com o que o Jon desenha na mão. Só um extra VISUAL — se o
+    matplotlib não estiver instalado ou qualquer coisa der errado,
+    devolve None e o sinal continua indo só com o texto de sempre
+    (nunca trava/derruba o bot por causa do gráfico)."""
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        from matplotlib.patches import Rectangle
+        from matplotlib.lines import Line2D
+    except ImportError:
+        return None
+    try:
+        c = candles[-80:]
+        if len(c) < 5: return None
+        fig, ax = plt.subplots(figsize=(9, 5), dpi=130)
+        fig.patch.set_facecolor("#131722")
+        ax.set_facecolor("#131722")
+        largura = 0.6
+        for i, k in enumerate(c):
+            o, h, l, cl = k["open"], k["high"], k["low"], k["close"]
+            cor = "#26a69a" if cl >= o else "#ef5350"
+            ax.add_line(Line2D([i, i], [l, h], color=cor, linewidth=1))
+            baixo = min(o, cl); alto_corpo = max(o, cl)
+            altura = max(alto_corpo - baixo, (h - l) * 0.01 or 0.0001)
+            ax.add_patch(Rectangle((i - largura/2, baixo), largura, altura, facecolor=cor, edgecolor=cor))
+
+        precos = [k["high"] for k in c] + [k["low"] for k in c] + [entrada, stop, alvo]
+        ymin, ymax = min(precos), max(precos)
+        folga = (ymax - ymin) * 0.08 or ymax * 0.001
+        ax.set_ylim(ymin - folga, ymax + folga)
+        ax.set_xlim(-1, len(c))
+
+        def linha(preco, cor, label):
+            ax.axhline(preco, color=cor, linestyle="--", linewidth=1.2, alpha=0.9)
+            ax.annotate(f" {label} {preco:,.4f}", xy=(len(c)-1, preco), xytext=(4, 0),
+                        textcoords="offset points", color=cor, fontsize=9, va="center",
+                        fontweight="bold", annotation_clip=False)
+
+        linha(stop, "#ff7043", "SL")
+        linha(alvo, "#66bb6a", "TP")
+        linha(entrada, "#42a5f5", "Entrada")
+
+        cor_dir = "#26a69a" if direcao == "BUY" else "#ef5350"
+        ax.scatter([len(c)-1], [entrada], color=cor_dir, s=140, zorder=5,
+                   marker="^" if direcao == "BUY" else "v", edgecolors="white", linewidths=1)
+
+        seta = "▲" if direcao == "BUY" else "▼"
+        acao = "COMPRA" if direcao == "BUY" else "VENDA"
+        ax.set_title(f"{symbol}  {tf.upper()}  {acao} {seta}{titulo_extra}",
+                     color="white", fontsize=13, fontweight="bold", loc="left", pad=12)
+        ax.tick_params(colors="#787b86", labelsize=8)
+        for spine in ax.spines.values(): spine.set_color("#2a2e39")
+        ax.set_xticks([])
+        ax.grid(True, color="#2a2e39", linewidth=0.5, alpha=0.5)
+
+        caminho = os.path.join(tempfile.gettempdir(), f"sinal_{symbol}_{int(time.time()*1000)}.png")
+        fig.tight_layout()
+        fig.savefig(caminho, facecolor=fig.get_facecolor())
+        plt.close(fig)
+        return caminho
+    except Exception as e:
+        print(f"[GRAFICO] {symbol}: {e}")
+        return None
+
 def fire_signal(symbol, entry, ignorar_travas=False):
     sym = symbol
     bdir = entry["direcao"]; ep = entry["entrada"]; sp = entry["stop"]; tp = entry["alvo"]
@@ -2044,6 +2135,19 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         f"📐 R:R 1:{rr}  |  ⚠️ Risco: R$ {risco_brl:,.2f}  |  🏆 Potencial: R$ {alvo_brl:,.2f}\n"
         f"⚖️ Lote: {lote_texto()}"
         f"{bi}\n⏰ {ts} (Brasília)")
+
+    # gráfico é só um extra visual — nunca deixa um erro aqui afetar o
+    # sinal (ordem/tracking) que já foi resolvido acima.
+    try:
+        tf_graf = _tf_do_grafico(origem)
+        candles_graf = get_candles(sym, tf_graf, 90)
+        if candles_graf:
+            caminho = gerar_grafico_sinal(sym, tf_graf, candles_graf, bdir, ep, sp, tp,
+                                          titulo_extra=f"  [{origem}]")
+            if caminho:
+                send_telegram_foto(caminho, f"{emoji} {action} {sym} — {tf_graf.upper()}")
+    except Exception as e:
+        print(f"[GRAFICO] {sym}: {e}")
 
 def check_signals(price_map):
     ab = [s for s in memory.get("signals", []) if s["status"] == "aberto"]
