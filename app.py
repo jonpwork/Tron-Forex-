@@ -1353,7 +1353,10 @@ def gatilho_pernada_50(c1, direcao, lado=2):
         pavio = c1[-1]["low"] if direcao == "BUY" else c1[-1]["high"]
         retr = _corrigiu_50(alto, baixo, pavio, direcao)
         if retr is None: return None
-    return {"preco": preco, "desc": f"pernada M1 corrigida {int(retr*100)}%"}
+    # sem "M1" fixo no texto: esse gatilho roda em qualquer timeframe via
+    # check_gatilhos_tf (M1 no day trade, H4/H1/M30 no motor ÂNCORA) — quem
+    # chama já prefixa o timeframe certo antes de mostrar a descrição.
+    return {"preco": preco, "desc": f"pernada corrigida {int(retr*100)}%"}
 
 
 def gatilho_tres_topos_abc(c1, direcao, lado=2, tol_nivel=None):
@@ -2306,14 +2309,17 @@ def handle_command(text, chat_id):
             if "3 topos" in d or "3 fundos" in d: return "3 topos/fundos + ABC"
             if "sub-perna" in d:                  return "ABC em construção"
             if "candle corrigindo" in d:          return "candle com retração"
-            if "pernada m1" in d:                 return "pernada M1 50%"
+            # "pernada" cobre tanto o texto antigo ("pernada M1 corrigida")
+            # quanto o novo ("pernada corrigida") — esse gatilho hoje roda
+            # tanto no M1 quanto nas âncoras H4/H1/M30.
+            if "pernada" in d:                    return "pernada corrigida 50%"
             if "pullback" in d or "tendência" in d: return "RSI + tendência"
             return None
 
         def ancora_de(x):
             d = (x.get("rsi") or "")
             if not isinstance(d, str): return None
-            for tf in ("4H", "1H", "15M", "5M"):
+            for tf in ("4H", "1H", "30M", "15M", "5M"):
                 if d.upper().startswith(tf): return f"âncora {tf}"
             return None
 
