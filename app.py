@@ -1940,14 +1940,22 @@ def _tf_do_grafico(origem):
     if origem == "M5":  return "5m"
     return "1m"   # M1-TECNICO/ABC/FLUXO-*/GATILHO/MACRO
 
-def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titulo_extra=""):
+def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titulo_extra="",
+                         saida=None, resultado_txt=None, venceu=None, qty=None):
     """Gera um PNG do gráfico de candles com entrada/stop/alvo marcados —
     pivots (bolinhas), linha de tendência do topo/fundo (a mesma leitura
-    de detectar_figura) e a zona de fibonacci da pernada corrigida
-    (0.0/38.2/50.0/100.0), do jeito que o Jon desenha na mão. Só um
-    extra VISUAL — se o matplotlib não estiver instalado ou qualquer
-    coisa der errado, devolve None e o sinal continua indo só com o
-    texto de sempre (nunca trava/derruba o bot por causa do gráfico)."""
+    de detectar_figura), a zona de fibonacci da pernada corrigida
+    (0.0/38.2/50.0/100.0) e uma faixa destacando a zona de risco
+    (entrada até o stop), do jeito que o Jon desenha na mão.
+
+    Quando `saida` é informado (fechamento de trade — TAKE/STOP), o
+    mesmo gráfico ganha a linha de saída real e o resultado em cima da
+    linha de entrada, tipo "COMPRA 0.01, +4.25 BRL".
+
+    Só um extra VISUAL — se o matplotlib não estiver instalado ou
+    qualquer coisa der errado, devolve None e a mensagem de sempre
+    continua indo normalmente (nunca trava/derruba o bot por causa do
+    gráfico)."""
     try:
         import matplotlib
         matplotlib.use("Agg")
@@ -1975,11 +1983,16 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
             ax.add_patch(Rectangle((i - largura/2, baixo), largura, altura, facecolor=cor, edgecolor=cor, linewidth=0.4))
 
         precos = [k["high"] for k in c] + [k["low"] for k in c] + [entrada, stop, alvo]
+        if saida is not None: precos.append(saida)
         ymin, ymax = min(precos), max(precos)
         faixa_visivel = ymax - ymin
         folga = faixa_visivel * 0.10 or ymax * 0.001
         ax.set_ylim(ymin - folga, ymax + folga)
         ax.set_xlim(-1, len(c) + 12)
+
+        # faixa destacando a zona de risco (entrada até o stop), como as
+        # caixas laranjas que o Jon desenha marcando zona de interesse
+        ax.axhspan(min(entrada, stop), max(entrada, stop), color="#f5a623", alpha=0.10, zorder=0.5)
 
         # pivots (bolinhas azuis, como o Jon marca na mão)
         for (i, tipo, preco) in piv:
@@ -2028,17 +2041,44 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
                         textcoords="offset points", color=cor, fontsize=9, va="center",
                         fontweight="bold", annotation_clip=False)
 
-        linha_nivel(stop, "#e65100", "SL")
-        linha_nivel(alvo, "#2e7d32", "TP")
-        linha_nivel(entrada, "#1565c0", "Entrada")
+        acao = "COMPRA" if direcao == "BUY" else "VENDA"
+        # no fechamento, o lado que bateu (TP ou SL) já vira a linha de
+        # saída real logo abaixo — desenhar a linha planejada dele de
+        # novo só duplicaria em cima (e em SIMULAÇÃO o valor é idêntico).
+        if saida is None or not venceu:
+            linha_nivel(alvo, "#2e7d32", "TP")
+        if saida is None or venceu:
+            linha_nivel(stop, "#e65100", "SL")
+
+        if saida is None:
+            # sinal em aberto: linha da entrada com o preço
+            linha_nivel(entrada, "#1565c0", "Entrada")
+        else:
+            # trade fechado: a linha da entrada mostra o resultado, tipo
+            # "COMPRA 0.01, +4.25 BRL" — igual ao que o Jon desenha na mão
+            qty_txt = f"{qty:g} " if qty is not None else ""
+            ax.plot([len(c) - 8, len(c) - 1], [entrada, entrada], color="#1565c0", linestyle="--", linewidth=1.4, zorder=5)
+            ax.annotate(f" {acao} {qty_txt}, {resultado_txt}", xy=(len(c)-1, entrada), xytext=(4, 0),
+                        textcoords="offset points", color="#1565c0", fontsize=9, va="center",
+                        fontweight="bold", annotation_clip=False)
+            cor_saida = "#2e7d32" if venceu else "#c62828"
+            ax.plot([len(c) - 8, len(c) - 1], [saida, saida], color=cor_saida, linestyle="-", linewidth=1.8, zorder=6)
+            ax.annotate(f" {'TAKE' if venceu else 'STOP'} {saida:,.4f}", xy=(len(c)-1, saida), xytext=(4, -12),
+                        textcoords="offset points", color=cor_saida, fontsize=9, va="center",
+                        fontweight="bold", annotation_clip=False)
+            ax.scatter([len(c)-1], [saida], color=cor_saida, s=110, zorder=8, marker="o",
+                       edgecolors="black", linewidths=0.8)
 
         cor_dir = "#26a69a" if direcao == "BUY" else "#ef5350"
         ax.scatter([len(c)-1], [entrada], color=cor_dir, s=150, zorder=7,
                    marker="^" if direcao == "BUY" else "v", edgecolors="black", linewidths=0.8)
 
         seta = "▲" if direcao == "BUY" else "▼"
-        acao = "COMPRA" if direcao == "BUY" else "VENDA"
-        ax.set_title(f"{symbol}  {tf.upper()}  {acao} {seta}{titulo_extra}",
+        if saida is None:
+            titulo_acao = f"{acao} {seta}"
+        else:
+            titulo_acao = "TAKE PROFIT" if venceu else "STOP LOSS"
+        ax.set_title(f"{symbol}  {tf.upper()}  {titulo_acao}{titulo_extra}",
                      color="#1a1a1a", fontsize=13, fontweight="bold", loc="left", pad=12)
         ax.tick_params(colors="#555555", labelsize=8)
         for spine in ax.spines.values(): spine.set_color("#dddddd")
@@ -2244,10 +2284,26 @@ def check_signals(price_map):
             s["status"] = "win" if lucro >= 0 else "loss"
             s["resultado"] = fmt_brl(resultado_brl(s))
             alt = True
-            if s["status"] == "win":
+            venceu = s["status"] == "win"
+            if venceu:
                 send_telegram(f"🏆 <b>TAKE PROFIT!</b> {sym} ✅ <b>{s['resultado']}</b>")
             else:
                 send_telegram(f"🛑 <b>STOP LOSS</b> {sym} ❌ <b>{s['resultado']}</b>")
+
+            # gráfico do resultado — mesmo esquema do sinal, só um extra
+            # visual, nunca deixa erro aqui afetar o tracking já resolvido
+            try:
+                tf_graf = _tf_do_grafico(s.get("origem", "?"))
+                candles_graf = get_candles(sym, tf_graf, 90)
+                if candles_graf:
+                    caminho = gerar_grafico_sinal(
+                        sym, tf_graf, candles_graf, s["direcao"], s["entrada"], s["stop"], s["alvo"],
+                        titulo_extra=f"  [{s.get('origem','?')}]", saida=p, resultado_txt=s["resultado"],
+                        venceu=venceu, qty=s.get("qty_usada"))
+                    if caminho:
+                        send_telegram_foto(caminho, f"{'🏆' if venceu else '🛑'} {sym} — {tf_graf.upper()}")
+            except Exception as e:
+                print(f"[GRAFICO] {sym}: {e}")
     if alt: save_memory()
 
 # ═══════════════════════════════════════════════════════════════
