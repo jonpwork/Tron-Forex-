@@ -425,6 +425,27 @@ def get_updates():
         return ups
     except: return []
 
+def _descartar_updates_pendentes():
+    """Marca como lidas as mensagens pendentes no Telegram ANTES de
+    começar a ouvir comandos. last_update_id é só em memória — a cada
+    reinício (manual ou via /reiniciar) ele volta pra 0, e o Telegram
+    reentrega o ÚLTIMO comando ainda não confirmado. Se esse comando for
+    justamente /reiniciar, vira loop infinito de reinício (foi
+    exatamente o que aconteceu). offset=-1 pega só a última pendência
+    sem executar nada, e o valor dela vira o novo piso — tudo que já
+    estava na fila fica pra trás."""
+    global last_update_id
+    try:
+        r = requests.get(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates",
+            params={"offset": -1, "timeout": 0}, timeout=8)
+        ups = r.json().get("result", [])
+        if ups:
+            last_update_id = ups[-1]["update_id"]
+            print(f"[TG] {len(ups)} update(s) pendente(s) descartado(s) no início.")
+    except Exception as e:
+        print(f"[TG] não consegui descartar updates pendentes: {e}")
+
 def download_photo(file_id):
     r  = requests.get(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getFile",
                       params={"file_id": file_id}, timeout=10)
@@ -3651,6 +3672,7 @@ print(f"Tron Forex Bot - Dev: Jon Padilha | {corretoras_status}")
 print(f"Simbolos: {', '.join(SYMBOLS.keys())}")
 threading.Thread(target=run_server, daemon=True).start()
 load_memory()
+_descartar_updates_pendentes()
 threading.Thread(target=commands_loop, daemon=True).start()
 send_telegram(
     f"🤖 <b>Tron Forex Bot - Dev: Jon Padilha iniciado!</b>\n"
