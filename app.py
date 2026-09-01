@@ -136,6 +136,17 @@ else:
 # É o teste mais seguro: não depende nem de depósito, nem da conta demo.
 SIMULACAO = os.environ.get("SIMULACAO", "false").strip().lower() in ("1","true","sim","yes")
 
+def simulacao_de(exchange):
+    """SIMULACAO pode ser ajustado por corretora — SIMULACAO_BINGX ou
+    SIMULACAO_BYBIT no .env sobrescrevem o SIMULACAO global só pra essa
+    corretora (ex: SIMULACAO=true + SIMULACAO_BYBIT=false deixa a Bybit
+    operando REAL enquanto a BingX continua em papel). Sem override,
+    cada corretora segue o SIMULACAO global."""
+    override = os.environ.get(f"SIMULACAO_{exchange.upper()}", "").strip().lower()
+    if override:
+        return override in ("1", "true", "sim", "yes")
+    return SIMULACAO
+
 def modo_texto():
     """Rótulo do modo em que o bot está operando agora."""
     if SIMULACAO:
@@ -147,7 +158,7 @@ def modo_texto():
 def modo_texto_ex(exchange):
     """Mesmo que modo_texto(), mas pra uma corretora específica —
     usado quando EXCHANGES_ATIVAS tem mais de uma."""
-    if SIMULACAO:
+    if simulacao_de(exchange):
         return "SIMULAÇÃO 🧪"
     if exchange == "bingx":
         return "DEMO 🟡 (VST)" if BINGX_MODE == "demo" else "REAL 🔴"
@@ -517,7 +528,7 @@ def _bingx_set_leverage(symbol):
 def _bingx_garantir_hedge():
     """Liga o modo hedge (dual position) na BingX, necessário pra manter
     compra e venda abertas ao mesmo tempo no mesmo par."""
-    if _hedge_verificado["bingx"] or not ARBITRAGEM_ATIVA or SIMULACAO:
+    if _hedge_verificado["bingx"] or not ARBITRAGEM_ATIVA or simulacao_de("bingx"):
         return
     r = bingx_post(f"{BINGX_SWAP}/trade/positionSide/dual", {"dualSidePosition": "true"})
     if r and r.get("retCode") in (0, None):
@@ -645,7 +656,7 @@ def order_spot(symbol, side, qty):
 
 def _bybit_garantir_hedge(symbol):
     """Bybit: mode 3 = hedge (posições nos dois sentidos no mesmo par)."""
-    if _hedge_verificado["bybit"] or not ARBITRAGEM_ATIVA or SIMULACAO:
+    if _hedge_verificado["bybit"] or not ARBITRAGEM_ATIVA or simulacao_de("bybit"):
         return
     r = bybit_post("/v5/position/switch-mode", {
         "category": "linear", "symbol": symbol, "mode": 3})
@@ -658,8 +669,9 @@ def _bybit_garantir_hedge(symbol):
 
 def order_futures(symbol, side, qty, sl=None, tp=None, exchange=None):
     usando_bingx = (exchange == "bingx") if exchange else USANDO_BINGX
-    if SIMULACAO:
-        print(f"[SIMULACAO] {exchange or ('bingx' if usando_bingx else 'bybit')} {side} {qty} {symbol} SL={sl} TP={tp} — ordem NÃO enviada.")
+    exch_efetiva = exchange or ("bingx" if usando_bingx else "bybit")
+    if simulacao_de(exch_efetiva):
+        print(f"[SIMULACAO] {exch_efetiva} {side} {qty} {symbol} SL={sl} TP={tp} — ordem NÃO enviada.")
         return {"ok": True, "order_id": f"SIM-{int(time.time()*1000)}"}
     if usando_bingx:
         return _bingx_order_futures(symbol, side, qty, sl=sl, tp=tp)
@@ -795,7 +807,7 @@ def _futures_dec(symbol):
 SALDO_SIMULADO = float(os.environ.get("SALDO_SIMULADO", "100"))
 
 def get_saldo_usdt(exchange=None):
-    if SIMULACAO:
+    if (simulacao_de(exchange) if exchange else SIMULACAO):
         return SALDO_SIMULADO
     """Saldo disponível pra abrir posição NOVA (usado pra travar a margem da
     ordem). Prioriza totalAvailableBalance (o campo que a própria Bybit usa
@@ -2334,13 +2346,14 @@ def check_signals(price_map):
 
         hit_tp = (s["direcao"]=="BUY" and p>=s["alvo"]) or (s["direcao"]=="SELL" and p<=s["alvo"])
         hit_sl = (s["direcao"]=="BUY"  and p<=s["stop"]) or (s["direcao"]=="SELL" and p>=s["stop"])
+        sim_do_sinal = simulacao_de(s.get("exchange", EXCHANGE))
 
         # ── SIMULAÇÃO: checagem intra-candle ───────────────────────
         # Ler um único preço a cada 60s esconde o que aconteceu DENTRO
         # do minuto. Com stop técnico curto, o preço fura o stop e volta
         # sem o bot ver — e o trade era registrado como win. Aqui olhamos
         # a máxima e a mínima reais dos candles de M1 desde a entrada.
-        if SIMULACAO and not (hit_tp or hit_sl):
+        if sim_do_sinal and not (hit_tp or hit_sl):
             try:
                 c1 = get_candles(sym, "1m", 10)
             except Exception:
@@ -2362,8 +2375,10 @@ def check_signals(price_map):
 
         if hit_tp or hit_sl:
             # No real, SL e TP ficam NA CORRETORA e executam no preço
-            # exato. Reproduzimos isso aqui.
-            if SIMULACAO:
+            # exato. Reproduzimos isso aqui — só pro sinal que É simulado
+            # (com multi-corretora, um sinal real usa o preço de mercado
+            # de verdade, não o valor exato do stop/alvo planejado).
+            if sim_do_sinal:
                 p = s["stop"] if hit_sl else s["alvo"]
             s["preco_saida"] = p; s["fechamento"] = ts
             lucro = (p - s["entrada"]) if s["direcao"]=="BUY" else (s["entrada"] - p)
@@ -3518,7 +3533,7 @@ def _chave_ex(exchange):
 
 corretoras_status = " + ".join(
     f"{nome_corretora(e)} [{modo_texto_ex(e)}] {leverage_de(e)}x: "
-    f"{'🧪 simulação' if SIMULACAO else ('✅ OK' if _chave_ex(e) else '❌ sem chaves')}"
+    f"{'🧪 simulação' if simulacao_de(e) else ('✅ OK' if _chave_ex(e) else '❌ sem chaves')}"
     for e in EXCHANGES_ATIVAS)
 print(f"Tron Forex Bot - Dev: Jon Padilha | {corretoras_status}")
 print(f"Simbolos: {', '.join(SYMBOLS.keys())}")
