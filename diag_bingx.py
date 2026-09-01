@@ -130,3 +130,29 @@ enviar("POST", "/openApi/swap/v2/trade/order", {
     "stopLoss": json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"}),
     "takeProfit": json.dumps({"type": "TAKE_PROFIT_MARKET", "stopPrice": 76000.0, "workingType": "MARK_PRICE"}),
 })
+print()
+
+# Teste 5 tambem falhou -- bisseca pra achar EXATAMENTE qual parametro
+# quebra a assinatura. Todos com symbol falso, zero risco de dinheiro.
+print("── Teste 5a: só symbol/side/positionSide/type/quantity (SEM stopLoss/takeProfit) ──")
+enviar("POST", "/openApi/swap/v2/trade/order", {
+    "symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
+    "type": "MARKET", "quantity": "0.01",
+})
+print()
+
+print("── Teste 5b: os mesmos + SÓ stopLoss (sem takeProfit) ──")
+enviar("POST", "/openApi/swap/v2/trade/order", {
+    "symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
+    "type": "MARKET", "quantity": "0.01",
+    "stopLoss": json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"}),
+})
+print()
+
+print("── Teste 5c: stopLoss como JSON COMPACTO (sem espaco nenhum) ──")
+enviar("POST", "/openApi/swap/v2/trade/order", {
+    "symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
+    "type": "MARKET", "quantity": "0.01",
+    "stopLoss": json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"},
+                            separators=(",", ":")),
+})
