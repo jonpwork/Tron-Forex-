@@ -156,3 +156,38 @@ enviar("POST", "/openApi/swap/v2/trade/order", {
     "stopLoss": json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"},
                             separators=(",", ":")),
 })
+print()
+
+# 5a passou (erro de negocio, nao de assinatura) e 5b/5c ainda falham
+# IGUAL, mesmo sem espaco -- entao nao e sobre o CONTEUDO do JSON.
+# Testa se e o PARAMETRO "stopLoss" em si (nome/posicao/tratamento
+# especial), independente do valor ser JSON valido ou nao.
+print("── Teste 5d: stopLoss = texto qualquer, NAO e JSON (so pra ver se o erro muda) ──")
+enviar("POST", "/openApi/swap/v2/trade/order", {
+    "symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
+    "type": "MARKET", "quantity": "0.01",
+    "stopLoss": "textoqualquersemjsonnenhum",
+})
+print()
+
+print("── Teste 5e: stopLoss RAW, sem url-encode (só pra este campo) ──")
+_sl_raw = json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"})
+_params_e = {"symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
+             "type": "MARKET", "quantity": "0.01"}
+_sorted_e = sorted(_params_e)
+_qs_e = "&".join(f"{k}={urllib.parse.quote(str(_params_e[k]), safe='')}" for k in _sorted_e)
+_qs_e += f"&stopLoss={_sl_raw}"  # cru, sem quote() -- só pra este teste
+_qs_e += "&timestamp=" + str(int(time.time() * 1000))
+_sig_e = sign(_qs_e, API_SECRET)
+_url_e = f"{BASE_URL}/openApi/swap/v2/trade/order?{_qs_e}&signature={_sig_e}"
+print(f"URL: {_url_e}")
+try:
+    _req_e = urllib.request.Request(_url_e, method="POST", headers={"X-BX-APIKEY": API_KEY})
+    with urllib.request.urlopen(_req_e, timeout=15) as r:
+        print(f"HTTP {r.status}")
+        print(r.read().decode())
+except urllib.error.HTTPError as e:
+    print(f"HTTP {e.code}")
+    print(e.read().decode())
+except Exception as e:
+    print(f"ERRO DE CONEXAO: {e}")
