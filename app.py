@@ -341,6 +341,7 @@ _ts_entrada      = {}       # timestamp da última entrada por "SIMBOLO|DIRECAO"
 _hedge_verificado = {"bingx": False, "bybit": False}
 last_update_id   = 0
 _leverage_set    = {"bingx": set(), "bybit": set()}
+_min_qty_cache   = {}       # (exchange, symbol) -> mínimo real de qty consultado na corretora
 _freio_diario    = {"data": None, "saldo_inicial": None, "pausado": False, "ativo": FREIO_DIARIO_ATIVO}
 
 memory = {
@@ -810,6 +811,49 @@ def _futures_dec(symbol):
         return len(s.split(".")[1])
     return 0
 
+def get_min_qty_real(symbol, exchange):
+    """Mínimo de quantidade por ordem consultado DIRETO da corretora (não o
+    QTY_BTC/etc fixo do .env, que era só um chute) — cacheado, uma consulta
+    por par/corretora na vida do processo. Se a consulta falhar por
+    qualquer motivo, devolve None e quem chamar usa o piso configurado de
+    antes — nunca trava o bot por causa disso."""
+    chave = (exchange, symbol)
+    if chave in _min_qty_cache:
+        return _min_qty_cache[chave]
+    minimo = None
+    try:
+        if exchange == "bingx":
+            r = bingx_get(f"{BINGX_SWAP}/quote/contracts", signed=False)
+            if r and r.get("retCode") in (0, None):
+                alvo = bingx_symbol(symbol)
+                for c in (r.get("result") or []):
+                    if c.get("symbol") != alvo:
+                        continue
+                    for campo in ("tradeMinQuantity", "minQty", "size"):
+                        try:
+                            f = float(c.get(campo))
+                            if f > 0:
+                                minimo = f
+                                break
+                        except (TypeError, ValueError):
+                            continue
+                    break
+        else:
+            r = bybit_get("/v5/market/instruments-info", {"category": "linear", "symbol": symbol})
+            if r and r.get("retCode") == 0:
+                lst = r.get("result", {}).get("list", [])
+                if lst:
+                    try:
+                        f = float(lst[0].get("lotSizeFilter", {}).get("minOrderQty"))
+                        if f > 0:
+                            minimo = f
+                    except (TypeError, ValueError):
+                        pass
+    except Exception as e:
+        print(f"[MIN_QTY] {exchange} {symbol}: {e}")
+    _min_qty_cache[chave] = minimo
+    return minimo
+
 SALDO_SIMULADO = float(os.environ.get("SALDO_SIMULADO", "100"))
 
 def get_saldo_usdt(exchange=None):
@@ -882,13 +926,18 @@ def calc_qty(symbol, entry, stop, exchange=None):
     calcular, cai no tamanho mínimo configurado do par. `exchange` deixa
     calcular pelo saldo de uma corretora específica (multi-corretora)."""
     qty_cfg = SYMBOLS.get(symbol, {}).get("qty", 0)
+    # piso operacional: o maior entre o qty configurado (.env) e o mínimo
+    # REAL daquela corretora pro par — evita "Qty invalid" quando o .env
+    # ficou desatualizado ou nunca bateu com o mínimo de verdade.
+    minimo_real = get_min_qty_real(symbol, exchange) if exchange else None
+    piso = max(qty_cfg, minimo_real) if minimo_real else qty_cfg
     dist = abs(entry - stop)
     if dist <= 0 or entry <= 0:
-        return qty_cfg or None
+        return piso or None
 
     saldo_usdt = get_saldo_usdt(exchange)
     if not saldo_usdt or saldo_usdt <= 0:
-        return qty_cfg or None
+        return piso or None
 
     # dimensiona pelo risco percentual, mas sem NUNCA vetar a entrada
     qty = (saldo_usdt * RISCO_PCT) / dist
@@ -903,9 +952,9 @@ def calc_qty(symbol, entry, stop, exchange=None):
     elif cfg_lote.get("modo") == "mult":
         qty = round(qty * cfg_lote.get("valor", 1), _futures_dec(symbol))
 
-    if qty < qty_cfg:
-        qty = qty_cfg      # piso operacional do par, não uma trava de risco
-    return qty if qty > 0 else (qty_cfg or None)
+    if qty < piso:
+        qty = piso          # piso operacional do par, não uma trava de risco
+    return qty if qty > 0 else (piso or None)
 
 def lote_texto():
     """Rótulo do modo de lote ativo agora, pra mostrar no sinal e no /status."""
