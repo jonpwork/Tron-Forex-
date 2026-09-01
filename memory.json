@@ -246,8 +246,10 @@
       "origem": "M1-FLUXO-VENDA",
       "order_id": "2094767652098764800",
       "data": "01/09/2026 09:41",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 3,09",
+      "preco_saida": 77626.6,
+      "fechamento": "01/09/2026 10:07"
     }
   ],
   "zone_tol": 0.2,
