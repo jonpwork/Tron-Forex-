@@ -66,7 +66,10 @@ def sign(params_ordenados_str, secret):
 
 def parse_param(params_map):
     sorted_keys = sorted(params_map)
-    params_str = "&".join(f"{k}={params_map[k]}" for k in sorted_keys)
+    # url-encode os valores (mesma correcao aplicada no app.py) -- sem
+    # isso, um valor com espaco/chave/aspas (como o JSON do stopLoss)
+    # vaza cru na URL e a assinatura nao bate com o que e transmitido.
+    params_str = "&".join(f"{k}={urllib.parse.quote(str(params_map[k]), safe='')}" for k in sorted_keys)
     if params_str:
         return params_str + "&timestamp=" + str(int(time.time() * 1000))
     return "timestamp=" + str(int(time.time() * 1000))
@@ -111,3 +114,19 @@ print()
 
 print("── Teste 4: ativar hedge mode (POST, o mesmo que ja falha no bot) ──")
 enviar("POST", "/openApi/swap/v2/trade/positionSide/dual", {"dualSidePosition": "true"})
+print()
+
+# Teste 5: os MESMOS parametros de uma ordem real (incluindo
+# stopLoss/takeProfit como JSON embutido -- exatamente o formato que
+# ainda falha no bot), mas com um symbol que NAO EXISTE. Se a
+# assinatura estiver certa, a BingX processa a autenticacao normal e
+# só DEPOIS reclama que o simbolo nao existe -- zero risco de abrir
+# ordem de verdade, mas testa a assinatura no formato exato que
+# importa.
+print("── Teste 5: 'ordem' com simbolo falso (testa assinatura c/ stopLoss/takeProfit, SEM risco) ──")
+enviar("POST", "/openApi/swap/v2/trade/order", {
+    "symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
+    "type": "MARKET", "quantity": "0.01",
+    "stopLoss": json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"}),
+    "takeProfit": json.dumps({"type": "TAKE_PROFIT_MARKET", "stopPrice": 76000.0, "workingType": "MARK_PRICE"}),
+})
