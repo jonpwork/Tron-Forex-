@@ -170,6 +170,12 @@ def leverage_de(exchange):
 def nome_corretora(exchange):
     return "BingX" if exchange == "bingx" else "Bybit"
 
+# Aviso genérico de conta real nas mensagens de sinal/resultado, sem
+# identificar corretora nem modo (o bot fica em live no YouTube — não
+# pode expor qual conta é real). Fixo em todas as mensagens até o Jon
+# decidir uma forma definitiva de tratar isso.
+TAG_CONTA_REAL = "\n💰 Conta REAL 🔴"
+
 def ultima_atualizacao_texto():
     """Data/hora (Brasília) do último commit que mexeu no app.py — pra
     sempre saber quando o CÓDIGO rodando foi atualizado pela última
@@ -2260,7 +2266,6 @@ def fire_signal(symbol, entry, ignorar_travas=False):
             print(f"[SKIP] {sym} {exch}: não deu pra montar um tamanho de posição coerente com o saldo/margem disponível.")
             continue
 
-        modo_ex = modo_texto_ex(exch)
         res = broker_open_auto(sym, bdir, sp, tp, qty=qty_calc, exchange=exch)
         if res and res.get("ok"):
             # só entra no tracking (e pode virar win/loss depois) se a
@@ -2279,13 +2284,16 @@ def fire_signal(symbol, entry, ignorar_travas=False):
             algum_sucesso = True
             risco_brl_ex = risk * qty_calc * get_usd_brl()
             alvo_brl_ex  = risk * rr * qty_calc * get_usd_brl()
+            # sem nome de corretora nem modo (SIMULAÇÃO/REAL/DEMO) aqui —
+            # o bot fica em live no YouTube, essa notificação não pode
+            # identificar a conta. Ver TAG_CONTA_REAL logo abaixo.
             blocos.append(
-                f"\n🏦 {nome_corretora(exch)} [{modo_ex}] ✅\n"
+                f"\n✅ Ordem executada\n"
                 f"📦 {qty_calc} {sym} | {leverage_de(exch)}x | "
                 f"⚠️ R$ {risco_brl_ex:,.2f}  |  🏆 R$ {alvo_brl_ex:,.2f}\n"
                 f"🆔 <code>{res['order_id']}</code>")
         elif res:
-            blocos.append(f"\n❌ {nome_corretora(exch)}: {res.get('error','?')} — ordem NÃO aberta.")
+            blocos.append(f"\n❌ Ordem NÃO aberta: {res.get('error','?')}")
             print(f"[FALHOU] {sym} {exch} {bdir} qty={qty_calc}: {res.get('error','?')}")
 
     if not algum_sucesso:
@@ -2316,7 +2324,8 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         f"{desc_stop}: <b>${sp:,.4f}</b>  🎯 Alvo: <b>${tp:,.4f}</b>\n"
         f"📐 R:R 1:{rr}\n"
         f"⚖️ Lote: {lote_texto()}"
-        f"{''.join(blocos)}\n⏰ {ts} (Brasília)")
+        f"{''.join(blocos)}"
+        f"{TAG_CONTA_REAL}\n⏰ {ts} (Brasília)")
 
     # gráfico é só um extra visual — nunca deixa um erro aqui afetar o
     # sinal (ordem/tracking) que já foi resolvido acima.
@@ -2391,14 +2400,13 @@ def check_signals(price_map):
             s["resultado"] = fmt_brl(resultado_brl(s))
             alt = True
             venceu = s["status"] == "win"
-            # sinaliza quando é ordem de conta REAL (não simulada) — o Jon
-            # opera BingX e Bybit junto, às vezes uma em papel e outra real
-            # (ex: SIMULACAO_BYBIT=false), e precisa distinguir na hora.
-            tag_conta = f"\n🏦 {nome_corretora(s.get('exchange', EXCHANGE))} REAL 🔴" if not sim_do_sinal else ""
+            # fixo em toda mensagem, sem identificar corretora nem modo —
+            # o bot fica em live no YouTube, não pode expor qual conta é
+            # real. Ver TAG_CONTA_REAL.
             if venceu:
-                send_telegram(f"🏆 <b>TAKE PROFIT!</b> {sym} ✅ <b>{s['resultado']}</b>{tag_conta}")
+                send_telegram(f"🏆 <b>TAKE PROFIT!</b> {sym} ✅ <b>{s['resultado']}</b>{TAG_CONTA_REAL}")
             else:
-                send_telegram(f"🛑 <b>STOP LOSS</b> {sym} ❌ <b>{s['resultado']}</b>{tag_conta}")
+                send_telegram(f"🛑 <b>STOP LOSS</b> {sym} ❌ <b>{s['resultado']}</b>{TAG_CONTA_REAL}")
 
             # gráfico do resultado — mesmo esquema do sinal, só um extra
             # visual, nunca deixa erro aqui afetar o tracking já resolvido
