@@ -115,6 +115,19 @@ BINGX_SPOT        = "/openApi/spot/v1"
 
 USANDO_BINGX = (EXCHANGE == "bingx")
 
+# ── MULTI-CORRETORA ──────────────────────────────────────────────
+# EXCHANGES_ATIVAS=bingx,bybit abre a ordem automática NAS DUAS ao
+# mesmo tempo (cada uma com seu próprio saldo/quantidade/leverage) —
+# sem isso, mantém o comportamento de sempre (só a EXCHANGE
+# configurada). Comandos manuais (/long, /short, /comprar...)
+# continuam só na corretora primária (EXCHANGE) — isso aqui afeta só
+# os motores automáticos (fire_signal).
+_exchanges_env = os.environ.get("EXCHANGES_ATIVAS", "").strip()
+if _exchanges_env:
+    EXCHANGES_ATIVAS = [e.strip().lower() for e in _exchanges_env.split(",") if e.strip()]
+else:
+    EXCHANGES_ATIVAS = [EXCHANGE]
+
 # ── MODO SIMULAÇÃO (paper trading) ─────────────────────────────
 # Com SIMULACAO=true o bot roda TODA a lógica (cascata de pernadas,
 # gatilho de M1, stop técnico, projeção de 38.2%, travas de risco) e
@@ -130,7 +143,21 @@ def modo_texto():
     if USANDO_BINGX:
         return "DEMO 🟡 (VST)" if BINGX_MODE == "demo" else "REAL 🔴"
     return "TESTNET 🟡" if BYBIT_MODE == "testnet" else "REAL 🔴"
-LEVERAGE_ATUAL = BINGX_LEVERAGE if USANDO_BINGX else BYBIT_LEVERAGE
+
+def modo_texto_ex(exchange):
+    """Mesmo que modo_texto(), mas pra uma corretora específica —
+    usado quando EXCHANGES_ATIVAS tem mais de uma."""
+    if SIMULACAO:
+        return "SIMULAÇÃO 🧪"
+    if exchange == "bingx":
+        return "DEMO 🟡 (VST)" if BINGX_MODE == "demo" else "REAL 🔴"
+    return "TESTNET 🟡" if BYBIT_MODE == "testnet" else "REAL 🔴"
+
+def leverage_de(exchange):
+    return BINGX_LEVERAGE if exchange == "bingx" else BYBIT_LEVERAGE
+
+def nome_corretora(exchange):
+    return "BingX" if exchange == "bingx" else "Bybit"
 
 def ultima_atualizacao_texto():
     """Data/hora (Brasília) do último commit que mexeu no app.py — pra
@@ -292,9 +319,11 @@ last_signal_time = {}
 _setups_executados = set()   # trava anti-reentrada no mesmo gatilho
 _ultimo_gatilho  = {}       # qual dos 3 gatilhos de M1 disparou, por símbolo
 _ts_entrada      = {}       # timestamp da última entrada por "SIMBOLO|DIRECAO" (arbitragem)
-_hedge_verificado = False   # hedge mode já foi ligado nesta sessão?
+# hedge mode / leverage já configurados nesta sessão — por corretora,
+# senão configurar na BingX marcava a Bybit como "já feito" também
+_hedge_verificado = {"bingx": False, "bybit": False}
 last_update_id   = 0
-_leverage_set    = set()
+_leverage_set    = {"bingx": set(), "bybit": set()}
 _freio_diario    = {"data": None, "saldo_inicial": None, "pausado": False, "ativo": FREIO_DIARIO_ATIVO}
 
 memory = {
@@ -476,20 +505,19 @@ def _bingx_candles(symbol, tf, limit):
     return out
 
 def _bingx_set_leverage(symbol):
-    if symbol in _leverage_set: return
+    if symbol in _leverage_set["bingx"]: return
     ok = True
     for lado in ("LONG", "SHORT"):
         r = bingx_post(f"{BINGX_SWAP}/trade/leverage", {
             "symbol": bingx_symbol(symbol), "side": lado,
             "leverage": BINGX_LEVERAGE})
         if not r or r.get("retCode") not in (0, None): ok = False
-    if ok: _leverage_set.add(symbol)
+    if ok: _leverage_set["bingx"].add(symbol)
 
 def _bingx_garantir_hedge():
     """Liga o modo hedge (dual position) na BingX, necessário pra manter
     compra e venda abertas ao mesmo tempo no mesmo par."""
-    global _hedge_verificado
-    if _hedge_verificado or not ARBITRAGEM_ATIVA or SIMULACAO:
+    if _hedge_verificado["bingx"] or not ARBITRAGEM_ATIVA or SIMULACAO:
         return
     r = bingx_post(f"{BINGX_SWAP}/trade/positionSide/dual", {"dualSidePosition": "true"})
     if r and r.get("retCode") in (0, None):
@@ -497,7 +525,7 @@ def _bingx_garantir_hedge():
     else:
         print(f"[BINGX] não consegui ativar hedge mode: {r.get('retMsg','?') if r else 'sem resposta'}. "
               f"Ative manualmente no app (Futuros > Configurações > Modo de posição > Hedge).")
-    _hedge_verificado = True
+    _hedge_verificado["bingx"] = True
 
 
 def _bingx_order_futures(symbol, side, qty, sl=None, tp=None):
@@ -591,15 +619,16 @@ def _bingx_close_symbol(symbol):
 
 # ═══════════════════════════════════════════════════════════════
 
-def set_leverage(symbol):
-    if USANDO_BINGX:
+def set_leverage(symbol, exchange=None):
+    usando_bingx = (exchange == "bingx") if exchange else USANDO_BINGX
+    if usando_bingx:
         return _bingx_set_leverage(symbol)
-    if symbol in _leverage_set: return
+    if symbol in _leverage_set["bybit"]: return
     r = bybit_post("/v5/position/set-leverage", {
         "category": "linear", "symbol": symbol,
         "buyLeverage": str(BYBIT_LEVERAGE), "sellLeverage": str(BYBIT_LEVERAGE)})
     if r and r.get("retCode") in (0, 110043):
-        _leverage_set.add(symbol)
+        _leverage_set["bybit"].add(symbol)
 
 # ── Ordens ───────────────────────────────────────────────────
 def order_spot(symbol, side, qty):
@@ -616,8 +645,7 @@ def order_spot(symbol, side, qty):
 
 def _bybit_garantir_hedge(symbol):
     """Bybit: mode 3 = hedge (posições nos dois sentidos no mesmo par)."""
-    global _hedge_verificado
-    if _hedge_verificado or not ARBITRAGEM_ATIVA or SIMULACAO:
+    if _hedge_verificado["bybit"] or not ARBITRAGEM_ATIVA or SIMULACAO:
         return
     r = bybit_post("/v5/position/switch-mode", {
         "category": "linear", "symbol": symbol, "mode": 3})
@@ -625,17 +653,18 @@ def _bybit_garantir_hedge(symbol):
         print("[BYBIT] hedge mode ativo.")
     else:
         print(f"[BYBIT] não consegui ativar hedge: {r.get('retMsg','?') if r else 'sem resposta'}")
-    _hedge_verificado = True
+    _hedge_verificado["bybit"] = True
 
 
-def order_futures(symbol, side, qty, sl=None, tp=None):
+def order_futures(symbol, side, qty, sl=None, tp=None, exchange=None):
+    usando_bingx = (exchange == "bingx") if exchange else USANDO_BINGX
     if SIMULACAO:
-        print(f"[SIMULACAO] {side} {qty} {symbol} SL={sl} TP={tp} — ordem NÃO enviada.")
+        print(f"[SIMULACAO] {exchange or ('bingx' if usando_bingx else 'bybit')} {side} {qty} {symbol} SL={sl} TP={tp} — ordem NÃO enviada.")
         return {"ok": True, "order_id": f"SIM-{int(time.time()*1000)}"}
-    if USANDO_BINGX:
+    if usando_bingx:
         return _bingx_order_futures(symbol, side, qty, sl=sl, tp=tp)
     _bybit_garantir_hedge(symbol)
-    set_leverage(symbol)
+    set_leverage(symbol, exchange)
     p = {"category": "linear", "symbol": symbol, "side": side,
          "orderType": "Market", "qty": str(qty), "timeInForce": "IOC"}
     if ARBITRAGEM_ATIVA:
@@ -765,7 +794,7 @@ def _futures_dec(symbol):
 
 SALDO_SIMULADO = float(os.environ.get("SALDO_SIMULADO", "100"))
 
-def get_saldo_usdt():
+def get_saldo_usdt(exchange=None):
     if SIMULACAO:
         return SALDO_SIMULADO
     """Saldo disponível pra abrir posição NOVA (usado pra travar a margem da
@@ -774,7 +803,7 @@ def get_saldo_usdt():
     contas UNIFIED costuma vir '0' mesmo com saldo livre pra margem — e como
     vem como STRING, um '0' antigo passava como "verdadeiro" no Python e
     desativava a trava de margem sem avisar."""
-    r = broker_account()
+    r = broker_account(exchange)
     if not r or r.get("retCode") != 0: return None
     lst = r.get("result", {}).get("list", [])
     if not lst: return None
@@ -828,17 +857,18 @@ def get_patrimonio_usdt():
                     pass
     return None
 
-def calc_qty(symbol, entry, stop):
+def calc_qty(symbol, entry, stop, exchange=None):
     """Tamanho da posição pelo risco em preço (distância até o stop técnico).
     SEM travas de valor: não bloqueia por margem, não bloqueia por risco,
     não descarta sinal por ser 'pequeno' ou 'grande'. Se não der pra
-    calcular, cai no tamanho mínimo configurado do par."""
+    calcular, cai no tamanho mínimo configurado do par. `exchange` deixa
+    calcular pelo saldo de uma corretora específica (multi-corretora)."""
     qty_cfg = SYMBOLS.get(symbol, {}).get("qty", 0)
     dist = abs(entry - stop)
     if dist <= 0 or entry <= 0:
         return qty_cfg or None
 
-    saldo_usdt = get_saldo_usdt()
+    saldo_usdt = get_saldo_usdt(exchange)
     if not saldo_usdt or saldo_usdt <= 0:
         return qty_cfg or None
 
@@ -875,14 +905,15 @@ def freio_diario_ok():
     com o resto do código, sempre retorna True."""
     return True
 
-def broker_open_auto(symbol, direction, stop, target, qty=None):
+def broker_open_auto(symbol, direction, stop, target, qty=None, exchange=None):
     side = "Buy" if direction == "BUY" else "Sell"
     qty_final = qty if qty else SYMBOLS[symbol]["qty"]
-    return order_futures(symbol, side, qty_final, sl=stop, tp=target)
+    return order_futures(symbol, side, qty_final, sl=stop, tp=target, exchange=exchange)
 # ══════════════════════════════════════════════════════════════
 
-def broker_account():
-    if USANDO_BINGX:
+def broker_account(exchange=None):
+    usando_bingx = (exchange == "bingx") if exchange else USANDO_BINGX
+    if usando_bingx:
         return _bingx_account_norm()
     return bybit_get("/v5/account/wallet-balance", {"accountType": "UNIFIED"})
 
@@ -2147,64 +2178,17 @@ def fire_signal(symbol, entry, ignorar_travas=False):
     emoji  = "✅" if bdir == "BUY" else "🔴"
     action = "COMPRA" if bdir == "BUY" else "VENDA"
 
-    # a Bybit está em modo one-way — duas ordens no mesmo símbolo viram UMA
-    # posição só, fundida (preço médio). Se o robô já tem um registro
-    # "aberto" pra esse símbolo, uma segunda ordem geraria um segundo
-    # registro apontando pra essa mesma posição fundida — contagem
-    # duplicada de win/loss quando fechar. Bloqueia.
-    abertos_no_par = [s for s in memory.get("signals", [])
-                      if s["symbol"] == sym and s["status"] == "aberto"]
-
-    # mesma direção já aberta = duplicata, sempre bloqueada
-    mesmo_lado = next((s for s in abertos_no_par if s["direcao"] == bdir), None)
-    if mesmo_lado:
-        print(f"[SKIP] {sym}: já tem {bdir} aberto — não duplica ordem.")
-        return
-
-    lado_oposto = next((s for s in abertos_no_par if s["direcao"] != bdir), None)
-    if lado_oposto:
-        if not ARBITRAGEM_ATIVA:
-            print(f"[SKIP] {sym}: já tem {lado_oposto['direcao']} aberto e "
-                  f"ARBITRAGEM_ATIVA=false — não abre o lado contrário.")
-            return
-        # ARBITRAGEM: permitido, MAS nunca no mesmo ponto. Precisa de
-        # distância de preço e de tempo entre as duas entradas — é isso
-        # que separa dois setups independentes de um hedge que se anula.
-        ep_ant = lado_oposto.get("entrada") or 0
-        if ep_ant > 0:
-            dist = abs(ep - ep_ant) / ep_ant
-            if dist < ARB_DIST_MIN_PCT:
-                print(f"[SKIP] {sym}: entrada a {dist*100:.3f}% da posição "
-                      f"{lado_oposto['direcao']} — perto demais, viraria hedge no mesmo ponto.")
-                return
-        ts_ant = _ts_entrada.get(f"{sym}|{lado_oposto['direcao']}", 0)
-        if ts_ant and (time.time() - ts_ant) < ARB_INTERVALO_MIN:
-            falta = int(ARB_INTERVALO_MIN - (time.time() - ts_ant))
-            print(f"[SKIP] {sym}: {falta}s até liberar o lado contrário (intervalo mínimo).")
-            return
-        print(f"[ARBITRAGEM] {sym}: abrindo {bdir} com {lado_oposto['direcao']} "
-              f"já aberto em ${ep_ant:,.4f} — setups independentes.")
-
-    # trava de setup: impede reentrada no MESMO gatilho a cada ciclo
+    # trava de setup: impede reentrada no MESMO gatilho a cada ciclo.
+    # Compartilhada entre corretoras — é sobre não reagir duas vezes ao
+    # MESMO setup detectado, independente de em qual corretora executa.
     chave_setup = f"{sym}|{origem}|{bdir}|{round(sp, 4)}"
     if not ignorar_travas and chave_setup in _setups_executados:
         print(f"[SKIP] {sym}: setup {chave_setup} já foi executado — sem reentrada.")
         return
 
-    qty_calc = calc_qty(sym, ep, sp)
-    if qty_calc is None:
-        print(f"[SKIP] {sym}: não deu pra montar um tamanho de posição coerente com o saldo/margem disponível.")
-        return
-
-    # sem trailing — o alvo é fixo. Se o lucro potencial em BRL ficar abaixo
-    # do mínimo aceitável, amplia o RR (busca um alvo maior) em vez de
-    # mandar um sinal com potencial baixo demais pra valer a pena.
-    # IMPORTANTE: isso só vale pro motor antigo (M15/M5, stop por ATR).
-    # Nos motores técnicos (M1-TECNICO/GATILHO/MACRO) o alvo já vem da
-    # estrutura real do M15 — aplicar esse piso aqui pegava o stop
-    # minúsculo do M1 e multiplicava, SUBSTITUINDO o alvo técnico de
-    # verdade por um número artificial (por isso o alvo sempre "empacava"
-    # em ~R$1,87, não importava o que alvo_m15() calculasse).
+    # sem trailing — o alvo é fixo. IMPORTANTE: o piso de lucro mínimo só
+    # vale pro motor antigo (M15/M5, stop por ATR) — nos motores técnicos
+    # o alvo já vem da estrutura real, não mexe aqui.
     # o candle usado pra montar o sinal pode já estar alguns segundos velho —
     # confirma contra o preço AO VIVO antes de mandar qualquer coisa.
     preco_vivo = get_last_price(sym)
@@ -2213,37 +2197,93 @@ def fire_signal(symbol, entry, ignorar_travas=False):
             print(f"[SKIP] {sym}: preço moveu antes do envio (stop {sp} inválido pro preço atual {preco_vivo}) — sinal descartado.")
             return
 
-    ts   = agora_br().strftime('%d/%m/%Y %H:%M')
-    modo = modo_texto()
-    res  = broker_open_auto(sym, bdir, sp, tp, qty=qty_calc)
-    bi = ""
-    if res and res.get("ok"):
-        # só entra no tracking (e pode virar win/loss depois) se a Bybit
-        # REALMENTE aceitou a ordem — senão os relatórios contam trades
-        # fictícios que nunca existiram na corretora.
-        novo_id = memory.get("next_id", len(memory["signals"])+1)
-        memory["next_id"] = novo_id + 1
-        sinal = {"id": novo_id, "symbol": sym, "direcao": bdir,
-                 "entrada": ep, "stop": sp, "alvo": tp, "risco": risk, "rr": rr,
-                 "qty_usada": qty_calc, "atr": entry.get("atr", 0), "origem": origem,
-                 "order_id": res["order_id"],
-                 "data": ts, "status": "aberto", "resultado": None}
-        memory["signals"].append(sinal)
-        _ts_entrada[f"{sym}|{bdir}"] = time.time()
-        _setups_executados.add(chave_setup)
-        if len(_setups_executados) > 300:
-            _setups_executados.clear()   # evita crescer sem limite
-        if len(memory["signals"]) > 200: memory["signals"] = memory["signals"][-200:]
-        save_memory()
-        bi = (f"\n🏦 {'BingX' if USANDO_BINGX else 'Bybit'} [{modo}] ✅\n"
-              f"📦 {qty_calc} {sym} | {LEVERAGE_ATUAL}x\n"
-              f"🆔 <code>{res['order_id']}</code>")
-    elif res:
-        bi = f"\n❌ {'BingX' if USANDO_BINGX else 'Bybit'}: {res.get('error','?')} — ordem NÃO aberta, não entra no relatório."
-        print(f"[FALHOU] {sym} {bdir} qty={qty_calc}: {res.get('error','?')}")
-        return  # não vale a pena notificar o grupo de uma ordem que nem chegou a existir
-    risco_brl = risk * qty_calc * get_usd_brl()
-    alvo_brl  = risk * rr * qty_calc * get_usd_brl()
+    ts = agora_br().strftime('%d/%m/%Y %H:%M')
+    blocos = []           # um pedaço de mensagem por corretora
+    algum_sucesso = False
+
+    # multi-corretora: cada corretora ativa (EXCHANGES_ATIVAS) recebe sua
+    # PRÓPRIA ordem, com sua própria checagem de duplicidade/arbitragem e
+    # sua própria quantidade (dimensionada pelo saldo daquela conta) — uma
+    # corretora falhar/pular não impede a outra.
+    for exch in EXCHANGES_ATIVAS:
+        # a corretora está em modo one-way — duas ordens no mesmo símbolo
+        # viram UMA posição só, fundida (preço médio). Se já tem um
+        # registro "aberto" NESSA corretora pra esse símbolo, uma segunda
+        # ordem geraria contagem duplicada de win/loss quando fechar.
+        abertos_no_par = [s for s in memory.get("signals", [])
+                          if s["symbol"] == sym and s["status"] == "aberto"
+                          and s.get("exchange", EXCHANGE) == exch]
+
+        mesmo_lado = next((s for s in abertos_no_par if s["direcao"] == bdir), None)
+        if mesmo_lado:
+            print(f"[SKIP] {sym} {exch}: já tem {bdir} aberto — não duplica ordem.")
+            continue
+
+        lado_oposto = next((s for s in abertos_no_par if s["direcao"] != bdir), None)
+        if lado_oposto:
+            if not ARBITRAGEM_ATIVA:
+                print(f"[SKIP] {sym} {exch}: já tem {lado_oposto['direcao']} aberto e "
+                      f"ARBITRAGEM_ATIVA=false — não abre o lado contrário.")
+                continue
+            # ARBITRAGEM: permitido, MAS nunca no mesmo ponto. Precisa de
+            # distância de preço e de tempo entre as duas entradas — é isso
+            # que separa dois setups independentes de um hedge que se anula.
+            ep_ant = lado_oposto.get("entrada") or 0
+            if ep_ant > 0:
+                dist = abs(ep - ep_ant) / ep_ant
+                if dist < ARB_DIST_MIN_PCT:
+                    print(f"[SKIP] {sym} {exch}: entrada a {dist*100:.3f}% da posição "
+                          f"{lado_oposto['direcao']} — perto demais, viraria hedge no mesmo ponto.")
+                    continue
+            ts_ant = _ts_entrada.get(f"{sym}|{lado_oposto['direcao']}|{exch}", 0)
+            if ts_ant and (time.time() - ts_ant) < ARB_INTERVALO_MIN:
+                falta = int(ARB_INTERVALO_MIN - (time.time() - ts_ant))
+                print(f"[SKIP] {sym} {exch}: {falta}s até liberar o lado contrário (intervalo mínimo).")
+                continue
+            print(f"[ARBITRAGEM] {sym} {exch}: abrindo {bdir} com {lado_oposto['direcao']} "
+                  f"já aberto em ${ep_ant:,.4f} — setups independentes.")
+
+        qty_calc = calc_qty(sym, ep, sp, exchange=exch)
+        if qty_calc is None:
+            print(f"[SKIP] {sym} {exch}: não deu pra montar um tamanho de posição coerente com o saldo/margem disponível.")
+            continue
+
+        modo_ex = modo_texto_ex(exch)
+        res = broker_open_auto(sym, bdir, sp, tp, qty=qty_calc, exchange=exch)
+        if res and res.get("ok"):
+            # só entra no tracking (e pode virar win/loss depois) se a
+            # corretora REALMENTE aceitou a ordem — senão os relatórios
+            # contam trades fictícios que nunca existiram.
+            novo_id = memory.get("next_id", len(memory["signals"])+1)
+            memory["next_id"] = novo_id + 1
+            sinal = {"id": novo_id, "symbol": sym, "direcao": bdir, "exchange": exch,
+                     "entrada": ep, "stop": sp, "alvo": tp, "risco": risk, "rr": rr,
+                     "qty_usada": qty_calc, "atr": entry.get("atr", 0), "origem": origem,
+                     "order_id": res["order_id"],
+                     "data": ts, "status": "aberto", "resultado": None}
+            memory["signals"].append(sinal)
+            _ts_entrada[f"{sym}|{bdir}|{exch}"] = time.time()
+            if len(memory["signals"]) > 200: memory["signals"] = memory["signals"][-200:]
+            algum_sucesso = True
+            risco_brl_ex = risk * qty_calc * get_usd_brl()
+            alvo_brl_ex  = risk * rr * qty_calc * get_usd_brl()
+            blocos.append(
+                f"\n🏦 {nome_corretora(exch)} [{modo_ex}] ✅\n"
+                f"📦 {qty_calc} {sym} | {leverage_de(exch)}x | "
+                f"⚠️ R$ {risco_brl_ex:,.2f}  |  🏆 R$ {alvo_brl_ex:,.2f}\n"
+                f"🆔 <code>{res['order_id']}</code>")
+        elif res:
+            blocos.append(f"\n❌ {nome_corretora(exch)}: {res.get('error','?')} — ordem NÃO aberta.")
+            print(f"[FALHOU] {sym} {exch} {bdir} qty={qty_calc}: {res.get('error','?')}")
+
+    if not algum_sucesso:
+        return  # nenhuma corretora abriu — não vale a pena notificar o grupo
+
+    _setups_executados.add(chave_setup)
+    if len(_setups_executados) > 300:
+        _setups_executados.clear()   # evita crescer sem limite
+    save_memory()
+
     if origem in ("M1-TECNICO", "M1-GATILHO", "M1-MACRO", "M1-ABC", "M1-FLUXO-COMPRA", "M1-FLUXO-VENDA"):
         info_extra = entry.get("rsi", "")
         desc_gatilho = f"📊 {info_extra}" if info_extra else "📊 Pernada de M1 corrigindo ~50%"
@@ -2262,9 +2302,9 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         f"{desc_gatilho}\n"
         f"💰 Entrada: <b>${ep:,.4f}</b>\n"
         f"{desc_stop}: <b>${sp:,.4f}</b>  🎯 Alvo: <b>${tp:,.4f}</b>\n"
-        f"📐 R:R 1:{rr}  |  ⚠️ Risco: R$ {risco_brl:,.2f}  |  🏆 Potencial: R$ {alvo_brl:,.2f}\n"
+        f"📐 R:R 1:{rr}\n"
         f"⚖️ Lote: {lote_texto()}"
-        f"{bi}\n⏰ {ts} (Brasília)")
+        f"{''.join(blocos)}\n⏰ {ts} (Brasília)")
 
     # gráfico é só um extra visual — nunca deixa um erro aqui afetar o
     # sinal (ordem/tracking) que já foi resolvido acima.
@@ -2463,7 +2503,9 @@ def handle_command(text, chat_id):
             if not d: msg += f"⚠️ {sym}\n"; continue
             em = "🟢" if d["tendencia"]=="up" else ("🔴" if d["tendencia"]=="down" else "⚪")
             msg += f"{em} <b>{sym}</b> ${d['price']:,.4f} {d['tendencia'].upper()} RSI:{d['rsi']}\n"
-        msg += (f"\n🛡️ Freio diário: {'🛑 pausado' if _freio_diario.get('pausado') else '✅ ativo'} | "
+        corretoras_txt = " + ".join(f"{nome_corretora(e)} [{modo_texto_ex(e)}]" for e in EXCHANGES_ATIVAS)
+        msg += (f"\n🏦 Corretoras ativas: {corretoras_txt}\n"
+                f"🛡️ Freio diário: {'🛑 pausado' if _freio_diario.get('pausado') else '✅ ativo'} | "
                 f"Trades abertos: {trades_abertos_agora()} (sem limite)\n"
                 f"⚖️ Lote: {lote_texto()}\n"
                 f"⏰ {agora_br().strftime('%d/%m %H:%M')} (Brasília)")
@@ -3471,13 +3513,14 @@ def main_loop():
         time.sleep(CHECK_INTERVAL)
 
 # ─── START ───────────────────────────────────────────────────
-NOME_CORRETORA = "BingX" if USANDO_BINGX else "Bybit"
-modo_b = modo_texto()
-if SIMULACAO:
-    broker_s = "🧪 não conectado (simulação)"
-else:
-    broker_s = "✅ OK" if (BINGX_API_KEY if USANDO_BINGX else BYBIT_API_KEY) else "❌ Sem chaves"
-print(f"Tron Forex Bot - Dev: Jon Padilha | {NOME_CORRETORA} [{modo_b}]: {broker_s}")
+def _chave_ex(exchange):
+    return (BINGX_API_KEY if exchange == "bingx" else BYBIT_API_KEY)
+
+corretoras_status = " + ".join(
+    f"{nome_corretora(e)} [{modo_texto_ex(e)}] {leverage_de(e)}x: "
+    f"{'🧪 simulação' if SIMULACAO else ('✅ OK' if _chave_ex(e) else '❌ sem chaves')}"
+    for e in EXCHANGES_ATIVAS)
+print(f"Tron Forex Bot - Dev: Jon Padilha | {corretoras_status}")
 print(f"Simbolos: {', '.join(SYMBOLS.keys())}")
 threading.Thread(target=run_server, daemon=True).start()
 load_memory()
@@ -3485,8 +3528,7 @@ threading.Thread(target=commands_loop, daemon=True).start()
 send_telegram(
     f"🤖 <b>Tron Forex Bot - Dev: Jon Padilha iniciado!</b>\n"
     f"📊 {', '.join(SYMBOLS.keys())}\n"
-    f"🏦 {NOME_CORRETORA} [{modo_b}]: {broker_s}\n"
-    f"⚡ Alavancagem: {LEVERAGE_ATUAL}x\n"
+    f"🏦 {corretoras_status}\n"
     f"🛠️ Código atualizado em: {ultima_atualizacao_texto()} (Brasília)\n"
     f"/help para comandos\n"
     f"🧠 {memory['total_prints']} prints\n"
