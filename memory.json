@@ -2552,6 +2552,6 @@
   "next_id": 704,
   "config_lote": {
     "modo": "fixo",
-    "valor": 0.04
+    "valor": 0.2
   }
 }
