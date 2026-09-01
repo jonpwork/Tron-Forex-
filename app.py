@@ -3560,7 +3560,10 @@ threading.Thread(target=commands_loop, daemon=True).start()
 send_telegram(
     f"🤖 <b>Tron Forex Bot - Dev: Jon Padilha iniciado!</b>\n"
     f"📊 {', '.join(SYMBOLS.keys())}\n"
-    f"🏦 {corretoras_status}\n"
+    # sem nome de corretora nem modo aqui — o bot fica em live no
+    # YouTube, essa mensagem não pode identificar qual conta é real.
+    f"🏦 {len(EXCHANGES_ATIVAS)} corretora(s) ativa(s)"
+    f"{TAG_CONTA_REAL}\n"
     f"🛠️ Código atualizado em: {ultima_atualizacao_texto()} (Brasília)\n"
     f"/help para comandos\n"
     f"🧠 {memory['total_prints']} prints\n"
