@@ -308,6 +308,24 @@
       "data": "01/09/2026 11:18",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 716,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 77882.1,
+      "stop": 77709.192,
+      "alvo": 78162.37340000001,
+      "risco": 172.90800000001036,
+      "rr": 1.6,
+      "qty_usada": 0.003,
+      "atr": 263.3532751296164,
+      "origem": "ANCORA-30M",
+      "order_id": "2094803293155061760",
+      "data": "01/09/2026 12:03",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -315,7 +333,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 716,
+  "next_id": 717,
   "config_lote": {
     "modo": "auto"
   }
