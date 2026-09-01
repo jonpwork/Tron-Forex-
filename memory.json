@@ -2546,6 +2546,42 @@
       "resultado": "+R$ 54,97",
       "preco_saida": 78841.0,
       "fechamento": "01/09/2026 03:27"
+    },
+    {
+      "id": 704,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 78758.5,
+      "stop": 78795.76,
+      "alvo": 78359.31,
+      "risco": 37.25999999999476,
+      "rr": 10.7,
+      "qty_usada": 0.2,
+      "atr": 178.39536104406176,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788246545566",
+      "data": "01/09/2026 04:09",
+      "status": "aberto",
+      "resultado": null
+    },
+    {
+      "id": 705,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "exchange": "bybit",
+      "entrada": 78758.5,
+      "stop": 78795.76,
+      "alvo": 78359.31,
+      "risco": 37.25999999999476,
+      "rr": 10.7,
+      "qty_usada": 0.2,
+      "atr": 178.39536104406176,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788246545726",
+      "data": "01/09/2026 04:09",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -2553,7 +2589,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 704,
+  "next_id": 706,
   "config_lote": {
     "modo": "fixo",
     "valor": 0.2
