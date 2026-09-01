@@ -2502,8 +2502,10 @@
       "origem": "M1-FLUXO-VENDA",
       "order_id": "SIM-1788238660295",
       "data": "01/09/2026 01:57",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 11,80",
+      "preco_saida": 78755.132,
+      "fechamento": "01/09/2026 02:17"
     }
   ],
   "zone_tol": 0.2,
