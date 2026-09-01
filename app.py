@@ -2386,10 +2386,14 @@ def check_signals(price_map):
             s["resultado"] = fmt_brl(resultado_brl(s))
             alt = True
             venceu = s["status"] == "win"
+            # sinaliza quando é ordem de conta REAL (não simulada) — o Jon
+            # opera BingX e Bybit junto, às vezes uma em papel e outra real
+            # (ex: SIMULACAO_BYBIT=false), e precisa distinguir na hora.
+            tag_conta = f"\n🏦 {nome_corretora(s.get('exchange', EXCHANGE))} REAL 🔴" if not sim_do_sinal else ""
             if venceu:
-                send_telegram(f"🏆 <b>TAKE PROFIT!</b> {sym} ✅ <b>{s['resultado']}</b>")
+                send_telegram(f"🏆 <b>TAKE PROFIT!</b> {sym} ✅ <b>{s['resultado']}</b>{tag_conta}")
             else:
-                send_telegram(f"🛑 <b>STOP LOSS</b> {sym} ❌ <b>{s['resultado']}</b>")
+                send_telegram(f"🛑 <b>STOP LOSS</b> {sym} ❌ <b>{s['resultado']}</b>{tag_conta}")
 
             # gráfico do resultado — mesmo esquema do sinal, só um extra
             # visual, nunca deixa erro aqui afetar o tracking já resolvido
