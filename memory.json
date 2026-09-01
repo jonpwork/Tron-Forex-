@@ -2522,8 +2522,10 @@
       "origem": "M1-FLUXO-VENDA",
       "order_id": "SIM-1788241960561",
       "data": "01/09/2026 02:52",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 35,88",
+      "preco_saida": 78933.1,
+      "fechamento": "01/09/2026 03:27"
     },
     {
       "id": 703,
@@ -2540,8 +2542,10 @@
       "origem": "M1-FLUXO-VENDA",
       "order_id": "SIM-1788241960720",
       "data": "01/09/2026 02:52",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 54,97",
+      "preco_saida": 78841.0,
+      "fechamento": "01/09/2026 03:27"
     }
   ],
   "zone_tol": 0.2,
