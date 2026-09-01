@@ -79,7 +79,16 @@ if os.path.exists(_env_path):
             _line = _line.strip()
             if _line and not _line.startswith("#") and "=" in _line:
                 _k, _v = _line.split("=", 1)
-                os.environ.setdefault(_k.strip(), _v.strip())
+                _v = _v.strip()
+                # BINGX_API_SECRET="abc..." (com aspas) é comum em quem
+                # escreve .env no estilo bash — mas aqui as aspas viravam
+                # PARTE do valor (não tem parser de verdade), o que
+                # quebra silenciosamente qualquer assinatura HMAC que use
+                # essa chave/secret. Tira só um par de aspas casadas nas
+                # pontas, como todo parser de .env de verdade faz.
+                if len(_v) >= 2 and _v[0] == _v[-1] and _v[0] in ("'", '"'):
+                    _v = _v[1:-1]
+                os.environ.setdefault(_k.strip(), _v)
     print("[ENV] Variaveis carregadas do .env")
 
 # ══════════ CONFIG ════════════════════════════════════════════
@@ -104,6 +113,11 @@ BYBIT_URL = ("https://api-testnet.bybit.com"
 EXCHANGE          = os.environ.get("EXCHANGE", "bybit").strip().lower()
 BINGX_API_KEY     = os.environ.get("BINGX_API_KEY", "")
 BINGX_API_SECRET  = os.environ.get("BINGX_API_SECRET", "")
+if BINGX_API_KEY or BINGX_API_SECRET:
+    # nunca imprime o valor — só o tamanho, pra dar pra conferir por
+    # aspas/espaço perdido no .env sem expor a chave em lugar nenhum.
+    print(f"[ENV] BINGX_API_KEY: {len(BINGX_API_KEY)} chars | "
+          f"BINGX_API_SECRET: {len(BINGX_API_SECRET)} chars")
 BINGX_LEVERAGE    = int(os.environ.get("BINGX_LEVERAGE", os.environ.get("BYBIT_LEVERAGE", "5")))
 # BINGX_MODE: real | demo   (demo = conta VST, dinheiro fictício da BingX)
 BINGX_MODE        = os.environ.get("BINGX_MODE", "real").strip().lower()
