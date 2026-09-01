@@ -64,20 +64,26 @@ def sign(params_ordenados_str, secret):
     return hmac.new(secret.encode("utf-8"), params_ordenados_str.encode("utf-8"),
                      hashlib.sha256).hexdigest()
 
-def parse_param(params_map):
+def parse_param(params_map, timestamp, encode=False):
     sorted_keys = sorted(params_map)
-    # url-encode os valores (mesma correcao aplicada no app.py) -- sem
-    # isso, um valor com espaco/chave/aspas (como o JSON do stopLoss)
-    # vaza cru na URL e a assinatura nao bate com o que e transmitido.
-    params_str = "&".join(f"{k}={urllib.parse.quote(str(params_map[k]), safe='')}" for k in sorted_keys)
+    if encode:
+        params_str = "&".join(f"{k}={urllib.parse.quote(str(params_map[k]), safe='')}" for k in sorted_keys)
+    else:
+        params_str = "&".join(f"{k}={params_map[k]}" for k in sorted_keys)
     if params_str:
-        return params_str + "&timestamp=" + str(int(time.time() * 1000))
-    return "timestamp=" + str(int(time.time() * 1000))
+        return params_str + "&timestamp=" + str(timestamp)
+    return "timestamp=" + str(timestamp)
 
 def enviar(method, path, params_map):
-    params_str = parse_param(params_map)
-    signature = sign(params_str, API_SECRET)
-    url = f"{BASE_URL}{path}?{params_str}&signature={signature}"
+    ts = int(time.time() * 1000)
+    # ASSINA o valor CRU (sem url-encode) -- confirmado contra a API
+    # real que a BingX reconstroi a string com o valor original antes
+    # de comparar. So a URL de fato ENVIADA precisa ser url-encoded
+    # (senao espaco/chave quebram a requisicao HTTP em si).
+    params_str_assinar = parse_param(params_map, ts, encode=False)
+    signature = sign(params_str_assinar, API_SECRET)
+    params_str_enviar = parse_param(params_map, ts, encode=True)
+    url = f"{BASE_URL}{path}?{params_str_enviar}&signature={signature}"
     req = urllib.request.Request(url, method=method, headers={"X-BX-APIKEY": API_KEY})
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
@@ -170,24 +176,18 @@ enviar("POST", "/openApi/swap/v2/trade/order", {
 })
 print()
 
-print("── Teste 5e: stopLoss RAW, sem url-encode (só pra este campo) ──")
-_sl_raw = json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"})
-_params_e = {"symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
-             "type": "MARKET", "quantity": "0.01"}
-_sorted_e = sorted(_params_e)
-_qs_e = "&".join(f"{k}={urllib.parse.quote(str(_params_e[k]), safe='')}" for k in _sorted_e)
-_qs_e += f"&stopLoss={_sl_raw}"  # cru, sem quote() -- só pra este teste
-_qs_e += "&timestamp=" + str(int(time.time() * 1000))
-_sig_e = sign(_qs_e, API_SECRET)
-_url_e = f"{BASE_URL}/openApi/swap/v2/trade/order?{_qs_e}&signature={_sig_e}"
-print(f"URL: {_url_e}")
-try:
-    _req_e = urllib.request.Request(_url_e, method="POST", headers={"X-BX-APIKEY": API_KEY})
-    with urllib.request.urlopen(_req_e, timeout=15) as r:
-        print(f"HTTP {r.status}")
-        print(r.read().decode())
-except urllib.error.HTTPError as e:
-    print(f"HTTP {e.code}")
-    print(e.read().decode())
-except Exception as e:
-    print(f"ERRO DE CONEXAO: {e}")
+# 5d passou igual ao 5a (texto puro sem caractere especial nao muda
+# nada) -- entao o problema e mesmo os caracteres { " : do JSON.
+# ACHADO: a BingX decodifica o valor recebido e assina o texto CRU
+# (nao o url-encoded) antes de comparar -- o oposto do que o fix
+# anterior fazia. Corrigido em app.py e no enviar()/parse_param() aqui
+# em cima: agora assina o valor CRU, só url-encoda na hora de montar
+# a URL de fato transmitida. Teste 6 repete o cenario do 5b/5c com o
+# fix novo pra confirmar contra a API real antes de mexer no bot.
+print("── Teste 6: stopLoss JSON de novo, agora com o fix (assina cru, envia encoded) ──")
+enviar("POST", "/openApi/swap/v2/trade/order", {
+    "symbol": "TESTFAKE-USDT", "side": "SELL", "positionSide": "BOTH",
+    "type": "MARKET", "quantity": "0.01",
+    "stopLoss": json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"}),
+    "takeProfit": json.dumps({"type": "TAKE_PROFIT_MARKET", "stopPrice": 76000.0, "workingType": "MARK_PRICE"}),
+})

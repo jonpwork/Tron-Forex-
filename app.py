@@ -517,24 +517,24 @@ def _bingx_req(method, path, params=None, signed=True):
         # BingX exige os parâmetros de negócio ORDENADOS alfabeticamente,
         # com "timestamp" sempre por ÚLTIMO (fora do sort) e "signature"
         # depois dele — padrão do exemplo oficial deles. Confirmado
-        # testando isolado (diag_bingx.py) contra a API real: funcionou
-        # de primeira em GET e num POST simples, provando que a
-        # chave/secret e essa ordenação sempre estiveram certas.
+        # testando isolado (diag_bingx.py) contra a API real.
         #
-        # O que ainda quebrava: stopLoss/takeProfit vão como JSON
-        # embutido no valor (tem espaço, chave, aspas — ex:
-        # {"type": "STOP_MARKET", ...}). Se a assinatura for calculada
-        # sobre o valor CRU e o `requests` url-encodar esse valor
-        # sozinho ao montar params=p, a string ASSINADA e a string
-        # ENVIADA ficam diferentes — e a BingX rejeita. Por isso a URL
-        # final (já com todo mundo url-encoded) é montada NA MÃO, com
-        # o MESMO texto exato que foi assinado; nunca deixa o requests
-        # re-codificar por baixo dos panos depois de já ter assinado.
+        # A ASSINATURA é sobre o valor CRU (sem url-encode) — a BingX
+        # decodifica o que recebe e reconstrói a string com o valor
+        # ORIGINAL antes de comparar. Testado e confirmado contra a API
+        # real: um valor sem caractere especial (texto puro) funciona
+        # igual codificado ou não, mas um valor com {, ", : (como o
+        # JSON de stopLoss/takeProfit) só bate quando se assina o JSON
+        # cru — assinar a versão url-encoded dá "signature mismatch"
+        # toda vez. Só a URL de fato TRANSMITIDA precisa ser
+        # url-encoded (senão espaço/chave quebram a requisição HTTP em
+        # si), então codifica DEPOIS de já ter assinado o valor cru.
         p = {k: p[k] for k in sorted(p)}
         p["timestamp"] = int(time.time() * 1000)
-        qs = "&".join(f"{k}={urllib.parse.quote(str(v), safe='')}" for k, v in p.items())
-        assinatura = _bingx_sign(qs)
-        url = f"{url}?{qs}&signature={assinatura}"
+        qs_assinar = "&".join(f"{k}={v}" for k, v in p.items())
+        assinatura = _bingx_sign(qs_assinar)
+        qs_enviar = "&".join(f"{k}={urllib.parse.quote(str(v), safe='')}" for k, v in p.items())
+        url = f"{url}?{qs_enviar}&signature={assinatura}"
         headers["X-BX-APIKEY"] = BINGX_API_KEY
     try:
         if signed:
