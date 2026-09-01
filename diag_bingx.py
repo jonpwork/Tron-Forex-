@@ -93,3 +93,21 @@ print()
 
 print("── Teste 2: mesma chamada, SEM recvWindow (so timestamp) ──")
 enviar("GET", "/openApi/swap/v2/user/balance", {})
+print()
+
+# Testes 3 e 4 sao POST com varios parametros de negocio, igual uma
+# ordem de verdade -- mas SEM risco de dinheiro (nao abrem posicao,
+# so ajustam configuracao da conta). Servem pra isolar se o problema
+# e especifico de POST/multi-parametro, ja que o Teste 1/2 (GET) deu
+# certo mas so tinha 0 ou 1 parametro de negocio (nada pra competir
+# com o timestamp na ordenacao alfabetica).
+print("── Teste 3: ajustar alavancagem (POST, varios parametros) ──")
+# usa a MESMA alavancagem ja configurada no .env (nao muda nada de
+# verdade na conta -- so reenvia o valor que ja deveria estar setado)
+_alavancagem = env.get("BINGX_LEVERAGE", env.get("BYBIT_LEVERAGE", "5"))
+enviar("POST", "/openApi/swap/v2/trade/leverage",
+       {"symbol": "BTC-USDT", "side": "LONG", "leverage": _alavancagem})
+print()
+
+print("── Teste 4: ativar hedge mode (POST, o mesmo que ja falha no bot) ──")
+enviar("POST", "/openApi/swap/v2/trade/positionSide/dual", {"dualSidePosition": "true"})
