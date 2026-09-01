@@ -324,8 +324,10 @@
       "origem": "ANCORA-30M",
       "order_id": "2094803293155061760",
       "data": "01/09/2026 12:03",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 3,77",
+      "preco_saida": 77637.7,
+      "fechamento": "01/09/2026 13:15"
     }
   ],
   "zone_tol": 0.2,
