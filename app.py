@@ -469,7 +469,11 @@ def bybit_post(path, payload):
 #  (retCode/result) pra reaproveitar toda a lógica que já existe.
 # ═══════════════════════════════════════════════════════════════
 def _bingx_sign(params):
-    qs = "&".join(f"{k}={v}" for k, v in params.items())
+    # BingX exige os parâmetros ordenados alfabeticamente por chave antes
+    # de montar a string pra assinar (padrão do próprio exemplo oficial
+    # deles) — só passava despercebido porque a BingX nunca tinha saído
+    # de SIMULAÇÃO antes, então nenhuma ordem real testou essa assinatura.
+    qs = "&".join(f"{k}={params[k]}" for k in sorted(params))
     return hmac.new(BINGX_API_SECRET.encode(), qs.encode(), hashlib.sha256).hexdigest()
 
 def _bingx_req(method, path, params=None, signed=True):
@@ -479,7 +483,12 @@ def _bingx_req(method, path, params=None, signed=True):
     if signed:
         p["timestamp"] = int(time.time() * 1000)
         p["recvWindow"] = 5000
-        p["signature"] = _bingx_sign(p)
+        assinatura = _bingx_sign(p)
+        # reconstrói p na MESMA ordem alfabética que foi assinada — o que
+        # é enviado precisa bater com o que foi assinado. "signature" vai
+        # por último, fora do sort (não faz parte do que é assinado).
+        p = {k: p[k] for k in sorted(p)}
+        p["signature"] = assinatura
         headers["X-BX-APIKEY"] = BINGX_API_KEY
     try:
         r = requests.request(method, f"{BINGX_URL}{path}", params=p,
