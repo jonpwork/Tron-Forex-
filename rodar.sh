@@ -1,9 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
 PROJETO="$HOME/tronforex"
 DOWNLOAD="/storage/emulated/0/Download/app.py"
-git pull --quiet origin main 2>/dev/null && echo "Codigo atualizado do GitHub."
 DESTINO="$PROJETO/app.py"
 cd "$PROJETO" || exit 1
+# memory.json e versionado (o backup automatico do bot usa a API do
+# GitHub direto), mas o arquivo local muda toda hora conforme o bot
+# roda -- sempre ia travar o git pull com "unstaged changes". Descarta
+# so as mudancas locais NESSE arquivo antes de puxar (o bot recria
+# sozinho no proximo save).
+git checkout -- memory.json 2>/dev/null
+git pull --quiet origin main 2>/dev/null && echo "Codigo atualizado do GitHub."
 if [ -f "$DOWNLOAD" ]; then
     [ -f "$DESTINO" ] && cp "$DESTINO" "$PROJETO/app_backup.py" && echo "Backup salvo."
     cp "$DOWNLOAD" "$DESTINO"

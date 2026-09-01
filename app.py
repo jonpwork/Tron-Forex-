@@ -2852,6 +2852,14 @@ def handle_command(text, chat_id):
     elif cmd == "/reiniciar":
         send_telegram("🔄 Buscando atualização no GitHub...", chat_id)
         repo_dir = os.path.dirname(os.path.abspath(__file__))
+        # memory.json é versionado (o backup automático usa a API do
+        # GitHub direto), mas o arquivo local muda toda hora conforme o
+        # bot roda — sempre ia conflitar com git pull. Descarta só as
+        # mudanças locais NESSE arquivo antes de puxar (o bot recria
+        # sozinho no próximo save; nunca é a versão "certa" de qualquer
+        # jeito, é só o último save automático).
+        subprocess.run(["git", "checkout", "--", "memory.json"],
+                       cwd=repo_dir, capture_output=True, text=True, timeout=10)
         try:
             r = subprocess.run(["git", "pull", "--quiet", "origin", "main"],
                                cwd=repo_dir, capture_output=True, text=True, timeout=30)
