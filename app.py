@@ -2007,7 +2007,11 @@ def alvo_m1_estrutura(symbol, direcao, c1=None, lookback=90):
             return nivel
     return nivel
 
-MIN_RR_TECNICO = float(os.environ.get("MIN_RR_TECNICO", "0"))  # 0 = sem filtro de R:R
+# Único valor mínimo que o CLAUDE.md permite: RR abaixo de 1:1 é
+# matematicamente ilógico (arrisca mais do que pode ganhar), pedido
+# explícito do Jon por cima da regra de "sem trava por valor" — vale
+# pra QUALQUER motor, checado uma vez só dentro de fire_signal.
+RR_MINIMO = float(os.environ.get("RR_MINIMO", "1.0"))
 
 def analyze_symbol(symbol):
     c1  = get_candles(symbol, "1h",  150)   # contexto de tendência
@@ -2325,6 +2329,9 @@ def fire_signal(symbol, entry, ignorar_travas=False):
     risk = abs(ep - sp)
     if risk <= 0: return
     rr = round(abs(tp-ep)/risk, 1)
+    if rr < RR_MINIMO:
+        print(f"[SKIP] {sym} {origem}: RR 1:{rr} abaixo do mínimo (1:{RR_MINIMO}).")
+        return
     emoji  = "✅" if bdir == "BUY" else "🔴"
     action = "COMPRA" if bdir == "BUY" else "VENDA"
 
@@ -2588,8 +2595,9 @@ def handle_command(text, chat_id):
             "🌊 <b>FLUXO M1 PURO (automático, em paralelo):</b>\n"
             "Dois motores independentes (compra e venda), mesmo critério: "
             "perna + correção ~50% direto no M1, sem esperar H4/H1/M15, "
-            "stop na origem da pernada, alvo no PRÓXIMO topo/fundo do M1 "
-            "(não uma projeção). Os dois podem disparar no mesmo par ao "
+            "stop na origem da pernada, alvo na projeção 38.2% da própria "
+            "onda do M1 (cai pro próximo topo/fundo só quando não dá pra "
+            "identificar a pernada). Os dois podem disparar no mesmo par ao "
             "mesmo tempo (arbitragem — precisa ARBITRAGEM_ATIVA=true pra "
             "coexistir). Trades curtos e frequentes. Sem comando — sempre "
             "ligado.\n\n"
@@ -3627,20 +3635,33 @@ def main_loop():
                         if not preco_fluxo:
                             continue
                         sl_fluxo = stop_tecnico_m1(sym, direcao_fluxo)
-                        tp_fluxo = alvo_m1_estrutura(sym, direcao_fluxo)
+                        # tenta a projeção de 38.2% da própria pernada do M1
+                        # primeiro — alvo mais longo, RR melhor — e só cai
+                        # pro próximo topo/fundo (alvo curto) quando não dá
+                        # pra identificar uma pernada agora. Continua sem
+                        # esperar H4/H1/M15 de propósito (é o que diferencia
+                        # esse motor do M1-TECNICO/M1-ABC).
+                        ctx_fluxo = detectar_perna(sym, "1m")
+                        tp_fluxo = None
+                        alvo_desc = "próximo topo" if direcao_fluxo == "BUY" else "próximo fundo"
+                        if ctx_fluxo and ctx_fluxo["direcao"] == direcao_fluxo:
+                            tp_fluxo = alvo_projecao_382(preco_fluxo, direcao_fluxo, ctx_fluxo)
+                            alvo_desc = "projeção 38.2% da onda"
+                        if tp_fluxo is None:
+                            tp_fluxo = alvo_m1_estrutura(sym, direcao_fluxo)
+                            alvo_desc = "próximo topo" if direcao_fluxo == "BUY" else "próximo fundo"
                         if sl_fluxo is None or tp_fluxo is None:
                             continue
                         coerente = ((direcao_fluxo == "BUY"  and sl_fluxo < preco_fluxo < tp_fluxo) or
                                     (direcao_fluxo == "SELL" and tp_fluxo < preco_fluxo < sl_fluxo))
                         if not coerente:
                             continue
-                        alvo_desc = "topo" if direcao_fluxo == "BUY" else "fundo"
                         entry_fluxo = {"direcao": direcao_fluxo, "entrada": preco_fluxo,
                                        "stop": sl_fluxo, "alvo": tp_fluxo,
                                        "atr": data.get("atr", 0), "origem": tag_fluxo,
                                        "rsi": (f"Fluxo M1 ({'compra' if direcao_fluxo == 'BUY' else 'venda'}): "
                                                f"{_ultimo_gatilho.get(sym, 'gatilho')}"
-                                               f" | alvo no próximo {alvo_desc} do M1")}
+                                               f" | alvo {alvo_desc}")}
                         fire_signal(sym, entry_fluxo, ignorar_travas=True)
                         last_signal_time[key] = now_ts
 

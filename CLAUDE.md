@@ -17,8 +17,12 @@ Corretoras: BingX (EXCHANGE=bingx) e Bybit. Toda config vem do .env.
   ponto (exige distancia de preco e de tempo)
 
 ## Regras
-- NAO adicionar travas por valor (freio diario, teto de trades, RR minimo).
-  O bot opera livre, por cenario grafico.
+- NAO adicionar travas por valor (freio diario, teto de trades).
+  O bot opera livre, por cenario grafico. EXCEÇÃO pedida pelo Jon
+  (01/09/2026): RR mínimo 1:1 em TODO sinal, de qualquer motor —
+  RR menor que isso é ilógico (arrisca mais do que pode ganhar).
+  Controlado por RR_MINIMO no .env (padrão 1.0), checado uma vez
+  dentro de fire_signal. Não reverter sem o Jon pedir de novo.
 - Stops curtos com alvos grandes sao o desenho, nao um bug.
 - Nunca colocar chaves de API no codigo — so no .env.
 - Validar sintaxe antes de considerar pronto.
