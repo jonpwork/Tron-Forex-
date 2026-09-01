@@ -33,10 +33,14 @@ def get_usd_brl():
 
 def resultado_brl(s):
     """Calcula o valor REAL em BRL (lucro ou prejuízo) de um sinal já fechado.
-    Prioriza o preço de saída real (mais preciso que o estimado) — só cai
-    pro cálculo estimado (risco x RR) em registros antigos que não têm o
-    preço de saída salvo."""
+    Prioridade: 1) PnL de verdade puxado da corretora (já líquido de taxa
+    e slippage, gravado em resultado_usd quando o sinal fechou — ver
+    pnl_real()); 2) preço de saída real (mais preciso que o estimado,
+    mas SEM taxa/slippage); 3) estimado por risco x RR, só em registros
+    antigos sem preço de saída salvo."""
     qty = s.get("qty_usada") or SYMBOLS.get(s.get("symbol", ""), {}).get("qty", 0)
+    if s.get("resultado_usd") is not None:
+        return s["resultado_usd"] * get_usd_brl()
     if s.get("preco_saida") is not None and s.get("entrada") is not None:
         mov = (s["preco_saida"]-s["entrada"]) if s.get("direcao")=="BUY" else (s["entrada"]-s["preco_saida"])
         return mov * qty * get_usd_brl()
@@ -1073,6 +1077,63 @@ def broker_positions(exchange=None):
 def _parse_sym(s):
     s = s.upper()
     return s if s.endswith("USDT") else s + "USDT"
+
+def _bybit_pnl_real(symbol, direcao):
+    """PnL REAL (líquido de taxa) do fechamento mais recente desse
+    símbolo/lado na Bybit. Casa pelo lado + horário mais próximo de
+    agora — não dá pra casar por ID direto, o closed-pnl é indexado
+    pela ordem de FECHAMENTO, e o único ID que a gente guarda é o da
+    ABERTURA."""
+    r = bybit_get("/v5/position/closed-pnl", {"category": "linear", "symbol": symbol, "limit": 10})
+    if not r or r.get("retCode") != 0:
+        return None
+    lado = "Buy" if direcao == "BUY" else "Sell"
+    candidatos = [c for c in r.get("result", {}).get("list", []) if c.get("side") == lado]
+    if not candidatos:
+        return None
+    agora_ms = int(time.time() * 1000)
+    melhor = min(candidatos, key=lambda c: abs(int(c.get("updatedTime", 0) or 0) - agora_ms))
+    if abs(int(melhor.get("updatedTime", 0) or 0) - agora_ms) > 5 * 60 * 1000:
+        return None  # nada recente o suficiente pra confiar que é ESSE fechamento
+    try:
+        return float(melhor["closedPnl"])
+    except (KeyError, ValueError, TypeError):
+        return None
+
+def _bingx_pnl_real(symbol, direcao):
+    """Mesma ideia de _bybit_pnl_real, via histórico de income da BingX.
+    AINDA NÃO CONFIRMADO contra a API real (endpoint/campos por
+    verificar) — só usado com fallback seguro em pnl_real(), nunca
+    quebra nem inventa valor errado se vier vazio/no formato errado."""
+    r = bingx_get(f"{BINGX_SWAP}/user/income",
+                  {"symbol": bingx_symbol(symbol), "incomeType": "REALIZED_PNL", "limit": 10})
+    if not r or r.get("retCode") not in (0, None):
+        return None
+    registros = r.get("result") or []
+    if not isinstance(registros, list) or not registros:
+        return None
+    agora_ms = int(time.time() * 1000)
+    try:
+        melhor = min(registros, key=lambda c: abs(int(c.get("time", 0) or 0) - agora_ms))
+        if abs(int(melhor.get("time", 0) or 0) - agora_ms) > 5 * 60 * 1000:
+            return None
+        return float(melhor["income"])
+    except (KeyError, ValueError, TypeError):
+        return None
+
+def pnl_real(symbol, direcao, exchange):
+    """PnL de verdade (líquido de taxa/slippage) do fechamento que
+    ACABOU de acontecer nessa corretora — usado só pra sinais reais
+    (nunca simulados, não existe closed-pnl de ordem fake). Nunca
+    lança exceção nem afeta o tracking: se falhar por qualquer razão,
+    quem chamou cai pro cálculo estimado de sempre."""
+    try:
+        if exchange == "bingx":
+            return _bingx_pnl_real(symbol, direcao)
+        return _bybit_pnl_real(symbol, direcao)
+    except Exception as e:
+        print(f"[PNL_REAL] {exchange} {symbol}: {e}")
+        return None
 
 def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="MANUAL", exchange=None):
     """Depois de QUALQUER ordem manual que mexe numa posição de futuros,
@@ -2536,6 +2597,14 @@ def check_signals(price_map):
             s["preco_saida"] = p; s["fechamento"] = ts
             lucro = (p - s["entrada"]) if s["direcao"]=="BUY" else (s["entrada"] - p)
             s["status"] = "win" if lucro >= 0 else "loss"
+            if not sim_do_sinal:
+                # sinal real: puxa o PnL de verdade da corretora (líquido
+                # de taxa/slippage) pros relatórios usarem em vez do
+                # cálculo estimado só por preço — pedido do Jon depois de
+                # ver o resultado do bot divergir do extrato real.
+                usd_real = pnl_real(sym, s["direcao"], s.get("exchange", EXCHANGE))
+                if usd_real is not None:
+                    s["resultado_usd"] = usd_real
             s["resultado"] = fmt_brl(resultado_brl(s))
             alt = True
             venceu = s["status"] == "win"
