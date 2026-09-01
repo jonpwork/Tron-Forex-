@@ -2346,7 +2346,12 @@ def check_signals(price_map):
 
         hit_tp = (s["direcao"]=="BUY" and p>=s["alvo"]) or (s["direcao"]=="SELL" and p<=s["alvo"])
         hit_sl = (s["direcao"]=="BUY"  and p<=s["stop"]) or (s["direcao"]=="SELL" and p>=s["stop"])
-        sim_do_sinal = simulacao_de(s.get("exchange", EXCHANGE))
+        # Usa o order_id (SIM-... só existe na ordem fake) em vez de
+        # simulacao_de() de novo aqui: o .env pode ter mudado entre a
+        # abertura e o fechamento do sinal (ex: SIMULACAO_BYBIT trocado
+        # no meio do caminho), e o que importa é o que REALMENTE
+        # aconteceu quando a ordem foi enviada, não o config atual.
+        sim_do_sinal = str(s.get("order_id", "")).startswith("SIM-")
 
         # ── SIMULAÇÃO: checagem intra-candle ───────────────────────
         # Ler um único preço a cada 60s esconde o que aconteceu DENTRO
