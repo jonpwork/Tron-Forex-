@@ -3,7 +3,7 @@ TRON FOREX BOT - Dev: Jon Padilha — Multi-Símbolo + Ordens Manuais + Performa
 BTC/ETH/SOL/BNB/XRP + Bybit Spot + Futuros + Ordens Limitadas
 """
 
-import requests, time, os, json, base64, threading, hmac, hashlib, subprocess, tempfile
+import requests, time, os, json, base64, threading, hmac, hashlib, subprocess, tempfile, sys, ast
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from datetime import datetime, timezone, timedelta
 
@@ -2505,7 +2505,7 @@ def handle_command(text, chat_id):
             f"🤖 <b>Tron Forex Bot - Dev: Jon Padilha</b> [{modo}]\n\n"
             "📊 <b>MERCADO:</b>\n"
             "/status · /analise · /diag\n"
-            "/performance [hoje|semana|mes|N|tudo] · /motores · /zerar · /backup · /relatorio · /hoje · /saldo · /patrimonio · /posicoes · /ordem (id) · /debug (par) · /editar (par) sl= tp= · /fundir (par) · /status_freio · /retomar · /freio_on · /freio_off\n"
+            "/performance [hoje|semana|mes|N|tudo] · /motores · /zerar · /backup · /reiniciar · /relatorio · /hoje · /saldo · /patrimonio · /posicoes · /ordem (id) · /debug (par) · /editar (par) sl= tp= · /fundir (par) · /status_freio · /retomar · /freio_on · /freio_off\n"
             "/lote · /lote 2 · /lote 0.5 · /lote fixo 0.01 · /lote auto\n\n"
             "🎯 <b>M1 TÉCNICO (automático, roda sozinho):</b>\n"
             "Todos os símbolos, o tempo todo: direção pela tendência de H1, "
@@ -2766,6 +2766,29 @@ def handle_command(text, chat_id):
         n = len(memory.get("signals", []))
         _push_github(forcar=True)
         send_telegram(f"💾 Backup enviado ao GitHub ({n} sinais no registro).", chat_id)
+
+    elif cmd == "/reiniciar":
+        send_telegram("🔄 Buscando atualização no GitHub...", chat_id)
+        repo_dir = os.path.dirname(os.path.abspath(__file__))
+        try:
+            r = subprocess.run(["git", "pull", "--quiet", "origin", "main"],
+                               cwd=repo_dir, capture_output=True, text=True, timeout=30)
+        except Exception as e:
+            send_telegram(f"❌ Não consegui rodar git pull: {e}", chat_id); return
+        if r.returncode != 0:
+            send_telegram(f"❌ git pull falhou, NÃO reiniciei:\n<code>{r.stderr.strip()[:500]}</code>", chat_id)
+            return
+        caminho = os.path.abspath(__file__)
+        try:
+            with open(caminho, encoding="utf-8") as f:
+                ast.parse(f.read())
+        except SyntaxError as e:
+            send_telegram(f"❌ Código atualizado tem erro de sintaxe, NÃO reiniciei:\n<code>{e}</code>", chat_id)
+            return
+        save_memory(forcar_github=True)
+        send_telegram("✅ Atualizado e validado — reiniciando agora...", chat_id)
+        time.sleep(1)
+        os.execv(sys.executable, [sys.executable, caminho])
 
     elif cmd == "/relatorio":
         sinais = memory.get("signals", [])
