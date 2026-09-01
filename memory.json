@@ -198,7 +198,6 @@
   "macro_views": {},
   "next_id": 710,
   "config_lote": {
-    "modo": "fixo",
-    "valor": 0.01
+    "modo": "auto"
   }
 }
