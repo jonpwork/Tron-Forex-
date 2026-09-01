@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""
+Diagnostico isolado da assinatura da BingX — roda separado do app.py,
+sem depender de nada do bot, so pra ver a resposta CRUA da corretora
+(sem o filtro/normalizacao que o app.py aplica).
+
+Uso (no Termux, dentro da pasta do bot):
+    cd ~/tronforex
+    python diag_bingx.py
+
+Le BINGX_API_KEY / BINGX_API_SECRET / BINGX_MODE direto do .env que
+ja esta na mesma pasta (nao precisa colar chave em lugar nenhum).
+"""
+import os, time, hmac, hashlib, json
+import urllib.request
+import urllib.parse
+
+# ── le o .env do diretorio atual (mesmo parser simplificado do app.py) ──
+env = {}
+if os.path.exists(".env"):
+    with open(".env") as f:
+        for linha in f:
+            linha = linha.strip()
+            if linha and not linha.startswith("#") and "=" in linha:
+                k, v = linha.split("=", 1)
+                v = v.strip()
+                if len(v) >= 2 and v[0] == v[-1] and v[0] in ("'", '"'):
+                    v = v[1:-1]
+                env[k.strip()] = v
+else:
+    print("ERRO: .env nao encontrado nesta pasta. Roda de dentro de ~/tronforex.")
+    raise SystemExit(1)
+
+API_KEY    = env.get("BINGX_API_KEY", "")
+API_SECRET = env.get("BINGX_API_SECRET", "")
+MODE       = env.get("BINGX_MODE", "real").strip().lower()
+BASE_URL   = "https://open-api-vst.bingx.com" if MODE == "demo" else "https://open-api.bingx.com"
+
+print(f"Modo: {MODE}  |  Base URL: {BASE_URL}")
+print(f"API_KEY: {len(API_KEY)} chars (começa com '{API_KEY[:6]}...')")
+print(f"API_SECRET: {len(API_SECRET)} chars (começa com '{API_SECRET[:6]}...')")
+print()
+
+# ── 1) relogio local vs relogio do servidor (BingX tem endpoint publico) ──
+try:
+    with urllib.request.urlopen(f"{BASE_URL}/openApi/swap/v2/server/time", timeout=10) as r:
+        d = json.loads(r.read())
+    server_ms = d.get("data", {}).get("serverTime") or d.get("serverTime")
+    local_ms  = int(time.time() * 1000)
+    if server_ms:
+        diff = local_ms - int(server_ms)
+        print(f"[RELOGIO] local - servidor BingX = {diff} ms")
+        if abs(diff) > 5000:
+            print("  >>> RELOGIO DESSINCRONIZADO! Isso sozinho pode causar erro de assinatura/timestamp.")
+            print("  >>> Ative data/hora automatica (por rede) no Android e roda de novo.")
+    else:
+        print(f"[RELOGIO] resposta inesperada do endpoint de horario: {d}")
+except Exception as e:
+    print(f"[RELOGIO] não consegui checar (endpoint pode ter outro nome): {e}")
+print()
+
+# ── 2) assinatura, EXATAMENTE como o exemplo oficial da BingX faz ──
+def sign(params_ordenados_str, secret):
+    return hmac.new(secret.encode("utf-8"), params_ordenados_str.encode("utf-8"),
+                     hashlib.sha256).hexdigest()
+
+def parse_param(params_map):
+    sorted_keys = sorted(params_map)
+    params_str = "&".join(f"{k}={params_map[k]}" for k in sorted_keys)
+    if params_str:
+        return params_str + "&timestamp=" + str(int(time.time() * 1000))
+    return "timestamp=" + str(int(time.time() * 1000))
+
+def enviar(method, path, params_map):
+    params_str = parse_param(params_map)
+    signature = sign(params_str, API_SECRET)
+    url = f"{BASE_URL}{path}?{params_str}&signature={signature}"
+    req = urllib.request.Request(url, method=method, headers={"X-BX-APIKEY": API_KEY})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            body = r.read().decode()
+            print(f"HTTP {r.status}")
+            print(body)
+    except urllib.error.HTTPError as e:
+        print(f"HTTP {e.code}")
+        print(e.read().decode())
+    except Exception as e:
+        print(f"ERRO DE CONEXAO: {e}")
+
+print("── Teste 1: saldo da conta (GET, so recvWindow) ──")
+enviar("GET", "/openApi/swap/v2/user/balance", {"recvWindow": "5000"})
+print()
+
+print("── Teste 2: mesma chamada, SEM recvWindow (so timestamp) ──")
+enviar("GET", "/openApi/swap/v2/user/balance", {})
