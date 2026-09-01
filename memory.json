@@ -2067,8 +2067,10 @@
       "origem": "ANCORA-1H",
       "order_id": "SIM-1788189525194",
       "data": "31/08/2026 12:18",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 65,23",
+      "preco_saida": 77913.9,
+      "fechamento": "01/09/2026 06:24"
     },
     {
       "id": 679,
@@ -2662,8 +2664,10 @@
       "origem": "M1-ABC",
       "order_id": "SIM-1788252537029",
       "data": "01/09/2026 05:48",
-      "status": "aberto",
-      "resultado": null
+      "status": "win",
+      "resultado": "+R$ 11,93",
+      "preco_saida": 77913.9,
+      "fechamento": "01/09/2026 06:24"
     }
   ],
   "zone_tol": 0.2,
