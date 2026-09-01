@@ -339,12 +339,16 @@ def send_telegram_foto(caminho, legenda="", chat_id=None):
     cid = chat_id or CHAT_ID
     try:
         with open(caminho, "rb") as f:
-            requests.post(
+            r = requests.post(
                 f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendPhoto",
                 data={"chat_id": cid, "caption": legenda[:1024], "parse_mode": "HTML"},
                 files={"photo": f}, timeout=20)
+        if r.status_code != 200:
+            print(f"[GRAFICO] Telegram recusou a foto (HTTP {r.status_code}): {r.text[:300]}", flush=True)
+        else:
+            print(f"[GRAFICO] foto enviada: {legenda[:60]}", flush=True)
     except Exception as e:
-        print(f"Erro TG foto: {e}")
+        print(f"Erro TG foto: {e}", flush=True)
     finally:
         try: os.remove(caminho)
         except OSError: pass
@@ -1962,11 +1966,14 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
         import matplotlib.pyplot as plt
         from matplotlib.patches import Rectangle
         from matplotlib.lines import Line2D
-    except ImportError:
+    except ImportError as e:
+        print(f"[GRAFICO] {symbol}: matplotlib não disponível ({e}) — pkg install matplotlib / pip install matplotlib.", flush=True)
         return None
     try:
         c = candles[-80:]
-        if len(c) < 5: return None
+        if len(c) < 5:
+            print(f"[GRAFICO] {symbol}: só {len(c)} candles de {tf} — precisa de pelo menos 5.", flush=True)
+            return None
         piv = _limpa_pivots(_pivots_m1(c, lado=2))
 
         fig, ax = plt.subplots(figsize=(9.5, 5.5), dpi=140)
@@ -2127,7 +2134,7 @@ def gerar_grafico_sinal(symbol, tf, candles, direcao, entrada, stop, alvo, titul
         plt.close(fig)
         return caminho
     except Exception as e:
-        print(f"[GRAFICO] {symbol}: {e}")
+        print(f"[GRAFICO] {symbol}: {e}", flush=True)
         return None
 
 def fire_signal(symbol, entry, ignorar_travas=False):
@@ -2264,13 +2271,17 @@ def fire_signal(symbol, entry, ignorar_travas=False):
     try:
         tf_graf = _tf_do_grafico(origem)
         candles_graf = get_candles(sym, tf_graf, 90)
-        if candles_graf:
+        if not candles_graf:
+            print(f"[GRAFICO] {sym}: sem candles de {tf_graf} pra gerar o gráfico — pulado.", flush=True)
+        else:
             caminho = gerar_grafico_sinal(sym, tf_graf, candles_graf, bdir, ep, sp, tp,
                                           titulo_extra=f"  [{origem}]")
-            if caminho:
+            if not caminho:
+                print(f"[GRAFICO] {sym}: gerar_grafico_sinal não devolveu imagem — pulado.", flush=True)
+            else:
                 send_telegram_foto(caminho, f"{emoji} {action} {sym} — {tf_graf.upper()}")
     except Exception as e:
-        print(f"[GRAFICO] {sym}: {e}")
+        print(f"[GRAFICO] {sym}: {e}", flush=True)
 
 def check_signals(price_map):
     ab = [s for s in memory.get("signals", []) if s["status"] == "aberto"]
@@ -2330,15 +2341,19 @@ def check_signals(price_map):
             try:
                 tf_graf = _tf_do_grafico(s.get("origem", "?"))
                 candles_graf = get_candles(sym, tf_graf, 90)
-                if candles_graf:
+                if not candles_graf:
+                    print(f"[GRAFICO] {sym}: sem candles de {tf_graf} pra gerar o gráfico de resultado — pulado.", flush=True)
+                else:
                     caminho = gerar_grafico_sinal(
                         sym, tf_graf, candles_graf, s["direcao"], s["entrada"], s["stop"], s["alvo"],
                         titulo_extra=f"  [{s.get('origem','?')}]", saida=p, resultado_txt=s["resultado"],
                         venceu=venceu, qty=s.get("qty_usada"))
-                    if caminho:
+                    if not caminho:
+                        print(f"[GRAFICO] {sym}: gerar_grafico_sinal não devolveu imagem — pulado.", flush=True)
+                    else:
                         send_telegram_foto(caminho, f"{'🏆' if venceu else '🛑'} {sym} — {tf_graf.upper()}")
             except Exception as e:
-                print(f"[GRAFICO] {sym}: {e}")
+                print(f"[GRAFICO] {sym}: {e}", flush=True)
     if alt: save_memory()
 
 # ═══════════════════════════════════════════════════════════════
