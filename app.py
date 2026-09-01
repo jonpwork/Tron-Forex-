@@ -627,6 +627,29 @@ def _bingx_order_futures(symbol, side, qty, sl=None, tp=None):
         return {"ok": True, "order_id": str(oid)}
     return {"ok": False, "error": (r.get("retMsg", "?") if r else "sem resposta")}
 
+def _bingx_editar_sltp(symbol, pos_side_bybit, novo_sl, novo_tp):
+    """Ajusta SL/TP de uma posição já aberta na BingX. A BingX não expõe
+    um endpoint pra 'substituir' o SL/TP anexado na ordem original —
+    aqui funciona colocando uma NOVA ordem condicional de fechamento
+    (closePosition=true) no nível pedido; o que disparar primeiro
+    fecha a posição inteira. A ordem condicional antiga (da entrada)
+    pode continuar pendente na corretora até a posição fechar — vale
+    conferir no app depois de usar, pelo menos até confirmarmos o
+    comportamento real com um teste de verdade."""
+    lado_posicao = "LONG" if pos_side_bybit == "Buy" else "SHORT"
+    position_side = lado_posicao if ARBITRAGEM_ATIVA else "BOTH"
+    lado_fechamento = "SELL" if pos_side_bybit == "Buy" else "BUY"
+    for tipo, preco in (("STOP_MARKET", novo_sl), ("TAKE_PROFIT_MARKET", novo_tp)):
+        if not preco:
+            continue
+        p = {"symbol": bingx_symbol(symbol), "side": lado_fechamento,
+             "positionSide": position_side, "type": tipo,
+             "stopPrice": round(float(preco), 6), "closePosition": "true"}
+        r = bingx_post(f"{BINGX_SWAP}/trade/order", p)
+        if not r or r.get("retCode") not in (0, None):
+            return {"ok": False, "error": (r.get("retMsg", "?") if r else "sem resposta")}
+    return {"ok": True, "error": None}
+
 def _bingx_order_spot(symbol, side, qty):
     r = bingx_post(f"{BINGX_SPOT}/trade/order", {
         "symbol": bingx_symbol(symbol), "side": side.upper(),
@@ -1041,8 +1064,9 @@ def broker_account(exchange=None):
         return _bingx_account_norm()
     return bybit_get("/v5/account/wallet-balance", {"accountType": "UNIFIED"})
 
-def broker_positions():
-    if USANDO_BINGX:
+def broker_positions(exchange=None):
+    usando_bingx = (exchange == "bingx") if exchange else USANDO_BINGX
+    if usando_bingx:
         return _bingx_positions_norm()
     return bybit_get("/v5/position/list", {"category": "linear", "settleCoin": "USDT", "limit": 200})
 
@@ -1050,7 +1074,7 @@ def _parse_sym(s):
     s = s.upper()
     return s if s.endswith("USDT") else s + "USDT"
 
-def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="MANUAL"):
+def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="MANUAL", exchange=None):
     """Depois de QUALQUER ordem manual que mexe numa posição de futuros,
     sincroniza o rastreamento interno (memory['signals']) com o que
     REALMENTE está na corretora agora. Sem isso, um registro velho de uma
@@ -1063,7 +1087,7 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
     (preço médio, tamanho, SL, TP) — com ARBITRAGEM_ATIVA, compra e
     venda podem estar abertas ao mesmo tempo no mesmo par, então nunca
     fundir/cancelar um lado por causa do outro."""
-    r = broker_positions()
+    r = broker_positions(exchange)
     posicoes = []
     if r and r.get("retCode") == 0:
         posicoes = [p for p in r.get("result", {}).get("list", [])
@@ -1108,6 +1132,7 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
             novo_id = memory.get("next_id", len(memory["signals"])+1)
             memory["next_id"] = novo_id + 1
             principal = {"id": novo_id, "symbol": symbol, "direcao": direcao,
+                         "exchange": exchange or EXCHANGE,
                          "entrada": entrada, "stop": sl or entrada, "alvo": tp or entrada,
                          "risco": 0, "rr": 0, "qty_usada": qty, "atr": 0, "origem": origem,
                          "order_id": "", "data": agora_br().strftime("%d/%m/%Y %H:%M"),
@@ -1115,6 +1140,7 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
             memory["signals"].append(principal)
             if len(memory["signals"]) > 200: memory["signals"] = memory["signals"][-200:]
         principal["direcao"] = direcao; principal["entrada"] = entrada; principal["qty_usada"] = qty
+        if exchange: principal["exchange"] = exchange
         if sl: principal["stop"] = sl
         if tp: principal["alvo"] = tp
 
@@ -3035,18 +3061,25 @@ def handle_command(text, chat_id):
     # ── EDITAR (altera SL/TP de uma posição já aberta) ───────
     elif cmd == "/editar":
         # Uso: /editar BTC sl=61000 tp=64000   (pode mandar só sl= ou só tp=)
-        # Com ARBITRAGEM_ATIVA e os dois lados abertos no mesmo par,
-        # informe o lado: /editar BTC compra sl=... ou /editar BTC venda tp=...
+        # Com ARBITRAGEM_ATIVA e/ou mais de uma corretora ativa e a MESMA
+        # posição aberta em mais de um lugar ao mesmo tempo, informe o
+        # lado e/ou a corretora: /editar BTC compra bingx sl=...
         if len(parts) < 2:
             send_telegram("Uso: /editar BTC sl=61000 tp=64000 (pode mandar só um dos dois).\n"
-                           "Com compra E venda abertas no mesmo par, informe o lado: "
-                           "/editar BTC compra sl=... ou /editar BTC venda tp=...", chat_id); return
+                           "Com mais de uma posição no mesmo símbolo (arbitragem e/ou "
+                           "duas corretoras), informe o lado e/ou a corretora: "
+                           "/editar BTC compra bingx sl=... ou /editar BTC venda bybit tp=...", chat_id); return
         sym = parts[1].upper()
         if not sym.endswith("USDT"): sym += "USDT"
         resto = parts[2:]
         lado_arg = None
-        if resto and resto[0].lower() in ("compra", "venda"):
-            lado_arg = "Buy" if resto[0].lower() == "compra" else "Sell"
+        exch_arg = None
+        while resto and resto[0].lower() in ("compra", "venda", "bingx", "bybit"):
+            tok = resto[0].lower()
+            if tok in ("compra", "venda"):
+                lado_arg = "Buy" if tok == "compra" else "Sell"
+            else:
+                exch_arg = tok
             resto = resto[1:]
         novo_sl = novo_tp = None
         for p in resto:
@@ -3054,35 +3087,54 @@ def handle_command(text, chat_id):
             elif p.lower().startswith("tp="): novo_tp = p.split("=", 1)[1]
         if not novo_sl and not novo_tp:
             send_telegram("Informe pelo menos sl= ou tp=. Ex: /editar BTC sl=61000", chat_id); return
-        r = broker_positions()
+
+        # Descobre em qual(is) corretora(s)/lado existe posição real,
+        # consultando cada corretora ativa (não só a global padrão) —
+        # com EXCHANGES_ATIVAS tendo mais de uma, a mesma posição pode
+        # existir em lugares diferentes ao mesmo tempo.
+        exchanges_pra_checar = [exch_arg] if exch_arg else EXCHANGES_ATIVAS
         candidatos = []
-        if r and r.get("retCode") == 0:
-            candidatos = [p for p in r.get("result", {}).get("list", [])
-                          if p["symbol"] == sym and float(p.get("size", 0)) > 0]
+        for exch in exchanges_pra_checar:
+            r = broker_positions(exch)
+            if r and r.get("retCode") == 0:
+                for p in r.get("result", {}).get("list", []):
+                    if p["symbol"] == sym and float(p.get("size", 0)) > 0:
+                        candidatos.append((exch, p))
         if lado_arg:
-            candidatos = [p for p in candidatos if p["side"] == lado_arg]
+            candidatos = [(e, p) for e, p in candidatos if p["side"] == lado_arg]
         if not candidatos:
             lado_txt = f" do lado {'compra' if lado_arg == 'Buy' else 'venda'}" if lado_arg else ""
-            send_telegram(f"❌ Não achei posição aberta em {sym}{lado_txt}.", chat_id); return
+            exch_txt = f" na {nome_corretora(exch_arg)}" if exch_arg else ""
+            send_telegram(f"❌ Não achei posição aberta em {sym}{lado_txt}{exch_txt}.", chat_id); return
         if len(candidatos) > 1:
-            send_telegram(f"⚠️ {sym} tem compra E venda abertas ao mesmo tempo (arbitragem). "
-                           "Informe o lado: /editar BTC compra sl=... ou /editar BTC venda tp=...", chat_id); return
-        pos = candidatos[0]
-        # positionIdx: 0 em one-way, 1/2 em hedge (arbitragem) — usa o da
-        # própria posição, nunca fixo, senão a Bybit rejeita em hedge mode.
-        payload = {"category": "linear", "symbol": sym, "positionIdx": pos.get("positionIdx", 0)}
-        if novo_sl: payload["stopLoss"] = novo_sl
-        if novo_tp: payload["takeProfit"] = novo_tp
-        res = bybit_post("/v5/position/trading-stop", payload)
-        if res and res.get("retCode") == 0:
-            sincronizar_tracking(sym, sl_informado=novo_sl, tp_informado=novo_tp, origem="MANUAL")
+            opcoes = ", ".join(f"{nome_corretora(e)}/{'compra' if p['side']=='Buy' else 'venda'}"
+                                for e, p in candidatos)
+            send_telegram(f"⚠️ {sym} tem mais de uma posição aberta ao mesmo tempo ({opcoes}). "
+                           "Informe o lado e/ou a corretora: /editar BTC compra bingx sl=...", chat_id); return
+        exch, pos = candidatos[0]
+
+        if exch == "bingx":
+            res = _bingx_editar_sltp(sym, pos["side"], novo_sl, novo_tp)
+        else:
+            # positionIdx: 0 em one-way, 1/2 em hedge (arbitragem) — usa o
+            # da própria posição, nunca fixo, senão a Bybit rejeita em
+            # hedge mode.
+            payload = {"category": "linear", "symbol": sym, "positionIdx": pos.get("positionIdx", 0)}
+            if novo_sl: payload["stopLoss"] = novo_sl
+            if novo_tp: payload["takeProfit"] = novo_tp
+            r = bybit_post("/v5/position/trading-stop", payload)
+            res = {"ok": bool(r and r.get("retCode") == 0),
+                   "error": (r.get("retMsg", "?") if r else "sem resposta")}
+
+        if res["ok"]:
+            sincronizar_tracking(sym, sl_informado=novo_sl, tp_informado=novo_tp, origem="MANUAL", exchange=exch)
             partes = []
             if novo_sl: partes.append(f"🛑 SL → {novo_sl}")
             if novo_tp: partes.append(f"🎯 TP → {novo_tp}")
-            send_telegram(f"✅ {sym} ({pos['side']}) atualizado:\n" + "\n".join(partes), chat_id)
+            lado_txt = 'compra' if pos['side'] == 'Buy' else 'venda'
+            send_telegram(f"✅ {sym} ({lado_txt}, {nome_corretora(exch)}) atualizado:\n" + "\n".join(partes), chat_id)
         else:
-            erro = res.get("retMsg", "?") if res else "sem resposta"
-            send_telegram(f"❌ Falha ao editar {sym}: {erro}", chat_id)
+            send_telegram(f"❌ Falha ao editar {sym} ({nome_corretora(exch)}): {res['error']}", chat_id)
 
     # ── FUNDIR (corrige rastreamento duplicado quando 2+ ordens no mesmo
     # símbolo viraram 1 posição só na Bybit — mantém só 1 registro aberto,
