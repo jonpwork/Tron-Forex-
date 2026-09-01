@@ -665,7 +665,8 @@ def _bingx_order_spot(symbol, side, qty):
 
 def _bingx_positions_norm():
     """Devolve as posições no MESMO formato que broker_positions() da Bybit,
-    pra sincronizar_tracking()/close_* continuarem funcionando sem mudança."""
+    pra sincronizar_tracking()/close_*/{posicoes} continuarem funcionando
+    sem mudança."""
     r = bingx_get(f"{BINGX_SWAP}/user/positions", {})
     if not r or r.get("retCode") not in (0, None): return None
     lst = []
@@ -675,11 +676,38 @@ def _bingx_positions_norm():
         except (TypeError, ValueError):
             continue
         if amt == 0: continue
+        avg_price = float(p.get("avgPrice", 0) or 0)
+        # nome exato do campo de preço atual/PnL na BingX ainda não
+        # confirmado contra a API real — tenta os nomes mais prováveis
+        # (padrão Binance/BingX), sem quebrar se nenhum bater (só
+        # mostra 0, igual já era o comportamento antes disso existir).
+        mark_price = 0
+        for campo in ("markPrice", "marketPrice"):
+            try:
+                mark_price = float(p.get(campo) or 0)
+                if mark_price: break
+            except (TypeError, ValueError):
+                pass
+        pnl = 0
+        for campo in ("unrealizedProfit", "unRealizedProfit", "profitUnreal"):
+            try:
+                pnl = float(p.get(campo) or 0)
+                if pnl: break
+            except (TypeError, ValueError):
+                pass
+        try:
+            leverage = float(p.get("leverage", 0) or 0) or BINGX_LEVERAGE
+        except (TypeError, ValueError):
+            leverage = BINGX_LEVERAGE
+        margem = (abs(amt) * avg_price / leverage) if leverage else 0
         lst.append({
             "symbol": str(p.get("symbol", "")).replace("-", ""),
             "side": "Buy" if amt > 0 else "Sell",
             "size": str(abs(amt)),
-            "avgPrice": str(p.get("avgPrice", 0) or 0),
+            "avgPrice": str(avg_price),
+            "markPrice": str(mark_price),
+            "unrealisedPnl": str(pnl),
+            "positionIM": str(margem),
             "stopLoss": str(p.get("stopLoss", "") or ""),
             "takeProfit": str(p.get("takeProfit", "") or ""),
         })
@@ -3025,14 +3053,20 @@ def handle_command(text, chat_id):
 
     # ── POSICOES ────────────────────────────────────────────
     elif cmd == "/posicoes":
-        r = broker_positions()
-        if not r or r.get("retCode") != 0:
-            send_telegram(f"❌ {r}", chat_id); return
-        lista = [p for p in r.get("result", {}).get("list", []) if float(p.get("size", 0)) > 0]
+        # consulta TODAS as corretoras ativas — com mais de uma ligada
+        # (EXCHANGES_ATIVAS), a mesma posição pode existir em lugares
+        # diferentes ao mesmo tempo, e cada uma tem sua própria API.
+        lista = []
+        for exch in EXCHANGES_ATIVAS:
+            r = broker_positions(exch)
+            if r and r.get("retCode") == 0:
+                for p in r.get("result", {}).get("list", []):
+                    if float(p.get("size", 0)) > 0:
+                        lista.append((exch, p))
         if not lista: send_telegram("📭 Nenhuma posicao aberta.", chat_id); return
         cotacao = get_usd_brl()
-        msg = "📊 <b>Posições abertas (Bybit)</b>\n"
-        for p in lista:
+        msg = "📊 <b>Posições abertas</b>\n"
+        for exch, p in lista:
             pnl  = float(p.get("unrealisedPnl", 0)); ep = float(p.get("avgPrice", 0))
             mark = float(p.get("markPrice", 0) or 0)
             qty  = float(p.get("size", 0) or 0)
@@ -3047,7 +3081,7 @@ def handle_command(text, chat_id):
                 if tp_v: alvo_txt  = f"  |  🏆 Potencial: R$ {abs(float(tp_v) - ep) * qty * cotacao:,.2f}"
             except (TypeError, ValueError):
                 pass
-            msg += (f"{em} <b>{p['side']} {p.get('size')} {p['symbol']}</b>\n"
+            msg += (f"{em} <b>{p['side']} {p.get('size')} {p['symbol']}</b> ({nome_corretora(exch)})\n"
                     f"   Entrada: ${ep:,.4f} | Atual: ${mark:,.4f}\n"
                     f"   🛑 SL: {sl}  🎯 TP: {tp}{risco_txt}{alvo_txt}\n"
                     f"   PnL: R$ {pnl*cotacao:+,.2f} (${pnl:+.2f}) | ROI: {roi:+.1f}%\n")
