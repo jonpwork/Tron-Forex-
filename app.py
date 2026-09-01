@@ -631,15 +631,20 @@ def _bingx_order_futures(symbol, side, qty, sl=None, tp=None):
         return {"ok": True, "order_id": str(oid)}
     return {"ok": False, "error": (r.get("retMsg", "?") if r else "sem resposta")}
 
-def _bingx_editar_sltp(symbol, pos_side_bybit, novo_sl, novo_tp):
+def _bingx_editar_sltp(symbol, pos_side_bybit, qty, novo_sl, novo_tp):
     """Ajusta SL/TP de uma posição já aberta na BingX. A BingX não expõe
     um endpoint pra 'substituir' o SL/TP anexado na ordem original —
     aqui funciona colocando uma NOVA ordem condicional de fechamento
-    (closePosition=true) no nível pedido; o que disparar primeiro
-    fecha a posição inteira. A ordem condicional antiga (da entrada)
-    pode continuar pendente na corretora até a posição fechar — vale
-    conferir no app depois de usar, pelo menos até confirmarmos o
-    comportamento real com um teste de verdade."""
+    no nível pedido; o que disparar primeiro fecha a posição.
+
+    Primeira tentativa real (closePosition=true, sem quantity) deu
+    "position not exist" numa conta confirmada em modo Hedge — closePosition
+    provavelmente só existe pra modo Unidirecional (só existe UMA posição
+    por símbolo ali; em Hedge pode ter LONG e SHORT ao mesmo tempo, então
+    "fechar a posição" é ambíguo sem dizer QUAL). Troca pra quantity exata
+    da posição + reduceOnly=true, o padrão de fechamento em modo Hedge.
+    A ordem condicional antiga (da entrada) pode continuar pendente na
+    corretora até a posição fechar — vale conferir no app depois de usar."""
     lado_posicao = "LONG" if pos_side_bybit == "Buy" else "SHORT"
     position_side = lado_posicao if ARBITRAGEM_ATIVA else "BOTH"
     lado_fechamento = "SELL" if pos_side_bybit == "Buy" else "BUY"
@@ -648,7 +653,7 @@ def _bingx_editar_sltp(symbol, pos_side_bybit, novo_sl, novo_tp):
             continue
         p = {"symbol": bingx_symbol(symbol), "side": lado_fechamento,
              "positionSide": position_side, "type": tipo,
-             "stopPrice": round(float(preco), 6), "closePosition": "true"}
+             "stopPrice": round(float(preco), 6), "quantity": qty, "reduceOnly": "true"}
         r = bingx_post(f"{BINGX_SWAP}/trade/order", p)
         if not r or r.get("retCode") not in (0, None):
             return {"ok": False, "error": (r.get("retMsg", "?") if r else "sem resposta")}
@@ -3233,7 +3238,7 @@ def handle_command(text, chat_id):
         exch, pos = candidatos[0]
 
         if exch == "bingx":
-            res = _bingx_editar_sltp(sym, pos["side"], novo_sl, novo_tp)
+            res = _bingx_editar_sltp(sym, pos["side"], pos.get("size"), novo_sl, novo_tp)
         else:
             # positionIdx: 0 em one-way, 1/2 em hedge (arbitragem) — usa o
             # da própria posição, nunca fixo, senão a Bybit rejeita em
