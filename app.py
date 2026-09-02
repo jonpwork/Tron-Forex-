@@ -972,14 +972,14 @@ def get_min_qty_real(symbol, exchange):
 SALDO_SIMULADO = float(os.environ.get("SALDO_SIMULADO", "100"))
 
 def get_saldo_usdt(exchange=None):
-    if (simulacao_de(exchange) if exchange else SIMULACAO):
-        return SALDO_SIMULADO
     """Saldo disponível pra abrir posição NOVA (usado pra travar a margem da
     ordem). Prioriza totalAvailableBalance (o campo que a própria Bybit usa
     pra julgar se cabe uma ordem nova) em vez de availableToWithdraw, que em
     contas UNIFIED costuma vir '0' mesmo com saldo livre pra margem — e como
     vem como STRING, um '0' antigo passava como "verdadeiro" no Python e
     desativava a trava de margem sem avisar."""
+    if (simulacao_de(exchange) if exchange else SIMULACAO):
+        return SALDO_SIMULADO
     r = broker_account(exchange)
     if not r or r.get("retCode") != 0: return None
     lst = r.get("result", {}).get("list", [])
@@ -1004,13 +1004,13 @@ def get_saldo_usdt(exchange=None):
     return None
 
 def get_patrimonio_usdt():
-    if SIMULACAO:
-        return SALDO_SIMULADO
     """Total de ativos da conta (equity), igual ao que a Bybit mostra na tela
     'Ativos' do app — diferente de get_saldo_usdt(), que é só o saldo
     DISPONÍVEL pra abrir posição nova (exclui margem já travada em trades
     abertos). Usado só pra EXIBIR o saldo nas mensagens, nunca pra calcular
     tamanho de posição."""
+    if SIMULACAO:
+        return SALDO_SIMULADO
     r = broker_account()
     if not r or r.get("retCode") != 0: return None
     lst = r.get("result", {}).get("list", [])
@@ -1178,7 +1178,16 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
     cada símbolo, e cada um sempre reflete a posição real daquele lado
     (preço médio, tamanho, SL, TP) — com ARBITRAGEM_ATIVA, compra e
     venda podem estar abertas ao mesmo tempo no mesmo par, então nunca
-    fundir/cancelar um lado por causa do outro."""
+    fundir/cancelar um lado por causa do outro. Também nunca mexe no
+    rastreamento de OUTRA corretora: com EXCHANGES_ATIVAS tendo mais de
+    uma, cada chamada só enxerga/cancela/funde sinais marcados com essa
+    MESMA exchange (registros antigos sem o campo contam como da
+    corretora primária, EXCHANGE — mesma convenção usada no resto do
+    código)."""
+    exch_efetiva = exchange or EXCHANGE
+    def _mesma_exchange(s):
+        return s.get("exchange", EXCHANGE) == exch_efetiva
+
     r = broker_positions(exchange)
     posicoes = []
     if r and r.get("retCode") == 0:
@@ -1186,18 +1195,20 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
                     if p["symbol"] == symbol and float(p.get("size", 0)) > 0]
 
     if not posicoes:
-        # não tem posição aberta (fechou na hora, ou é spot) — cancela
-        # qualquer registro velho "aberto" desse símbolo, pra não sobrar
-        # fantasma rastreado sem posição real por trás.
+        # não tem posição aberta NESSA corretora (fechou na hora, ou é
+        # spot) — cancela só os registros velhos "aberto" desse símbolo
+        # QUE SÃO DESSA corretora, pra não sobrar fantasma rastreado sem
+        # posição real por trás (preserva o que outra corretora tiver).
         for s in memory.get("signals", []):
-            if s["symbol"] == symbol and s["status"] == "aberto":
+            if s["symbol"] == symbol and s["status"] == "aberto" and _mesma_exchange(s):
                 s["status"] = "cancelado"; s["resultado"] = "sem posição real"
         save_memory()
         return
 
     # sl_informado/tp_informado (vindo do /editar) só valem quando existe
-    # UMA posição só nesse símbolo — com os dois lados abertos ao mesmo
-    # tempo não dá pra saber qual dos dois o SL/TP informado é sobre.
+    # UMA posição só nesse símbolo NESSA corretora — com os dois lados
+    # abertos ao mesmo tempo não dá pra saber qual dos dois o SL/TP
+    # informado é sobre.
     aplicar_informado = len(posicoes) == 1
     direcoes_reais = set()
 
@@ -1211,10 +1222,12 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
         tp = (float(tp_informado) if (aplicar_informado and tp_informado)
               else (float(pos["takeProfit"]) if pos.get("takeProfit") else None))
 
-        # funde/atualiza só os registros abertos DO MESMO LADO — nunca
-        # mistura compra com venda quando os dois estão abertos.
+        # funde/atualiza só os registros abertos DO MESMO LADO NESSA
+        # corretora — nunca mistura compra com venda, nem uma corretora
+        # com outra.
         abertos = [s for s in memory.get("signals", [])
-                   if s["symbol"] == symbol and s["status"] == "aberto" and s["direcao"] == direcao]
+                   if s["symbol"] == symbol and s["status"] == "aberto"
+                   and s["direcao"] == direcao and _mesma_exchange(s)]
         if abertos:
             principal = max(abertos, key=lambda s: s["id"])
             for s in abertos:
@@ -1224,7 +1237,7 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
             novo_id = memory.get("next_id", len(memory["signals"])+1)
             memory["next_id"] = novo_id + 1
             principal = {"id": novo_id, "symbol": symbol, "direcao": direcao,
-                         "exchange": exchange or EXCHANGE,
+                         "exchange": exch_efetiva,
                          "entrada": entrada, "stop": sl or entrada, "alvo": tp or entrada,
                          "risco": 0, "rr": 0, "qty_usada": qty, "atr": 0, "origem": origem,
                          "order_id": "", "data": agora_br().strftime("%d/%m/%Y %H:%M"),
@@ -1232,16 +1245,16 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
             memory["signals"].append(principal)
             if len(memory["signals"]) > 200: memory["signals"] = memory["signals"][-200:]
         principal["direcao"] = direcao; principal["entrada"] = entrada; principal["qty_usada"] = qty
-        if exchange: principal["exchange"] = exchange
+        principal["exchange"] = exch_efetiva
         if sl: principal["stop"] = sl
         if tp: principal["alvo"] = tp
 
-    # lado que tinha registro aberto mas não existe mais na corretora
-    # (ex: fechou só um dos dois lados da arbitragem) — cancela só ele,
-    # preserva o outro lado.
+    # lado que tinha registro aberto NESSA corretora mas não existe mais
+    # lá (ex: fechou só um dos dois lados da arbitragem) — cancela só
+    # ele, preserva o outro lado e qualquer registro de outra corretora.
     for s in memory.get("signals", []):
         if (s["symbol"] == symbol and s["status"] == "aberto"
-                and s["direcao"] not in direcoes_reais):
+                and s["direcao"] not in direcoes_reais and _mesma_exchange(s)):
             s["status"] = "cancelado"; s["resultado"] = "sem posição real"
 
     save_memory()
@@ -1646,9 +1659,9 @@ def gatilho_pernada_50(c1, direcao, lado=2):
         pavio = c1[-1]["low"] if direcao == "BUY" else c1[-1]["high"]
         retr = _corrigiu_50(alto, baixo, pavio, direcao)
         if retr is None: return None
-    # sem "M1" fixo no texto: esse gatilho roda em qualquer timeframe via
-    # check_gatilhos_tf (M1 no day trade, H4/H1/M30 no motor ÂNCORA) — quem
-    # chama já prefixa o timeframe certo antes de mostrar a descrição.
+    # sem "M1" fixo no texto: a função é genérica por timeframe, mas hoje
+    # só é chamada em M1 (check_macro_m1) — o texto de exibição é montado
+    # por quem chama, prefixando o timeframe certo quando precisar.
     return {"preco": preco, "desc": f"pernada corrigida {int(retr*100)}%"}
 
 
@@ -1869,9 +1882,9 @@ def check_gatilhos_tf(symbol, direcao, tf="1m", candles_qtd=80):
     """Roda os TRÊS gatilhos (candle de retração, pernada de Elliott, 3
     topos/fundos + ABC) no timeframe pedido. Generaliza check_macro_m1
     pra QUALQUER tempo gráfico — os três gatilhos são funções puras de
-    candle, não têm nada de específico do M1. É o que permite o motor
-    ÂNCORA (H4/H1/M30) usar o mesmo critério de confirmação, só que na
-    escala dele em vez da escala do M1."""
+    candle, não têm nada de específico do M1 — mas hoje só é chamada
+    com tf="1m" (via check_macro_m1): a confirmação de entrada é sempre
+    em M1, nunca direto no tf âncora (ver comentário do ANCORA_ATIVO)."""
     c1 = get_candles(symbol, tf, candles_qtd)
     if not c1 or len(c1) < 10: return None
 
@@ -3039,7 +3052,7 @@ def handle_command(text, chat_id):
 
     # ── PATRIMONIO (depósito + lucro manual + saldo atual, tudo em BRL) ─
     elif cmd == "/patrimonio":
-        saldo = get_saldo_usdt()
+        saldo = get_patrimonio_usdt()
         if not saldo:
             send_telegram("❌ Não consegui buscar o saldo da corretora agora.", chat_id); return
         saldo_brl = saldo * get_usd_brl()
@@ -3262,42 +3275,34 @@ def handle_command(text, chat_id):
             send_telegram(f"❌ Falha ao editar {sym} ({nome_corretora(exch)}): {res['error']}", chat_id)
 
     # ── FUNDIR (corrige rastreamento duplicado quando 2+ ordens no mesmo
-    # símbolo viraram 1 posição só na Bybit — mantém só 1 registro aberto,
-    # sincronizado com a posição real, cancela os outros pra não contar
-    # win/loss em dobro quando fechar) ────────────────────────────────
+    # símbolo viraram 1 posição só numa corretora — mantém só 1 registro
+    # aberto POR LADO/corretora, sincronizado com a posição real, cancela
+    # os outros pra não contar win/loss em dobro quando fechar).
+    # Reaproveita sincronizar_tracking() — mesma lógica de fusão que já
+    # roda depois de /editar e ordens manuais, só que chamada aqui pra
+    # TODAS as corretoras ativas (antes era hardcoded só Bybit).
     elif cmd == "/fundir":
         if len(parts) < 2:
-            send_telegram("Uso: /fundir BTC — quando 2+ ordens no mesmo par viraram 1 posição só na Bybit.", chat_id); return
+            send_telegram("Uso: /fundir BTC — quando 2+ ordens no mesmo par viraram 1 posição só na corretora.", chat_id); return
         sym = parts[1].upper()
         if not sym.endswith("USDT"): sym += "USDT"
-        abertos = [s for s in memory.get("signals", []) if s["symbol"] == sym and s["status"] == "aberto"]
-        if len(abertos) < 2:
-            send_telegram(f"{sym} não tem registros duplicados abertos (encontrei {len(abertos)}). Nada pra fundir.", chat_id); return
-        r = broker_positions()
-        pos = None
-        if r and r.get("retCode") == 0:
-            for p in r.get("result", {}).get("list", []):
-                if p["symbol"] == sym and float(p.get("size", 0)) > 0:
-                    pos = p; break
-        if not pos:
-            send_telegram(f"❌ Não achei posição aberta em {sym} na Bybit — não dá pra sincronizar.", chat_id); return
-        principal = max(abertos, key=lambda s: s["id"])  # mantém o mais recente
-        principal["entrada"] = float(pos.get("avgPrice", principal["entrada"]))
-        principal["qty_usada"] = float(pos.get("size", principal.get("qty_usada", 0)))
-        if pos.get("stopLoss"):   principal["stop"] = float(pos["stopLoss"])
-        if pos.get("takeProfit"): principal["alvo"] = float(pos["takeProfit"])
-        canceladas = []
-        for s in abertos:
-            if s["id"] != principal["id"]:
-                s["status"] = "cancelado"
-                s["resultado"] = "fundido"
-                canceladas.append(s["id"])
-        save_memory()
+        antes = {s["id"] for s in memory.get("signals", []) if s["symbol"] == sym and s["status"] == "aberto"}
+        if len(antes) < 2:
+            send_telegram(f"{sym} não tem registros duplicados abertos (encontrei {len(antes)}). Nada pra fundir.", chat_id); return
+        for exch in EXCHANGES_ATIVAS:
+            sincronizar_tracking(sym, origem="MANUAL", exchange=exch)
+        restantes = [s for s in memory.get("signals", []) if s["symbol"] == sym and s["status"] == "aberto"]
+        canceladas = sorted(antes - {s["id"] for s in restantes})
+        if not restantes:
+            send_telegram(f"❌ {sym}: não achei posição real em nenhuma corretora ativa — não dá pra sincronizar.", chat_id); return
+        resumo = "\n".join(
+            f"Mantido: #{s['id']} ({nome_corretora(s.get('exchange', EXCHANGE))} {s['direcao']}, "
+            f"entrada ${s['entrada']:,.4f}, qty {s['qty_usada']}, SL {s['stop']:,.4f}, TP {s['alvo']:,.4f})"
+            for s in restantes)
         send_telegram(
-            f"🔗 <b>{sym} fundido</b>\n"
-            f"Mantido: #{principal['id']} (entrada ${principal['entrada']:,.4f}, "
-            f"qty {principal['qty_usada']}, SL {principal['stop']:,.4f}, TP {principal['alvo']:,.4f})\n"
-            f"Cancelados do tracking (não contam win/loss): {', '.join('#'+str(i) for i in canceladas)}", chat_id)
+            f"🔗 <b>{sym} fundido</b>\n{resumo}\n"
+            f"Cancelados do tracking (não contam win/loss): "
+            f"{', '.join('#'+str(i) for i in canceladas) or 'nenhum'}", chat_id)
 
     # ══ VISÃO MACRO (M1 dentro de cenário maior, definido por você) ═══
     # Caminho de entrada A MAIS, em paralelo ao M15/M5 — não mexe no que
