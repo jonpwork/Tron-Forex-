@@ -288,6 +288,44 @@
       "resultado": "-R$ 10,20",
       "preco_saida": 77289.66399999999,
       "fechamento": "02/09/2026 15:38"
+    },
+    {
+      "id": 722,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 77292.8,
+      "stop": 77095.59999999999,
+      "alvo": 79368.8,
+      "risco": 197.20000000001164,
+      "rr": 10.5,
+      "qty_usada": 0.01,
+      "atr": 232.48377418512067,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1788374374519",
+      "data": "02/09/2026 15:39",
+      "status": "loss",
+      "resultado": "-R$ 10,07",
+      "preco_saida": 77095.59999999999,
+      "fechamento": "02/09/2026 16:30"
+    },
+    {
+      "id": 723,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 77288.3,
+      "stop": 77246.504,
+      "alvo": 77489.7,
+      "risco": 41.796000000002095,
+      "rr": 4.8,
+      "qty_usada": 0.048,
+      "atr": 212.40402263599498,
+      "origem": "M1-FLUXO-COMPRA",
+      "order_id": "SIM-1788380442093",
+      "data": "02/09/2026 17:20",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -295,7 +333,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 722,
+  "next_id": 724,
   "config_lote": {
     "modo": "auto"
   }
