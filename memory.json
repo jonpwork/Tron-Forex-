@@ -409,8 +409,52 @@
       "origem": "M1-FLUXO-VENDA",
       "order_id": "2095525457302876160",
       "data": "03/09/2026 11:52",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 5,17",
+      "preco_saida": 80681.7,
+      "fechamento": "03/09/2026 12:02",
+      "resultado_usd": -1.0146
+    },
+    {
+      "id": 721,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 80510.8,
+      "stop": 80094.36,
+      "alvo": 80934.0,
+      "risco": 416.4400000000023,
+      "rr": 1.0,
+      "qty_usada": 0.002,
+      "atr": 331.85138872393884,
+      "origem": "M1-FLUXO-COMPRA",
+      "order_id": "2095529996575797248",
+      "data": "03/09/2026 12:10",
+      "status": "win",
+      "resultado": "+R$ 4,69",
+      "preco_saida": 80969.7,
+      "fechamento": "03/09/2026 12:51"
+    },
+    {
+      "id": 722,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 80920.4,
+      "stop": 80986.928,
+      "alvo": 80484.6,
+      "risco": 66.5280000000057,
+      "rr": 6.6,
+      "qty_usada": 0.005,
+      "atr": 341.10505265635203,
+      "origem": "M1-FLUXO-VENDA",
+      "order_id": "2095538296591708160",
+      "data": "03/09/2026 12:43",
+      "status": "loss",
+      "resultado": "-R$ 1,96",
+      "preco_saida": 81231.8,
+      "fechamento": "03/09/2026 12:52",
+      "resultado_usd": -0.3835
     }
   ],
   "zone_tol": 0.2,
@@ -418,7 +462,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 721,
+  "next_id": 723,
   "config_lote": {
     "modo": "auto"
   }
