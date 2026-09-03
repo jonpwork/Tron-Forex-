@@ -847,7 +847,14 @@ def close_futures_symbol(symbol):
     if SIMULACAO:
         return True, "simulacao: nada a fechar na corretora"
     if USANDO_BINGX:
-        return _bingx_close_symbol(symbol)
+        ok, msg = _bingx_close_symbol(symbol)
+        # cancela qualquer ordem condicional pendente que tenha sobrado
+        # (ex: SL/TP de um /editar anterior) — sem isso ela fica reservando
+        # margem/limite de risco na corretora mesmo com a posição já
+        # fechada, e o PRÓXIMO sinal desse símbolo pode falhar com
+        # "Insufficient margin" mesmo a conta tendo saldo livre de sobra.
+        cancel_open_orders(symbol, "linear")
+        return ok, msg
     r = bybit_get("/v5/position/list", {"category": "linear", "symbol": symbol})
     if not r or r.get("retCode") != 0: return False, "Erro ao buscar posicao"
     closed = 0
@@ -863,6 +870,7 @@ def close_futures_symbol(symbol):
             "orderType": "Market", "qty": str(size), "positionIdx": pos.get("positionIdx", 0),
             "reduceOnly": True, "timeInForce": "IOC"})
         closed += 1
+    cancel_open_orders(symbol, "linear")
     return closed > 0, f"{closed} posicao(oes) fechada(s)"
 
 def close_futures_all():
@@ -873,6 +881,7 @@ def close_futures_all():
         if pos:
             for p in pos["result"]["list"]:
                 _bingx_close_symbol(p["symbol"])
+                cancel_open_orders(p["symbol"], "linear")
         return
     r = bybit_get("/v5/position/list", {"category": "linear", "settleCoin": "USDT"})
     if not r or r.get("retCode") != 0: return
@@ -884,6 +893,7 @@ def close_futures_all():
             "category": "linear", "symbol": pos["symbol"], "side": side_c,
             "orderType": "Market", "qty": str(size), "positionIdx": pos.get("positionIdx", 0),
             "reduceOnly": True, "timeInForce": "IOC"})
+        cancel_open_orders(pos["symbol"], "linear")
 
 def cancel_open_orders(symbol, category="linear"):
     if USANDO_BINGX:
