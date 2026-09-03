@@ -1096,10 +1096,19 @@ def get_patrimonio_usdt():
 
 def calc_qty(symbol, entry, stop, exchange=None):
     """Tamanho da posição pelo risco em preço (distância até o stop técnico).
-    SEM travas de valor: não bloqueia por margem, não bloqueia por risco,
-    não descarta sinal por ser 'pequeno' ou 'grande'. Se não der pra
-    calcular, cai no tamanho mínimo configurado do par. `exchange` deixa
-    calcular pelo saldo de uma corretora específica (multi-corretora)."""
+    SEM travas de valor: não descarta sinal por ser 'pequeno' ou 'grande',
+    nunca veta uma entrada. Se não der pra calcular, cai no tamanho mínimo
+    configurado do par. `exchange` deixa calcular pelo saldo de uma
+    corretora específica (multi-corretora).
+
+    Teto pela MARGEM disponível: com stop muito apertado (técnico, colado
+    na origem), o dimensionamento por risco % pode pedir uma quantidade
+    cujo nocional estoura o saldo da conta — a corretora rejeita a ordem
+    INTEIRA com "Insufficient margin" (visto na prática numa conta de
+    $50). Isso não é uma trava de risco escolhida pelo bot, é um limite
+    físico da corretora — sem o teto, o sinal simplesmente falha por
+    completo em vez de abrir menor. Com o teto, a ordem sempre abre,
+    só que do tamanho que a margem realmente permite."""
     qty_cfg = SYMBOLS.get(symbol, {}).get("qty", 0)
     # piso operacional: o maior entre o qty configurado (.env) e o mínimo
     # REAL daquela corretora pro par — evita "Qty invalid" quando o .env
@@ -1126,6 +1135,15 @@ def calc_qty(symbol, entry, stop, exchange=None):
         qty = cfg_lote.get("valor", qty)
     elif cfg_lote.get("modo") == "mult":
         qty = round(qty * cfg_lote.get("valor", 1), _futures_dec(symbol))
+
+    # teto pela margem disponível (95% de folga pra taxa/slippage) — só
+    # reduz quando o cálculo por risco pediu mais do que a conta aguenta
+    # com a alavancagem configurada.
+    leverage = leverage_de(exchange)
+    if leverage and entry > 0 and saldo_usdt > 0:
+        teto_margem = round((saldo_usdt * leverage / entry) * 0.95, _futures_dec(symbol))
+        if teto_margem > 0:
+            qty = min(qty, teto_margem)
 
     if qty < piso:
         qty = piso          # piso operacional do par, não uma trava de risco
