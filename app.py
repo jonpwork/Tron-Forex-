@@ -969,6 +969,56 @@ def get_min_qty_real(symbol, exchange):
     _min_qty_cache[chave] = minimo
     return minimo
 
+# folga extra do stop técnico em cima do spread real (pedido do Jon: o
+# stop nunca pode colar exatamente na origem — precisa sobreviver ao
+# spread da corretora e a um topo/fundo duplo raspando o nível, não só
+# à folga percentual da pernada). Sem cache: spread muda o tempo todo,
+# diferente do mínimo de qty.
+SPREAD_FOLGA_MULT = float(os.environ.get("SPREAD_FOLGA_MULT", "2.0"))
+
+def get_spread_real(symbol, exchange):
+    """Spread real (ask - bid) consultado direto da corretora. Se a
+    consulta falhar ou vier um valor sem sentido, devolve None — quem
+    chamar (stop_tecnico) simplesmente não aplica esse piso extra e
+    segue com a folga percentual de sempre, nunca trava o bot."""
+    try:
+        if exchange == "bingx":
+            r = bingx_get(f"{BINGX_SWAP}/quote/bookTicker",
+                          {"symbol": bingx_symbol(symbol)}, signed=False)
+            if r and r.get("retCode") in (0, None):
+                res = r.get("result") or {}
+                if isinstance(res, list): res = res[0] if res else {}
+                bid = float(res.get("bidPrice") or 0)
+                ask = float(res.get("askPrice") or 0)
+                if bid > 0 and ask > bid:
+                    return ask - bid
+        else:
+            r = bybit_get("/v5/market/tickers", {"category": "linear", "symbol": symbol})
+            if r and r.get("retCode") == 0:
+                lst = r.get("result", {}).get("list", [])
+                if lst:
+                    bid = float(lst[0].get("bid1Price") or 0)
+                    ask = float(lst[0].get("ask1Price") or 0)
+                    if bid > 0 and ask > bid:
+                        return ask - bid
+    except (TypeError, ValueError, KeyError, IndexError) as e:
+        print(f"[SPREAD] {exchange} {symbol}: {e}")
+    return None
+
+def _folga_spread_extra(symbol, preco):
+    """Maior spread real entre as corretoras ativas agora, já multiplicado
+    por SPREAD_FOLGA_MULT — vira um PISO extra pra folga do stop técnico
+    (nunca reduz a folga percentual já calculada, só amplia quando o
+    spread for maior que ela). Sanidade: ignora leitura > 1% do preço —
+    spread de verdade não chega perto disso, é sinal de campo errado da
+    API, e um valor assim explodiria o risco calculado sem necessidade."""
+    maior = 0.0
+    for exch in EXCHANGES_ATIVAS:
+        sp = get_spread_real(symbol, exch)
+        if sp and 0 < sp < preco * 0.01:
+            maior = max(maior, sp)
+    return maior * SPREAD_FOLGA_MULT
+
 SALDO_SIMULADO = float(os.environ.get("SALDO_SIMULADO", "100"))
 
 def get_saldo_usdt(exchange=None):
@@ -2034,13 +2084,17 @@ def origem_da_pernada(c1, direcao, lado=2):
 def stop_tecnico(symbol, direcao, tf="1m", lookback=60, folga_pct=0.08):
     """Stop TÉCNICO: a ORIGEM da pernada corrigida, não a extremidade de
     uma janela fixa de candles. Generaliza stop_tecnico_m1 pra QUALQUER
-    tempo gráfico — é o que dá o stop técnico (na origem) pro motor
-    ÂNCORA (H4/H1/M30), na escala dele em vez da escala do M1.
+    tempo gráfico — é o que dá o stop técnico (na origem) na escala
+    pedida (M1 no day trade, ou a escala âncora quando chamado a partir
+    dela).
 
     Antes esta função pegava a mínima/máxima dos últimos 20 candles — um
     retângulo arbitrário que não tinha relação com o setup detectado.
     Agora lê a estrutura (pivots) e devolve o ponto que realmente
-    invalida o trade, com uma folga pequena pra não colar no pavio."""
+    invalida o trade, com uma folga pra não colar no pavio — nunca só a
+    folga percentual: tem um piso extra do spread real da corretora
+    (_folga_spread_extra), pra sobreviver ao custo do spread e a um
+    topo/fundo duplo raspando a origem, pedido explícito do Jon."""
     c1 = get_candles(symbol, tf, lookback + 5)
     if not c1 or len(c1) < 10: return None
 
@@ -2062,6 +2116,7 @@ def stop_tecnico(symbol, direcao, tf="1m", lookback=60, folga_pct=0.08):
         origem = max(c["high"] for c in janela)
 
     folga = abs(preco - origem) * folga_pct
+    folga = max(folga, _folga_spread_extra(symbol, preco))
     return origem - folga if direcao == "BUY" else origem + folga
 
 
