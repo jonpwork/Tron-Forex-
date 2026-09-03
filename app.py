@@ -33,10 +33,14 @@ def get_usd_brl():
 
 def resultado_brl(s):
     """Calcula o valor REAL em BRL (lucro ou prejuízo) de um sinal já fechado.
-    Prioriza o preço de saída real (mais preciso que o estimado) — só cai
-    pro cálculo estimado (risco x RR) em registros antigos que não têm o
-    preço de saída salvo."""
+    Prioridade: 1) PnL de verdade puxado da corretora (já líquido de taxa
+    e slippage, gravado em resultado_usd quando o sinal fechou — ver
+    pnl_real()); 2) preço de saída real (mais preciso que o estimado,
+    mas SEM taxa/slippage); 3) estimado por risco x RR, só em registros
+    antigos sem preço de saída salvo."""
     qty = s.get("qty_usada") or SYMBOLS.get(s.get("symbol", ""), {}).get("qty", 0)
+    if s.get("resultado_usd") is not None:
+        return s["resultado_usd"] * get_usd_brl()
     if s.get("preco_saida") is not None and s.get("entrada") is not None:
         mov = (s["preco_saida"]-s["entrada"]) if s.get("direcao")=="BUY" else (s["entrada"]-s["preco_saida"])
         return mov * qty * get_usd_brl()
@@ -287,17 +291,15 @@ FLUXO_M1_ATIVO = os.environ.get("FLUXO_M1_ATIVO", "true").strip().lower() in ("1
 SIGNAL_COOLDOWN_FLUXO = int(os.environ.get("SIGNAL_COOLDOWN_FLUXO", "120"))
 
 # ── MOTOR ÂNCORA (posições de longo prazo) ──────────────────────
-# Roda os MESMOS critérios (perna corrigindo 38-65%, figura geométrica,
-# os 3 gatilhos de confirmação, stop técnico na origem) só que direto
-# no timeframe âncora (H4, H1, M30) em vez de usar o M1 como gatilho —
-# aqui o gatilho de confirmação e o stop também são do próprio
-# timeframe âncora. Objetivo: posições que ficam abertas dias/semanas,
-# pra pegar o movimento de fundo, rodando em paralelo ao day
-# trade/arbitragem de M1 (cada timeframe rastreado é um motor próprio,
-# independente, com sua origem e cooldown — "ANCORA-H4", "ANCORA-H1",
-# "ANCORA-M30").
+# Cascata H4 → H1 → M15 → M5 (contexto_maior) pra achar a pernada maior
+# corrigindo 38-65% — isso só define DIREÇÃO e ALVO (escala âncora,
+# posição fica dias/semanas buscando o movimento de fundo). Quem ACIONA
+# a entrada e define o STOP é sempre o M1, esperando ele confirmar a
+# estrutura na mesma direção (é o bloco M1-TECNICO, mais abaixo em
+# main_loop) — nunca abre ordem direto no tf âncora com gatilho/stop do
+# próprio tf âncora (testado e corrigido: o rompimento tem que ser
+# validado pelo M1 em correspondência, senão entra cedo demais).
 ANCORA_ATIVO = os.environ.get("ANCORA_ATIVO", "true").strip().lower() in ("1","true","sim","yes")
-ANCORA_TIMEFRAMES = [tf.strip() for tf in os.environ.get("ANCORA_TIMEFRAMES", "4h,1h,30m").split(",") if tf.strip()]
 SIGNAL_COOLDOWN_ANCORA = int(os.environ.get("SIGNAL_COOLDOWN_ANCORA", "1800"))
 
 # ── ARBITRAGEM DE FLUXO ────────────────────────────────────────
@@ -627,15 +629,20 @@ def _bingx_order_futures(symbol, side, qty, sl=None, tp=None):
         return {"ok": True, "order_id": str(oid)}
     return {"ok": False, "error": (r.get("retMsg", "?") if r else "sem resposta")}
 
-def _bingx_editar_sltp(symbol, pos_side_bybit, novo_sl, novo_tp):
+def _bingx_editar_sltp(symbol, pos_side_bybit, qty, novo_sl, novo_tp):
     """Ajusta SL/TP de uma posição já aberta na BingX. A BingX não expõe
     um endpoint pra 'substituir' o SL/TP anexado na ordem original —
     aqui funciona colocando uma NOVA ordem condicional de fechamento
-    (closePosition=true) no nível pedido; o que disparar primeiro
-    fecha a posição inteira. A ordem condicional antiga (da entrada)
-    pode continuar pendente na corretora até a posição fechar — vale
-    conferir no app depois de usar, pelo menos até confirmarmos o
-    comportamento real com um teste de verdade."""
+    no nível pedido; o que disparar primeiro fecha a posição.
+
+    Primeira tentativa real (closePosition=true, sem quantity) deu
+    "position not exist" numa conta confirmada em modo Hedge — closePosition
+    provavelmente só existe pra modo Unidirecional (só existe UMA posição
+    por símbolo ali; em Hedge pode ter LONG e SHORT ao mesmo tempo, então
+    "fechar a posição" é ambíguo sem dizer QUAL). Troca pra quantity exata
+    da posição + reduceOnly=true, o padrão de fechamento em modo Hedge.
+    A ordem condicional antiga (da entrada) pode continuar pendente na
+    corretora até a posição fechar — vale conferir no app depois de usar."""
     lado_posicao = "LONG" if pos_side_bybit == "Buy" else "SHORT"
     position_side = lado_posicao if ARBITRAGEM_ATIVA else "BOTH"
     lado_fechamento = "SELL" if pos_side_bybit == "Buy" else "BUY"
@@ -644,7 +651,7 @@ def _bingx_editar_sltp(symbol, pos_side_bybit, novo_sl, novo_tp):
             continue
         p = {"symbol": bingx_symbol(symbol), "side": lado_fechamento,
              "positionSide": position_side, "type": tipo,
-             "stopPrice": round(float(preco), 6), "closePosition": "true"}
+             "stopPrice": round(float(preco), 6), "quantity": qty, "reduceOnly": "true"}
         r = bingx_post(f"{BINGX_SWAP}/trade/order", p)
         if not r or r.get("retCode") not in (0, None):
             return {"ok": False, "error": (r.get("retMsg", "?") if r else "sem resposta")}
@@ -661,7 +668,8 @@ def _bingx_order_spot(symbol, side, qty):
 
 def _bingx_positions_norm():
     """Devolve as posições no MESMO formato que broker_positions() da Bybit,
-    pra sincronizar_tracking()/close_* continuarem funcionando sem mudança."""
+    pra sincronizar_tracking()/close_*/{posicoes} continuarem funcionando
+    sem mudança."""
     r = bingx_get(f"{BINGX_SWAP}/user/positions", {})
     if not r or r.get("retCode") not in (0, None): return None
     lst = []
@@ -671,11 +679,38 @@ def _bingx_positions_norm():
         except (TypeError, ValueError):
             continue
         if amt == 0: continue
+        avg_price = float(p.get("avgPrice", 0) or 0)
+        # nome exato do campo de preço atual/PnL na BingX ainda não
+        # confirmado contra a API real — tenta os nomes mais prováveis
+        # (padrão Binance/BingX), sem quebrar se nenhum bater (só
+        # mostra 0, igual já era o comportamento antes disso existir).
+        mark_price = 0
+        for campo in ("markPrice", "marketPrice"):
+            try:
+                mark_price = float(p.get(campo) or 0)
+                if mark_price: break
+            except (TypeError, ValueError):
+                pass
+        pnl = 0
+        for campo in ("unrealizedProfit", "unRealizedProfit", "profitUnreal"):
+            try:
+                pnl = float(p.get(campo) or 0)
+                if pnl: break
+            except (TypeError, ValueError):
+                pass
+        try:
+            leverage = float(p.get("leverage", 0) or 0) or BINGX_LEVERAGE
+        except (TypeError, ValueError):
+            leverage = BINGX_LEVERAGE
+        margem = (abs(amt) * avg_price / leverage) if leverage else 0
         lst.append({
             "symbol": str(p.get("symbol", "")).replace("-", ""),
             "side": "Buy" if amt > 0 else "Sell",
             "size": str(abs(amt)),
-            "avgPrice": str(p.get("avgPrice", 0) or 0),
+            "avgPrice": str(avg_price),
+            "markPrice": str(mark_price),
+            "unrealisedPnl": str(pnl),
+            "positionIM": str(margem),
             "stopLoss": str(p.get("stopLoss", "") or ""),
             "takeProfit": str(p.get("takeProfit", "") or ""),
         })
@@ -812,7 +847,14 @@ def close_futures_symbol(symbol):
     if SIMULACAO:
         return True, "simulacao: nada a fechar na corretora"
     if USANDO_BINGX:
-        return _bingx_close_symbol(symbol)
+        ok, msg = _bingx_close_symbol(symbol)
+        # cancela qualquer ordem condicional pendente que tenha sobrado
+        # (ex: SL/TP de um /editar anterior) — sem isso ela fica reservando
+        # margem/limite de risco na corretora mesmo com a posição já
+        # fechada, e o PRÓXIMO sinal desse símbolo pode falhar com
+        # "Insufficient margin" mesmo a conta tendo saldo livre de sobra.
+        cancel_open_orders(symbol, "linear")
+        return ok, msg
     r = bybit_get("/v5/position/list", {"category": "linear", "symbol": symbol})
     if not r or r.get("retCode") != 0: return False, "Erro ao buscar posicao"
     closed = 0
@@ -828,6 +870,7 @@ def close_futures_symbol(symbol):
             "orderType": "Market", "qty": str(size), "positionIdx": pos.get("positionIdx", 0),
             "reduceOnly": True, "timeInForce": "IOC"})
         closed += 1
+    cancel_open_orders(symbol, "linear")
     return closed > 0, f"{closed} posicao(oes) fechada(s)"
 
 def close_futures_all():
@@ -838,6 +881,7 @@ def close_futures_all():
         if pos:
             for p in pos["result"]["list"]:
                 _bingx_close_symbol(p["symbol"])
+                cancel_open_orders(p["symbol"], "linear")
         return
     r = bybit_get("/v5/position/list", {"category": "linear", "settleCoin": "USDT"})
     if not r or r.get("retCode") != 0: return
@@ -849,6 +893,7 @@ def close_futures_all():
             "category": "linear", "symbol": pos["symbol"], "side": side_c,
             "orderType": "Market", "qty": str(size), "positionIdx": pos.get("positionIdx", 0),
             "reduceOnly": True, "timeInForce": "IOC"})
+        cancel_open_orders(pos["symbol"], "linear")
 
 def cancel_open_orders(symbol, category="linear"):
     if USANDO_BINGX:
@@ -934,17 +979,67 @@ def get_min_qty_real(symbol, exchange):
     _min_qty_cache[chave] = minimo
     return minimo
 
+# folga extra do stop técnico em cima do spread real (pedido do Jon: o
+# stop nunca pode colar exatamente na origem — precisa sobreviver ao
+# spread da corretora e a um topo/fundo duplo raspando o nível, não só
+# à folga percentual da pernada). Sem cache: spread muda o tempo todo,
+# diferente do mínimo de qty.
+SPREAD_FOLGA_MULT = float(os.environ.get("SPREAD_FOLGA_MULT", "2.0"))
+
+def get_spread_real(symbol, exchange):
+    """Spread real (ask - bid) consultado direto da corretora. Se a
+    consulta falhar ou vier um valor sem sentido, devolve None — quem
+    chamar (stop_tecnico) simplesmente não aplica esse piso extra e
+    segue com a folga percentual de sempre, nunca trava o bot."""
+    try:
+        if exchange == "bingx":
+            r = bingx_get(f"{BINGX_SWAP}/quote/bookTicker",
+                          {"symbol": bingx_symbol(symbol)}, signed=False)
+            if r and r.get("retCode") in (0, None):
+                res = r.get("result") or {}
+                if isinstance(res, list): res = res[0] if res else {}
+                bid = float(res.get("bidPrice") or 0)
+                ask = float(res.get("askPrice") or 0)
+                if bid > 0 and ask > bid:
+                    return ask - bid
+        else:
+            r = bybit_get("/v5/market/tickers", {"category": "linear", "symbol": symbol})
+            if r and r.get("retCode") == 0:
+                lst = r.get("result", {}).get("list", [])
+                if lst:
+                    bid = float(lst[0].get("bid1Price") or 0)
+                    ask = float(lst[0].get("ask1Price") or 0)
+                    if bid > 0 and ask > bid:
+                        return ask - bid
+    except (TypeError, ValueError, KeyError, IndexError) as e:
+        print(f"[SPREAD] {exchange} {symbol}: {e}")
+    return None
+
+def _folga_spread_extra(symbol, preco):
+    """Maior spread real entre as corretoras ativas agora, já multiplicado
+    por SPREAD_FOLGA_MULT — vira um PISO extra pra folga do stop técnico
+    (nunca reduz a folga percentual já calculada, só amplia quando o
+    spread for maior que ela). Sanidade: ignora leitura > 1% do preço —
+    spread de verdade não chega perto disso, é sinal de campo errado da
+    API, e um valor assim explodiria o risco calculado sem necessidade."""
+    maior = 0.0
+    for exch in EXCHANGES_ATIVAS:
+        sp = get_spread_real(symbol, exch)
+        if sp and 0 < sp < preco * 0.01:
+            maior = max(maior, sp)
+    return maior * SPREAD_FOLGA_MULT
+
 SALDO_SIMULADO = float(os.environ.get("SALDO_SIMULADO", "100"))
 
 def get_saldo_usdt(exchange=None):
-    if (simulacao_de(exchange) if exchange else SIMULACAO):
-        return SALDO_SIMULADO
     """Saldo disponível pra abrir posição NOVA (usado pra travar a margem da
     ordem). Prioriza totalAvailableBalance (o campo que a própria Bybit usa
     pra julgar se cabe uma ordem nova) em vez de availableToWithdraw, que em
     contas UNIFIED costuma vir '0' mesmo com saldo livre pra margem — e como
     vem como STRING, um '0' antigo passava como "verdadeiro" no Python e
     desativava a trava de margem sem avisar."""
+    if (simulacao_de(exchange) if exchange else SIMULACAO):
+        return SALDO_SIMULADO
     r = broker_account(exchange)
     if not r or r.get("retCode") != 0: return None
     lst = r.get("result", {}).get("list", [])
@@ -969,13 +1064,13 @@ def get_saldo_usdt(exchange=None):
     return None
 
 def get_patrimonio_usdt():
-    if SIMULACAO:
-        return SALDO_SIMULADO
     """Total de ativos da conta (equity), igual ao que a Bybit mostra na tela
     'Ativos' do app — diferente de get_saldo_usdt(), que é só o saldo
     DISPONÍVEL pra abrir posição nova (exclui margem já travada em trades
     abertos). Usado só pra EXIBIR o saldo nas mensagens, nunca pra calcular
     tamanho de posição."""
+    if SIMULACAO:
+        return SALDO_SIMULADO
     r = broker_account()
     if not r or r.get("retCode") != 0: return None
     lst = r.get("result", {}).get("list", [])
@@ -1001,10 +1096,19 @@ def get_patrimonio_usdt():
 
 def calc_qty(symbol, entry, stop, exchange=None):
     """Tamanho da posição pelo risco em preço (distância até o stop técnico).
-    SEM travas de valor: não bloqueia por margem, não bloqueia por risco,
-    não descarta sinal por ser 'pequeno' ou 'grande'. Se não der pra
-    calcular, cai no tamanho mínimo configurado do par. `exchange` deixa
-    calcular pelo saldo de uma corretora específica (multi-corretora)."""
+    SEM travas de valor: não descarta sinal por ser 'pequeno' ou 'grande',
+    nunca veta uma entrada. Se não der pra calcular, cai no tamanho mínimo
+    configurado do par. `exchange` deixa calcular pelo saldo de uma
+    corretora específica (multi-corretora).
+
+    Teto pela MARGEM disponível: com stop muito apertado (técnico, colado
+    na origem), o dimensionamento por risco % pode pedir uma quantidade
+    cujo nocional estoura o saldo da conta — a corretora rejeita a ordem
+    INTEIRA com "Insufficient margin" (visto na prática numa conta de
+    $50). Isso não é uma trava de risco escolhida pelo bot, é um limite
+    físico da corretora — sem o teto, o sinal simplesmente falha por
+    completo em vez de abrir menor. Com o teto, a ordem sempre abre,
+    só que do tamanho que a margem realmente permite."""
     qty_cfg = SYMBOLS.get(symbol, {}).get("qty", 0)
     # piso operacional: o maior entre o qty configurado (.env) e o mínimo
     # REAL daquela corretora pro par — evita "Qty invalid" quando o .env
@@ -1031,6 +1135,15 @@ def calc_qty(symbol, entry, stop, exchange=None):
         qty = cfg_lote.get("valor", qty)
     elif cfg_lote.get("modo") == "mult":
         qty = round(qty * cfg_lote.get("valor", 1), _futures_dec(symbol))
+
+    # teto pela margem disponível (95% de folga pra taxa/slippage) — só
+    # reduz quando o cálculo por risco pediu mais do que a conta aguenta
+    # com a alavancagem configurada.
+    leverage = leverage_de(exchange)
+    if leverage and entry > 0 and saldo_usdt > 0:
+        teto_margem = round((saldo_usdt * leverage / entry) * 0.95, _futures_dec(symbol))
+        if teto_margem > 0:
+            qty = min(qty, teto_margem)
 
     if qty < piso:
         qty = piso          # piso operacional do par, não uma trava de risco
@@ -1074,6 +1187,63 @@ def _parse_sym(s):
     s = s.upper()
     return s if s.endswith("USDT") else s + "USDT"
 
+def _bybit_pnl_real(symbol, direcao):
+    """PnL REAL (líquido de taxa) do fechamento mais recente desse
+    símbolo/lado na Bybit. Casa pelo lado + horário mais próximo de
+    agora — não dá pra casar por ID direto, o closed-pnl é indexado
+    pela ordem de FECHAMENTO, e o único ID que a gente guarda é o da
+    ABERTURA."""
+    r = bybit_get("/v5/position/closed-pnl", {"category": "linear", "symbol": symbol, "limit": 10})
+    if not r or r.get("retCode") != 0:
+        return None
+    lado = "Buy" if direcao == "BUY" else "Sell"
+    candidatos = [c for c in r.get("result", {}).get("list", []) if c.get("side") == lado]
+    if not candidatos:
+        return None
+    agora_ms = int(time.time() * 1000)
+    melhor = min(candidatos, key=lambda c: abs(int(c.get("updatedTime", 0) or 0) - agora_ms))
+    if abs(int(melhor.get("updatedTime", 0) or 0) - agora_ms) > 5 * 60 * 1000:
+        return None  # nada recente o suficiente pra confiar que é ESSE fechamento
+    try:
+        return float(melhor["closedPnl"])
+    except (KeyError, ValueError, TypeError):
+        return None
+
+def _bingx_pnl_real(symbol, direcao):
+    """Mesma ideia de _bybit_pnl_real, via histórico de income da BingX.
+    AINDA NÃO CONFIRMADO contra a API real (endpoint/campos por
+    verificar) — só usado com fallback seguro em pnl_real(), nunca
+    quebra nem inventa valor errado se vier vazio/no formato errado."""
+    r = bingx_get(f"{BINGX_SWAP}/user/income",
+                  {"symbol": bingx_symbol(symbol), "incomeType": "REALIZED_PNL", "limit": 10})
+    if not r or r.get("retCode") not in (0, None):
+        return None
+    registros = r.get("result") or []
+    if not isinstance(registros, list) or not registros:
+        return None
+    agora_ms = int(time.time() * 1000)
+    try:
+        melhor = min(registros, key=lambda c: abs(int(c.get("time", 0) or 0) - agora_ms))
+        if abs(int(melhor.get("time", 0) or 0) - agora_ms) > 5 * 60 * 1000:
+            return None
+        return float(melhor["income"])
+    except (KeyError, ValueError, TypeError):
+        return None
+
+def pnl_real(symbol, direcao, exchange):
+    """PnL de verdade (líquido de taxa/slippage) do fechamento que
+    ACABOU de acontecer nessa corretora — usado só pra sinais reais
+    (nunca simulados, não existe closed-pnl de ordem fake). Nunca
+    lança exceção nem afeta o tracking: se falhar por qualquer razão,
+    quem chamou cai pro cálculo estimado de sempre."""
+    try:
+        if exchange == "bingx":
+            return _bingx_pnl_real(symbol, direcao)
+        return _bybit_pnl_real(symbol, direcao)
+    except Exception as e:
+        print(f"[PNL_REAL] {exchange} {symbol}: {e}")
+        return None
+
 def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="MANUAL", exchange=None):
     """Depois de QUALQUER ordem manual que mexe numa posição de futuros,
     sincroniza o rastreamento interno (memory['signals']) com o que
@@ -1086,7 +1256,16 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
     cada símbolo, e cada um sempre reflete a posição real daquele lado
     (preço médio, tamanho, SL, TP) — com ARBITRAGEM_ATIVA, compra e
     venda podem estar abertas ao mesmo tempo no mesmo par, então nunca
-    fundir/cancelar um lado por causa do outro."""
+    fundir/cancelar um lado por causa do outro. Também nunca mexe no
+    rastreamento de OUTRA corretora: com EXCHANGES_ATIVAS tendo mais de
+    uma, cada chamada só enxerga/cancela/funde sinais marcados com essa
+    MESMA exchange (registros antigos sem o campo contam como da
+    corretora primária, EXCHANGE — mesma convenção usada no resto do
+    código)."""
+    exch_efetiva = exchange or EXCHANGE
+    def _mesma_exchange(s):
+        return s.get("exchange", EXCHANGE) == exch_efetiva
+
     r = broker_positions(exchange)
     posicoes = []
     if r and r.get("retCode") == 0:
@@ -1094,18 +1273,20 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
                     if p["symbol"] == symbol and float(p.get("size", 0)) > 0]
 
     if not posicoes:
-        # não tem posição aberta (fechou na hora, ou é spot) — cancela
-        # qualquer registro velho "aberto" desse símbolo, pra não sobrar
-        # fantasma rastreado sem posição real por trás.
+        # não tem posição aberta NESSA corretora (fechou na hora, ou é
+        # spot) — cancela só os registros velhos "aberto" desse símbolo
+        # QUE SÃO DESSA corretora, pra não sobrar fantasma rastreado sem
+        # posição real por trás (preserva o que outra corretora tiver).
         for s in memory.get("signals", []):
-            if s["symbol"] == symbol and s["status"] == "aberto":
+            if s["symbol"] == symbol and s["status"] == "aberto" and _mesma_exchange(s):
                 s["status"] = "cancelado"; s["resultado"] = "sem posição real"
         save_memory()
         return
 
     # sl_informado/tp_informado (vindo do /editar) só valem quando existe
-    # UMA posição só nesse símbolo — com os dois lados abertos ao mesmo
-    # tempo não dá pra saber qual dos dois o SL/TP informado é sobre.
+    # UMA posição só nesse símbolo NESSA corretora — com os dois lados
+    # abertos ao mesmo tempo não dá pra saber qual dos dois o SL/TP
+    # informado é sobre.
     aplicar_informado = len(posicoes) == 1
     direcoes_reais = set()
 
@@ -1119,10 +1300,12 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
         tp = (float(tp_informado) if (aplicar_informado and tp_informado)
               else (float(pos["takeProfit"]) if pos.get("takeProfit") else None))
 
-        # funde/atualiza só os registros abertos DO MESMO LADO — nunca
-        # mistura compra com venda quando os dois estão abertos.
+        # funde/atualiza só os registros abertos DO MESMO LADO NESSA
+        # corretora — nunca mistura compra com venda, nem uma corretora
+        # com outra.
         abertos = [s for s in memory.get("signals", [])
-                   if s["symbol"] == symbol and s["status"] == "aberto" and s["direcao"] == direcao]
+                   if s["symbol"] == symbol and s["status"] == "aberto"
+                   and s["direcao"] == direcao and _mesma_exchange(s)]
         if abertos:
             principal = max(abertos, key=lambda s: s["id"])
             for s in abertos:
@@ -1132,7 +1315,7 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
             novo_id = memory.get("next_id", len(memory["signals"])+1)
             memory["next_id"] = novo_id + 1
             principal = {"id": novo_id, "symbol": symbol, "direcao": direcao,
-                         "exchange": exchange or EXCHANGE,
+                         "exchange": exch_efetiva,
                          "entrada": entrada, "stop": sl or entrada, "alvo": tp or entrada,
                          "risco": 0, "rr": 0, "qty_usada": qty, "atr": 0, "origem": origem,
                          "order_id": "", "data": agora_br().strftime("%d/%m/%Y %H:%M"),
@@ -1140,16 +1323,16 @@ def sincronizar_tracking(symbol, sl_informado=None, tp_informado=None, origem="M
             memory["signals"].append(principal)
             if len(memory["signals"]) > 200: memory["signals"] = memory["signals"][-200:]
         principal["direcao"] = direcao; principal["entrada"] = entrada; principal["qty_usada"] = qty
-        if exchange: principal["exchange"] = exchange
+        principal["exchange"] = exch_efetiva
         if sl: principal["stop"] = sl
         if tp: principal["alvo"] = tp
 
-    # lado que tinha registro aberto mas não existe mais na corretora
-    # (ex: fechou só um dos dois lados da arbitragem) — cancela só ele,
-    # preserva o outro lado.
+    # lado que tinha registro aberto NESSA corretora mas não existe mais
+    # lá (ex: fechou só um dos dois lados da arbitragem) — cancela só
+    # ele, preserva o outro lado e qualquer registro de outra corretora.
     for s in memory.get("signals", []):
         if (s["symbol"] == symbol and s["status"] == "aberto"
-                and s["direcao"] not in direcoes_reais):
+                and s["direcao"] not in direcoes_reais and _mesma_exchange(s)):
             s["status"] = "cancelado"; s["resultado"] = "sem posição real"
 
     save_memory()
@@ -1554,9 +1737,9 @@ def gatilho_pernada_50(c1, direcao, lado=2):
         pavio = c1[-1]["low"] if direcao == "BUY" else c1[-1]["high"]
         retr = _corrigiu_50(alto, baixo, pavio, direcao)
         if retr is None: return None
-    # sem "M1" fixo no texto: esse gatilho roda em qualquer timeframe via
-    # check_gatilhos_tf (M1 no day trade, H4/H1/M30 no motor ÂNCORA) — quem
-    # chama já prefixa o timeframe certo antes de mostrar a descrição.
+    # sem "M1" fixo no texto: a função é genérica por timeframe, mas hoje
+    # só é chamada em M1 (check_macro_m1) — o texto de exibição é montado
+    # por quem chama, prefixando o timeframe certo quando precisar.
     return {"preco": preco, "desc": f"pernada corrigida {int(retr*100)}%"}
 
 
@@ -1777,9 +1960,9 @@ def check_gatilhos_tf(symbol, direcao, tf="1m", candles_qtd=80):
     """Roda os TRÊS gatilhos (candle de retração, pernada de Elliott, 3
     topos/fundos + ABC) no timeframe pedido. Generaliza check_macro_m1
     pra QUALQUER tempo gráfico — os três gatilhos são funções puras de
-    candle, não têm nada de específico do M1. É o que permite o motor
-    ÂNCORA (H4/H1/M30) usar o mesmo critério de confirmação, só que na
-    escala dele em vez da escala do M1."""
+    candle, não têm nada de específico do M1 — mas hoje só é chamada
+    com tf="1m" (via check_macro_m1): a confirmação de entrada é sempre
+    em M1, nunca direto no tf âncora (ver comentário do ANCORA_ATIVO)."""
     c1 = get_candles(symbol, tf, candles_qtd)
     if not c1 or len(c1) < 10: return None
 
@@ -1929,13 +2112,17 @@ def origem_da_pernada(c1, direcao, lado=2):
 def stop_tecnico(symbol, direcao, tf="1m", lookback=60, folga_pct=0.08):
     """Stop TÉCNICO: a ORIGEM da pernada corrigida, não a extremidade de
     uma janela fixa de candles. Generaliza stop_tecnico_m1 pra QUALQUER
-    tempo gráfico — é o que dá o stop técnico (na origem) pro motor
-    ÂNCORA (H4/H1/M30), na escala dele em vez da escala do M1.
+    tempo gráfico — é o que dá o stop técnico (na origem) na escala
+    pedida (M1 no day trade, ou a escala âncora quando chamado a partir
+    dela).
 
     Antes esta função pegava a mínima/máxima dos últimos 20 candles — um
     retângulo arbitrário que não tinha relação com o setup detectado.
     Agora lê a estrutura (pivots) e devolve o ponto que realmente
-    invalida o trade, com uma folga pequena pra não colar no pavio."""
+    invalida o trade, com uma folga pra não colar no pavio — nunca só a
+    folga percentual: tem um piso extra do spread real da corretora
+    (_folga_spread_extra), pra sobreviver ao custo do spread e a um
+    topo/fundo duplo raspando a origem, pedido explícito do Jon."""
     c1 = get_candles(symbol, tf, lookback + 5)
     if not c1 or len(c1) < 10: return None
 
@@ -1957,6 +2144,7 @@ def stop_tecnico(symbol, direcao, tf="1m", lookback=60, folga_pct=0.08):
         origem = max(c["high"] for c in janela)
 
     folga = abs(preco - origem) * folga_pct
+    folga = max(folga, _folga_spread_extra(symbol, preco))
     return origem - folga if direcao == "BUY" else origem + folga
 
 
@@ -2448,6 +2636,9 @@ def fire_signal(symbol, entry, ignorar_travas=False):
         desc_gatilho = f"📊 {info_extra}" if info_extra else "📊 Pernada de M1 corrigindo ~50%"
         desc_stop    = "🛑 Stop (técnico, origem M1)"
     elif origem.startswith("ANCORA-"):
+        # compatibilidade com posições antigas (motor ANCORA-H4/H1/M30
+        # de disparo direto, removido — agora o M1-TECNICO é o motor
+        # âncora oficial, sempre acionado via M1)
         tf_nome = origem.split("-", 1)[1]
         info_extra = entry.get("rsi", "")
         desc_gatilho = f"📊 {info_extra}" if info_extra else f"📊 Pernada {tf_nome} corrigindo ~50%"
@@ -2455,7 +2646,8 @@ def fire_signal(symbol, entry, ignorar_travas=False):
     else:
         desc_gatilho = f"📊 Tendência H1 + pullback de RSI ({entry.get('rsi', '')})"
         desc_stop    = "🛑 Stop (ATR)"
-    posicao_txt = "\n📌 Posição de longo prazo (âncora)" if origem.startswith("ANCORA-") else ""
+    posicao_txt = ("\n📌 Posição de longo prazo (âncora)"
+                   if origem == "M1-TECNICO" or origem.startswith("ANCORA-") else "")
     send_telegram(
         f"{emoji} <b>SINAL {action}</b> — {sym}  [{origem}]{posicao_txt}\n"
         f"{desc_gatilho}\n"
@@ -2536,6 +2728,14 @@ def check_signals(price_map):
             s["preco_saida"] = p; s["fechamento"] = ts
             lucro = (p - s["entrada"]) if s["direcao"]=="BUY" else (s["entrada"] - p)
             s["status"] = "win" if lucro >= 0 else "loss"
+            if not sim_do_sinal:
+                # sinal real: puxa o PnL de verdade da corretora (líquido
+                # de taxa/slippage) pros relatórios usarem em vez do
+                # cálculo estimado só por preço — pedido do Jon depois de
+                # ver o resultado do bot divergir do extrato real.
+                usd_real = pnl_real(sym, s["direcao"], s.get("exchange", EXCHANGE))
+                if usd_real is not None:
+                    s["resultado_usd"] = usd_real
             s["resultado"] = fmt_brl(resultado_brl(s))
             alt = True
             venceu = s["status"] == "win"
@@ -2588,26 +2788,24 @@ def handle_command(text, chat_id):
             "/status · /analise · /diag\n"
             "/performance [hoje|semana|mes|N|tudo] · /motores · /zerar · /backup · /reiniciar · /relatorio · /hoje · /saldo · /patrimonio · /posicoes · /ordem (id) · /debug (par) · /editar (par) sl= tp= · /fundir (par) · /status_freio · /retomar · /freio_on · /freio_off\n"
             "/lote · /lote 2 · /lote 0.5 · /lote fixo 0.01 · /lote auto\n\n"
-            "🎯 <b>M1 TÉCNICO (automático, roda sozinho):</b>\n"
-            "Todos os símbolos, o tempo todo: direção pela tendência de H1, "
-            "gatilho na pernada de M1 corrigindo ~50%, stop no fundo/topo do "
-            "M1, alvo na estrutura do M15. Sem comando — é sempre ligado.\n\n"
             "🌊 <b>FLUXO M1 PURO (automático, em paralelo):</b>\n"
             "Dois motores independentes (compra e venda), mesmo critério: "
             "perna + correção ~50% direto no M1, sem esperar H4/H1/M15, "
-            "stop na origem da pernada, alvo na projeção 38.2% da própria "
-            "onda do M1 (cai pro próximo topo/fundo só quando não dá pra "
-            "identificar a pernada). Os dois podem disparar no mesmo par ao "
-            "mesmo tempo (arbitragem — precisa ARBITRAGEM_ATIVA=true pra "
-            "coexistir). Trades curtos e frequentes. Sem comando — sempre "
-            "ligado.\n\n"
+            "stop na origem da pernada, alvo no próximo topo/fundo real do "
+            "M1 (cai pra projeção 38.2% só quando não dá pra achar um nível "
+            "de estrutura). RR sai técnico — cada leg encadeia na próxima "
+            "assim que o fundo/topo anterior é rompido, pra sempre. Os dois "
+            "podem disparar no mesmo par ao mesmo tempo (arbitragem — "
+            "precisa ARBITRAGEM_ATIVA=true pra coexistir). Trades curtos e "
+            "frequentes. Sem comando — sempre ligado.\n\n"
             "⚓ <b>MOTOR ÂNCORA — posições de longo prazo (automático):</b>\n"
-            "Mesmo critério (perna corrigindo 38-65%, figura geométrica, "
-            "os 3 gatilhos, stop técnico na origem), só que direto no "
-            "H4/H1/M30 — gatilho e stop também nesse timeframe, sem "
-            "esperar o M1. Cada timeframe é um motor próprio (ANCORA-H4/"
-            "ANCORA-H1/ANCORA-30M), pra ficar posicionado dias/semanas em "
-            "paralelo ao day trade de M1. Sem comando — sempre ligado.\n\n"
+            "Cascata H4→H1→M15→M5 (contexto_maior) acha a pernada maior "
+            "corrigindo 38-65% e define direção + alvo (estrutura/projeção "
+            "da âncora) — mas quem ACIONA a entrada e define o STOP é "
+            "sempre o M1, esperando ele confirmar em correspondência. "
+            "Nunca abre ordem direto no H4/H1/M30. Cooldown mais longo, "
+            "posição fica dias/semanas buscando. Sem comando — sempre "
+            "ligado.\n\n"
             "🗺️ <b>VISÃO MACRO (M1 dentro de cenário maior):</b>\n"
             "/macro BTC BUY 105000 118000 [nota]\n"
             "/macro BTC BUY auto auto [nota]  (stop técnico + alvo M15)\n"
@@ -2782,8 +2980,9 @@ def handle_command(text, chat_id):
             if "sub-perna" in d:                  return "ABC em construção"
             if "candle corrigindo" in d:          return "candle com retração"
             # "pernada" cobre tanto o texto antigo ("pernada M1 corrigida")
-            # quanto o novo ("pernada corrigida") — esse gatilho hoje roda
-            # tanto no M1 quanto nas âncoras H4/H1/M30.
+            # quanto o novo ("pernada corrigida") — esse gatilho é sempre
+            # do M1 (Fluxo M1 puro ou M1-TECNICO acionando dentro da
+            # âncora maior).
             if "pernada" in d:                    return "pernada corrigida 50%"
             if "pullback" in d or "tendência" in d: return "RSI + tendência"
             return None
@@ -2936,7 +3135,7 @@ def handle_command(text, chat_id):
 
     # ── PATRIMONIO (depósito + lucro manual + saldo atual, tudo em BRL) ─
     elif cmd == "/patrimonio":
-        saldo = get_saldo_usdt()
+        saldo = get_patrimonio_usdt()
         if not saldo:
             send_telegram("❌ Não consegui buscar o saldo da corretora agora.", chat_id); return
         saldo_brl = saldo * get_usd_brl()
@@ -2956,14 +3155,20 @@ def handle_command(text, chat_id):
 
     # ── POSICOES ────────────────────────────────────────────
     elif cmd == "/posicoes":
-        r = broker_positions()
-        if not r or r.get("retCode") != 0:
-            send_telegram(f"❌ {r}", chat_id); return
-        lista = [p for p in r.get("result", {}).get("list", []) if float(p.get("size", 0)) > 0]
+        # consulta TODAS as corretoras ativas — com mais de uma ligada
+        # (EXCHANGES_ATIVAS), a mesma posição pode existir em lugares
+        # diferentes ao mesmo tempo, e cada uma tem sua própria API.
+        lista = []
+        for exch in EXCHANGES_ATIVAS:
+            r = broker_positions(exch)
+            if r and r.get("retCode") == 0:
+                for p in r.get("result", {}).get("list", []):
+                    if float(p.get("size", 0)) > 0:
+                        lista.append((exch, p))
         if not lista: send_telegram("📭 Nenhuma posicao aberta.", chat_id); return
         cotacao = get_usd_brl()
-        msg = "📊 <b>Posições abertas (Bybit)</b>\n"
-        for p in lista:
+        msg = "📊 <b>Posições abertas</b>\n"
+        for exch, p in lista:
             pnl  = float(p.get("unrealisedPnl", 0)); ep = float(p.get("avgPrice", 0))
             mark = float(p.get("markPrice", 0) or 0)
             qty  = float(p.get("size", 0) or 0)
@@ -2978,7 +3183,7 @@ def handle_command(text, chat_id):
                 if tp_v: alvo_txt  = f"  |  🏆 Potencial: R$ {abs(float(tp_v) - ep) * qty * cotacao:,.2f}"
             except (TypeError, ValueError):
                 pass
-            msg += (f"{em} <b>{p['side']} {p.get('size')} {p['symbol']}</b>\n"
+            msg += (f"{em} <b>{p['side']} {p.get('size')} {p['symbol']}</b> ({nome_corretora(exch)})\n"
                     f"   Entrada: ${ep:,.4f} | Atual: ${mark:,.4f}\n"
                     f"   🛑 SL: {sl}  🎯 TP: {tp}{risco_txt}{alvo_txt}\n"
                     f"   PnL: R$ {pnl*cotacao:+,.2f} (${pnl:+.2f}) | ROI: {roi:+.1f}%\n")
@@ -3130,7 +3335,7 @@ def handle_command(text, chat_id):
         exch, pos = candidatos[0]
 
         if exch == "bingx":
-            res = _bingx_editar_sltp(sym, pos["side"], novo_sl, novo_tp)
+            res = _bingx_editar_sltp(sym, pos["side"], pos.get("size"), novo_sl, novo_tp)
         else:
             # positionIdx: 0 em one-way, 1/2 em hedge (arbitragem) — usa o
             # da própria posição, nunca fixo, senão a Bybit rejeita em
@@ -3153,42 +3358,34 @@ def handle_command(text, chat_id):
             send_telegram(f"❌ Falha ao editar {sym} ({nome_corretora(exch)}): {res['error']}", chat_id)
 
     # ── FUNDIR (corrige rastreamento duplicado quando 2+ ordens no mesmo
-    # símbolo viraram 1 posição só na Bybit — mantém só 1 registro aberto,
-    # sincronizado com a posição real, cancela os outros pra não contar
-    # win/loss em dobro quando fechar) ────────────────────────────────
+    # símbolo viraram 1 posição só numa corretora — mantém só 1 registro
+    # aberto POR LADO/corretora, sincronizado com a posição real, cancela
+    # os outros pra não contar win/loss em dobro quando fechar).
+    # Reaproveita sincronizar_tracking() — mesma lógica de fusão que já
+    # roda depois de /editar e ordens manuais, só que chamada aqui pra
+    # TODAS as corretoras ativas (antes era hardcoded só Bybit).
     elif cmd == "/fundir":
         if len(parts) < 2:
-            send_telegram("Uso: /fundir BTC — quando 2+ ordens no mesmo par viraram 1 posição só na Bybit.", chat_id); return
+            send_telegram("Uso: /fundir BTC — quando 2+ ordens no mesmo par viraram 1 posição só na corretora.", chat_id); return
         sym = parts[1].upper()
         if not sym.endswith("USDT"): sym += "USDT"
-        abertos = [s for s in memory.get("signals", []) if s["symbol"] == sym and s["status"] == "aberto"]
-        if len(abertos) < 2:
-            send_telegram(f"{sym} não tem registros duplicados abertos (encontrei {len(abertos)}). Nada pra fundir.", chat_id); return
-        r = broker_positions()
-        pos = None
-        if r and r.get("retCode") == 0:
-            for p in r.get("result", {}).get("list", []):
-                if p["symbol"] == sym and float(p.get("size", 0)) > 0:
-                    pos = p; break
-        if not pos:
-            send_telegram(f"❌ Não achei posição aberta em {sym} na Bybit — não dá pra sincronizar.", chat_id); return
-        principal = max(abertos, key=lambda s: s["id"])  # mantém o mais recente
-        principal["entrada"] = float(pos.get("avgPrice", principal["entrada"]))
-        principal["qty_usada"] = float(pos.get("size", principal.get("qty_usada", 0)))
-        if pos.get("stopLoss"):   principal["stop"] = float(pos["stopLoss"])
-        if pos.get("takeProfit"): principal["alvo"] = float(pos["takeProfit"])
-        canceladas = []
-        for s in abertos:
-            if s["id"] != principal["id"]:
-                s["status"] = "cancelado"
-                s["resultado"] = "fundido"
-                canceladas.append(s["id"])
-        save_memory()
+        antes = {s["id"] for s in memory.get("signals", []) if s["symbol"] == sym and s["status"] == "aberto"}
+        if len(antes) < 2:
+            send_telegram(f"{sym} não tem registros duplicados abertos (encontrei {len(antes)}). Nada pra fundir.", chat_id); return
+        for exch in EXCHANGES_ATIVAS:
+            sincronizar_tracking(sym, origem="MANUAL", exchange=exch)
+        restantes = [s for s in memory.get("signals", []) if s["symbol"] == sym and s["status"] == "aberto"]
+        canceladas = sorted(antes - {s["id"] for s in restantes})
+        if not restantes:
+            send_telegram(f"❌ {sym}: não achei posição real em nenhuma corretora ativa — não dá pra sincronizar.", chat_id); return
+        resumo = "\n".join(
+            f"Mantido: #{s['id']} ({nome_corretora(s.get('exchange', EXCHANGE))} {s['direcao']}, "
+            f"entrada ${s['entrada']:,.4f}, qty {s['qty_usada']}, SL {s['stop']:,.4f}, TP {s['alvo']:,.4f})"
+            for s in restantes)
         send_telegram(
-            f"🔗 <b>{sym} fundido</b>\n"
-            f"Mantido: #{principal['id']} (entrada ${principal['entrada']:,.4f}, "
-            f"qty {principal['qty_usada']}, SL {principal['stop']:,.4f}, TP {principal['alvo']:,.4f})\n"
-            f"Cancelados do tracking (não contam win/loss): {', '.join('#'+str(i) for i in canceladas)}", chat_id)
+            f"🔗 <b>{sym} fundido</b>\n{resumo}\n"
+            f"Cancelados do tracking (não contam win/loss): "
+            f"{', '.join('#'+str(i) for i in canceladas) or 'nenhum'}", chat_id)
 
     # ══ VISÃO MACRO (M1 dentro de cenário maior, definido por você) ═══
     # Caminho de entrada A MAIS, em paralelo ao M15/M5 — não mexe no que
@@ -3514,20 +3711,20 @@ def main_loop():
                     else:
                         print(f"  [{sym} M5 cooldown]")
 
-                # ── M1 TÉCNICO AUTOMÁTICO — mesmo critério que você usa na mão:
-                # pernada + correção ~50%, só que em CASCATA pelos tempos
-                # gráficos maiores primeiro (H4 → H1 → M15) pra achar a
-                # âncora (direção certa + alvo real de 50% da pernada
-                # maior), e o M1 só puxa o gatilho fino de entrada dentro
-                # dessa janela. Substituiu o filtro de tendência H1/EMA —
-                # agora é 100% o critério de pernadas corrigidas que você
-                # descreveu, em todos os tempos gráficos. Roda em paralelo
-                # ao M15/M5/macro acima, sem alterar nada deles.
+                # ── MOTOR ÂNCORA (M1-TECNICO) — mesmo critério que você usa
+                # na mão: pernada + correção ~50%, em CASCATA pelos tempos
+                # gráficos maiores primeiro (H4 → H1 → M15 → M5) pra achar a
+                # âncora (direção certa + alvo real da pernada maior), mas
+                # quem ACIONA a entrada e define o STOP é sempre o M1,
+                # puxando o gatilho fino DENTRO dessa janela — nunca entra
+                # direto no tf âncora. Cooldown mais longo (SIGNAL_COOLDOWN_
+                # ANCORA): são posições de longo prazo, não day trade. Roda
+                # em paralelo ao M15/M5/macro acima, sem alterar nada deles.
                 tf_ancora, ctx = contexto_maior(sym)
-                if ctx:
+                if ANCORA_ATIVO and ctx:
                     direcao_tec = ctx["direcao"]
                     key = f"{sym}_M1TEC"
-                    if now_ts - last_signal_time.get(key, 0) >= SIGNAL_COOLDOWN:
+                    if now_ts - last_signal_time.get(key, 0) >= SIGNAL_COOLDOWN_ANCORA:
                         preco_tec = check_macro_m1(sym, {"direcao": direcao_tec})
                         if preco_tec:
                             sl_tec = stop_tecnico_m1(sym, direcao_tec)
@@ -3643,21 +3840,23 @@ def main_loop():
                         if not preco_fluxo:
                             continue
                         sl_fluxo = stop_tecnico_m1(sym, direcao_fluxo)
-                        # tenta a projeção de 38.2% da própria pernada do M1
-                        # primeiro — alvo mais longo, RR melhor — e só cai
-                        # pro próximo topo/fundo (alvo curto) quando não dá
-                        # pra identificar uma pernada agora. Continua sem
-                        # esperar H4/H1/M15 de propósito (é o que diferencia
-                        # esse motor do M1-TECNICO/M1-ABC).
-                        ctx_fluxo = detectar_perna(sym, "1m")
-                        tp_fluxo = None
+                        # ALVO: o próximo topo/fundo REAL do M1 (estrutura),
+                        # não uma projeção — é o desenho que o Jon opera na
+                        # mão (perna + correção 50%, stop na origem, alvo no
+                        # último fundo/topo) e o RR sai técnico, sem forçar
+                        # um número maior. RR_MINIMO continua como piso de
+                        # segurança pra descartar setups sem lógica. Só cai
+                        # pra projeção de 38.2% quando a estrutura não dá um
+                        # nível utilizável. Continua sem esperar H4/H1/M15
+                        # de propósito (é o que diferencia esse motor do
+                        # M1-TECNICO/M1-ABC).
+                        tp_fluxo = alvo_m1_estrutura(sym, direcao_fluxo)
                         alvo_desc = "próximo topo" if direcao_fluxo == "BUY" else "próximo fundo"
-                        if ctx_fluxo and ctx_fluxo["direcao"] == direcao_fluxo:
-                            tp_fluxo = alvo_projecao_382(preco_fluxo, direcao_fluxo, ctx_fluxo)
-                            alvo_desc = "projeção 38.2% da onda"
                         if tp_fluxo is None:
-                            tp_fluxo = alvo_m1_estrutura(sym, direcao_fluxo)
-                            alvo_desc = "próximo topo" if direcao_fluxo == "BUY" else "próximo fundo"
+                            ctx_fluxo = detectar_perna(sym, "1m")
+                            if ctx_fluxo and ctx_fluxo["direcao"] == direcao_fluxo:
+                                tp_fluxo = alvo_projecao_382(preco_fluxo, direcao_fluxo, ctx_fluxo)
+                                alvo_desc = "projeção 38.2% da onda"
                         if sl_fluxo is None or tp_fluxo is None:
                             continue
                         coerente = ((direcao_fluxo == "BUY"  and sl_fluxo < preco_fluxo < tp_fluxo) or
@@ -3692,61 +3891,6 @@ def main_loop():
                                                "rsi": data.get("rsi", "")}
                                 fire_signal(sym, entry_macro)
                                 last_signal_time[key] = now_ts
-
-                # ── MOTOR ÂNCORA — posições de longo prazo, direto no
-                # timeframe âncora (H4/H1/M30): MESMO critério (perna
-                # corrigindo 38-65%, figura geométrica, os 3 gatilhos de
-                # confirmação, stop técnico na origem) só que o gatilho e
-                # o stop também são do próprio timeframe âncora — não
-                # espera o M1. Cada timeframe é um motor independente
-                # (própria origem "ANCORA-H4"/"ANCORA-H1"/"ANCORA-30M",
-                # próprio cooldown), pra ficar posicionado dias/semanas,
-                # em paralelo ao day trade/arbitragem de M1 acima.
-                if ANCORA_ATIVO:
-                    for tf_anc in ANCORA_TIMEFRAMES:
-                        key = f"{sym}_ANCORA_{tf_anc}"
-                        if now_ts - last_signal_time.get(key, 0) < SIGNAL_COOLDOWN_ANCORA:
-                            continue
-                        d_anc = detectar_perna(sym, tf_anc, candles_qtd=100)
-                        if not d_anc or not d_anc["ok"]:
-                            continue
-                        direcao_anc = d_anc["direcao"]
-                        preco_anc = check_gatilhos_tf(sym, direcao_anc, tf=tf_anc, candles_qtd=100)
-                        if not preco_anc:
-                            continue
-                        sl_anc = stop_tecnico(sym, direcao_anc, tf=tf_anc, lookback=100)
-                        if sl_anc is None:
-                            continue
-                        # ALVO: estrutura da própria âncora (megafone/
-                        # lateral) tem prioridade, senão a projeção de
-                        # 38.2% da onda, senão o 50% da pernada — mesma
-                        # cascata do M1-TECNICO, só que na escala âncora.
-                        estrutura_anc = estrutura_ancora(sym, tf_anc)
-                        tp_anc = alvo_desc_anc = None
-                        if estrutura_anc and estrutura_anc.get("figura") in ("megafone", "lateral"):
-                            tp_anc = alvo_ancora(preco_anc, direcao_anc, estrutura_anc)
-                            if tp_anc is not None:
-                                alvo_desc_anc = f"{'fundo' if direcao_anc == 'SELL' else 'topo'} {tf_anc.upper()}"
-                        if tp_anc is None:
-                            tp_anc = alvo_projecao_382(preco_anc, direcao_anc, d_anc)
-                            alvo_desc_anc = "proj. 38.2%"
-                        if tp_anc is None:
-                            tp_anc = d_anc["alvo_50"]
-                            alvo_desc_anc = "50% da pernada"
-                        coerente = ((direcao_anc == "BUY"  and sl_anc < preco_anc < tp_anc) or
-                                    (direcao_anc == "SELL" and tp_anc < preco_anc < sl_anc))
-                        if not coerente:
-                            continue
-                        desc_fig = (f"{tf_anc.upper()} {estrutura_anc['figura']}"
-                                    if estrutura_anc and estrutura_anc.get("figura")
-                                    else f"{tf_anc.upper()} corrigindo {int(d_anc['retr']*100)}%")
-                        entry_anc = {"direcao": direcao_anc, "entrada": preco_anc,
-                                     "stop": sl_anc, "alvo": tp_anc,
-                                     "atr": data.get("atr", 0), "origem": f"ANCORA-{tf_anc.upper()}",
-                                     "rsi": (f"{desc_fig} | {tf_anc.upper()}: {_ultimo_gatilho.get(sym, 'gatilho')}"
-                                             f" | alvo {alvo_desc_anc}")}
-                        fire_signal(sym, entry_anc, ignorar_travas=True)
-                        last_signal_time[key] = now_ts
 
             check_signals(price_map)
         except Exception as e:

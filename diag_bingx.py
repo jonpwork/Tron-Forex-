@@ -191,3 +191,34 @@ enviar("POST", "/openApi/swap/v2/trade/order", {
     "stopLoss": json.dumps({"type": "STOP_MARKET", "stopPrice": 78000.0, "workingType": "MARK_PRICE"}),
     "takeProfit": json.dumps({"type": "TAKE_PROFIT_MARKET", "stopPrice": 76000.0, "workingType": "MARK_PRICE"}),
 })
+print()
+
+# Teste 7: o Jon achou EURUSD como futuro perpétuo dentro do app da
+# BingX (aba "Futuros Perp.", mesma tela de Isolada/alavancagem/TP-SL
+# que BTC/ETH usam) -- pra incluir de verdade no bot precisamos saber
+# o SÍMBOLO EXATO que a API usa pra esse par (pode não ser "EUR-USD"),
+# a quantidade mínima e a precisão de preço/quantidade. GET público,
+# sem assinatura, sem risco nenhum -- só lista os contratos e filtra
+# por "EUR" no nome.
+print("── Teste 7: procurando EURUSD (ou qualquer par com EUR) na lista de contratos ──")
+try:
+    req = urllib.request.Request(f"{BASE_URL}/openApi/swap/v2/quote/contracts",
+                                  headers={"X-BX-APIKEY": API_KEY})
+    with urllib.request.urlopen(req, timeout=15) as r:
+        body = json.loads(r.read())
+    contratos = body.get("data", body) if isinstance(body, dict) else body
+    if not isinstance(contratos, list):
+        print(f"Formato inesperado de resposta: {body}")
+    else:
+        achados = [c for c in contratos if "EUR" in str(c.get("symbol", "")).upper()]
+        if not achados:
+            print("Nenhum contrato com 'EUR' no símbolo apareceu na lista pública.")
+            print(f"(A lista tinha {len(contratos)} contratos no total, pra conferência.)")
+        else:
+            for c in achados:
+                print(json.dumps(c, indent=2, ensure_ascii=False))
+except urllib.error.HTTPError as e:
+    print(f"HTTP {e.code}")
+    print(e.read().decode())
+except Exception as e:
+    print(f"ERRO: {e}")
