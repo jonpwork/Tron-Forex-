@@ -1267,6 +1267,24 @@
       "preco_saida": 80827.8,
       "fechamento": "04/09/2026 00:00",
       "resultado_usd": 0.29768919
+    },
+    {
+      "id": 762,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 81039.8,
+      "stop": 81104.8,
+      "alvo": 80854.5682,
+      "risco": 65.0,
+      "rr": 2.8,
+      "qty_usada": 0.003,
+      "atr": 204.8167251614038,
+      "origem": "M1-TECNICO",
+      "order_id": "2095740868237684736",
+      "data": "04/09/2026 02:08",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -1274,7 +1292,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 762,
+  "next_id": 763,
   "config_lote": {
     "modo": "auto"
   }
