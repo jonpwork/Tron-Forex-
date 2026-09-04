@@ -267,8 +267,11 @@
       "origem": "M1-TECNICO",
       "order_id": "2095827145142267904",
       "data": "04/09/2026 07:51",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,03",
+      "preco_saida": 1.15951,
+      "fechamento": "04/09/2026 09:30",
+      "resultado_usd": -0.00588547
     },
     {
       "id": 774,
@@ -285,6 +288,48 @@
       "origem": "M1-TECNICO",
       "order_id": "2095850495893794816",
       "data": "04/09/2026 09:24",
+      "status": "loss",
+      "resultado": "-R$ 1,06",
+      "preco_saida": 81225.7,
+      "fechamento": "04/09/2026 09:28",
+      "resultado_usd": -0.20673395
+    },
+    {
+      "id": 775,
+      "symbol": "EURUSD",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 1.16011,
+      "stop": 1.160434,
+      "alvo": 1.1572717399999999,
+      "risco": 0.00032399999999999096,
+      "rr": 8.8,
+      "qty_usada": 211.25,
+      "atr": 0.0006258530945165862,
+      "origem": "M1-TECNICO",
+      "order_id": "2095858390970626048",
+      "data": "04/09/2026 09:55",
+      "status": "loss",
+      "resultado": "-R$ 1,07",
+      "preco_saida": 1.16051,
+      "fechamento": "04/09/2026 10:17",
+      "resultado_usd": -0.20919137
+    },
+    {
+      "id": 776,
+      "symbol": "EURUSD",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 1.16129,
+      "stop": 1.1618408,
+      "alvo": 1.1584517399999998,
+      "risco": 0.0005508000000000735,
+      "rr": 5.2,
+      "qty_usada": 208.32,
+      "atr": 0.0007668221839612642,
+      "origem": "M1-TECNICO",
+      "order_id": "2095867910899855360",
+      "data": "04/09/2026 10:33",
       "status": "aberto",
       "resultado": null
     }
@@ -294,7 +339,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 775,
+  "next_id": 777,
   "config_lote": {
     "modo": "auto"
   }
