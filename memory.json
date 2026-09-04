@@ -330,8 +330,11 @@
       "origem": "M1-TECNICO",
       "order_id": "2095867910899855360",
       "data": "04/09/2026 10:33",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 1,27",
+      "preco_saida": 1.16229,
+      "fechamento": "04/09/2026 10:47",
+      "resultado_usd": -0.2480987
     }
   ],
   "zone_tol": 0.2,
