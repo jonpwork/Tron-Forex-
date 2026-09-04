@@ -206,6 +206,27 @@
       "origem": "M15",
       "order_id": "2095796041832165376",
       "data": "04/09/2026 05:48",
+      "status": "loss",
+      "resultado": "-R$ 1,26",
+      "preco_saida": 1.16213,
+      "fechamento": "04/09/2026 06:32",
+      "resultado_usd": -0.24647021
+    },
+    {
+      "id": 771,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 80958.5,
+      "stop": 80935.564,
+      "alvo": 81252.7546,
+      "risco": 22.936000000001513,
+      "rr": 12.8,
+      "qty_usada": 0.002,
+      "atr": 214.85660344019968,
+      "origem": "M1-TECNICO",
+      "order_id": "2095817187642273792",
+      "data": "04/09/2026 07:12",
       "status": "aberto",
       "resultado": null
     }
@@ -215,7 +236,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 771,
+  "next_id": 772,
   "config_lote": {
     "modo": "auto"
   }
