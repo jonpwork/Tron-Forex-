@@ -190,13 +190,32 @@
       "data": "06/07/2026 06:08"
     }
   ],
-  "signals": [],
+  "signals": [
+    {
+      "id": 770,
+      "symbol": "EURUSD",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 1.16252,
+      "stop": 1.1621517950609128,
+      "alvo": 1.1632564098781744,
+      "risco": 0.00036820493908718,
+      "rr": 2.0,
+      "qty_usada": 251.24,
+      "atr": 0.0002454699593914767,
+      "origem": "M15",
+      "order_id": "2095796041832165376",
+      "data": "04/09/2026 05:48",
+      "status": "aberto",
+      "resultado": null
+    }
+  ],
   "zone_tol": 0.2,
   "total_prints": 11,
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 770,
+  "next_id": 771,
   "config_lote": {
     "modo": "auto"
   }
