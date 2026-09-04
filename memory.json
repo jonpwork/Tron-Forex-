@@ -269,6 +269,24 @@
       "data": "04/09/2026 07:51",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 774,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 81158.0,
+      "stop": 81224.944,
+      "alvo": 80934.6446,
+      "risco": 66.94400000000314,
+      "rr": 3.3,
+      "qty_usada": 0.002,
+      "atr": 189.4843522778522,
+      "origem": "M1-TECNICO",
+      "order_id": "2095850495893794816",
+      "data": "04/09/2026 09:24",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -276,7 +294,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 774,
+  "next_id": 775,
   "config_lote": {
     "modo": "auto"
   }
