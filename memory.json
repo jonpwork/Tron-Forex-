@@ -227,6 +227,46 @@
       "origem": "M1-TECNICO",
       "order_id": "2095817187642273792",
       "data": "04/09/2026 07:12",
+      "status": "loss",
+      "resultado": "-R$ 0,27",
+      "preco_saida": 80931.9,
+      "fechamento": "04/09/2026 07:12"
+    },
+    {
+      "id": 772,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 81005.2,
+      "stop": 80918.044,
+      "alvo": 81189.36219999999,
+      "risco": 87.15600000000268,
+      "rr": 2.1,
+      "qty_usada": 0.002,
+      "atr": 197.34949327977088,
+      "origem": "M1-TECNICO",
+      "order_id": "2095825650204241920",
+      "data": "04/09/2026 07:45",
+      "status": "win",
+      "resultado": "+R$ 2,27",
+      "preco_saida": 81228.0,
+      "fechamento": "04/09/2026 08:22"
+    },
+    {
+      "id": 773,
+      "symbol": "EURUSD",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 1.1621,
+      "stop": 1.1620028,
+      "alvo": 1.16251256,
+      "risco": 9.719999999990847e-05,
+      "rr": 4.2,
+      "qty_usada": 70.72,
+      "atr": 0.00028951346317655693,
+      "origem": "M1-TECNICO",
+      "order_id": "2095827145142267904",
+      "data": "04/09/2026 07:51",
       "status": "aberto",
       "resultado": null
     }
@@ -236,7 +276,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 772,
+  "next_id": 774,
   "config_lote": {
     "modo": "auto"
   }
