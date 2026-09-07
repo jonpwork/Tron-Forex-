@@ -478,6 +478,24 @@
       "data": "04/09/2026 13:25",
       "status": "cancelado",
       "resultado": "fechado manualmente"
+    },
+    {
+      "id": 784,
+      "symbol": "EURUSD",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 1.1616,
+      "stop": 1.161718,
+      "alvo": 1.16079,
+      "risco": 0.0001180000000000625,
+      "rr": 6.9,
+      "qty_usada": 203.53,
+      "atr": 0.00020516864452208415,
+      "origem": "RANGE",
+      "order_id": "2096756072245325824",
+      "data": "06/09/2026 21:22",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -485,7 +503,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 784,
+  "next_id": 785,
   "config_lote": {
     "modo": "auto"
   }
