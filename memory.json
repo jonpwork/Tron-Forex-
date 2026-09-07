@@ -580,6 +580,24 @@
       "data": "06/09/2026 21:45",
       "status": "aberto",
       "resultado": null
+    },
+    {
+      "id": 789,
+      "symbol": "BTCUSDT",
+      "direcao": "BUY",
+      "exchange": "bingx",
+      "entrada": 79890.4,
+      "stop": 79630.42595189912,
+      "alvo": 80410.34809620175,
+      "risco": 259.97404810087755,
+      "rr": 2.0,
+      "qty_usada": 0.002,
+      "atr": 173.3160320672517,
+      "origem": "M15",
+      "order_id": "2096785393148194816",
+      "data": "06/09/2026 23:19",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -587,7 +605,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 789,
+  "next_id": 790,
   "config_lote": {
     "modo": "auto"
   }
