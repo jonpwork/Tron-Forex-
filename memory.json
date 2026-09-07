@@ -681,8 +681,10 @@
       "origem": "RANGE",
       "order_id": "2096816137178411008",
       "data": "07/09/2026 01:21",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 0,78",
+      "preco_saida": 79587.6,
+      "fechamento": "07/09/2026 04:12"
     },
     {
       "id": 794,
