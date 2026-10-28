@@ -705,6 +705,24 @@
       "resultado": "-R$ 14,20",
       "preco_saida": 1.1115,
       "fechamento": "28/10/2026 04:15"
+    },
+    {
+      "id": 795,
+      "symbol": "BTCUSDT",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 80904.6,
+      "stop": 80934.732,
+      "alvo": 80669.82280000001,
+      "risco": 30.131999999997788,
+      "rr": 7.8,
+      "qty_usada": 0.011,
+      "atr": 103.6343482025388,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-1793172255527",
+      "data": "28/10/2026 04:24",
+      "status": "aberto",
+      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -712,7 +730,7 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 795,
+  "next_id": 796,
   "config_lote": {
     "modo": "auto"
   }
