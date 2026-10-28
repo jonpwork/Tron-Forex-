@@ -705,24 +705,6 @@
       "resultado": "-R$ 14,20",
       "preco_saida": 1.1115,
       "fechamento": "28/10/2026 04:15"
-    },
-    {
-      "id": 795,
-      "symbol": "BTCUSDT",
-      "direcao": "SELL",
-      "exchange": "bingx",
-      "entrada": 80904.6,
-      "stop": 80934.732,
-      "alvo": 80669.82280000001,
-      "risco": 30.131999999997788,
-      "rr": 7.8,
-      "qty_usada": 0.011,
-      "atr": 103.6343482025388,
-      "origem": "M1-TECNICO",
-      "order_id": "SIM-1793172255527",
-      "data": "28/10/2026 04:24",
-      "status": "aberto",
-      "resultado": null
     }
   ],
   "zone_tol": 0.2,
@@ -730,8 +712,31 @@
   "last_update": "06/07/2026 06:08",
   "total_signals": 85,
   "macro_views": {},
-  "next_id": 796,
+  "next_id": 795,
   "config_lote": {
     "modo": "auto"
-  }
+  },
+  "ghost_next_id": 2,
+  "ghosts": [
+    {
+      "id": 1,
+      "symbol": "ADAUSDT",
+      "direcao": "SELL",
+      "exchange": "bingx",
+      "entrada": 0.2051,
+      "stop": 0.205532,
+      "alvo": 0.2004,
+      "risco": 0.00043199999999998795,
+      "rr": 10.9,
+      "qty_usada": null,
+      "atr": 0.0014501008198591458,
+      "origem": "M1-TECNICO",
+      "order_id": "SIM-GHOST-1793219672817",
+      "fantasma": true,
+      "motivo": "Incorrect apiKey, please check your valid api key in https://bingx.com/en/account/api",
+      "data": "28/10/2026 17:34",
+      "status": "aberto",
+      "resultado": null
+    }
+  ]
 }
