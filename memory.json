@@ -701,8 +701,10 @@
       "origem": "M1-ABC",
       "order_id": "2096822540966260736",
       "data": "07/09/2026 01:47",
-      "status": "aberto",
-      "resultado": null
+      "status": "loss",
+      "resultado": "-R$ 14,20",
+      "preco_saida": 1.1115,
+      "fechamento": "28/10/2026 04:15"
     }
   ],
   "zone_tol": 0.2,
